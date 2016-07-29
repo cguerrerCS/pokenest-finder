@@ -107,7 +107,7 @@ $( document ).ready(function() {
 	setInterval(function() { update(); }, 2000);
 
 	// find pokemon within viewport
-	// setInterval(function() { loadPokeRadar(); }, 5000);
+	setInterval(function() { loadPokeRadar(); }, 5000);
 
 	$('#submitbtn').on('click', function() {
 
