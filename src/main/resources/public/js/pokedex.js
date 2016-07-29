@@ -1,35 +1,40 @@
 
-/* autocomplete code for Pokemon name lookup */
-var substringMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, substringRegex;
+// $( document ).ready(function() {
 
-    // an array that will be populated with substring matches
-    matches = [];
+//   /* autocomplete code for Pokemon name lookup */
+//   var substringMatcher = function(strs) {
+//     return function findMatches(q, cb) {
+//       var matches, substringRegex;
 
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
+//       // an array that will be populated with substring matches
+//       matches = [];
 
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test(str)) {
-        matches.push(str);
-      }
-    });
+//       // regex used to determine if a string contains the substring `q`
+//       substrRegex = new RegExp(q, 'i');
 
-    cb(matches);
-  };
-};
+//       // iterate through the pool of strings and for any string that
+//       // contains the substring `q`, add it to the `matches` array
+//       $.each(strs, function(i, str) {
+//         if (substrRegex.test(str)) {
+//           matches.push(str);
+//         }
+//       });
 
-var pokemon = ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', "Squirtle", "Wartortle", "Blastoise", "Dratini"];
+//       cb(matches);
+//     };
+//   };
 
-$('#pokemon-typeahead .typeahead').typeahead({
-  hint: true,
-  highlight: true,
-  minLength: 1
-},
-{
-  name: 'pokemon',
-  source: substringMatcher(pokemon)
-});
+//   var pokemon = ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', "Squirtle", "Wartortle", "Blastoise", "Dratini"];
+
+//   $('#pokemon-typeahead .typeahead').typeahead({
+//     hint: true,
+//     highlight: true,
+//     minLength: 1
+//   },
+//   {
+//     name: 'pokemon',
+//     source: substringMatcher(pokemon)
+//   });
+// });
+
+

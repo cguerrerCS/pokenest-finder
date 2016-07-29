@@ -104,10 +104,87 @@ $( document ).ready(function() {
 	});
 
 	// by default, follow user
-	setInterval(function() { update(); }, 2000);
+	// setInterval(function() { update(); }, 2000);
 
 	// find pokemon within viewport
 	// setInterval(function() { loadPokeRadar(); }, 5000);
+
+	$('#submitbtn').on('click', function() {
+
+	/* hide modal and post sighting to server */
+	$('#myModal').modal('hide');
+
+		/* get pokemon species from user input */
+		var pokemon = $('#pokemon-modal-input').val();
+
+		var pokemonLocation = modalLocationMarker.getLatLng()
+
+		/* gather post parameters for server */
+		var postParameters = {pokemon: pokemon, lat: pokemonLocation.lat, lng: pokemonLocation.lng};
+
+		console.log("submitting sighting location");
+		console.log(postParameters);
+
+		/* post info to server */
+		// $.post("/report", postParameters, function(responseJSON){
+
+		// 	 get responce object 
+		// 	responseObject = JSON.parse(responseJSON);
+		// 	console.log(responseObject);
+		// }); 
+}	);
+
+	$('#myModal').on('show.bs.modal', function(){
+
+		console.log("show modal");
+
+		// clear previous user information information
+		$('#pokemon-modal-input').val("");
+
+		// adjust map sizing for modal
+	    setTimeout(function() { sitemap.invalidateSize(); }, 500);
+
+	    // get user's current recorded location
+	    modalCurrentLocation = currentLocationMarker.getLatLng()
+
+	    // adjust view to center on current location
+	    sitemap.setView(currentLocationMarker.getLatLng(), 16);
+	});
+
+	/* autocomplete code for Pokemon name lookup */
+	var substringMatcher = function(strs) {
+	return function findMatches(q, cb) {
+	  var matches, substringRegex;
+
+	  // an array that will be populated with substring matches
+	  matches = [];
+
+	  // regex used to determine if a string contains the substring `q`
+	  substrRegex = new RegExp(q, 'i');
+
+	  // iterate through the pool of strings and for any string that
+	  // contains the substring `q`, add it to the `matches` array
+	  $.each(strs, function(i, str) {
+	    if (substrRegex.test(str)) {
+	      matches.push(str);
+	    }
+	  });
+
+	  cb(matches);
+	};
+	};
+
+	var pokemon = ['Bulbasaur', 'Ivysaur', 'Venusaur', 'Charmander', 'Charmeleon', 'Charizard', "Squirtle", "Wartortle", "Blastoise", "Dratini"];
+
+	$('#pokemon-typeahead .typeahead').typeahead({
+		hint: true,
+		highlight: true,
+		minLength: 1
+	},
+	{
+		name: 'pokemon',
+		source: substringMatcher(pokemon)
+	});
 
 });
 
@@ -172,40 +249,3 @@ function onLocationFound(e) {
 function onLocationError(e) {
     alert(e.message);
 }
-
-$('#submitbtn').on('click', function() {
-
-	/* hide modal and post sighting to server */
-	$('#myModal').modal('hide');
-
-	/* get pokemon species from user input */
-	var pokemon = $('#pokemon-modal-input').val();
-
-	var pokemonLocation = modalLocationMarker.getLatLng()
-
-	/* gather post parameters for server */
-	var postParameters = {pokemon: pokemon, lat: pokemonLocation.lat, lng: pokemonLocation.lng};
-
-	/* post info to server */
-	$.post("/report", postParameters, function(responseJSON){
-
-		/* get responce object */
-		responseObject = JSON.parse(responseJSON);
-		console.log(responseObject);
-	}); 
-});
-
-$('#myModal').on('show.bs.modal', function(){
-
-	// clear previous user information information
-	$('#pokemon-modal-input').val("");
-
-	// adjust map sizing for modal
-    setTimeout(function() { sitemap.invalidateSize(); }, 1000);
-
-    // get user's current recorded location
-    modalCurrentLocation = currentLocationMarker.getLatLng()
-
-    // adjust view to center on current location
-    sitemap.setView(currentLocationMarker.getLatLng(), 16);
-});
