@@ -14,6 +14,7 @@ import spark.template.freemarker.FreeMarkerEngine;
 import spark.ModelAndView;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
+import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 
 public class Main {
@@ -25,17 +26,20 @@ public class Main {
   }
   
   private String[] args;
+  private Connection conn;
+  private Pokedex pokedex;
   
   private Main(String[] args) {
 	  this.args = args;
   }
   
   private void run() {
+	pokedex = new Pokedex();
 	runSparkServer();
   }
 
 	private void runSparkServer() {
-
+		
 		Spark.staticFileLocation("/public");
 		Spark.port(Integer.valueOf(System.getenv("PORT")));
 
@@ -43,7 +47,7 @@ public class Main {
 
 		Spark.get("/", (request, response) -> {
 			Map<String, Object> attributes = new HashMap<>();
-			attributes.put("title", "This sucks!");
+			attributes.put("title", "Pokenest");
 			return new ModelAndView(attributes, "index.ftl");
 		}, new FreeMarkerEngine());
 
@@ -67,23 +71,36 @@ public class Main {
 
 				return GSON.toJson(results);
 			});
+		
+		Spark.post("/report", (request, response) -> {
+
+			Map<String, Object> results = ImmutableMap.of("success", true);
+			
+			QueryParamsMap queryMap = request.queryMap();
+			String pokemon = queryMap.value("pokemon");
+			double lat = Double.parseDouble(queryMap.value("lat"));
+			double lng = Double.parseDouble(queryMap.value("lng"));
+			java.sql.Timestamp timestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+			System.out.println(String.format("%s nest sighting reported.", pokemon));
+			return GSON.toJson(results);
+		});
+
 
 		Spark.get(
 				"/db",
 				(req, res) -> {
-					Connection connection = null;
+//					Connection connection = null;
 					Map<String, Object> attributes = new HashMap<>();
-					try {
-						connection = DatabaseUrl.extract().getConnection();
-						
-						
-						// Fill in schema to create a table called pokedex
-						String schema = "CREATE TABLE IF NOT EXISTS pokedex(" + "id TEXT," + "pokemon TEXT,"
-								+ "lat DECIMAL," + "lng DECIMAL," + "time TIMESTAMP,"
-								+ "confirmed SMALLINT);";
-
-						Statement stmt = connection.createStatement();
-						stmt.executeUpdate(schema);
+//					try {
+//						connection = DatabaseUrl.extract().getConnection();
+//						
+//						// Fill in schema to create a table called pokedex
+//						String schema = "CREATE TABLE IF NOT EXISTS pokedex(" + "id TEXT," + "pokemon TEXT,"
+//								+ "lat DECIMAL," + "lng DECIMAL," + "time TIMESTAMP,"
+//								+ "confirmed SMALLINT);";
+//
+//						Statement stmt = connection.createStatement();
+//						stmt.executeUpdate(schema);
 						
 						// insert some dummy values
 //						schema = "INSERT INTO pokedex VALUES(?,?,?,?,?,?);";						
@@ -98,39 +115,28 @@ public class Main {
 //						prep.executeUpdate();
 						
 						
-						ResultSet rs = stmt
-								.executeQuery("SELECT * FROM pokedex;");
+//						ResultSet rs = stmt
+//								.executeQuery("SELECT * FROM pokedex;");
+//
+//						ArrayList<String> output = new ArrayList<String>();
+//						while (rs.next()) {
+//							
+//							String id = rs.getString("id");
+//							String name = rs.getString("pokemon");
+//							String lat = rs.getString("lat");
+//							String lng = rs.getString("lng");
+//							String time = rs.getString("time");
+//							String confirmed = rs.getString("confirmed");
+//							String data = String.format("[%s:%s:%s:%s:%s:%s]", id, name, lat, lng, time, confirmed);
+//							
+//							output.add("Read from DB: "
+//									+ data);
+//						}
 
-						ArrayList<String> output = new ArrayList<String>();
-						while (rs.next()) {
-							
-							String id = rs.getString("id");
-							String name = rs.getString("pokemon");
-							String lat = rs.getString("lat");
-							String lng = rs.getString("lng");
-							String time = rs.getString("time");
-							String confirmed = rs.getString("confirmed");
-							String data = String.format("[%s:%s:%s:%s:%s:%s]", id, name, lat, lng, time, confirmed);
-							
-							output.add("Read from DB: "
-									+ data);
-						}
-
-						attributes.put("results", output);
-						attributes.put("title", "This sucks!");
-						
+						attributes.put("results", pokedex.GetDatabaseRowsAsStrings());
+						attributes.put("title", "Pokenest");						
 						return new ModelAndView(attributes, "db.ftl");
-					} catch (Exception e) {
-						attributes.put("message", "There was an error: " + e);
-						attributes.put("title", "This sucks!");
-						return new ModelAndView(attributes, "error.ftl");
-					} finally {
-						if (connection != null)
-							try {
-								connection.close();
-							} catch (SQLException e) {
-							}
-					}
+
 				}, new FreeMarkerEngine());
     
 	} 

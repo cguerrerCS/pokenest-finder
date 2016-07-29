@@ -6,7 +6,7 @@
 </head>
 
 <body>
-  
+
   <div id="mapid"></div>
 
 <!-- Bootstrap Modal -->
@@ -19,7 +19,7 @@
         <h4 class="modal-title" id="myModalLabel">
 
 			<img src='../img/pokeball.png' alt='Pokeball Icon' height='40' width='40'>
-        	Report Pokenest Discovery</h4>
+        	Geotag Pokenest!</h4>
       </div>
       <div class="modal-body">
 

@@ -6,6 +6,10 @@ html, body, #mapid {
     height: 100%;
 }
 
+.navbar {
+  background-color: red;
+}
+
 .easy-button-button {
     margin: 0;
     padding: 0;

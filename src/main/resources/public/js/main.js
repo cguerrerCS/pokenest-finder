@@ -125,13 +125,15 @@ $( document ).ready(function() {
 		console.log("submitting sighting location");
 		console.log(postParameters);
 
-		/* post info to server */
-		// $.post("/report", postParameters, function(responseJSON){
+		// make sure that all parameters are set properly first!
 
-		// 	 get responce object 
-		// 	responseObject = JSON.parse(responseJSON);
-		// 	console.log(responseObject);
-		// }); 
+		/* post info to server */
+		$.post("/report", postParameters, function(responseJSON){
+
+			// get responce object 
+			var responseObject = JSON.parse(responseJSON);
+			console.log(responseObject);
+		}); 
 }	);
 
 	$('#myModal').on('show.bs.modal', function(){
