@@ -1,11 +1,14 @@
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import spark.ModelAndView;
 
@@ -44,6 +47,27 @@ public class Pokedex {
 		}
 	}
 	
+	public void Add(String pokemon, double lat, double lng, java.sql.Timestamp timestamp)
+			throws SQLException {
+
+		// Fill in schema to create a table called pokedex
+		String schema = "INSERT INTO pokedex VALUES(?,?,?,?,?,?);";
+
+		schema = "INSERT INTO pokedex VALUES(?,?,?,?,?,?);";						
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, generateID());
+		prep.setString(2, pokemon);
+		prep.setDouble(3, lat);
+		prep.setDouble(4, lng);
+		prep.setTimestamp(5, timestamp);
+		prep.setInt(6, 0);
+		prep.executeUpdate();
+
+		// Close the PreparedStatement
+		prep.close();
+	}
+	
+	
 	public List<String> GetDatabaseRowsAsStrings() {
 		
 		ArrayList<String> output = new ArrayList<String>();
@@ -67,5 +91,11 @@ public class Pokedex {
 		}
 		
 		return output;
+	}
+	
+	private String generateID() {
+		String unique = UUID.randomUUID().toString();
+		// check for collision..?
+		return unique;
 	}
 }

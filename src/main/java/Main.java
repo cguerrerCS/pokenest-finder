@@ -81,7 +81,8 @@ public class Main {
 			double lat = Double.parseDouble(queryMap.value("lat"));
 			double lng = Double.parseDouble(queryMap.value("lng"));
 			java.sql.Timestamp timestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
-			System.out.println(String.format("%s nest sighting reported.", pokemon));
+			System.out.println(String.format("%s nest sighting reported.", pokemon));	
+			pokedex.Add(pokemon, lat, lng, timestamp);
 			return GSON.toJson(results);
 		});
 
@@ -139,10 +140,4 @@ public class Main {
 				}, new FreeMarkerEngine());
     
 	} 
-	
-	private String generateID() {
-		String unique = UUID.randomUUID().toString();
-		// check for collision..?
-		return unique;
-	}
 }
