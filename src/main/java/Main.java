@@ -105,7 +105,7 @@ public class Main {
 						
 						
 						ResultSet rs = stmt
-								.executeQuery("SELECT pokemon FROM pokedex;");
+								.executeQuery("SELECT * FROM pokedex;");
 
 						ArrayList<String> output = new ArrayList<String>();
 						while (rs.next()) {
