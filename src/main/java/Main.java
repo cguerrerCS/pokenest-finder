@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,13 +87,19 @@ public class Main {
 						
 						// insert some dummy values
 						schema = "INSERT INTO pokedex VALUES(?,?,?,?,?,?);";
-						long unixTimestamp = System.currentTimeMillis() / 1000L;
+						
+						// java.sql.Timestamp currentTimestamp = new java.sql.Timestamp();
+						
+						//Date date = resultSet.getTimestamp("columnname");
+						//long milis = date.getTime() ; 
+						
+						java.sql.Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
 						PreparedStatement prep = connection.prepareStatement(schema);
 						prep.setString(1, generateID());
 						prep.setString(2, "Dratini");
 						prep.setDouble(3, 29.61499068217801);
 						prep.setDouble(4, -95.17674922943117);
-						prep.setLong(5, unixTimestamp);
+						prep.setTimestamp(5, currentTimestamp);
 						prep.setInt(6, 0);
 						prep.executeUpdate();
 						
