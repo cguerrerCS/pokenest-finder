@@ -33,12 +33,16 @@ public class Pokedex {
 						
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			if (conn != null)
-				try {
-					conn.close();
-				} catch (SQLException e) {
-				}
+		}
+	}
+	
+	public void cleanExit() {
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
