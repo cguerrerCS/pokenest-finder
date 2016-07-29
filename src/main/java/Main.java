@@ -55,15 +55,15 @@ public class Main {
 
 			List<String> results = new ArrayList<String>();
 
-			// QueryParamsMap queryMap = request.queryMap();
-			// double minlat =
-			// Double.parseDouble(queryMap.value("southWestLat"));
-			// double maxlat =
-			// Double.parseDouble(queryMap.value("northEastLat"));
-			// double minlng =
-			// Double.parseDouble(queryMap.value("southWestLat"));
-			// double maxlng =
-			// Double.parseDouble(queryMap.value("southWestLat"));
+	//			 QueryParamsMap queryMap = request.queryMap();
+	//			 double minlat =
+	//			 Double.parseDouble(queryMap.value("southWestLat"));
+	//			 double maxlat =
+	//			 Double.parseDouble(queryMap.value("northEastLat"));
+	//			 double minlng =
+	//			 Double.parseDouble(queryMap.value("southWestLat"));
+	//			 double maxlng =
+	//			 Double.parseDouble(queryMap.value("southWestLat"));
 
 				results.add("Charmander");
 				results.add("Charmeleon");
@@ -85,6 +85,22 @@ public class Main {
 			pokedex.Add(pokemon, lat, lng, timestamp);
 			return GSON.toJson(results);
 		});
+		
+		Spark.post("/report", (request, response) -> {
+
+			List<Map<String, Object>> results = pokedex.nearby();
+			
+//			QueryParamsMap queryMap = request.queryMap();
+//			String pokemon = queryMap.value("pokemon");
+//			double lat = Double.parseDouble(queryMap.value("lat"));
+//			double lng = Double.parseDouble(queryMap.value("lng"));
+//			java.sql.Timestamp timestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+//			System.out.println(String.format("%s nest sighting reported.", pokemon));	
+//			pokedex.Add(pokemon, lat, lng, timestamp);
+			
+			return GSON.toJson(results);
+		});
+
 
 
 		Spark.get("/db", (req, res) -> {

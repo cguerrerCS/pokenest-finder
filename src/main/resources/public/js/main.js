@@ -191,46 +191,46 @@ $( document ).ready(function() {
 });
 
 /* Locate all pokemon nests within current viewport */
-// function loadPokeRadar() {
+function loadPokeRadar() {
 
-// 	console.log("pokeradar search...");
-// 	var bounds = pokemap.getBounds();
+	console.log("pokeradar search...");
+	var bounds = pokemap.getBounds();
 
-// 	var postParameters = {
-// 		southWestLat: bounds._southWest.lat, 
-// 		southWestLng: bounds._southWest.lng,
-// 		northEastLat: bounds._northEast.lat, 
-// 		northEastLng: bounds._northEast.lng
-// 	}
+	var postParameters = {
+		southWestLat: bounds._southWest.lat, 
+		southWestLng: bounds._southWest.lng,
+		northEastLat: bounds._northEast.lat, 
+		northEastLng: bounds._northEast.lng
+	}
 
-// 	/* remove old pokenest markers */
-// 	for (i = 0; i < nestMarkers.length; i++) { 
-// 		var marker = nestMarkers[i];
-// 		pokemap.removeLayer(marker)
-// 	}
-// 	nestMarkers = [];
+	/* remove old pokenest markers */
+	for (i = 0; i < nestMarkers.length; i++) { 
+		var marker = nestMarkers[i];
+		pokemap.removeLayer(marker)
+	}
+	nestMarkers = [];
 
-// 	/* load in updated pokenest markers */
-// 	$.post("/nearby", postParameters, function(responseJSON){
+	/* load in updated pokenest markers */
+	$.post("/nearby", postParameters, function(responseJSON){
 
-// 		/* get responce object */
-// 		responseObject = JSON.parse(responseJSON);
+		/* get responce object */
+		responseObject = JSON.parse(responseJSON);
 
-// 		console.log(responseObject)
+		console.log(responseObject)
 		
-// 		/* parse results of response object */
-// 		for (i = 0; i < responseObject.length; i++) { 
-//     		entry = responseObject[i].split(":");
-//     		var id = entry[0];
-//     		var name = entry[1].toLowerCase();
-//     		var lat = parseFloat(entry[2]);
-//     		var lng = parseFloat(entry[3]);
-//     		var marker = L.marker([lat, lng]).addTo(pokemap);
-// 			marker.bindPopup("<b>" + name + "</b> <img src='../img/" + name + ".png' alt='" + name + " sprite' height='96' width='96'>");
-// 			nestMarkers.push(marker);
-// 		}
-// 	}); 
-// }
+		/* parse results of response object */
+		// for (i = 0; i < responseObject.length; i++) { 
+  //   		entry = responseObject[i].split(":");
+  //   		var id = entry[0];
+  //   		var name = entry[1].toLowerCase();
+  //   		var lat = parseFloat(entry[2]);
+  //   		var lng = parseFloat(entry[3]);
+  //   		var marker = L.marker([lat, lng]).addTo(pokemap);
+		// 	marker.bindPopup("<b>" + name + "</b> <img src='../img/" + name + ".png' alt='" + name + " sprite' height='96' width='96'>");
+		// 	nestMarkers.push(marker);
+		// }
+	}); 
+}
 
 function locate() {
 	pokemap.locate({setView: true, maxZoom: 16});
