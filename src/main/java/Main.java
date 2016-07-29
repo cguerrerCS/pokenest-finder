@@ -51,27 +51,6 @@ public class Main {
 			return new ModelAndView(attributes, "index.ftl");
 		}, new FreeMarkerEngine());
 
-		Spark.post("/nearby", (request, response) -> {
-
-			List<String> results = new ArrayList<String>();
-
-	//			 QueryParamsMap queryMap = request.queryMap();
-	//			 double minlat =
-	//			 Double.parseDouble(queryMap.value("southWestLat"));
-	//			 double maxlat =
-	//			 Double.parseDouble(queryMap.value("northEastLat"));
-	//			 double minlng =
-	//			 Double.parseDouble(queryMap.value("southWestLat"));
-	//			 double maxlng =
-	//			 Double.parseDouble(queryMap.value("southWestLat"));
-
-				results.add("Charmander");
-				results.add("Charmeleon");
-				results.add("Charizard");
-
-				return GSON.toJson(results);
-			});
-		
 		Spark.post("/report", (request, response) -> {
 
 			Map<String, Object> results = ImmutableMap.of("success", true);
@@ -86,7 +65,7 @@ public class Main {
 			return GSON.toJson(results);
 		});
 		
-		Spark.post("/report", (request, response) -> {
+		Spark.post("/nearby", (request, response) -> {
 
 			List<Map<String, Object>> results = pokedex.nearby();
 			
