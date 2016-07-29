@@ -44,11 +44,11 @@ public class Pokedex {
 	
 	public List<String> GetDatabaseRowsAsStrings() {
 		
+		ArrayList<String> output = new ArrayList<String>();
+		
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM pokedex;");
-
-			ArrayList<String> output = new ArrayList<String>();
 			while (rs.next()) {
 				String id = rs.getString("id");
 				String name = rs.getString("pokemon");
@@ -64,6 +64,6 @@ public class Pokedex {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return output;
 	}
 }
