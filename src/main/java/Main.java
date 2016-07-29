@@ -109,8 +109,17 @@ public class Main {
 
 						ArrayList<String> output = new ArrayList<String>();
 						while (rs.next()) {
+							
+							String id = rs.getString("id");
+							String name = rs.getString("pokemon");
+							String lat = rs.getString("lat");
+							String lng = rs.getString("lng");
+							String time = rs.getString("time");
+							String confirmed = rs.getString("confirmed");
+							String data = String.format("[%s:%s:%s:%s:%s:%s]", id, name, lat, lng, time, confirmed);
+							
 							output.add("Read from DB: "
-									+ rs.getString("pokemon"));
+									+ data);
 						}
 
 						attributes.put("results", output);
