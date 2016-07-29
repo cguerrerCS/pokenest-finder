@@ -84,7 +84,7 @@ public class Pokedex {
 				String confirmed = rs.getString("confirmed");
 				String data = String.format("<p>" + "id: %s<br>"
 						+ "pokemon: %s<br>" + "lat: %s<br>" + "lng: %s<br>"
-						+ "time: %s<br>" + "confirmed:%s</p>", id, name, lat,
+						+ "time: %s<br>" + "confirmed: %s</p>", id, name, lat,
 						lng, time, confirmed);
 				output.add(data);
 			}
