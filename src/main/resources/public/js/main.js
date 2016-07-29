@@ -219,16 +219,16 @@ function loadPokeRadar() {
 		console.log(responseObject)
 		
 		/* parse results of response object */
-		// for (i = 0; i < responseObject.length; i++) { 
-  //   		entry = responseObject[i].split(":");
-  //   		var id = entry[0];
-  //   		var name = entry[1].toLowerCase();
-  //   		var lat = parseFloat(entry[2]);
-  //   		var lng = parseFloat(entry[3]);
-  //   		var marker = L.marker([lat, lng]).addTo(pokemap);
-		// 	marker.bindPopup("<b>" + name + "</b> <img src='../img/" + name + ".png' alt='" + name + " sprite' height='96' width='96'>");
-		// 	nestMarkers.push(marker);
-		// }
+		for (i = 0; i < responseObject.length; i++) { 
+    		entry = responseObject[i];
+    		var id = entry.id;
+    		var name = entry.pokemon.toLowerCase();
+    		var lat = parseFloat(entry.lat);
+    		var lng = parseFloat(entry.lng);
+    		var marker = L.marker([lat, lng]).addTo(pokemap);
+			marker.bindPopup("<b>" + name + "</b> <img src='../img/" + name + ".png' alt='" + name + " sprite' height='96' width='96'>");
+			nestMarkers.push(marker);
+		}
 	}); 
 }
 
