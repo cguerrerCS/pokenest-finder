@@ -18,10 +18,8 @@ public class Pokedex {
 	
 	public Pokedex() {
 		
-		Connection conn = null;
-		
 		try {
-			conn = DatabaseUrl.extract().getConnection();
+			this.conn = DatabaseUrl.extract().getConnection();
 			
 			// Fill in schema to create a table called Pokedex
 			String schema = "CREATE TABLE IF NOT EXISTS pokedex(" + "id TEXT," + "pokemon TEXT,"
