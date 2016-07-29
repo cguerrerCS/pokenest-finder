@@ -8,7 +8,7 @@
 
 <div class="container">
 	<h1>Database Output</h1>
-	<ul class="list-group">
+	<ul id="database-list" class="list-group">
 	<#list results as x>
 	  <li class="list-group-item"> 
 	  	${x} 
