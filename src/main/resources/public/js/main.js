@@ -104,7 +104,7 @@ $( document ).ready(function() {
 	});
 
 	// by default, follow user
-	// setInterval(function() { update(); }, 2000);
+	setInterval(function() { update(); }, 2000);
 
 	// find pokemon within viewport
 	// setInterval(function() { loadPokeRadar(); }, 5000);
