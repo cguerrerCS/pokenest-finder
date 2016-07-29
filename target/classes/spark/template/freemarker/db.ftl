@@ -7,14 +7,14 @@
 <body>
 
 <div class="container">
-
-  <h1>Database Output</h1>
-    <ul>
-    <#list results as x>
-      <li> ${x} </li>
-    </#list>
-    </ul>
-
+	<h1>Database Output</h1>
+	<ul id="database-list" class="list-group">
+	<#list results as x>
+	  <li class="list-group-item"> 
+	  	${x}
+	  </li>
+	</#list>
+	</ul>
 </div>
 
 </body>

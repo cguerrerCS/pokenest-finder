@@ -11,7 +11,7 @@
 	<ul id="database-list" class="list-group">
 	<#list results as x>
 	  <li class="list-group-item"> 
-	  	${x} 
+	  	${x}
 	  </li>
 	</#list>
 	</ul>

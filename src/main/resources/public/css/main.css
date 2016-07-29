@@ -6,10 +6,6 @@ html, body, #mapid {
     height: 100%;
 }
 
-#database-list {
-  white-space: normal;
-}
-
 .navbar {
   background-color: red;
 }

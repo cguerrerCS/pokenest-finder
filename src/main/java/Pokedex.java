@@ -69,9 +69,9 @@ public class Pokedex {
 	
 	
 	public List<String> GetDatabaseRowsAsStrings() {
-		
+
 		ArrayList<String> output = new ArrayList<String>();
-		
+
 		try {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM pokedex;");
@@ -82,14 +82,17 @@ public class Pokedex {
 				String lng = rs.getString("lng");
 				String time = rs.getString("time");
 				String confirmed = rs.getString("confirmed");
-				String data = String.format("[%s:%s:%s:%s:%s:%s]", id, name, lat, lng, time, confirmed);
+				String data = String.format("<p>" + "id: %s<br>"
+						+ "pokemon: %s<br>" + "lat: %s<br>" + "lng: %s<br>"
+						+ "time: %s<br>" + "confirmed:%s</p>", id, name, lat,
+						lng, time, confirmed);
 				output.add(data);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return output;
 	}
 	
