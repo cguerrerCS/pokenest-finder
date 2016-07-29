@@ -86,9 +86,7 @@ public class Main {
 		});
 
 
-		Spark.get(
-				"/db",
-				(req, res) -> {
+		Spark.get("/db", (req, res) -> {
 //					Connection connection = null;
 					Map<String, Object> attributes = new HashMap<>();
 //					try {
@@ -133,8 +131,9 @@ public class Main {
 //									+ data);
 //						}
 
-						attributes.put("results", pokedex.GetDatabaseRowsAsStrings());
-						attributes.put("title", "Pokenest");						
+						attributes.put("title", "Pokenest");
+						System.out.println(pokedex.GetDatabaseRowsAsStrings());
+						attributes.put("results", pokedex.GetDatabaseRowsAsStrings());						
 						return new ModelAndView(attributes, "db.ftl");
 
 				}, new FreeMarkerEngine());
