@@ -377,6 +377,7 @@ function loadPokeRadar() {
 		for (i = 0; i < responseObject.length; i++) { 
     		entry = responseObject[i];
 
+    		var googleMapsLink = 'http://www.google.com/maps/place/' + entry.lat + ',' + entry.lng;
     		var pokevisionLink = 'https://pokevision.com/#/@' + entry.lat + ',' + entry.lng;
     		var id = entry.id;
     		var name = entry.pokemon.toLowerCase();
@@ -390,7 +391,10 @@ function loadPokeRadar() {
 			});
 
     		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap);
-			marker.bindPopup("<a href='" + pokevisionLink + "' target='_blank'>Pokevision!</a>");
+			marker.bindPopup(
+				"<a href='" + pokevisionLink + "' target='_blank'>Pokevision!</a>"
+				"<a href='" + googleMapsLink + "' target='_blank'>Pokevision!</a>"
+			);
 			nestMarkers.push(marker);
 		}
 	}); 
