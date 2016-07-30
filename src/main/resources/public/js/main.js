@@ -22,7 +22,7 @@ $( document ).ready(function() {
 	});
 
 	customIcon = L.icon({
-    	iconUrl: '../img/pokeball.png',
+    	iconUrl: '../img/bulbasaur.png',
     	iconSize:     [96, 96], // size of the icon
     	iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
     	popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
