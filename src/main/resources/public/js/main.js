@@ -177,7 +177,7 @@ $( document ).ready(function() {
 	};
 	};
 
-	// list of pokemon
+	// list of pokemon for autocomplete
 
 	var pokemon = [
 		'Bulbasaur',
