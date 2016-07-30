@@ -222,6 +222,8 @@ function loadPokeRadar() {
 		/* parse results of response object */
 		for (i = 0; i < responseObject.length; i++) { 
     		entry = responseObject[i];
+
+    		var pokevisionLink = 'https://pokevision.com/#/@' + entry.lat + ',' + entry.lng;
     		var id = entry.id;
     		var name = entry.pokemon.toLowerCase();
     		var lat = parseFloat(entry.lat);
@@ -233,8 +235,9 @@ function loadPokeRadar() {
     			popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 			});
 
+    		
     		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap);
-			marker.bindPopup("<b>" + name + "</b> <img src='../img/" + name + ".png' alt='" + name + " sprite' height='96' width='96'>");
+			marker.bindPopup("<a href='" + pokevisionLink + "'>Pokevision!</a><b>" + name + "</b> <img src='../img/" + name + ".png' alt='" + name + " sprite' height='96' width='96'>");
 			nestMarkers.push(marker);
 		}
 	}); 
