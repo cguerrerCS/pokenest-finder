@@ -6,7 +6,6 @@ var modalCurrentLocation = undefined;
 var modalLocationMarker = undefined;
 var currentLocationMarker = undefined;
 var nestMarkers = [];
-var customIcon = undefined;
 
 $( document ).ready(function() {
     
@@ -19,13 +18,6 @@ $( document ).ready(function() {
 		zoomControl: false, 
 		center: [29.7604, -95.3698],
 		zoom: 10
-	});
-
-	customIcon = L.icon({
-    	iconUrl: '../img/bulbasaur.png',
-    	iconSize:     [96, 96], // size of the icon
-    	iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
-    	popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 	});
 
 	sitemap.doubleClickZoom.disable(); 
@@ -234,7 +226,14 @@ function loadPokeRadar() {
     		var name = entry.pokemon.toLowerCase();
     		var lat = parseFloat(entry.lat);
     		var lng = parseFloat(entry.lng);
-    		var marker = L.marker([lat, lng], {icon: customIcon}).addTo(pokemap);
+    		var icon = L.icon({
+    			iconUrl: '../img/' + name + '.png',
+    			iconSize:     [96, 96], // size of the icon
+    			iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
+    			popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+			});
+
+    		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap);
 			marker.bindPopup("<b>" + name + "</b> <img src='../img/" + name + ".png' alt='" + name + " sprite' height='96' width='96'>");
 			nestMarkers.push(marker);
 		}
