@@ -140,7 +140,8 @@ $( document ).ready(function() {
 	$('#pokevision-btn').on('click', function() {
 
 		// show pokevision modal with iframe
-		
+		console.log("loading pokevision iframe");
+
 	});
 
 	$('#myModal').on('show.bs.modal', function(){
@@ -403,7 +404,7 @@ function loadPokeRadar() {
 				<a href=' + pokevisionLink + ' target='_blank'>Pokevision</a><br>
 				<a href=' + googleMapsLink + ' target='_blank'>Google Maps</a>
 				<div class='btn-group-vertical'>
-  					<button type='button' class='btn btn-primary'>Pokevisionx</button>
+  					<button id='pokevision-btn' type='button' class='btn btn-primary'>Pokevisionx</button>
 				</div>
 				"
 
