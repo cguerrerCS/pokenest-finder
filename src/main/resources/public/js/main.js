@@ -392,7 +392,7 @@ function loadPokeRadar() {
 
     		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap);
 			marker.bindPopup(
-				"<a href='" + pokevisionLink + "' target='_blank'>Pokevision!</a>",
+				"<a href='" + pokevisionLink + "' target='_blank'>Pokevision!</a>" + 
 				"<a href='" + googleMapsLink + "' target='_blank'>Google Maps!</a>"
 			);
 			nestMarkers.push(marker);
