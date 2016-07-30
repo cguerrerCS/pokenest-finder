@@ -54,7 +54,6 @@ public class Main {
 		Spark.post("/report", (request, response) -> {
 
 			Map<String, Object> results = ImmutableMap.of("success", true);
-			
 			QueryParamsMap queryMap = request.queryMap();
 			String pokemon = queryMap.value("pokemon");
 			double lat = Double.parseDouble(queryMap.value("lat"));
@@ -62,6 +61,7 @@ public class Main {
 			java.sql.Timestamp timestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
 			System.out.println(String.format("%s nest sighting reported.", pokemon));	
 			pokedex.Add(pokemon, lat, lng, timestamp);
+			
 			return GSON.toJson(results);
 		});
 		
