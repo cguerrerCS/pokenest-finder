@@ -7,7 +7,7 @@
 
 <body>
 
-  <div id="mapid"></div>
+<div id="mapid"></div>
 
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -38,6 +38,8 @@
     </div>
   </div>
 </div>
+
+<!-- Bootstrap Pokevision modal -->
 
 </body>
 </html>

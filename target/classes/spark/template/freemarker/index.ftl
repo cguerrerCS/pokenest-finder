@@ -7,7 +7,7 @@
 
 <body>
 
-  <div id="mapid"></div>
+<div id="mapid"></div>
 
 <!-- Bootstrap Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -24,7 +24,7 @@
       <div class="modal-body">
 
       	<div id="pokemon-typeahead">
-  			<input id="pokemon-modal-input" class="typeahead form-control" type="text" placeholder="Pokemon sighted">
+  			<input id="pokemon-modal-input" class="typeahead form-control" type="text" placeholder="Pokémon species">
 		</div>
 
 		<!-- Modal map used to mark Pokemon sighting location-->
@@ -33,11 +33,13 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="submitbtn" type="button" class="btn btn-primary">Report!</button>
+        <button id="submitbtn" type="button" class="btn btn-primary">Report</button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Bootstrap Pokevision modal -->
 
 </body>
 </html>

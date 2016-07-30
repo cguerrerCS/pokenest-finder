@@ -112,30 +112,36 @@ $( document ).ready(function() {
 
 	$('#submitbtn').on('click', function() {
 
-	/* hide modal and post sighting to server */
-	$('#myModal').modal('hide');
+		/* hide modal and post sighting to server */
+		$('#myModal').modal('hide');
 
-		/* get pokemon species from user input */
-		var pokemon = $('#pokemon-modal-input').val();
+			/* get pokemon species from user input */
+			var pokemon = $('#pokemon-modal-input').val();
 
-		var pokemonLocation = modalLocationMarker.getLatLng()
+			var pokemonLocation = modalLocationMarker.getLatLng()
 
-		/* gather post parameters for server */
-		var postParameters = {pokemon: pokemon, lat: pokemonLocation.lat, lng: pokemonLocation.lng};
+			/* gather post parameters for server */
+			var postParameters = {pokemon: pokemon, lat: pokemonLocation.lat, lng: pokemonLocation.lng};
 
-		console.log("submitting sighting location");
-		console.log(postParameters);
+			console.log("submitting sighting location");
+			console.log(postParameters);
 
-		// make sure that all parameters are set properly first!
+			// make sure that all parameters are set properly first!
 
-		/* post info to server */
-		$.post("/report", postParameters, function(responseJSON){
+			/* post info to server */
+			$.post("/report", postParameters, function(responseJSON){
 
-			// get responce object 
-			var responseObject = JSON.parse(responseJSON);
-			console.log(responseObject);
-		}); 
-}	);
+				// get responce object 
+				var responseObject = JSON.parse(responseJSON);
+				console.log(responseObject);
+			}); 
+	});
+
+	$('#pokevision-btn').on('click', function() {
+
+		// show pokevision modal with iframe
+		
+	});
 
 	$('#myModal').on('show.bs.modal', function(){
 
@@ -392,8 +398,17 @@ function loadPokeRadar() {
 
     		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap);
 			marker.bindPopup(
-				"<a href='" + pokevisionLink + "' target='_blank'>Pokevision</a><br>" + 
-				"<a href='" + googleMapsLink + "' target='_blank'>Google Maps</a>"
+
+				"
+				<a href=' + pokevisionLink + ' target='_blank'>Pokevision</a><br>
+				<a href=' + googleMapsLink + ' target='_blank'>Google Maps</a>
+				<div class='btn-group-vertical'>
+  					<button type='button' class='btn btn-primary'>Pokevisionx</button>
+				</div>
+				"
+
+				//"<a href='" + pokevisionLink + "' target='_blank'>Pokevision</a><br>" + 
+				//"<a href='" + googleMapsLink + "' target='_blank'>Google Maps</a>"
 			);
 			nestMarkers.push(marker);
 		}
