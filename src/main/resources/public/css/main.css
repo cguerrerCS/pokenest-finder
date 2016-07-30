@@ -6,6 +6,10 @@ html, body, #mapid {
     height: 100%;
 }
 
+a:link {
+    text-decoration: none;
+}
+
 .navbar {
   background-color: red;
 }
