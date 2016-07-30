@@ -177,6 +177,8 @@ $( document ).ready(function() {
 	};
 	};
 
+	// list of pokemon
+
 	var pokemon = [
 		'Bulbasaur',
 		'Ivysaur',
