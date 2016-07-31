@@ -404,7 +404,7 @@ function loadPokeRadar() {
 				</div>";
 
     		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap);
-			marker.bindPopup(html);
+			// marker.bindPopup(html);
 			nestMarkers.push(marker);
 		}
 	}); 
