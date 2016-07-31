@@ -402,12 +402,11 @@ function loadPokeRadar() {
 
 			var markerHTML = "\
 				<div class='btn-group-vertical'>\
-  		 			<button id=" + pokevisionButtonID + " type='button' class='btn btn-primary'>Pokevision</button>\
-  		 			<button id=" + googlemapsButtonID + " type='button' class='btn btn-primary'>Google Maps</button>\
+  		 			<button id=" + pokevisionButtonID + " type='button' class='btn btn-primary>Pokevision</button>\
+  		 			<button id=" + googlemapsButtonID + " type='button' class='btn btn-primary>Google Maps</button>\
 				</div>";
 
-			$(pokevisionButtonID).on('click', function(event) {
-  				event.preventDefault(); // To prevent following the link (optional)
+			$(pokevisionButtonID).on('click', function() {
   				console.log("loading pokevision modal");
 			});
 
