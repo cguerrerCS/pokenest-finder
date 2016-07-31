@@ -400,7 +400,12 @@ function loadPokeRadar() {
 
     		var m = L.marker([lat, lng], {icon: icon}).addTo(pokemap).on('click', function() {
     			var data = markerData[this];
+
+    			// change iframe src and refresh iframe
     			$('#pokevision-window').attr('src', data.pokevisionLink);
+    			$('#pokevision-window').contentWindow.location.reload(true);
+
+    			// show pokenest info modal
     			$('#myMarkerModal').modal();
     		});
 
