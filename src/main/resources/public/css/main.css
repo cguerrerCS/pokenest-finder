@@ -17,7 +17,8 @@ a:link {
 }
 
 .modal-header h4 {
-  /* position: relative;*/
+  position: relative;
+  top: 20px;
 }
 
 .navbar {
