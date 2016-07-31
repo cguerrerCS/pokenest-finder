@@ -384,13 +384,13 @@ function loadPokeRadar() {
 		/* parse results of response object */
 		for (i = 0; i < responseObject.length; i++) { 
     		
-    		entry = responseObject[i];
-    		var googleMapsLink = "http://www.google.com/maps/place/" + entry.lat + "," + entry.lng;
-    		var pokevisionLink = "https://pokevision.com/#/@" + entry.lat + "," + entry.lng;
-    		var id = entry.id;
-    		var name = entry.pokemon.toLowerCase();
-    		var lat = parseFloat(entry.lat);
-    		var lng = parseFloat(entry.lng);
+    		data = responseObject[i];
+    		var googleMapsLink = "http://www.google.com/maps/place/" + data.lat + "," + data.lng;
+    		var pokevisionLink = "https://pokevision.com/#/@" + data.lat + "," + data.lng;
+    		var id = data.id;
+    		var name = data.pokemon.toLowerCase();
+    		var lat = parseFloat(data.lat);
+    		var lng = parseFloat(data.lng);
     		var icon = L.icon({
     			iconUrl: 'http://www.pokestadium.com/sprites/diamond-pearl/' + name + '.png',
     			iconSize:     [96, 96], // size of the icon
@@ -399,12 +399,19 @@ function loadPokeRadar() {
 			});
 
     		var m = L.marker([lat, lng], {icon: icon}).addTo(pokemap).on('click', function() {
-    			console.log(this.getLatLng());
-    			console.log(markerData[this]);
-    			$("#myMarkerModal").modal();
+    			var data = markerData[this];
+    			$('#pokevision-window').attr('src', data.pokevisionLink);
+    			$('#myMarkerModal').modal();
     		});
-			
-			markerData[m] = entry;
+
+			// store additional marker data
+			data["pokevisionLink"] = pokevisionLink;
+			data["googleMapsLink"] = googleMapsLink;
+
+			// cache marker data for later
+			markerData[m] = data;
+
+			// cache nest marker reference for later
 			nestMarkers.push(m);
 		}
 	}); 
