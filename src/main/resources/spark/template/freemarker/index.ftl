@@ -22,8 +22,9 @@
 
       <div class="modal-body">
       	<div id="pokemon-typeahead">
-  			<input id="pokemon-modal-input" class="typeahead form-control" type="text" placeholder="Pokémon species">
-		  </div>
+  			 <input id="pokemon-modal-input" class="typeahead form-control" type="text" placeholder="Pokémon species">
+		    </div>
+      </div>
 
 		  <!-- Modal map used to mark Pokemon sighting location-->
       <div id="sitemapid" style="height:280px"></div>
