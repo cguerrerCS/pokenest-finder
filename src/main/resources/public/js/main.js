@@ -397,21 +397,21 @@ function loadPokeRadar() {
     			popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
 			});
 
-			var pokevisionButtonID = "pokevision-btn-" + entry.id;
-			var googlemapsButtonID = "googlemaps-btn-" + entry.id;
+			// var pokevisionButtonID = "pokevision-btn-" + entry.id;
+			// var googlemapsButtonID = "googlemaps-btn-" + entry.id;
 
-			var markerHTML = "\
-				<div class='btn-group-vertical'>\
-  		 			<button id=" + pokevisionButtonID + " type='button' class='btn btn-primary>Pokevision</button>\
-  		 			<button id=" + googlemapsButtonID + " type='button' class='btn btn-primary>Google Maps</button>\
-				</div>";
+			// var markerHTML = "\
+			// 	<div class='btn-group-vertical'>\
+  	// 	 			<button id=" + pokevisionButtonID + " type='button' class='btn btn-primary>Pokevision</button>\
+  	// 	 			<button id=" + googlemapsButtonID + " type='button' class='btn btn-primary>Google Maps</button>\
+			// 	</div>";
 
-			$(pokevisionButtonID).on('click', function() {
-  				console.log("loading pokevision modal");
-			});
+			// $(pokevisionButtonID).on('click', function() {
+  	// 			console.log("loading pokevision modal");
+			// });
 
     		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap);
-			marker.bindPopup(markerHTML);
+			// marker.bindPopup(markerHTML);
 			nestMarkers.push(marker);
 		}
 	}); 
