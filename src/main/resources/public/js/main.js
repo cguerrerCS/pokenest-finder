@@ -399,6 +399,8 @@ function loadPokeRadar() {
     		var m = L.marker([lat, lng], {icon: icon}).addTo(pokemap).on('click', function() {
     			var data = markerData[this];
     			console.log(data);
+    			console.log(nestMarkers);
+    			console.log(markerData);
     			// show pokenest info modal
     			$('#myMarkerModal').modal();
     			// $('#markerdata-header').html(data.name + "pokenest info");
