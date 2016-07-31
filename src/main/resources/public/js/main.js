@@ -398,13 +398,10 @@ function loadPokeRadar() {
 			});
 
 			var markerHTML = "<a href=" + pokevisionLink + " target='_blank'>Pokevision</a><br>\
-				<a href=" + googleMapsLink + " target='_blank'>Google Maps</a>";
-
-
-
-				// <div class='btn-group-vertical'>
-  		// 			<button id='pokevision-btn' type='button' class='btn btn-primary'>Pokevisionx</button>
-				// </div>";
+				<a href=" + googleMapsLink + " target='_blank'>Google Maps</a>\
+				<div class='btn-group-vertical'>\
+  		 			<button id='pokevision-btn' type='button' class='btn btn-primary'>Pokevisionx</button>\
+				</div>";
 
     		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap);
 			marker.bindPopup(markerHTML);
