@@ -410,7 +410,9 @@ function loadPokeRadar() {
   	// 			console.log("loading pokevision modal");
 			// });
 
-    		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap);
+    		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap).on('click', function() {
+    			console.log(this.getLatLng());
+    		});
 			// marker.bindPopup(markerHTML);
 			nestMarkers.push(marker);
 		}
