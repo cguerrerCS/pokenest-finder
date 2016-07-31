@@ -385,8 +385,8 @@ function loadPokeRadar() {
 		for (i = 0; i < responseObject.length; i++) { 
     		
     		data = responseObject[i];
-    		var googleMapsLink = "http://www.google.com/maps/place/" + data.lat + "," + data.lng;
-    		var pokevisionLink = "https://pokevision.com/#/@" + data.lat + "," + data.lng;
+    		// var googleMapsLink = "http://www.google.com/maps/place/" + data.lat + "," + data.lng;
+    		// var pokevisionLink = "https://pokevision.com/#/@" + data.lat + "," + data.lng;
     		var id = data.id;
     		var name = data.pokemon.toLowerCase();
     		var lat = parseFloat(data.lat);
@@ -403,6 +403,8 @@ function loadPokeRadar() {
     			console.log(data);
     			// show pokenest info modal
     			$('#myMarkerModal').modal();
+    			$('#markerdata-header').html(data.name + "pokenest info");
+
     		});
 
 			// store additional marker data
