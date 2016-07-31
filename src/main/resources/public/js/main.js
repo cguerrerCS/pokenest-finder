@@ -412,7 +412,7 @@ function loadPokeRadar() {
 
     		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap).on('click', function() {
     			console.log(this.getLatLng());
-    			$("#myModal").modal();
+    			$("#myMarkerModal").modal();
     		});
 			// marker.bindPopup(markerHTML);
 			nestMarkers.push(marker);

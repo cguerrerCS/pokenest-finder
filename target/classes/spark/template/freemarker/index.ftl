@@ -40,6 +40,27 @@
 </div>
 
 <!-- Bootstrap Pokevision modal -->
+<div class="modal fade" id="myMarkerModal" tabindex="-1" role="dialog" aria-labelledby="myMarkerModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      
+        <h4 class="modal-title" id="myMarkerModalLabel">
+            <img src='../img/pokeball.png' alt='Pokeball Icon' height='40' width='40'>
+          Pokemarker Data!</h4>
+
+      </div>
+      <div class="modal-body">
+
+      <!-- Load in pokevision realtime arial view -->
+      <div id="sitemapid" style="height:280px"></div>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
