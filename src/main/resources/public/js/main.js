@@ -396,12 +396,9 @@ function loadPokeRadar() {
     			popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
 			});
 
-    		var m = L.marker([lat, lng], {icon: icon, pokemon: name}).addTo(pokemap).on('click', function() {
-    			var data = markerData[this];
-    			console.log(this.options);
-    			console.log(data);
-    			console.log(nestMarkers);
-    			console.log(markerData);
+    		var m = L.marker([lat, lng], {icon: icon, data: data}).addTo(pokemap).on('click', function() {
+    			var data = this.data;
+    			console.log(this.data);
     			// show pokenest info modal
     			$('#myMarkerModal').modal();
     			// $('#markerdata-header').html(data.name + "pokenest info");
