@@ -400,18 +400,14 @@ function loadPokeRadar() {
 
     		var m = L.marker([lat, lng], {icon: icon}).addTo(pokemap).on('click', function() {
     			var data = markerData[this];
-
-    			// change iframe src and refresh iframe
-    			// $('#pokevision-window').attr('src', data.pokevisionLink);
-    			// $('iframe').attr('src', $('iframe').attr('src'));
-
+    			console.log(data);
     			// show pokenest info modal
     			$('#myMarkerModal').modal();
     		});
 
 			// store additional marker data
-			data["pokevisionLink"] = pokevisionLink;
-			data["googleMapsLink"] = googleMapsLink;
+			// data["pokevisionLink"] = pokevisionLink;
+			// data["googleMapsLink"] = googleMapsLink;
 
 			// cache marker data for later
 			markerData[m] = data;
