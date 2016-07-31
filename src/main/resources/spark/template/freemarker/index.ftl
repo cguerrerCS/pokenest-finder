@@ -54,7 +54,7 @@
       <div class="modal-body">
 
       <!-- Load in pokevision realtime arial view -->
-      <div id="pokevision-window" style="height:280px">
+      <div id="pokevision-window" style="height:480px; width: 100%;">
         <!-- <iframe src='about:blank'></iframe> -->
         <iframe src='https://pokevision.com/'></iframe>
       </div>
