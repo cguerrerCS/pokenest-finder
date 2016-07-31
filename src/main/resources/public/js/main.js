@@ -384,8 +384,8 @@ function loadPokeRadar() {
 		for (i = 0; i < responseObject.length; i++) { 
     		entry = responseObject[i];
 
-    		var googleMapsLink = 'http://www.google.com/maps/place/' + entry.lat + ',' + entry.lng;
-    		var pokevisionLink = 'https://pokevision.com/#/@' + entry.lat + ',' + entry.lng;
+    		var googleMapsLink = "http://www.google.com/maps/place/" + entry.lat + "," + entry.lng;
+    		var pokevisionLink = "https://pokevision.com/#/@" + entry.lat + "," + entry.lng;
     		var id = entry.id;
     		var name = entry.pokemon.toLowerCase();
     		var lat = parseFloat(entry.lat);
@@ -397,11 +397,13 @@ function loadPokeRadar() {
     			popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
 			});
 
-			var markerHTML = "<a href=" + pokevisionLink + " target='_blank'>Pokevision</a><br>
-				<a href=" + googleMapsLink + " target='_blank'>Google Maps</a>
-				<div class='btn-group-vertical'>
-  					<button id='pokevision-btn' type='button' class='btn btn-primary'>Pokevisionx</button>
-				</div>";
+			var markerHTML = "<a href=" + pokevisionLink + " target='_blank'>Pokevision</a><br><a href=" + googleMapsLink + " target='_blank'>Google Maps</a>";
+
+
+
+				// <div class='btn-group-vertical'>
+  		// 			<button id='pokevision-btn' type='button' class='btn btn-primary'>Pokevisionx</button>
+				// </div>";
 
     		var marker = L.marker([lat, lng], {icon: icon}).addTo(pokemap);
 			marker.bindPopup(markerHTML);
