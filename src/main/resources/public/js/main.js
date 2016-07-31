@@ -403,7 +403,7 @@ function loadPokeRadar() {
 
     			// change iframe src and refresh iframe
     			$('#pokevision-window').attr('src', data.pokevisionLink);
-    			$('#pokevision-window').contentWindow.location.reload(true);
+    			$('iframe').attr('src', $('iframe').attr('src'));
 
     			// show pokenest info modal
     			$('#myMarkerModal').modal();
