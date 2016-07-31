@@ -46,8 +46,8 @@
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myMarkerModalLabel">Pokemarker Data!</h4>
         <img src='../img/pokeball.png' alt='Pokeball Icon' height='40' width='40'>
+        <h4 class="modal-title" id="myMarkerModalLabel">Pokemarker Data!</h4>
       </div>
 
       <div class="modal-body"></div>
