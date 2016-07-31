@@ -397,7 +397,8 @@ function loadPokeRadar() {
     			popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
 			});
 
-			var markerHTML = "<a href=" + pokevisionLink + " target='_blank'>Pokevision</a><br><a href=" + googleMapsLink + " target='_blank'>Google Maps</a>";
+			var markerHTML = "<a href=" + pokevisionLink + " target='_blank'>Pokevision</a><br>\
+				<a href=" + googleMapsLink + " target='_blank'>Google Maps</a>";
 
 
 
