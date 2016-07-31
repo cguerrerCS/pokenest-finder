@@ -9,32 +9,30 @@
 
 <div id="mapid"></div>
 
-<!-- Bootstrap Modal -->
+<!-- Bootstrap Modal for submitting Pokenest locations -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+      
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        
-        <h4 class="modal-title" id="myModalLabel">
-
-			<img src='../img/pokeball.png' alt='Pokeball Icon' height='40' width='40'>
-        	Geotag Pokenest!</h4>
+        <h4 class="modal-title" id="myModalLabel">Geotag Pokenest!</h4>
+        <img src='../img/pokeball.png' alt='Pokeball Icon' height='40' width='40'>  	
       </div>
-      <div class="modal-body">
 
+      <div class="modal-body">
       	<div id="pokemon-typeahead">
   			<input id="pokemon-modal-input" class="typeahead form-control" type="text" placeholder="Pokémon species">
-		</div>
+		  </div>
 
-		<!-- Modal map used to mark Pokemon sighting location-->
-        <div id="sitemapid" style="height:280px"></div>
+		  <!-- Modal map used to mark Pokemon sighting location-->
+      <div id="sitemapid" style="height:280px"></div>
 
-      </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button id="submitbtn" type="button" class="btn btn-primary">Report</button>
       </div>
+
     </div>
   </div>
 </div>
@@ -46,8 +44,8 @@
       
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <img src='../img/pokeball.png' alt='Pokeball Icon' height='40' width='40'>
-        <h4 class="modal-title" id="myMarkerModalLabel">Pokemarker Data!</h4>
+        <img src='../img/pokeball.png' alt='Pokeball Icon'>
+        <h4 class="modal-title" id="markerdata-header">Pokemarker Data!</h4>
       </div>
 
       <div class="modal-body"></div>
