@@ -402,8 +402,8 @@ function loadPokeRadar() {
     			var data = markerData[this];
 
     			// change iframe src and refresh iframe
-    			$('#pokevision-window').attr('src', data.pokevisionLink);
-    			$('iframe').attr('src', $('iframe').attr('src'));
+    			// $('#pokevision-window').attr('src', data.pokevisionLink);
+    			// $('iframe').attr('src', $('iframe').attr('src'));
 
     			// show pokenest info modal
     			$('#myMarkerModal').modal();
