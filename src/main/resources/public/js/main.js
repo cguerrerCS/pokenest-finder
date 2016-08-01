@@ -403,13 +403,14 @@ function loadPokeRadar() {
 			}
 
     		var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
-    			
+    
     			var pokemon = this.options.pokemon;
+    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
     			var id = this.options.id;
     			console.log(id + " " + pokemon);
     			// show pokenest info modal
     			$('#myMarkerModal').modal();
-    			$('#markerdata-header').html(pokemon + "pokenest info");
+    			$('#markerdata-header').html(pokemon + " Pokenest Info");
 
     		});
 
