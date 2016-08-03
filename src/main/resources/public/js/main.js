@@ -10,11 +10,13 @@ var markerData = {};
 
 $( document ).ready(function() {
     
+    // pokemon nest map
 	pokemap = L.map('mapid', {
 		center: [29.7604, -95.3698],
 		zoom: 10
 	});
 
+	// modal map used to select and submit a new nest location
 	sitemap = L.map('sitemapid', {
 		zoomControl: false, 
 		center: [29.7604, -95.3698],
@@ -22,7 +24,6 @@ $( document ).ready(function() {
 	});
 
 	sitemap.doubleClickZoom.disable(); 
-	// sitemap.scrollWheelZoom.disable();
 
 	// add additional easy buttons to leaflet map
 	L.easyButton('<i class="material-icons">settings</i>', function() {

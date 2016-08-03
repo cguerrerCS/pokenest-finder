@@ -6,6 +6,10 @@ html, body, #mapid {
     height: 100%;
 }
 
+button:focus {
+  outline:0;
+}
+
 a:link {
     text-decoration: none;
 }
