@@ -8,6 +8,29 @@ var currentLocationMarker = undefined;
 var nestMarkers = [];
 var markerData = {};
 
+
+/* Define sprite sheet dimensions for image compression */
+var pokemon_sprites = {
+  normal: {
+    columns: 12,
+    icon_width: 30,
+    icon_height: 30,
+    sprite_width: 360,
+    sprite_height: 390,
+    filename: 'static/icons-sprite.png',
+    name: 'Normal'
+  },
+  highres: {
+    columns: 7,
+    icon_width: 65,
+    icon_height: 65,
+    sprite_width: 455,
+    sprite_height: 1430,
+    filename: 'static/icons-large-sprite.png',
+    name: 'High-Res'
+  }
+};
+
 $( document ).ready(function() {
     
     // pokemon nest map
