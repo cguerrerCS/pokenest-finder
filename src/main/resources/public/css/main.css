@@ -22,6 +22,7 @@ button:focus {
 
 #mapid {
   height: 100%;
+  position: inherit;
 }
 
 a:link {
