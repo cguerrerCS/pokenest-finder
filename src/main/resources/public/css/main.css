@@ -16,7 +16,8 @@ button:focus {
 }
 
 #mapid {
-  height: 90%;
+  height: 100%;
+  top: -20px;
 }
 
 a:link {
