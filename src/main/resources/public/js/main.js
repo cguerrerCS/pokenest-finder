@@ -8,7 +8,6 @@ var currentLocationMarker = undefined;
 var nestMarkers = [];
 var markerData = {};
 
-
 /* Define sprite sheet dimensions for image compression */
 var pokemon_sprites = {
   normal: {
@@ -470,5 +469,6 @@ function onLocationFound(e) {
 }
 
 function onLocationError(e) {
-    alert(e.message);
+	console.log(e.message);
+    // alert(e.message);
 }
