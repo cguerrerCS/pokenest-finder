@@ -7,9 +7,8 @@
 
 <body>
 
-<!-- Bootstrap navbar for displaying -->
-<#include "navbar.ftl">
-
+<!-- Bootstrap navbar for displaying service logo -->
+<#include "nav.ftl">
 
 <div id="mapid"></div>
 
