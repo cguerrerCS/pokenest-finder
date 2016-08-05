@@ -7,6 +7,10 @@
 
 <body>
 
+<!-- Bootstrap navbar for displaying -->
+<#include "navbar.ftl">
+
+
 <div id="mapid"></div>
 
 <!-- Bootstrap Modal for submitting Pokenest locations -->
