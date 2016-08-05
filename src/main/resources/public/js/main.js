@@ -463,7 +463,7 @@ function update() {
 function onLocationFound(e) {
     var newLatLng = new L.LatLng(e.latlng.lat, e.latlng.lng);
     currentLocationMarker.setLatLng(newLatLng);
-    console.log("user's current location: (" + currentLocation.lat + " ," + currentLocation.lng + ")");
+    console.log("user's current location: (" + newLatLng.lat + " ," + newLatLng.lng + ")");
 }
 
 function onLocationError(e) {
