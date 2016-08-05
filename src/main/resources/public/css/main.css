@@ -14,7 +14,7 @@ button:focus {
 #map-container {
   height: 100%;
   position: absolute;
-  top: 50px;
+  top: 50px !important;
   bottom: 0px;
   right: 0px;
   left: 0px;
