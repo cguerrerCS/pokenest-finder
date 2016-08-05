@@ -461,14 +461,11 @@ function update() {
 }
 
 function onLocationFound(e) {
-
     var newLatLng = new L.LatLng(e.latlng.lat, e.latlng.lng);
     currentLocationMarker.setLatLng(newLatLng);
-    console.log("found user's location.")
-    // console.log("current location: (" + currentLocation.lat + " ," + currentLocation.lng + ")");
+    console.log("user's current location: (" + currentLocation.lat + " ," + currentLocation.lng + ")");
 }
 
 function onLocationError(e) {
 	console.log(e.message);
-    // alert(e.message);
 }
