@@ -11,6 +11,9 @@ button:focus {
   outline:0;
 }
 
+/*.navbar-nav > li > a {padding-top:5px !important; padding-bottom:5px !important;}*/
+.navbar {min-height:10% !important}
+
 #content {
   height: 100%;
 }
