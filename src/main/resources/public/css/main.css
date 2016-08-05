@@ -12,6 +12,8 @@ button:focus {
 
 #map-container {
   height: 100%;
+  position: relative;
+  top: 50px;
 }
 
 #mapid {
