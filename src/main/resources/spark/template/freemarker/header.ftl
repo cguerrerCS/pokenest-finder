@@ -6,9 +6,8 @@
 <!-- In real-world webapps, css is usually minified and
      concatenated. Here, separate normalize from our code, and
      avoid minification for clarity. -->
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/html5bp.css">
-<link rel="stylesheet" href="css/main.css">
+<!-- <link rel="stylesheet" href="css/normalize.css">
+<link rel="stylesheet" href="css/html5bp.css"> -->
 
 <!-- Bootstrap latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -24,6 +23,10 @@
 
 <!-- Include CSS add ons required for leaflet easy button -->
 <link rel="stylesheet" href="../node_modules/leaflet-easybutton/src/easy-button.css" />
+
+<!-- Custom Stylesheets for PokeNest -->
+<link rel="stylesheet" href="css/custom-bootstrap.css">
+<link rel="stylesheet" href="css/main.css">
 
  <!-- Again, we're serving up the unminified source for clarity. -->
  <script src="js/jquery-2.1.1.js"></script>
