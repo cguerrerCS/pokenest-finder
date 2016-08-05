@@ -14,7 +14,7 @@ button:focus {
 #map-container {
   height: 100%;
   position: absolute;
-  top: 50px !important;
+  top: 50px;
   bottom: 0px;
   right: 0px;
   left: 0px;
@@ -22,7 +22,7 @@ button:focus {
 
 #mapid {
   height: 100%;
-  position: inherit;
+  /*position: inherit;*/
 }
 
 a:link {
