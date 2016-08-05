@@ -10,9 +10,14 @@ button:focus {
   outline:0;
 }
 
+#map-container {
+  height: 100%;
+  position: fixed;
+  top: 50px;
+}
+
 #mapid {
   height: 100%;
-  top: 50px;
 }
 
 a:link {

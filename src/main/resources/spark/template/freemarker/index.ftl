@@ -10,7 +10,9 @@
 <!-- Bootstrap navbar for displaying service logo -->
 <#include "nav.ftl">
 
-<div id="mapid"></div>
+<div id="map-container">
+  <div id="mapid"></div>
+</div>
 
 <!-- Bootstrap Modal for submitting Pokenest locations -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
