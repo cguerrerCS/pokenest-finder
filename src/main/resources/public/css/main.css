@@ -11,18 +11,12 @@ button:focus {
   outline:0;
 }
 
-#map-container {
+#content {
   height: 100%;
-  position: absolute;
-  top: 50px;
-  bottom: 0px;
-  right: 0px;
-  left: 0px;
 }
 
 #mapid {
-  height: 100%;
-  /*position: inherit;*/
+  height: 90%;
 }
 
 a:link {

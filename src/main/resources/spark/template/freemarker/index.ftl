@@ -10,7 +10,7 @@
 <!-- Bootstrap navbar for displaying service logo -->
 <#include "nav.ftl">
 
-<div id="map-container">
+<div id="content">
   <div id="mapid"></div>
 </div>
 
