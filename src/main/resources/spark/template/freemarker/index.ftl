@@ -78,7 +78,7 @@
         <div class="form-group">
 
           <h4>Location</h4>
-          <div class="togglebutton">
+          <div class="togglebutton togglebutton-success">
               <label>
                 Follow Location
                 <input type="checkbox">
