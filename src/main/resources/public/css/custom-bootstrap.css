@@ -13,6 +13,11 @@
 	margin-left: 10px;
 }*/
 
+.navbar-brand>img {
+	display: inline-block;
+	padding-bottom: 5px;
+}
+
 .modal-title {
 	margin-right: 30px;
 }
