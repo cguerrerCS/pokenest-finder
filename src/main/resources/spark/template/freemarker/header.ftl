@@ -3,14 +3,16 @@
 <link rel="icon" href="../img/pokeball.png">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- In real-world webapps, css is usually minified and
-     concatenated. Here, separate normalize from our code, and
-     avoid minification for clarity. -->
-<!-- <link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/html5bp.css"> -->
+<!-- Material Design fonts -->
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
 
-<!-- Bootstrap latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<!-- Bootstrap -->
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Bootstrap Material Design -->
+<link rel="stylesheet" type="text/css" href="dist/css/bootstrap-material-design.css">
+<link rel="stylesheet" type="text/css" href="dist/css/ripples.min.css">
 
 <!-- Include Google's material icons -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
