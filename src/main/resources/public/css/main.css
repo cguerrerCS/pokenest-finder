@@ -17,7 +17,7 @@ button:focus {
 }
 
 #mapid {
-  height: 100%;
+  height: calc(100% - 50px);
   position: fixed;
   top: 50px;
   bottom: 10px;
