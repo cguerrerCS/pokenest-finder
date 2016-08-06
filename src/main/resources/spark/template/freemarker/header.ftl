@@ -11,8 +11,8 @@
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- Bootstrap Material Design -->
-<link rel="stylesheet" type="text/css" href="dist/css/bootstrap-material-design.css">
-<link rel="stylesheet" type="text/css" href="dist/css/ripples.min.css">
+<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css">
+<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-material-design/dist/css/ripples.min.css">
 
 <!-- Include Google's material icons -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
