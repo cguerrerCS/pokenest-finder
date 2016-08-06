@@ -4,12 +4,17 @@
 	border-color: #039be5; 
 }
 
+.navbar {
+	border-radius: 0px;
+}
+
 .navbar-default .navbar-brand {
 	font-size: 25px; 
 	font-family: 'Lato', serif;
 	color: #fafafa;
 }
-
-.navbar {
-	border-radius: 0px;
+.navbar-inverse .navbar-brand:hover, 
+.navbar-inverse .navbar-brand:focus {
+	background-color: transparent;
+	color: #fafafa;
 }
