@@ -81,7 +81,7 @@
           <div class="togglebutton">
               <label>
                 Follow Location
-                <input type="checkbox" checked="">
+                <input type="checkbox">
               </label>
           </div>
 
