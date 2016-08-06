@@ -50,9 +50,11 @@ a:link {
     margin-top:  10px;
 }
 
-#sitemapid {
+/*#sitemapid {
     z-index: 1;
-}
+    height: 280px;
+    width: 95%;
+}*/
 
 #pokemon-typeahead {
     margin-bottom: 10px;

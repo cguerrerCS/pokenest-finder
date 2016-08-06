@@ -32,7 +32,7 @@
       </div>
 
 		  <!-- Modal map used to mark Pokemon sighting location-->
-      <div id="sitemapid"></div>
+      <div id="sitemapid" style="height:280px; width: 95%;"></div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
