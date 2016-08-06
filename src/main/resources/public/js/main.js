@@ -413,8 +413,8 @@ function loadPokeRadar() {
     		var lat = parseFloat(data.lat);
     		var lng = parseFloat(data.lng);
     		var icon = L.icon({
-    			iconUrl: name + '.png',
-    			// iconUrl: 'http://www.pokestadium.com/sprites/diamond-pearl/' + name + '.png',
+    			// iconUrl: name + '.png',
+    			iconUrl: 'http://www.pokestadium.com/sprites/diamond-pearl/' + name + '.png',
     			iconSize:     [96, 96], // size of the icon
     			iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
     			popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
