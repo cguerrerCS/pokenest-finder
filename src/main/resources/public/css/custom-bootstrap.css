@@ -1,22 +1,15 @@
 
-/*.navbar-default {
-	background-color: #039be5; 
-	border-color: #039be5; 
-}*/
+.modal-title {
+	margin-right: 30px;
+}
 
-.navbar {
+.navbar, .navbar.navbar-default {
 	background-color: #03a9f4;
 	border-radius: 0px;
+	color: white;
 }
 
 .navbar-default .navbar-brand {
 	font-size: 25px; 
 	font-family: 'Lato', serif;
-	color: rgba(255,255,255, 0.84);
 }
-
-/*.navbar-inverse .navbar-brand:hover, 
-.navbar-inverse .navbar-brand:focus {
-	background-color: transparent;
-	color: #fafafa;
-}*/
