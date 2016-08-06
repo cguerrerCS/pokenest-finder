@@ -25,6 +25,18 @@ button:focus {
   left: 0;
 }
 
+.pokenest-log-img {
+  display: inline-block;
+
+}
+
+.pokenest-log-txt {
+  color: white;
+  display: inline-block;
+  font-size: 25px; 
+  font-family: 'Lato', serif;
+}
+
 a:link {
     text-decoration: none;
 }
