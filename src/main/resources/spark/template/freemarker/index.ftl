@@ -78,9 +78,10 @@
         <div class="form-group">
 
           <div class="togglebutton">
-            <label>
-              <input type="checkbox" checked> Follow Location
-            </label>
+              <label>
+                Follow Location
+                <input type="checkbox" checked="">
+              </label>
           </div>
 
         </div>
