@@ -9,3 +9,7 @@
 	font-family: 'Lato', serif;
 	color: #fafafa;
 }
+
+.navbar {
+	border-radius: 0px;
+}
