@@ -1,4 +1,8 @@
 
+.navbar-left {
+	float: left;
+}
+
 .modal-title {
 	margin-right: 30px;
 }
