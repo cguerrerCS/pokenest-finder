@@ -39,11 +39,12 @@
  <!-- Include Javascript add ons required for leaflet easy button -->
  <script src="../node_modules/leaflet-easybutton/src/easy-button.js"></script>
 
- <!-- Bootstrap Material Design JS -->
- <script src="../node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
-
  <!-- Bootstrap Latest compiled and minified JavaScript -->
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+ <!-- Bootstrap Material Design JS -->
+ <script src="../node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
+ <script src="../node_modules/bootstrap-material-design/dist/js/ripples.min.js"></script>
 
  <!-- Include Twitter's open source typeahead box -->
  <script src="js/typeahead.js"></script>
