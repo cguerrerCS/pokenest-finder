@@ -85,7 +85,7 @@
               </label>
           </div>
 
-          <hr width="100%">
+          <hr>
 
         </div>
       </div>
