@@ -31,9 +31,11 @@ button:focus {
   margin-top: 5px;
 }
 
-.pokenest-logo-txt {
-  color: white;
+.pokenest-logo-txt a {
   display: inline-block;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 25px; 
   font-family: 'Lato', serif;
 }
