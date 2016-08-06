@@ -77,11 +77,20 @@
       <div class="modal-body">
         <div class="form-group">
 
+          <h3>Default</h3>
           <div class="togglebutton">
               <label>
                 Follow Location
                 <input type="checkbox" checked="">
               </label>
+          </div>
+
+          <h3>Default</h3>
+          <div class="radio">
+            <label>
+              <input type="radio" name="sample1" value="option1" checked="">
+              Always
+            </label>
           </div>
 
         </div>
