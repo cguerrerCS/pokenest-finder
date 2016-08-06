@@ -50,6 +50,7 @@ $( document ).ready(function() {
 	// add additional easy buttons to leaflet map
 	L.easyButton('<i class="material-icons">settings</i>', function() {
 		console.log("pulling up settings menu...");
+		$("#mySettingsModal").modal();
 	}).addTo(pokemap);
 
 	L.easyButton('<i class="material-icons">my_location</i>', function() {

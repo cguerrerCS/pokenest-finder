@@ -34,7 +34,7 @@
 
         <!-- Modal map used to mark Pokemon sighting location-->
         <div id="sitemapid" style="height:280px; width: 100%;"></div>
-        
+
       </div>
 
       <div class="modal-footer">
@@ -55,6 +55,23 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <img src='../img/pokeball.png' alt='Pokeball Icon'>
         <h4 class="modal-title" id="markerdata-header">Pokemarker Data!</h4>
+      </div>
+
+      <div class="modal-body"></div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap Modal for Pokenest User Settings -->
+<div class="modal fade" id="mySettingsModal" tabindex="-1" role="dialog" aria-labelledby="myMarkerModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <img src='../img/pokeball.png' alt='Pokeball Icon'>
+        <h4 class="modal-title" id="markerdata-header">Settings</h4>
       </div>
 
       <div class="modal-body"></div>
