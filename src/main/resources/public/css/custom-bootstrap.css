@@ -1,7 +1,11 @@
 
-/*button:focus {
-	outline:0;
-}*/
+.togglebutton {
+	margin-left: 10px;
+}
+
+.toggle {
+	margin-left: 4px;
+}
 
 .navbar-brand>img {
 	display: inline-block;
