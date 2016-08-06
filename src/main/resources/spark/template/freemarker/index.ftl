@@ -88,8 +88,8 @@
           <h3>Default</h3>
           <div class="radio">
             <label>
-              <input type="radio" name="sample1" value="option1" checked="">
               Always
+              <input type="radio" name="sample1" value="option1" checked="">
             </label>
           </div>
 
