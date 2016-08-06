@@ -25,11 +25,13 @@ button:focus {
   left: 0;
 }
 
-.pokenest-logo img {
+.pokenest-logo-img img {
   display: inline-block;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 
-.pokenest-logo {
+.pokenest-logo-txt {
   color: white;
   display: inline-block;
   font-size: 25px; 
