@@ -81,12 +81,12 @@ a:link {
 }
 
 textarea:focus, input:focus{
-    outline: none;
+    outline: none !important;
 }
 
 /* Remove Chrome focus effects */
 *:focus {
-    outline: none;
+    outline: none !important;
 }
 
 .tt-query {
