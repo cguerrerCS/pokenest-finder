@@ -38,6 +38,7 @@ button:focus {
   padding-bottom: 5px;
   font-size: 25px; 
   font-family: 'Lato', serif;
+  color: white;
 }
 
 .pokenest-logo-txt a, a:hover, a:focus {
