@@ -26,13 +26,16 @@
       </div>
 
       <div class="modal-body">
+
+        <!-- Twitter Typeahead for Pokemon autocorrect -->
       	<div id="pokemon-typeahead">
   			 <input id="pokemon-modal-input" class="typeahead form-control" type="text" placeholder="Pokémon species">
 		    </div>
-      </div>
 
-		  <!-- Modal map used to mark Pokemon sighting location-->
-      <div id="sitemapid" style="height:280px; width: 95%;"></div>
+        <!-- Modal map used to mark Pokemon sighting location-->
+        <div id="sitemapid" style="height:280px; width: 100%;"></div>
+        
+      </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
