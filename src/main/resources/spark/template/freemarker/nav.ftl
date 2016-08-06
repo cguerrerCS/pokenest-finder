@@ -4,7 +4,7 @@
 
 	<div class="navbar-header">
 	  <a class="navbar-brand" href="#">
-	  	<span><img src='../img/pokeball-white.png'/></span>
+	  	<span><img src='../img/pokeball-white.png' alt="logo" height="42" width="42"></span>
 	  	PokéNest</a>
 	</div>
 
