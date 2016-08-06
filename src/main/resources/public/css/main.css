@@ -11,13 +11,18 @@ button:focus {
   outline:0;
 }
 
+/* Map Content */
 #content {
   height: 100%;
 }
 
 #mapid {
   height: 100%;
-  top: -20px;
+  position: fixed;
+  top: 50px;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 
 a:link {
