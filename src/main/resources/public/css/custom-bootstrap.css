@@ -5,7 +5,7 @@
 }
 
 .navbar-default .navbar-brand {
-	/*font-size: 25px;*/
-	/*font-family: 'Lato'*/
+	font-size: 25px; 
+	font-family: 'Lato';
 	color: #fafafa;
 }
