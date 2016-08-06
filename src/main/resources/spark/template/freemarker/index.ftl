@@ -74,7 +74,22 @@
         <h4 class="modal-title" id="markerdata-header">Settings</h4>
       </div>
 
-      <div class="modal-body"></div>
+      <div class="modal-body">
+        <div class="form-group">
+
+          <div class="togglebutton">
+            <label>
+              <input type="checkbox" checked> Follow Location
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="applysettingsbtn" type="button" class="btn btn-primary">Apply</button>
+      </div>
 
     </div>
   </div>
