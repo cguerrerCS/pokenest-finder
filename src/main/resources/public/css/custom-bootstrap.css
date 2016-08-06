@@ -5,6 +5,13 @@
 	margin-left: 20px;
 }
 
+.navbar .navbar-brand {
+	padding-top: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+}
+
 .modal-title {
 	margin-right: 30px;
 }
