@@ -1,4 +1,11 @@
 
-/*.navbar {
-	min-height:10% !important
-}*/
+.navbar-default {
+	background-color: #039be5; 
+	border-color: #039be5; 
+}
+
+.navbar-brand {
+	font-size: 25px;
+	font-family: 'Lato'
+	color: #fafafa;
+}
