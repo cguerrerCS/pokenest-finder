@@ -31,6 +31,9 @@ var pokemon_sprites = {
 };
 
 $( document ).ready(function() {
+
+	// bootstrap material design setup
+	$.material.init();
     
     // pokemon nest map
 	pokemap = L.map('mapid', {
