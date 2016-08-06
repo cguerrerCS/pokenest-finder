@@ -5,13 +5,14 @@
 }*/
 
 .navbar {
+	background-color: #03a9f4;
 	border-radius: 0px;
 }
 
 .navbar-default .navbar-brand {
 	font-size: 25px; 
 	font-family: 'Lato', serif;
-	color: #fafafa;
+	color: rgba(255,255,255, 0.84);
 }
 
 /*.navbar-inverse .navbar-brand:hover, 
