@@ -68,7 +68,6 @@ $( document ).ready(function() {
 				var follow = getCookie("follow");
 				var access = getCookie("access");
 				var passwd = getCookie("passwd");
-
 				console.log("follow-cookie: '" + follow + "'");
 				console.log("access-cookie: '" + access + "'") ;
 				console.log("passwd-cookie: '" + passwd + "'");
@@ -226,11 +225,11 @@ $( document ).ready(function() {
 
 		// apply user's selected settings
 		// followUser = $('#follow-setting').prop( "checked" );
-		// privileged = $('#access-setting').prop( "checked" );
-
+		
 		setCookie("follow", $('#follow-setting').prop( "checked" ), 1);
 		setCookie("access", $('#access-setting').prop( "checked" ), 1);
-		if (privileged == true) {
+
+		if ($('#access-setting').prop( "checked" ) == true) {
 			setCookie("passwd", $('#access-password').val(), 1);
 		} else {
 			setCookie("passwd", "", 1);
