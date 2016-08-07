@@ -198,9 +198,7 @@ $( document ).ready(function() {
 			var responseObject = JSON.parse(responseJSON);
 			console.log(responseObject);
 			$('#mySettingsModal').modal('hide');
-			$('#mySettingsModal').moda
 		}); 
-
 	});
 
 	$('#myModal').on('show.bs.modal', function(){
