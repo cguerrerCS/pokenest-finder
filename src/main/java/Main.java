@@ -74,8 +74,10 @@ public class Main {
 			
 			if (password.equals("password")) {
 				results.put("success", false);
+				results.put("error", "incorrect password");
 			} else {
 				results.put("success", true);
+				results.put("error", "");
 				pokedex.Remove(id);	
 			}
 			return GSON.toJson(results);
