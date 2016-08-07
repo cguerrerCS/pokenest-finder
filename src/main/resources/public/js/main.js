@@ -580,8 +580,12 @@ function locate() {
 function update() {
 
 	var follow = false;
-	if (getCookie("follow") != "") {
-		follow = getCookie("follow");
+	var cookie = getCookie("follow");
+
+	if (cookie != "") {
+		if (cookie == "true") {
+			follow = true;
+		} 
 	}
 
 	if (follow == true) {
