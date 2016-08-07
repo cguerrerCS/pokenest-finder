@@ -92,6 +92,14 @@
 
           <hr>
 
+          <h4>Access</h4>
+          <div class="togglebutton">
+              <label>
+                Privileged Mode
+                <input id="access-setting" type="checkbox">
+              </label>
+          </div>
+
         </div>
       </div>
 
