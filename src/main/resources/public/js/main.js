@@ -69,6 +69,10 @@ $( document ).ready(function() {
 				var access = getCookie("access");
 				var passwd = getCookie("passwd");
 
+				console.log("follow-cookie: '" + follow + "'");
+				console.log("access-cookie: '" + access + "'") ;
+				console.log("passwd-cookie: '" + passwd + "'");
+
 				if (follow == "") {
 					$('#follow-setting').prop( "checked" , false);
 				} else {
@@ -81,7 +85,7 @@ $( document ).ready(function() {
 					if (passwd == "") {
 						$('#access-password').val("");
 					} else {
-						$('#access-password').val(password);
+						$('#access-password').val(passwd);
 					}
 				}
 					
