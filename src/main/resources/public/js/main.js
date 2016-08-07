@@ -44,6 +44,7 @@ $( document ).ready(function() {
     
     // pokemon nest map
 	pokemap = L.map('mapid', {
+		zoomControl: false, 
 		center: [29.7604, -95.3698],
 		zoom: 10
 	});
