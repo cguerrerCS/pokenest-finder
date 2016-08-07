@@ -88,7 +88,6 @@ $( document ).ready(function() {
 
 					if (access == "true") {
 						$('#access-setting').prop( "checked" , true);
-
 						$('#access-password').show();
 						if (passwd == "") {
 							$('#access-password').val("");
@@ -99,7 +98,6 @@ $( document ).ready(function() {
 					} else {
 						$('#access-password').hide();
 						$('#access-setting').prop( "checked" , false);
-						$('#access-password').val("");
 					}
 				}
 					
@@ -248,6 +246,7 @@ $( document ).ready(function() {
 			setCookie("passwd", $('#access-password').val(), 1);
 		} else {
 			setCookie("passwd", "", 1);
+			$('#access-password').val("");
 		}
 		
 		// hide the settings modal
