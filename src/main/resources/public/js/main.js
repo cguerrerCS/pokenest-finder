@@ -206,18 +206,21 @@ $( document ).ready(function() {
 			$.post("/remove", postParameters, function(responseJSON){
 				var responseObject = JSON.parse(responseJSON);
 				console.log(responseObject);
-				$('#myMarkerModal').modal('hide');
+
+				// TODO: pop some toast when request is processed
 			}); 
 		}
+
+		$('#myMarkerModal').modal('hide');
 	});
 
 	$('#access-toggle').on('click', function() {
 
 		var state = $('#access-setting').prop( "checked" );
 		if (state == true) {
-			$('#access-password').show();
+			$('#access-password').show(200);
 		} else {
-			$('#access-password').hide();
+			$('#access-password').hide(200);
 		}		
 	});
 
