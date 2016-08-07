@@ -97,6 +97,7 @@ $( document ).ready(function() {
 						}
 
 					} else {
+						$('#access-password').hide();
 						$('#access-setting').prop( "checked" , false);
 						$('#access-password').val("");
 					}
