@@ -98,9 +98,8 @@
                 <input id="access-setting" type="checkbox">
               </label>
           </div>
-          <hr>
-
           <input id="access-password" class="form-control" type="password" placeholder="Access Password">
+          <hr>
 
         </div>
       </div>

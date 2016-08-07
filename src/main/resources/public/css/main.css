@@ -41,6 +41,11 @@ button:focus {
   color: white;
 }
 
+#access-password {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .pokenest-logo-txt a, a:hover, a:focus {
   color: white;
 }
