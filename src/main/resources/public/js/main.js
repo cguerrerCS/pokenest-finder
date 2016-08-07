@@ -7,6 +7,7 @@ var modalLocationMarker = undefined;
 var currentLocationMarker = undefined;
 var nestMarkers = [];
 var markerData = {};
+var followUser = false;
 
 /* Define sprite sheet dimensions for image compression */
 var pokemon_sprites = {
@@ -52,8 +53,10 @@ $( document ).ready(function() {
 
 	// add additional easy buttons to leaflet map
 	L.easyButton('<i class="material-icons">settings</i>', function() {
-		console.log("pulling up settings menu...");
+		
 		$("#mySettingsModal").modal();
+		$("#follow-setting").attr('checked', followUser);
+
 	}).addTo(pokemap);
 
 	L.easyButton('<i class="material-icons">my_location</i>', function() {
@@ -143,26 +146,26 @@ $( document ).ready(function() {
 		/* hide modal and post sighting to server */
 		$('#myModal').modal('hide');
 
-			/* get pokemon species from user input */
-			var pokemon = $('#pokemon-modal-input').val();
+		/* get pokemon species from user input */
+		var pokemon = $('#pokemon-modal-input').val();
 
-			var pokemonLocation = modalLocationMarker.getLatLng()
+		var pokemonLocation = modalLocationMarker.getLatLng()
 
-			/* gather post parameters for server */
-			var postParameters = {pokemon: pokemon, lat: pokemonLocation.lat, lng: pokemonLocation.lng};
+		/* gather post parameters for server */
+		var postParameters = {pokemon: pokemon, lat: pokemonLocation.lat, lng: pokemonLocation.lng};
 
-			console.log("submitting sighting location");
-			console.log(postParameters);
+		console.log("submitting sighting location");
+		console.log(postParameters);
 
-			// make sure that all parameters are set properly first!
+		// make sure that all parameters are set properly first!
 
-			/* post info to server */
-			$.post("/report", postParameters, function(responseJSON){
+		/* post info to server */
+		$.post("/report", postParameters, function(responseJSON){
 
-				// get responce object 
-				var responseObject = JSON.parse(responseJSON);
-				console.log(responseObject);
-			}); 
+			// get responce object 
+			var responseObject = JSON.parse(responseJSON);
+			console.log(responseObject);
+		}); 
 	});
 
 	$('#pokevision-btn').on('click', function() {
@@ -170,6 +173,16 @@ $( document ).ready(function() {
 		// show pokevision modal with iframe
 		console.log("loading pokevision iframe");
 
+	});
+
+	$('#applysettingsbtn').on('click', function() {
+
+		// hide the settings modal
+		$('#mySettingsModal').modal('hide');
+
+		// apply user's selected settings
+		followUser = $('follow-setting').is(':checked')
+		
 	});
 
 	$('#myModal').on('show.bs.modal', function(){
@@ -188,6 +201,9 @@ $( document ).ready(function() {
 	    // adjust view to center on current location
 	    sitemap.setView(currentLocationMarker.getLatLng(), 16);
 	});
+
+	/* Logic for location toggle */
+
 
 	/* autocomplete code for Pokemon name lookup */
 	var substringMatcher = function(strs) {
@@ -462,7 +478,11 @@ function locate() {
 }
 
 function update() {
-	pokemap.locate({setView: false, maxZoom: 16});
+	if (followUser == true) {
+		pokemap.locate({setView: true});
+	} else {
+		pokemap.locate({setView: false, maxZoom: 16});
+	}
 }
 
 function onLocationFound(e) {

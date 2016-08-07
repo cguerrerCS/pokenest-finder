@@ -78,10 +78,10 @@
         <div class="form-group">
 
           <h4>Location</h4>
-          <div class="togglebutton togglebutton-danger">
+          <div class="togglebutton">
               <label>
                 Follow Location
-                <input type="checkbox">
+                <input id="follow-setting" type="checkbox">
               </label>
           </div>
 
