@@ -260,6 +260,7 @@ $( document ).ready(function() {
 			privileged = true;
 		}
 
+		var password = getCookie("passwd");
 		var postParameters = {id: selectedMarkerID, password: password};
 		if (privileged) {
 
