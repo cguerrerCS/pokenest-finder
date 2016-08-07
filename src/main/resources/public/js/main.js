@@ -55,7 +55,7 @@ $( document ).ready(function() {
 	L.easyButton('<i class="material-icons">settings</i>', function() {
 		
 		$("#mySettingsModal").modal();
-		$("#follow-setting").attr('checked', followUser);
+		$('#follow-setting').prop( "checked" , followUser);
 		console.log("followUser easy btn: " + followUser);
 
 	}).addTo(pokemap);
@@ -181,7 +181,7 @@ $( document ).ready(function() {
 		console.log("applying settings...");
 
 		// apply user's selected settings
-		followUser = $('follow-setting').prop( "checked" );
+		followUser = $('#follow-setting').prop( "checked" );
 
 		// hide the settings modal
 		$('#mySettingsModal').modal('hide');
