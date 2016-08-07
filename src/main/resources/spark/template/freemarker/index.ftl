@@ -89,7 +89,6 @@
                 <input id="follow-setting" type="checkbox">
               </label>
           </div>
-
           <hr>
 
           <h4>Access</h4>
@@ -99,6 +98,9 @@
                 <input id="access-setting" type="checkbox">
               </label>
           </div>
+          <hr>
+
+          <input id="access-password" class="form-control" type="password" placeholder="Access Password">
 
         </div>
       </div>
