@@ -494,9 +494,15 @@ function loadPokeRadar() {
     			var id = this.options.id;
     			console.log(id + " " + pokemon);
     			selectedMarkerID = id;
+
     			// show pokenest info modal
-    			$('#myMarkerModal').modal();
     			$('#markerdata-header').html(pokemon + " Pokenest Info");
+    			if (privileged) {
+    				$('#removeEntryBtn').show();
+    			} else {
+    				$('#removeEntryBtn').hide();
+    			}
+    			$('#myMarkerModal').modal();
     		});
 
 			// store additional marker data

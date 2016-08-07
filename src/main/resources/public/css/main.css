@@ -47,6 +47,10 @@ button:focus {
   display: none;
 }
 
+#removeEntryBtn {
+  display: none;
+}
+
 .pokenest-logo-txt a, a:hover, a:focus {
   color: white;
 }
