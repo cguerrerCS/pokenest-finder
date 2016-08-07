@@ -56,6 +56,7 @@ $( document ).ready(function() {
 		
 		$("#mySettingsModal").modal();
 		$("#follow-setting").attr('checked', followUser);
+		console.log("followUser easy btn: " + followUser);
 
 	}).addTo(pokemap);
 
@@ -177,12 +178,16 @@ $( document ).ready(function() {
 
 	$('#applysettingsbtn').on('click', function() {
 
+		console.log("applying settings...");
+
 		// hide the settings modal
 		$('#mySettingsModal').modal('hide');
 
 		// apply user's selected settings
 		followUser = $('follow-setting').is(':checked')
-		
+
+		console.log("followUser new setting: " + followUser);
+
 	});
 
 	$('#myModal').on('show.bs.modal', function(){
