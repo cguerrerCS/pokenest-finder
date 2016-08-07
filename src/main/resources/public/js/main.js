@@ -197,6 +197,8 @@ $( document ).ready(function() {
 		$.post("/remove", postParameters, function(responseJSON){
 			var responseObject = JSON.parse(responseJSON);
 			console.log(responseObject);
+			$('#mySettingsModal').modal('hide');
+			$('#mySettingsModal').moda
 		}); 
 
 	});
