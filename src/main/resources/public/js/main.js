@@ -484,7 +484,7 @@ function locate() {
 
 function update() {
 	if (followUser == true) {
-		pokemap.locate({setView: true});
+		pokemap.locate({setView: true, maxZoom: pokemap.getZoom()});
 	} else {
 		pokemap.locate({setView: false, maxZoom: 16});
 	}
