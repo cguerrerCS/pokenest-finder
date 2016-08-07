@@ -568,9 +568,13 @@ function locate() {
 
 function update() {
 
-	var followUser = getCookie("follow");
-	console.log("follow user cookie update: " + followUser);
-	if (followUser == true) {
+	var follow = false;
+	var followCookie = getCookie("follow");
+	if (followUser != "") {
+		follow = followCookie;
+	}
+
+	if (follow == true) {
 		pokemap.locate({setView: true, maxZoom: pokemap.getZoom()});
 	} else {
 		pokemap.locate({setView: false, maxZoom: 16});
