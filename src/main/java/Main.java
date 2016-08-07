@@ -72,7 +72,7 @@ public class Main {
 			String id = queryMap.value("id");
 			String password = queryMap.value("password");
 			
-			if (password != "password") {
+			if (password.equals("password")) {
 				results.put("success", false);
 			} else {
 				results.put("success", true);
