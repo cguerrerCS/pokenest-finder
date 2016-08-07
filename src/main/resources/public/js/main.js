@@ -550,6 +550,13 @@ function loadPokeRadar() {
 
     			// show pokenest info modal
     			$('#markerdata-header').html(pokemon + " Pokenest Info");
+
+    			var privileged = false;
+    			var cookie = getCookie("access");
+    			if (access == "true") {
+    				privileged = true;
+    			}
+
     			if (privileged) {
     				$('#removeEntryBtn').show();
     			} else {
