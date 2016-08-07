@@ -80,8 +80,8 @@
       </div>
 
       <div class="modal-body">
+        
         <div class="form-group">
-
           <h4>Location</h4>
           <div class="togglebutton">
               <label>
@@ -90,7 +90,9 @@
               </label>
           </div>
           <hr>
+        </div>
 
+        <div class="form-group">
           <h4>Access</h4>
           <div class="togglebutton">
               <label id="access-toggle">
@@ -100,8 +102,8 @@
           </div>
           <input id="access-password" class="form-control" type="password" placeholder="Access Password">
           <hr>
-
         </div>
+
       </div>
 
       <div class="modal-footer">
