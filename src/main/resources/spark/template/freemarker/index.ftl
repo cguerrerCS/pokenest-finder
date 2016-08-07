@@ -93,7 +93,7 @@
 
           <h4>Access</h4>
           <div class="togglebutton">
-              <label>
+              <label id="access-toggle">
                 Privileged Mode
                 <input id="access-setting" type="checkbox">
               </label>

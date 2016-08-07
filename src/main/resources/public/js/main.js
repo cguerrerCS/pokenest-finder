@@ -7,8 +7,13 @@ var modalLocationMarker = undefined;
 var currentLocationMarker = undefined;
 var nestMarkers = [];
 var markerData = {};
-var followUser = false;
+
 var selectedMarkerID = undefined;
+
+/* Settings */
+var followUser = false;
+var privileged = false;
+var password = "";
 
 /* Define sprite sheet dimensions for image compression */
 var pokemon_sprites = {
@@ -199,6 +204,11 @@ $( document ).ready(function() {
 			console.log(responseObject);
 			$('#myMarkerModal').modal('hide');
 		}); 
+	});
+
+	$('#access-toggle').on('click', function() {
+		console.log("clicked on access-toggle!");
+		$('#access-password').show();
 	});
 
 	$('#myModal').on('show.bs.modal', function(){
