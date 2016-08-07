@@ -8,6 +8,7 @@ var currentLocationMarker = undefined;
 var nestMarkers = [];
 var markerData = {};
 var followUser = false;
+var selectedMarkerID = undefined;
 
 /* Define sprite sheet dimensions for image compression */
 var pokemon_sprites = {
@@ -187,6 +188,16 @@ $( document ).ready(function() {
 		$('#mySettingsModal').modal('hide');
 
 		console.log("followUser new setting: " + followUser);
+
+	});
+
+	$('#removeEntryBtn').on('click', function() {
+
+		var postParameters = {id: selectedMarkerID};
+		$.post("/remove", postParameters, function(responseJSON){
+			var responseObject = JSON.parse(responseJSON);
+			console.log(responseObject);
+		}); 
 
 	});
 
@@ -457,10 +468,10 @@ function loadPokeRadar() {
     			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
     			var id = this.options.id;
     			console.log(id + " " + pokemon);
+    			selectedMarkerID = id;
     			// show pokenest info modal
     			$('#myMarkerModal').modal();
     			$('#markerdata-header').html(pokemon + " Pokenest Info");
-
     		});
 
 			// store additional marker data

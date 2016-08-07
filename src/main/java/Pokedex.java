@@ -52,9 +52,7 @@ public class Pokedex {
 			throws SQLException {
 
 		// Fill in schema to create a table called pokedex
-		String schema = "INSERT INTO pokedex VALUES(?,?,?,?,?,?);";
-
-		schema = "INSERT INTO pokedex VALUES(?,?,?,?,?,?);";						
+		String schema = "INSERT INTO pokedex VALUES(?,?,?,?,?,?);";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, generateID());
 		prep.setString(2, pokemon);
@@ -68,7 +66,18 @@ public class Pokedex {
 		prep.close();
 	}
 	
+	public void Remove(String id) throws SQLException {
+		
+		// Fill in schema to create a table called pokedex
+		String schema = "DELETE FROM pokedex WHERE id = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, id);
+		prep.executeUpdate();
 
+		// Close the PreparedStatement
+		prep.close();
+	}
+	
 	public List<Map<String, Object>> nearby() {
 		
 		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();

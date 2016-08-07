@@ -65,6 +65,15 @@ public class Main {
 			return GSON.toJson(results);
 		});
 		
+		Spark.post("/remove", (request, response) -> {
+
+			Map<String, Object> results = ImmutableMap.of("success", true);
+			QueryParamsMap queryMap = request.queryMap();
+			String id = queryMap.value("id");
+			pokedex.Remove(id);
+			return GSON.toJson(results);
+		});
+		
 		Spark.post("/nearby", (request, response) -> {
 
 			List<Map<String, Object>> results = pokedex.nearby();
