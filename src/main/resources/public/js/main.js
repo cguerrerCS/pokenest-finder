@@ -181,7 +181,7 @@ $( document ).ready(function() {
 		console.log("applying settings...");
 
 		// apply user's selected settings
-		followUser = $('follow-setting').attr('checked')
+		followUser = $('follow-setting').prop( "checked" );
 
 		// hide the settings modal
 		$('#mySettingsModal').modal('hide');
