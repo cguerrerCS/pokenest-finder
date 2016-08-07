@@ -553,7 +553,7 @@ function loadPokeRadar() {
 
     			var privileged = false;
     			var cookie = getCookie("access");
-    			if (access == "true") {
+    			if (cookie == "true") {
     				privileged = true;
     			}
 
