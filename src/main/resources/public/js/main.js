@@ -115,8 +115,8 @@ $( document ).ready(function() {
 	pokemap.on('locationfound', onLocationFound);
 	pokemap.on('locationerror', onLocationError);
 
-	// locate every 2 seconds in a loop
-	// setInterval(locate, 10000);
+	// locate every nearby pokemon
+	loadPokeRadar();
 
 	    // user style location picker
     sitemap.on('move', function () {
@@ -147,8 +147,7 @@ $( document ).ready(function() {
 	setInterval(function() { update(); }, 2000);
 
 	// find pokemon within viewport
-	loadPokeRadar();
-	// setInterval(function() { loadPokeRadar(); }, 5000);
+	setInterval(function() { loadPokeRadar(); }, 10000);
 
 	$('#submitbtn').on('click', function() {
 
