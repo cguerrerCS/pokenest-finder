@@ -180,11 +180,11 @@ $( document ).ready(function() {
 
 		console.log("applying settings...");
 
+		// apply user's selected settings
+		followUser = $('follow-setting').attr('checked')
+
 		// hide the settings modal
 		$('#mySettingsModal').modal('hide');
-
-		// apply user's selected settings
-		followUser = $('follow-setting').is(':checked')
 
 		console.log("followUser new setting: " + followUser);
 
