@@ -69,24 +69,35 @@ $( document ).ready(function() {
 				var access = getCookie("access");
 				var passwd = getCookie("passwd");
 				console.log("follow-cookie: '" + follow + "'");
-				console.log("access-cookie: '" + access + "'") ;
+				console.log("access-cookie: '" + access + "'");
 				console.log("passwd-cookie: '" + passwd + "'");
 
 				if (follow == "") {
 					$('#follow-setting').prop( "checked" , false);
 				} else {
-					$('#follow-setting').prop( "checked" , follow);
+					if (follow == "true") {
+						$('#follow-setting').prop( "checked" , true);
+					} else {
+						$('#follow-setting').prop( "checked" , false);
+					}
 				}
 
 				if (access == "") {
 					$('#access-setting').prop( "checked" , false);
 				} else {
-					$('#access-setting').prop( "checked" , access);
-					$('#access-password').show();
-					if (passwd == "") {
-						$('#access-password').val("");
+
+					if (access == "true") {
+						$('#access-setting').prop( "checked" , true);
+
+						$('#access-password').show();
+						if (passwd == "") {
+							$('#access-password').val("");
+						} else {
+							$('#access-password').val(passwd);
+						}
+
 					} else {
-						$('#access-password').val(passwd);
+						$('#access-setting').prop( "checked" , false);
 					}
 				}
 					
