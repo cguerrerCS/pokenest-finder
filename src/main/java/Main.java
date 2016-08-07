@@ -75,6 +75,7 @@ public class Main {
 			if (password != "password") {
 				results.put("success", false);
 			} else {
+				results.put("success", true);
 				pokedex.Remove(id);	
 			}
 			return GSON.toJson(results);
