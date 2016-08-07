@@ -203,10 +203,12 @@ $( document ).ready(function() {
 
 		var postParameters = {id: selectedMarkerID, password: password};
 		if (privileged) {
+
+			console.log(postParameters);
 			$.post("/remove", postParameters, function(responseJSON){
 				var responseObject = JSON.parse(responseJSON);
 				console.log(responseObject);
-
+	
 				// TODO: pop some toast when request is processed
 			}); 
 		}
