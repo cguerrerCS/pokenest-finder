@@ -59,33 +59,39 @@ $( document ).ready(function() {
 	sitemap.doubleClickZoom.disable(); 
 
 	// add additional easy buttons to leaflet map
-	L.easyButton('<i class="material-icons">settings</i>', function() {
-		
-		/* Load any saved settings */
-		$("#mySettingsModal").modal();
-		$('#follow-setting').prop( "checked" , followUser);
-		$('#access-setting').prop( "checked" , privileged);
-		$('#access-password').val(password);
-		
+	L.easyButton({
+		position: 'topright', 
+		states:[{
+			onClick: function() {
+				/* Load any saved settings */
+				$("#mySettingsModal").modal();
+				$('#follow-setting').prop( "checked" , followUser);
+				$('#access-setting').prop( "checked" , privileged);
+				$('#access-password').val(password);
+			},
+			icon:'<i class="material-icons">settings</i>'
+		}]
 	}).addTo(pokemap);
 
 	L.easyButton({
-		
 		position: 'topright', 
-
 		states:[{
-
 			onClick: function() {
 				console.log("finding current location...");
 				locate();
 			},
 			icon:'<i class="material-icons">my_location</i>'
 		}]
-		
 	}).addTo(pokemap);
 
-	L.easyButton('<i class="material-icons">add_location</i>', function() {
-		$("#myModal").modal();
+	L.easyButton({
+		position: 'topright', 
+		states:[{
+			onClick: function() {
+				$("#myModal").modal();
+			},
+			icon:'<i class="material-icons">add_location</i>'
+		}]
 	}).addTo(pokemap);
 
 	// initialize information about user's current location
