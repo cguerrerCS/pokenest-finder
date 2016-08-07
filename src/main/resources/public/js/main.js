@@ -62,8 +62,8 @@ $( document ).ready(function() {
 		
 		$("#mySettingsModal").modal();
 		$('#follow-setting').prop( "checked" , followUser);
-		console.log("followUser easy btn: " + followUser);
-
+		$('#access-setting').prop( "checked" , privileged);
+		
 	}).addTo(pokemap);
 
 	L.easyButton('<i class="material-icons">my_location</i>', function() {
@@ -188,7 +188,11 @@ $( document ).ready(function() {
 
 		// apply user's selected settings
 		followUser = $('#follow-setting').prop( "checked" );
-
+		privileged = $('#access-setting').prop( "checked" );
+		if (privileged == true) {
+			password = $('#access-password').val();
+		}
+		
 		// hide the settings modal
 		$('#mySettingsModal').modal('hide');
 
@@ -207,8 +211,13 @@ $( document ).ready(function() {
 	});
 
 	$('#access-toggle').on('click', function() {
-		console.log("clicked on access-toggle!");
-		$('#access-password').show();
+
+		var state = $('#access-setting').prop( "checked" );
+		if (state == true) {
+			$('#access-password').show();
+		} else {
+			$('#access-password').hide();
+		}		
 	});
 
 	$('#myModal').on('show.bs.modal', function(){
