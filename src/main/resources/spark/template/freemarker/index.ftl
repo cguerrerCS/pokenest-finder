@@ -61,9 +61,9 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="removeEntryBtn" type="button" class="btn btn-raised btn-primary btn-danger">Remove</button>
+        <button id="removeEntryBtn" type="button" class="btn btn-primary btn-danger">Remove</button>
       </div>
-      
+
     </div>
   </div>
 </div>
