@@ -98,6 +98,7 @@ $( document ).ready(function() {
 
 					} else {
 						$('#access-setting').prop( "checked" , false);
+						$('#access-password').val("");
 					}
 				}
 					
