@@ -81,6 +81,7 @@ $( document ).ready(function() {
 				if (access == "") {
 					$('#access-setting').prop( "checked" , false);
 				} else {
+					$('#access-setting').prop( "checked" , access);
 					if (passwd == "") {
 						$('#access-password').val("");
 					} else {
