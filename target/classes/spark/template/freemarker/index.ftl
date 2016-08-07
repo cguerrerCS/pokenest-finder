@@ -59,6 +59,11 @@
 
       <div class="modal-body"></div>
 
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="removeEntryBtn" type="button" class="btn btn-primary btn-danger">Remove</button>
+      </div>
+
     </div>
   </div>
 </div>
@@ -75,8 +80,8 @@
       </div>
 
       <div class="modal-body">
+        
         <div class="form-group">
-
           <h4>Location</h4>
           <div class="togglebutton">
               <label>
@@ -84,10 +89,21 @@
                 <input id="follow-setting" type="checkbox">
               </label>
           </div>
-
           <hr>
-
         </div>
+
+        <div class="form-group">
+          <h4>Access</h4>
+          <div class="togglebutton">
+              <label id="access-toggle">
+                Privileged Mode
+                <input id="access-setting" type="checkbox">
+              </label>
+          </div>
+          <input id="access-password" class="form-control" type="password" placeholder="Access Password">
+          <hr>
+        </div>
+
       </div>
 
       <div class="modal-footer">

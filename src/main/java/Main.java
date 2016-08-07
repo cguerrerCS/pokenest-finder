@@ -70,7 +70,13 @@ public class Main {
 			Map<String, Object> results = ImmutableMap.of("success", true);
 			QueryParamsMap queryMap = request.queryMap();
 			String id = queryMap.value("id");
-			pokedex.Remove(id);
+			String password = queryMap.value("password");
+			
+			if (password != "password") {
+				results.put("success", false);
+			} else {
+				pokedex.Remove(id);	
+			}
 			return GSON.toJson(results);
 		});
 		

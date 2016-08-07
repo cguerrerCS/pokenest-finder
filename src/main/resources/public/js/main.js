@@ -60,9 +60,11 @@ $( document ).ready(function() {
 	// add additional easy buttons to leaflet map
 	L.easyButton('<i class="material-icons">settings</i>', function() {
 		
+		/* Load any saved settings */
 		$("#mySettingsModal").modal();
 		$('#follow-setting').prop( "checked" , followUser);
 		$('#access-setting').prop( "checked" , privileged);
+		$('#access-password').val(password);
 		
 	}).addTo(pokemap);
 
@@ -184,30 +186,29 @@ $( document ).ready(function() {
 
 	$('#applysettingsbtn').on('click', function() {
 
-		console.log("applying settings...");
-
 		// apply user's selected settings
 		followUser = $('#follow-setting').prop( "checked" );
 		privileged = $('#access-setting').prop( "checked" );
 		if (privileged == true) {
 			password = $('#access-password').val();
+		} else {
+			password = "";
 		}
 		
 		// hide the settings modal
 		$('#mySettingsModal').modal('hide');
-
-		console.log("followUser new setting: " + followUser);
-
 	});
 
 	$('#removeEntryBtn').on('click', function() {
 
-		var postParameters = {id: selectedMarkerID};
-		$.post("/remove", postParameters, function(responseJSON){
-			var responseObject = JSON.parse(responseJSON);
-			console.log(responseObject);
-			$('#myMarkerModal').modal('hide');
-		}); 
+		var postParameters = {id: selectedMarkerID, password: password};
+		if (privileged) {
+			$.post("/remove", postParameters, function(responseJSON){
+				var responseObject = JSON.parse(responseJSON);
+				console.log(responseObject);
+				$('#myMarkerModal').modal('hide');
+			}); 
+		}
 	});
 
 	$('#access-toggle').on('click', function() {
