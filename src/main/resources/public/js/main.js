@@ -63,11 +63,29 @@ $( document ).ready(function() {
 		position: 'topright', 
 		states:[{
 			onClick: function() {
-				/* Load any saved settings */
+				
+				/* Load any saved settings from cookies */
+				var follow = getCookie("follow");
+				var access = getCookie("access");
+				var passwd = getCookie("passwd");
+
+				if (follow == "") {
+					$('#follow-setting').prop( "checked" , false);
+				} else {
+					$('#follow-setting').prop( "checked" , follow);
+				}
+
+				if (access == "") {
+					$('#access-setting').prop( "checked" , false);
+				} else {
+					if (passwd == "") {
+						$('#access-password').val("");
+					} else {
+						$('#access-password').val(password);
+					}
+				}
+					
 				$("#mySettingsModal").modal();
-				$('#follow-setting').prop( "checked" , followUser);
-				$('#access-setting').prop( "checked" , privileged);
-				$('#access-password').val(password);
 			},
 			icon:'<i class="material-icons">settings</i>'
 		}]
@@ -203,12 +221,15 @@ $( document ).ready(function() {
 	$('#applysettingsbtn').on('click', function() {
 
 		// apply user's selected settings
-		followUser = $('#follow-setting').prop( "checked" );
-		privileged = $('#access-setting').prop( "checked" );
+		// followUser = $('#follow-setting').prop( "checked" );
+		// privileged = $('#access-setting').prop( "checked" );
+
+		setCookie("follow", $('#follow-setting').prop( "checked" ), 1);
+		setCookie("access", $('#access-setting').prop( "checked" ), 1);
 		if (privileged == true) {
-			password = $('#access-password').val();
+			setCookie("passwd", $('#access-password').val(), 1);
 		} else {
-			password = "";
+			setCookie("passwd", "", 1);
 		}
 		
 		// hide the settings modal
@@ -541,6 +562,8 @@ function locate() {
 }
 
 function update() {
+
+	var followUser = getCookie("follow");
 	if (followUser == true) {
 		pokemap.locate({setView: true, maxZoom: pokemap.getZoom()});
 	} else {
@@ -557,3 +580,26 @@ function onLocationFound(e) {
 function onLocationError(e) {
 	console.log(e.message);
 }
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length,c.length);
+        }
+    }
+    return "";
+}
+
