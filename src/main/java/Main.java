@@ -67,7 +67,7 @@ public class Main {
 		
 		Spark.post("/remove", (request, response) -> {
 
-			Map<String, Object> results = ImmutableMap.of("success", true);
+			Map<String, Object> results = new HashMap<String, Object>();
 			QueryParamsMap queryMap = request.queryMap();
 			String id = queryMap.value("id");
 			String password = queryMap.value("password");
