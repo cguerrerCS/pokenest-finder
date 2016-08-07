@@ -87,6 +87,16 @@ hr {
     padding-top: 1px;
 }
 
+.leaflet-bar button:first-of-type {
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.leaflet-bar button:last-of-type {
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
 .materal-icons {
     margin-top:  10px;
 }
