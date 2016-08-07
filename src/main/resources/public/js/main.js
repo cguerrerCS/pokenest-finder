@@ -69,11 +69,19 @@ $( document ).ready(function() {
 		
 	}).addTo(pokemap);
 
-	L.easyButton(
-		icon:'<i class="material-icons">my_location</i>',
-		position: 'topright', function() {
-		console.log("finding current location...");
-		locate();
+	L.easyButton({
+		
+		position: 'topright', 
+
+		states:[{
+
+			onClick: function() {
+				console.log("finding current location...");
+				locate();
+			},
+			icon:'<i class="material-icons">my_location</i>'
+		}]
+		
 	}).addTo(pokemap);
 
 	L.easyButton('<i class="material-icons">add_location</i>', function() {
