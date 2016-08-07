@@ -569,9 +569,8 @@ function locate() {
 function update() {
 
 	var follow = false;
-	var followCookie = getCookie("follow");
-	if (followUser != "") {
-		follow = followCookie;
+	if (getCookie("follow") != "") {
+		follow = getCookie("follow");
 	}
 
 	if (follow == true) {
