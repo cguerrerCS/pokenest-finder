@@ -11,9 +11,9 @@ var markerData = {};
 var selectedMarkerID = undefined;
 
 /* Settings */
-var followUser = false;
-var privileged = false;
-var password = "";
+// var followUser = false;
+// var privileged = false;
+// var password = "";
 
 /* Define sprite sheet dimensions for image compression */
 var pokemon_sprites = {
@@ -82,6 +82,7 @@ $( document ).ready(function() {
 					$('#access-setting').prop( "checked" , false);
 				} else {
 					$('#access-setting').prop( "checked" , access);
+					$('#access-password').show();
 					if (passwd == "") {
 						$('#access-password').val("");
 					} else {
@@ -568,6 +569,7 @@ function locate() {
 function update() {
 
 	var followUser = getCookie("follow");
+	console.log("follow user cookie update: " + followUser);
 	if (followUser == true) {
 		pokemap.locate({setView: true, maxZoom: pokemap.getZoom()});
 	} else {
