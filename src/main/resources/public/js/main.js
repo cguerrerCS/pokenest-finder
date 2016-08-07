@@ -254,6 +254,12 @@ $( document ).ready(function() {
 
 	$('#removeEntryBtn').on('click', function() {
 
+		var privileged = false;
+		var cookie = getCookie("access");
+		if (cookie == "true") {
+			privileged = true;
+		}
+
 		var postParameters = {id: selectedMarkerID, password: password};
 		if (privileged) {
 
