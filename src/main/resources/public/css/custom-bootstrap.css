@@ -11,11 +11,11 @@
 }
 
 .togglebutton label input[type=checkbox]:checked + .toggle {
-	background-color: #4caf50;
+	background-color: #B9F6CA;
 }
 
 .togglebutton label input[type=checkbox]:checked + .toggle:after { 
-	background-color: #B9F6CA;
+	background-color: #00E676;
 }
 
 .form-group.is-focused .form-control {
