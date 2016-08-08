@@ -1,11 +1,24 @@
 
+
+/* Pokenest toggle buttons ************************************************************ */
+
 .togglebutton {
 	margin-left: 10px;
 }
 
-.togglebutton label .toggle, .togglebutton label input[type=checkbox][disabled] + .toggle {
+/*.togglebutton label .toggle, .togglebutton label input[type=checkbox][disabled] + .toggle {
 	margin-left: 10px;
 }
+*/
+.togglebutton label input[type=checkbox]:checked + .toggle {
+	background-color: green;
+}
+
+.togglebutton label input[type=checkbox]:checked + .toggle:after { 
+	background-color: red;
+}
+
+/* ************************************************************************************ */
 
 .navbar-brand>img {
 	display: inline-block;
@@ -14,10 +27,6 @@
 
 .modal-title {
 	margin-right: 30px;
-}
-
-.toggle-material-green {
-	
 }
 
 .navbar, .navbar.navbar-default {

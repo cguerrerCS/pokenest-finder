@@ -108,7 +108,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="applysettingsbtn" type="button" class="btn btn-primary">Apply</button>
+        <button id="applysettingsbtn" type="button" class="btn btn-primary btn-raised btn-info">Apply</button>
       </div>
 
     </div>
