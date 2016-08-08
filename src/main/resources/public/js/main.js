@@ -57,6 +57,7 @@ $( document ).ready(function() {
 	});
 
 	sitemap.doubleClickZoom.disable(); 
+	sitemap.scrollWheelZoom.disable();
 
 	// add additional easy buttons to leaflet map
 	L.easyButton({
