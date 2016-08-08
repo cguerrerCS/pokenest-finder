@@ -80,7 +80,7 @@
       </div>
 
       <div class="modal-body">
-        
+
         <div class="form-group">
           <h4>Location</h4>
           <div class="togglebutton">
@@ -108,7 +108,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="applysettingsbtn" type="button" class="btn btn-primary btn-material-blue">Apply</button>
+        <button id="applysettingsbtn" type="button" class="btn btn-primary">Apply</button>
       </div>
 
     </div>
