@@ -6,17 +6,17 @@
 	margin-left: 10px;
 }
 
-/*.togglebutton label .toggle, .togglebutton label input[type=checkbox][disabled] + .toggle {
+.toggle {
 	margin-left: 10px;
 }
-*/
-.togglebutton label input[type=checkbox]:checked + .toggle {
+
+/*.togglebutton label input[type=checkbox]:checked + .toggle {
 	background-color: green;
 }
 
 .togglebutton label input[type=checkbox]:checked + .toggle:after { 
 	background-color: red;
-}
+}*/
 
 /* ************************************************************************************ */
 
