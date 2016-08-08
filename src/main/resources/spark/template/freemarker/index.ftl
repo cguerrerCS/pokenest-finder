@@ -57,7 +57,9 @@
         <h4 class="modal-title" id="markerdata-header">Pokemarker Data!</h4>
       </div>
 
-      <div class="modal-body"></div>
+      <div class="modal-body">
+        <h4 id="markerdata-distance">Distance</h4>
+      </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
