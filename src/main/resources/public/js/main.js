@@ -572,7 +572,7 @@ function loadPokeRadar() {
     			}
     			$('#myMarkerModal').modal();
 
-    			console.log(currentLocationMarker);
+    			console.log(currentLocationMarker.LatLng);
     		});
 
 			// store additional marker data
