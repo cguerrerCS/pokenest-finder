@@ -1,4 +1,5 @@
-<nav class="navbar navbar-default navbar-fixed-top">
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-material-blue">
 
   <div class="container">
 
