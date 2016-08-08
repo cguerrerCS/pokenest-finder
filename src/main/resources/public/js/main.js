@@ -583,7 +583,7 @@ function loadPokeRadar() {
     			console.log("lon1: " + lon1);
     			console.log("lat2: " + lat2);
     			console.log("lon2: " + lon1);
-    			$('#markerdata-distance').html("Distance: <b>" + distance(lat1, lon1, lat2, lon2, 'M').toFixed(2) + "</b> mi.");
+    			$('#markerdata-distance').html("Distance   <b>" + distance(lat1, lon1, lat2, lon2, 'M').toFixed(2) + "</b> mi.");
     		});
 
 			// store additional marker data
