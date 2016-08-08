@@ -545,7 +545,9 @@ function loadPokeRadar() {
 			var options = {
 				icon: icon,
 				id: id,
-				pokemon: name
+				pokemon: name,
+				lat: lat,
+				lng: lng
 			}
 
     		var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
@@ -572,11 +574,10 @@ function loadPokeRadar() {
     			}
     			$('#myMarkerModal').modal();
 
-
     			var lat1 = currentLocationMarker.getLatLng().lat;
     			var lon1 = currentLocationMarker.getLatLng().lng;
-    			var lat2 = this.options.lat;
-    			var lon2 = this.options.lng;
+    			var lat2 = parseFloat(this.options.lat);
+    			var lon2 = parseFloat(this.options.lng);
 
     			console.log("lat1: " + lat1);
     			console.log("lon1: " + lon1);
