@@ -39,7 +39,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="submitbtn" type="button" class="btn btn-primary">Report</button>
+        <button id="submitbtn" type="button" class="btn btn-primary btn-raised btn-success">Report</button>
       </div>
 
     </div>
@@ -61,7 +61,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="removeEntryBtn" type="button" class="btn btn-primary btn-danger">Remove</button>
+        <button id="removeEntryBtn" type="button" class="btn btn-primary btn-raised btn-danger">Remove</button>
       </div>
 
     </div>
