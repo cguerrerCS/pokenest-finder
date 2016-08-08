@@ -572,7 +572,17 @@ function loadPokeRadar() {
     			}
     			$('#myMarkerModal').modal();
 
-    			console.log(currentLocationMarker.getLatLng());
+
+    			var lat1 = currentLocationMarker.getLatLng().lat;
+    			var lon1 = currentLocationMarker.getLatLng().lng;
+    			var lat2 = this.options.lat;
+    			var lon2 = this.options.lng;
+
+    			console.log("lat1: " + lat1);
+    			console.log("lon1: " + lon1);
+    			console.log("lat2: " + lat2);
+    			console.log("lon2: " + lon1);
+    			console.log("distance: " + distance(lat1, lon1, lat2, lon2, 'M'));
     		});
 
 			// store additional marker data
