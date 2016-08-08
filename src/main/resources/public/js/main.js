@@ -7,7 +7,6 @@ var modalLocationMarker = undefined;
 var currentLocationMarker = undefined;
 var nestMarkers = [];
 var markerData = {};
-
 var selectedMarkerID = undefined;
 
 /* Settings */
@@ -572,6 +571,8 @@ function loadPokeRadar() {
     				$('#removeEntryBtn').hide();
     			}
     			$('#myMarkerModal').modal();
+
+    			console.log(currentLocationMarker);
     		});
 
 			// store additional marker data
