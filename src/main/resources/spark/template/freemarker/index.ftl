@@ -58,7 +58,7 @@
       </div>
 
       <div class="modal-body">
-        <h4 id="markerdata-distance">Distance</h4>
+        <h5 id="markerdata-distance">Distance</h5>
       </div>
 
       <div class="modal-footer">
