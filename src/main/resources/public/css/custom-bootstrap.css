@@ -11,7 +11,7 @@
 }
 
 .togglebutton label input[type=checkbox]:checked + .toggle {
-	background-color: #69F0AE;
+	background-color: #4caf50;
 }
 
 .togglebutton label input[type=checkbox]:checked + .toggle:after { 
