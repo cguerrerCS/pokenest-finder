@@ -13,7 +13,9 @@
 <!-- Bootstrap Material Design -->
 <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css">
 <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-material-design/dist/css/ripples.min.css">
-<link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-material-design/dist/css/material-fullpalette.min.css">
+
+<!-- Core CSS of SnackbarJS, find it in /dist -->
+<link href="snackbarjs/dist/snackbar.min.css" rel=stylesheet>
 
 <!-- Include Google's material icons -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -31,27 +33,30 @@
 <link rel="stylesheet" href="css/custom-bootstrap.css">
 <link rel="stylesheet" href="css/main.css">
 
- <!-- Again, we're serving up the unminified source for clarity. -->
- <script src="js/jquery-2.1.1.js"></script>
+<!-- Again, we're serving up the unminified source for clarity. -->
+<script src="js/jquery-2.1.1.js"></script>
 
- <!-- Include for open source Leaflet mapping API js dependencies -->
- <script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>
+<!-- Include for open source Leaflet mapping API js dependencies -->
+<script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>
 
- <!-- Include Javascript add ons required for leaflet easy button -->
- <script src="../node_modules/leaflet-easybutton/src/easy-button.js"></script>
+<!-- Include Javascript add ons required for leaflet easy button -->
+<script src="../node_modules/leaflet-easybutton/src/easy-button.js"></script>
 
- <!-- Bootstrap Latest compiled and minified JavaScript -->
- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- Bootstrap Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
- <!-- Bootstrap Material Design JS -->
- <script src="../node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
- <script src="../node_modules/bootstrap-material-design/dist/js/ripples.min.js"></script>
+<!-- Bootstrap Material Design JS -->
+<script src="../node_modules/bootstrap-material-design/dist/js/material.min.js"></script>
+<script src="../node_modules/bootstrap-material-design/dist/js/ripples.min.js"></script>
 
- <!-- Include Twitter's open source typeahead box -->
- <script src="js/typeahead.js"></script>
+<!-- SnackbarJS Toast & Snackbar notifications -->
+<script src="snackbarjs/dist/snackbar.min.js"></script>
 
- <!-- Main pokemon nest finder javascript -->
- <script src="js/main.js"></script>
- <script src="js/pokedex.js"></script>
- <script src="js/map.js"></script>
+<!-- Include Twitter's open source typeahead box -->
+<script src="js/typeahead.js"></script>
+
+<!-- Main pokemon nest finder javascript -->
+<script src="js/main.js"></script>
+<script src="js/pokedex.js"></script>
+<script src="js/map.js"></script>
  
