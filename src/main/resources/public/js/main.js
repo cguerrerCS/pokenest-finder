@@ -40,6 +40,9 @@ $( document ).ready(function() {
 
 	// material design startup
 	$.material.init()
+
+
+	// $('#pokenest-progress-bar')
     
     // pokemon nest map
 	pokemap = L.map('mapid', {
@@ -656,4 +659,3 @@ function getCookie(cname) {
     }
     return "";
 }
-
