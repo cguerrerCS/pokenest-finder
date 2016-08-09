@@ -24,10 +24,14 @@
 
 /* ************************************************************************************ */
 
-#pokenest-progress-bar {
+#pokenest-progress-container {
 	width: 100%;
 	position: fixed;
-	top: 50px;
+	top: 50%;
+}
+
+#pokenest-progress-bar {
+	width: 50%;
 }
 
 .navbar-brand>img {
