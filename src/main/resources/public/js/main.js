@@ -42,9 +42,6 @@ $( document ).ready(function() {
 	// material design startup
 	$.material.init()
 
-
-	// $('#pokenest-progress-bar')
-    
     // pokemon nest map
 	pokemap = L.map('mapid', {
 		zoomControl: false, 
@@ -228,7 +225,7 @@ $( document ).ready(function() {
 			// get responce object 
 			var responseObject = JSON.parse(responseJSON);
 			var success = responseObject.success;
-			var error = "Something went wrong";
+			var error = responseObject.error;
 
 			// add notification for user
 			var options =  {
@@ -237,9 +234,9 @@ $( document ).ready(function() {
     			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 			}
 			if (success) {
-				options['content'] = pokemon + "PokéNest location recorded.";
+				options['content'] = pokemon + " PokéNest location recorded.";
 			} else {
-				options['content'] = "Error: ";
+				options['content'] = "Error: " + error;
 			}
 			$.snackbar(options);
 		}); 
