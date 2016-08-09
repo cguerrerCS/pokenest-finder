@@ -24,6 +24,11 @@
 
 /* ************************************************************************************ */
 
+.pokenest-progress-bar {
+	position: fixed;
+	top: 50px;
+}
+
 .navbar-brand>img {
 	display: inline-block;
 	padding-bottom: 5px;

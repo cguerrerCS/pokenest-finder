@@ -8,5 +8,5 @@
 	</div>
   </div>
 
-  <div id="pokenest-progress" class="progress" style="width: 100%"></div>
+  <div id="pokenest-progress-bar" class="progress" style="width: 100%"></div>
 </nav>
