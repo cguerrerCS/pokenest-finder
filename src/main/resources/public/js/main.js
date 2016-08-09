@@ -8,6 +8,7 @@ var currentLocationMarker = undefined;
 var nestMarkers = [];
 var markerData = {};
 var selectedMarkerID = undefined;
+var progress = 0;
 
 /* Settings */
 // var followUser = false;
@@ -611,6 +612,9 @@ function locate() {
 }
 
 function update() {
+
+	progress = (progress + 10) % 100;
+	$("#pokenest-progress-bar").css("width", progress + "%");
 
 	var follow = false;
 	var cookie = getCookie("follow");
