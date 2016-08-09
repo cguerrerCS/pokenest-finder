@@ -39,7 +39,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="submitbtn" type="button" class="btn btn-primary">Report</button>
+        <button id="submitbtn" type="button" class="btn btn-primary btn-raised btn-success">Report</button>
       </div>
 
     </div>
@@ -57,11 +57,13 @@
         <h4 class="modal-title" id="markerdata-header">Pokemarker Data!</h4>
       </div>
 
-      <div class="modal-body"></div>
+      <div class="modal-body">
+        <h5 id="markerdata-distance"></h5>
+      </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="removeEntryBtn" type="button" class="btn btn-primary btn-danger">Remove</button>
+        <button id="removeEntryBtn" type="button" class="btn btn-primary btn-raised btn-danger">Remove</button>
       </div>
 
     </div>
@@ -80,7 +82,7 @@
       </div>
 
       <div class="modal-body">
-        
+
         <div class="form-group">
           <h4>Location</h4>
           <div class="togglebutton">
@@ -108,7 +110,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="applysettingsbtn" type="button" class="btn btn-primary btn-material-blue">Apply</button>
+        <button id="applysettingsbtn" type="button" class="btn btn-primary btn-raised btn-info">Apply</button>
       </div>
 
     </div>
