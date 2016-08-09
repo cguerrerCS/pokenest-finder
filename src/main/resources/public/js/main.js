@@ -603,6 +603,15 @@ function loadPokeRadar() {
 
 			// cache nest marker reference for later
 			nestMarkers.push(m);
+
+			// add notification for user
+			var options =  {
+    			content: "Found nearby markers.", 	// text of the snackbar
+    			style: "snackbar", 					// add a custom class to your snackbar
+    			timeout: 100 						// time in milliseconds after the snackbar autohides, 0 is disabled
+			}
+
+			$.snackbar(options);
 		}
 	}); 
 }
