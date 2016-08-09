@@ -24,7 +24,7 @@
 
 /* ************************************************************************************ */
 
-.pokenest-progress-bar {
+#pokenest-progress-bar {
 	position: fixed;
 	top: 50px;
 }
