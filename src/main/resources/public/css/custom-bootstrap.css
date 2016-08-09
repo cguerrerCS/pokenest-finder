@@ -27,7 +27,7 @@
 #pokenest-progress-container {
 	width: 100%;
 	position: fixed;
-	top: 50%;
+	top: 50px;
 }
 
 #pokenest-progress-bar {
