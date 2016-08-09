@@ -25,6 +25,10 @@ button:focus {
   left: 0;
 }
 
+#sitemapid .leaflet-control-attribution {
+  display: none;
+}
+
 .pokenest-logo-img img {
   display: inline-block;
   margin-left: 14px;
