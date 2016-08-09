@@ -31,7 +31,8 @@
 }
 
 #pokenest-progress-bar {
-	width: 50%;
+	width: 60%;
+	background-color: #FFD740;
 }
 
 .navbar-brand>img {
