@@ -228,6 +228,15 @@ $( document ).ready(function() {
 			// get responce object 
 			var responseObject = JSON.parse(responseJSON);
 			console.log(responseObject);
+
+			// add notification for user
+			var options =  {
+    			content: "Pokenest location recorded.", 	// text of the snackbar
+    			style: "snackbar", 							// add a custom class to your snackbar
+    			timeout: 2000 								// time in milliseconds after the snackbar autohides, 0 is disabled
+			}
+
+			$.snackbar(options);
 		}); 
 	});
 
@@ -603,15 +612,6 @@ function loadPokeRadar() {
 
 			// cache nest marker reference for later
 			nestMarkers.push(m);
-
-			// add notification for user
-			var options =  {
-    			content: "Found nearby markers.", 	// text of the snackbar
-    			style: "snackbar", 					// add a custom class to your snackbar
-    			timeout: 100 						// time in milliseconds after the snackbar autohides, 0 is disabled
-			}
-
-			$.snackbar(options);
 		}
 	}); 
 }
