@@ -39,3 +39,25 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	if (unit=="N") { dist = dist * 0.8684 }
 	return dist
 }
+
+const TILE_WIDTH = 0.01;  // latlng units
+const TILE_HEIGHT = 0.01; // latlng units
+
+function loadViewport(viewport) {
+
+	/* get user's current viewport as a latlng bounding box */
+	var bounds = pokemap.getBounds();
+	var northEastLat = bounds._northEast.lat;
+	var northEastLng = bounds._northEast.lng;
+	var southWestLat = bounds._southWest.lat;
+	var southWestLng = bounds._southWest.lng;
+
+	/* TODO: split current viewport into map tiles */
+
+	/* TODO: request map tile info from the server */
+
+	/* TODO: cache server results */
+
+	/* TODO: display viewport markers */
+
+}

@@ -504,12 +504,14 @@ function loadPokeRadar() {
 	console.log("pokeradar search...");
 	var bounds = pokemap.getBounds();
 
-	var postParameters = {
+	var viewport = {
 		southWestLat: bounds._southWest.lat, 
 		southWestLng: bounds._southWest.lng,
 		northEastLat: bounds._northEast.lat, 
 		northEastLng: bounds._northEast.lng
 	}
+
+	var postParameters = viewport;
 
 	/* remove old pokenest markers */
 	for (i = 0; i < nestMarkers.length; i++) { 
