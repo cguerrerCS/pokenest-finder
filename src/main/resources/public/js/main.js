@@ -227,15 +227,20 @@ $( document ).ready(function() {
 
 			// get responce object 
 			var responseObject = JSON.parse(responseJSON);
-			console.log(responseObject);
+			var success = responseObject.success;
+			var error = "Something went wrong";
 
 			// add notification for user
 			var options =  {
-    			content: "Pokenest location recorded.", 	// text of the snackbar
-    			style: "snackbar", 							// add a custom class to your snackbar
-    			timeout: 2000 								// time in milliseconds after the snackbar autohides, 0 is disabled
+    			content: "", 		// text of the snackbar
+    			style: "snackbar",  // add a custom class to your snackbar
+    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 			}
-
+			if (success) {
+				options['content'] = pokemon + "PokéNest location recorded.";
+			} else {
+				options['content'] = "Error: ";
+			}
 			$.snackbar(options);
 		}); 
 	});
