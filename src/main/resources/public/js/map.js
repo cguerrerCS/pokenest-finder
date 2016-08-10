@@ -43,7 +43,9 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 const TILE_WIDTH = 0.01;  // latlng units
 const TILE_HEIGHT = 0.01; // latlng units
 
-function loadViewport(viewport) {
+function loadViewportMarkers() {
+
+	console.log("processing current viewport and loading markers...");
 
 	/* get user's current viewport as a latlng bounding box */
 	var bounds = pokemap.getBounds();
@@ -53,11 +55,16 @@ function loadViewport(viewport) {
 	var southWestLng = bounds._southWest.lng;
 
 	/* TODO: split current viewport into map tiles */
+	var loLng = northEastLng;
+	var hiLng = southWestLng;
+	console.log("loLng: " + loLng);
+	console.log("hiLng: " + hiLng);
+	console.log("loLng/0.01 = " + loLng/0.01);
+	console.log("hiLng/0.01 = " + hiLng/0.01);
 
 	/* TODO: request map tile info from the server */
 
 	/* TODO: cache server results */
 
 	/* TODO: display viewport markers */
-
 }

@@ -516,6 +516,8 @@ $( document ).ready(function() {
 /* Locate all pokemon nests within current viewport */
 function loadPokeRadar() {
 
+	loadViewportMarkers();
+
 	console.log("pokeradar search...");
 	var bounds = pokemap.getBounds();
 
