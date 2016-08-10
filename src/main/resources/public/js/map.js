@@ -68,7 +68,7 @@ function loadViewportMarkers() {
 	var maxLngBound = Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH);
 
 	var lng;
-	for (lng = minLngBound; i < maxLngBound; i += TILE_WIDTH) { 
+	for (lng = minLngBound; lng < maxLngBound; lng += TILE_WIDTH) { 
     	console.log("tile range (" + lng + ") to (" + (lng + TILE_WIDTH) + ")");
 	}
 
