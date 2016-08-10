@@ -71,7 +71,7 @@ function loadViewportMarkers() {
 	// }
 
 	var lng;
-	for (lng = minLngBound; lng < math.eval(maxLngBound + "+" + TILE_WIDTH); lng = math.eval(lng + "+" + TILE_WIDTH)) {  
+	for (lng = minLngBound; lng <= maxLngBound; lng = parseFloat(math.eval(lng + "+" + TILE_WIDTH).toFixed(2))) {  
 		console.log("lng real: " + lng);
     	console.log("lng range: [" + lng.toFixed(2) + "," + math.eval(lng + "+" + TILE_WIDTH).toFixed(2) + "]");
 	}
