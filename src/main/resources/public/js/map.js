@@ -59,8 +59,11 @@ function loadViewportMarkers() {
 	var hiLng = southWestLng;
 	console.log("loLng: " + loLng);
 	console.log("hiLng: " + hiLng);
-	console.log("loLng/0.01 = " + loLng/0.01);
-	console.log("hiLng/0.01 = " + hiLng/0.01);
+	console.log("loLng/0.01 = real -> " + loLng/0.01);
+	console.log("hiLng/0.01 = real -> " + hiLng/0.01);
+	console.log("loLng/0.01 = floor -> " + Math.floor(loLng/0.01));
+	console.log("hiLng/0.01 = floor -> " + Math.floor(hiLng/0.01));
+
 
 	/* TODO: request map tile info from the server */
 
