@@ -57,22 +57,21 @@ function loadViewportMarkers() {
 	/* TODO: split current viewport into map tiles */
 	var loLng = southWestLng;
 	var hiLng = northEastLng;
-	console.log("loLng: " + loLng);
-	console.log("hiLng: " + hiLng);
-	console.log("loLng/0.01 = real -> " + loLng/0.01);
-	console.log("hiLng/0.01 = real -> " + hiLng/0.01);
-	console.log("loLng/0.01 = floor -> " + Math.floor(loLng/0.01));
-	console.log("hiLng/0.01 = floor -> " + Math.floor(hiLng/0.01));
-
 	var minLngBound = Math.floor(loLng/TILE_WIDTH) * (TILE_WIDTH);
 	var maxLngBound = Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH);
-	console.log("minLngBound: " + minLngBound);
-	console.log("maxLngBound: " + maxLngBound);
+	console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
+
+	// var loLat = 
+
+	// var lat;
+	// for (lng = minLngBound; lng < math.eval(maxLngBound + "+" + TILE_WIDTH); lng = math.eval(lng + "+" + TILE_WIDTH)) {  
+ //    	console.log("lng range: [" + lng.toFixed(2) + "," + math.eval(lng + "+" + TILE_WIDTH).toFixed(2) + "]");
+	// }
 
 	var lng;
 	for (lng = minLngBound; lng < math.eval(maxLngBound + "+" + TILE_WIDTH); lng = math.eval(lng + "+" + TILE_WIDTH)) {  
-		console.log("lng: " + lng.toFixed(2));
-    	console.log("range: [" + lng.toFixed(2) + "," + math.eval(lng + "+" + TILE_WIDTH).toFixed(2) + "]");
+		console.log("lng real: " + lng);
+    	console.log("lng range: [" + lng.toFixed(2) + "," + math.eval(lng + "+" + TILE_WIDTH).toFixed(2) + "]");
 	}
 
 	/* TODO: request map tile info from the server */
