@@ -59,6 +59,8 @@ function loadViewportMarkers() {
 	var hiLng = northEastLng;
 	var minLngBound = Math.floor(loLng/TILE_WIDTH) * (TILE_WIDTH);
 	var maxLngBound = Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH);
+	console.log("Longitude low: " + loLng);
+	console.log("Longitude high: " + hiLng);
 	console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
 
 	// var loLat = 
