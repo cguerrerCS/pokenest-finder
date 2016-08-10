@@ -195,11 +195,13 @@ $( document ).ready(function() {
 		
 	});
 
+	loadViewportMarkers();
+
 	// by default, follow user
-	setInterval(function() { update(); }, 2000);
+	// setInterval(function() { update(); }, 2000);
 
 	// find pokemon within viewport
-	setInterval(function() { loadPokeRadar(); }, 10000);
+	// setInterval(function() { loadPokeRadar(); }, 10000);
 
 	$('#submitbtn').on('click', function() {
 
@@ -515,8 +517,6 @@ $( document ).ready(function() {
 
 /* Locate all pokemon nests within current viewport */
 function loadPokeRadar() {
-
-	loadViewportMarkers();
 
 	console.log("pokeradar search...");
 	var bounds = pokemap.getBounds();
