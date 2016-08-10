@@ -66,6 +66,8 @@ function loadViewportMarkers() {
 
 	var minLngBound = Math.floor(loLng/TILE_WIDTH) * (TILE_WIDTH);
 	var maxLngBound = Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH);
+	console.log("minLngBound: " + minLngBound);
+	console.log("maxLngBound: " + maxLngBound);
 
 	var lng;
 	for (lng = minLngBound; lng < maxLngBound; lng += TILE_WIDTH) { 
