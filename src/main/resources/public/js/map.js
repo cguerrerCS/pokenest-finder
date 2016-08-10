@@ -70,8 +70,8 @@ function loadViewportMarkers() {
 	console.log("maxLngBound: " + maxLngBound);
 
 	var lng;
-	for (lng = minLngBound; lng < maxLngBound; lng += TILE_WIDTH) { 
-    	console.log("tile range (" + lng + ") to (" + (lng + TILE_WIDTH) + ")");
+	for (lng = minLngBound; lng < maxLngBound; lng = (lng + TILE_WIDTH).toFixed(2)) { 
+    	console.log("tile range (" + lng + ") to (" + (lng + TILE_WIDTH).toFixed(2) + ")");
 	}
 
 	/* TODO: request map tile info from the server */
