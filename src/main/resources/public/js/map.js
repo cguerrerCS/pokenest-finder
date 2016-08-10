@@ -55,8 +55,8 @@ function loadViewportMarkers() {
 	var southWestLng = bounds._southWest.lng;
 
 	/* TODO: split current viewport into map tiles */
-	var loLng = northEastLng;
-	var hiLng = southWestLng;
+	var loLng = southWestLng;
+	var hiLng = northEastLng;
 	console.log("loLng: " + loLng);
 	console.log("hiLng: " + hiLng);
 	console.log("loLng/0.01 = real -> " + loLng/0.01);
