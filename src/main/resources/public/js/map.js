@@ -70,7 +70,7 @@ function loadViewportMarkers() {
 	console.log("maxLngBound: " + maxLngBound);
 
 	var lng;
-	for (lng = minLngBound; lng <= math.eval(maxLngBound + "+" + TILE_WIDTH); lng = math.eval(lng + "+" + TILE_WIDTH)) {  
+	for (lng = minLngBound; lng < math.eval(maxLngBound + "+" + TILE_WIDTH); lng = math.eval(lng + "+" + TILE_WIDTH)) {  
 		console.log("lng: " + lng.toFixed(2));
     	console.log("range: [" + lng.toFixed(2) + "," + math.eval(lng + "+" + TILE_WIDTH).toFixed(2) + "]");
 	}
