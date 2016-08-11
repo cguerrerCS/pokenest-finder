@@ -219,7 +219,7 @@ function loadViewportMarkers() {
 			    			var lat2 = parseFloat(this.options.lat);
 			    			var lon2 = parseFloat(this.options.lng);
 			    			var dist = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
-			    			$('#markerdata-distance').html("Distance   <b>" + distance + "</b> mi.");
+			    			$('#markerdata-distance').html("Distance   <b>" + dist + "</b> mi.");
     					});
 					}
 				});
