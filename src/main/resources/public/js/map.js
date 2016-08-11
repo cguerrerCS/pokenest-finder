@@ -113,7 +113,7 @@ function loadViewportMarkers() {
 		}	
 
 		/* loadtile function sets its "private" variables using a closure (copy of i value and clone of postParameters)*/
-		var loadtile = (function(i) {
+		var loadTileMarkers = (function(i) {
 
 			var privatePostParameters = {
 				southWestLat: sharedPostParameters.southWestLat, 
@@ -156,15 +156,21 @@ function loadViewportMarkers() {
 							lng: lng
 						}
 
+						// southwest tile bounding box visualization
+			 			L.circle([privatePostParameters.southWestLat, privatePostParameters.southWestLng], 10, {
+			   			 	color: 'blue',
+   					     	fillColor: '#4d4dff',
+   						  	fillOpacity: 0.5
+						}).addTo(pokemap);
+
 						L.marker([lat, lng], options).addTo(pokemap);
-						
 					}
 				});
 			}
 
     	})(i);
 
-    	loadtile();
+    	loadTileMarkers();
 	}
 
 
