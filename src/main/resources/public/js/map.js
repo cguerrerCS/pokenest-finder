@@ -73,6 +73,7 @@ function loadViewportMarkers() {
 	console.log("Latitude high: " + hiLat);
 	console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
 
+	var tiles = [];
 	var lat;
 	var lng;
 
@@ -81,8 +82,6 @@ function loadViewportMarkers() {
 
     		var southWestPoint = {lat: lat, lng: lng};
     		var northEastPoint = {lat: parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION)), lng: parseFloat(math.eval(lng + "+" + TILE_WIDTH).toFixed(FLOAT_PRECISION))};
-    		// console.log("southWest point: (" + southWestPoint.lat + "," + southWestPoint.lng + ")");
-    		// console.log("northEast point: (" + northEastPoint.lat + "," + northEastPoint.lng + ")");
 
  			// draw all southwest bounding box points
  			L.circle([southWestPoint.lat, southWestPoint.lng], 10, {
@@ -98,11 +97,13 @@ function loadViewportMarkers() {
     			fillOpacity: 0.5
 			}).addTo(pokemap);
 
-			var boundingBox = {northEast: northEastPoint, southWest: southWestPoint};
-			console.log(boundingBox);
+			// tiles defined latlng bounding boxes
+			tiles.push({northEast: northEastPoint, southWest: southWestPoint});
 		}
 	}
 
+	console.log(tiles);
+	
 	/* TODO: request map tile info from the server */
 
 	/* TODO: cache server results */
