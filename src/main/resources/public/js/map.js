@@ -103,21 +103,25 @@ function loadViewportMarkers() {
 		}
 	}
 
-	var t = tiles[0];
+	var i;
+	for (i = 0; i < tiles.length; i++) {
+		var t = tiles[0];
 
-	var postParameters = {
-		southWestLat: t.southWest.lat, 
-		southWestLng: t.southWest.lng,
-		northEastLat: t.northEast.lat, 
-		northEastLng: t.northEast.lng
-	}	
+		var postParameters = {
+			southWestLat: t.southWest.lat, 
+			southWestLng: t.southWest.lng,
+			northEastLat: t.northEast.lat, 
+			northEastLng: t.northEast.lng
+		}	
 
-	$.post("/nearby", postParameters, function(responseJSON){
+		$.post("/nearby", postParameters, function(responseJSON){
 
-		/* get responce object */
-		responseObject = JSON.parse(responseJSON);
-		console.log(responseObject);
-	});
+			/* get responce object */
+			responseObject = JSON.parse(responseJSON);
+			console.log(responseObject);
+			console.log(i);
+		});
+	}
 
 	// console.log(tiles);
 
