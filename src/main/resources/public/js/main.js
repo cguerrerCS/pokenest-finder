@@ -6,7 +6,6 @@ var modalCurrentLocation = undefined;
 var modalLocationMarker = undefined;
 var currentLocationMarker = undefined;
 var nestMarkers = [];
-var markerData = {};
 var selectedMarkerID = undefined;
 var progress = 0;
 
@@ -613,7 +612,7 @@ function loadPokeRadar() {
 			// data["googleMapsLink"] = googleMapsLink;
 
 			// cache marker data for later
-			markerData[m] = data;
+			// markerData[m] = data;
 
 			// cache nest marker reference for later
 			nestMarkers.push(m);

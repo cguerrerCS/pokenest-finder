@@ -190,7 +190,7 @@ function loadViewportMarkers() {
 							lng: lng
 						}
 
-						L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
+						var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
     
 			    			var pokemon = this.options.pokemon;
 			    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
@@ -220,11 +220,14 @@ function loadViewportMarkers() {
 			    			var lon2 = parseFloat(this.options.lng);
 			    			var dist = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
 			    			$('#markerdata-distance').html("Distance   <b>" + dist + "</b> mi.");
-    					});
+    					});	
 					}
+
+					// tiles identified using a corner latlng coordinate (unique to tile)
+					var tileID = privatePostParameters.southWestLat + ":" + privatePostParameters.southWestLng;
+					console.log("ID: " + tileID);
 				});
 			}
-
     	})(i);
 
     	loadTileMarkers();
