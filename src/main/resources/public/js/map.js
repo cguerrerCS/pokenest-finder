@@ -189,7 +189,37 @@ function loadViewportMarkers() {
 							lng: lng
 						}
 
-						L.marker([lat, lng], options).addTo(pokemap);
+						L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
+    
+			    			var pokemon = this.options.pokemon;
+			    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
+			    			var id = this.options.id;
+			    			console.log(id + " " + pokemon);
+			    			selectedMarkerID = id;
+
+			    			// show pokenest info modal
+			    			$('#markerdata-header').html(pokemon + " Pokenest Info");
+
+			    			var privileged = false;
+			    			var cookie = getCookie("access");
+			    			if (cookie == "true") {
+			    				privileged = true;
+			    			}
+
+			    			if (privileged) {
+			    				$('#removeEntryBtn').show();
+			    			} else {
+			    				$('#removeEntryBtn').hide();
+			    			}
+			    			$('#myMarkerModal').modal();
+
+			    			var lat1 = currentLocationMarker.getLatLng().lat;
+			    			var lon1 = currentLocationMarker.getLatLng().lng;
+			    			var lat2 = parseFloat(this.options.lat);
+			    			var lon2 = parseFloat(this.options.lng);
+			    			var distance = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
+			    			$('#markerdata-distance').html("Distance   <b>" + distance + "</b> mi.");
+    					});
 					}
 				});
 			}
