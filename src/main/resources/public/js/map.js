@@ -115,15 +115,26 @@ function loadViewportMarkers() {
 			northEastLng: t.northEast.lng
 		}	
 
-		$.post("/nearby", postParameters, function(responseJSON){
+		// $.post("/nearby", postParameters, function(responseJSON) {
 
-			/* get responce object */
-			var iteration = i;
-			responseObject = JSON.parse(responseJSON);
-			console.log(responseObject);
-			console.log(iteration);
-		});
+		// 	/* get responce object */
+		// 	responseObject = JSON.parse(responseJSON);
+		// 	console.log(responseObject);
+		// 	console.log(i);
+		// });
 
+		(function(iteration) {
+        	
+        	$.post("/nearby", postParameters, function(responseJSON) {
+
+				/* get responce object */
+				responseObject = JSON.parse(responseJSON);
+				console.log(responseObject);
+				console.log(postParameters)
+				console.log(iteration);
+			});
+
+    	})(i);
 	}
 
 
