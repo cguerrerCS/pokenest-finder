@@ -43,7 +43,7 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 const TILE_WIDTH = 0.1;    // latlng units
 const TILE_HEIGHT = 0.1;   // latlng units
 const FLOAT_PRECISION = 2; // floating point rounded using .toFixed(FLOAT_PRECISION)
-const PADDING = 2;         // number of padding tiles added to bounding box
+const PADDING = 0;         // number of padding tiles added to bounding box
 
 function loadViewportMarkers() {
 
@@ -57,8 +57,8 @@ function loadViewportMarkers() {
 	/* convert longitude bounds to cacheable tiles (string form) */
 	var loLng = southWestLng;
 	var hiLng = northEastLng;
-	var minLngBound = (Math.floor(loLng/TILE_WIDTH) * (TILE_WIDTH)) - (PADDING * TILE_WIDTH);
-	var maxLngBound = (Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH)) + (PADDING * TILE_WIDTH);
+	var minLngBound = parseFloat(math.eval((Math.floor(loLng/TILE_WIDTH) * (TILE_WIDTH)) + "-" + (PADDING * TILE_WIDTH)).toFixed(FLOAT_PRECISION));
+	var maxLngBound = parseFloat(math.eval((Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH)) + "+" + (PADDING * TILE_WIDTH)).toFixed(FLOAT_PRECISION));
 	// console.log("Longitude low: " + loLng);
 	// console.log("Longitude high: " + hiLng);
 	console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
@@ -66,8 +66,8 @@ function loadViewportMarkers() {
 	/* convert latitude bounds to cacheable tiles (string form) */
 	var loLat = southWestLat;
 	var hiLat = northEastLat;
-	var minLatBound = (Math.floor(loLat/TILE_HEIGHT) * (TILE_HEIGHT)) - (PADDING * TILE_HEIGHT);
-	var maxLatBound = (Math.floor(hiLat/TILE_HEIGHT) * (TILE_HEIGHT)) + (PADDING * TILE_HEIGHT);
+	var minLatBound = parseFloat(math.eval((Math.floor(loLat/TILE_HEIGHT) * (TILE_HEIGHT)) + "-" + (PADDING * TILE_HEIGHT)).toFixed(FLOAT_PRECISION));
+	var maxLatBound = parseFloat(math.eval((Math.floor(hiLat/TILE_HEIGHT) * (TILE_HEIGHT)) + "+" + (PADDING * TILE_HEIGHT)).toFixed(FLOAT_PRECISION));
 	// console.log("Latitude low: " + loLat);
 	// console.log("Latitude high: " + hiLat);
 	console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
