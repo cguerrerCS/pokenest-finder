@@ -123,9 +123,9 @@ function loadViewportMarkers() {
 		// 	console.log(i);
 		// });
 
-		(function(iteration) {
+		(function(iteration, pp) {
         	
-        	$.post("/nearby", postParameters, function(responseJSON) {
+        	$.post("/nearby", pp, function(responseJSON) {
 
 				/* get responce object */
 				responseObject = JSON.parse(responseJSON);
@@ -134,7 +134,7 @@ function loadViewportMarkers() {
 				console.log(iteration);
 			});
 
-    	})(i);
+    	})(i, postParameters);
 	}
 
 
