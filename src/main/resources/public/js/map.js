@@ -122,7 +122,7 @@ function loadViewportMarkers() {
 			console.log(i);
 		});
 
-		sleep(1000);
+		sleep(100);
 	}
 
 
