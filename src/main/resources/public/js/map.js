@@ -130,9 +130,9 @@ function loadViewportMarkers() {
 					responseObject = JSON.parse(responseJSON);
 
 					/* debugging logs */
-					console.log(responseObject);	
-					console.log(privatePostParameters);
-					console.log(i);
+					// console.log(responseObject);	
+					// console.log(privatePostParameters);
+					// console.log(i);
 
 					var rectBounds = [
 						[privatePostParameters.southWestLat, privatePostParameters.southWestLng], 
