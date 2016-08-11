@@ -43,7 +43,7 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 const TILE_WIDTH = 0.1;    // latlng units
 const TILE_HEIGHT = 0.1;   // latlng units
 const FLOAT_PRECISION = 2; // floating point rounded using .toFixed(FLOAT_PRECISION)
-const PADDING = 0;         // number of padding tiles added to bounding box
+const PADDING = 2;         // number of padding tiles added to bounding box
 
 function loadViewportMarkers() {
 
@@ -59,8 +59,6 @@ function loadViewportMarkers() {
 	var hiLng = northEastLng;
 	var minLngBound = parseFloat(math.eval((Math.floor(loLng/TILE_WIDTH) * (TILE_WIDTH)) + "-" + (PADDING * TILE_WIDTH)).toFixed(FLOAT_PRECISION));
 	var maxLngBound = parseFloat(math.eval((Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH)) + "+" + (PADDING * TILE_WIDTH)).toFixed(FLOAT_PRECISION));
-	// console.log("Longitude low: " + loLng);
-	// console.log("Longitude high: " + hiLng);
 	console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
 
 	/* convert latitude bounds to cacheable tiles (string form) */
@@ -68,8 +66,6 @@ function loadViewportMarkers() {
 	var hiLat = northEastLat;
 	var minLatBound = parseFloat(math.eval((Math.floor(loLat/TILE_HEIGHT) * (TILE_HEIGHT)) + "-" + (PADDING * TILE_HEIGHT)).toFixed(FLOAT_PRECISION));
 	var maxLatBound = parseFloat(math.eval((Math.floor(hiLat/TILE_HEIGHT) * (TILE_HEIGHT)) + "+" + (PADDING * TILE_HEIGHT)).toFixed(FLOAT_PRECISION));
-	// console.log("Latitude low: " + loLat);
-	// console.log("Latitude high: " + hiLat);
 	console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
 
 	var tiles = [];
@@ -78,27 +74,9 @@ function loadViewportMarkers() {
 
 	for (lat = minLatBound; lat <= maxLatBound; lat = parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION))) {  
     	for (lng = minLngBound; lng <= maxLngBound; lng = parseFloat(math.eval(lng + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION))) {  
-
     		var southWestPoint = {lat: lat, lng: lng};
     		var northEastPoint = {lat: parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION)), lng: parseFloat(math.eval(lng + "+" + TILE_WIDTH).toFixed(FLOAT_PRECISION))};
-
- 			// southwest tile bounding box visualization
- 			// 	L.circle([southWestPoint.lat, southWestPoint.lng], 10, {
-   			//  	color: 'red',
-   			//  	fillColor: '#f03',
-   			//  	fillOpacity: 0.5
-			// }).addTo(pokemap);
-
- 			// northeast tile bounding box visualization
-			// L.circle([northEastPoint.lat, northEastPoint.lng], 10, {
-   			// 		color: 'blue',
-   			//  	fillColor: '#4d4dff',
-   			//  	fillOpacity: 0.5
-			// }).addTo(pokemap);
-
-			// tiles defined at latlng bounding boxes (two latlng points)
-			var tile = {northEast: northEastPoint, southWest: southWestPoint};
-			tiles.push(tile);
+			tiles.push({northEast: northEastPoint, southWest: southWestPoint});
 		}
 	}
 
