@@ -145,13 +145,13 @@ function loadViewportMarkers() {
 					}, 10000);
 
 					setTimeout(function(){ 
-						rectangle.setStyle({fillColor: '##ff4d4d'});
+						rectangle.setStyle({fillColor: '#ff4d4d'});
 					}, 15000);
 
 					setTimeout(function(){ 
 						pokemap.removeLayer(rectangle);
 					}, 20000);
-					
+
 					// northeast tile bounding box visualization
 					// var m1 = L.circle([privatePostParameters.northEastLat, privatePostParameters.northEastLng], 10, {
 		   			// 		color: 'red',
