@@ -105,7 +105,8 @@ function loadViewportMarkers() {
 
 	var i;
 	for (i = 0; i < tiles.length; i++) {
-		var t = tiles[0];
+		
+		var t = tiles[i];
 
 		var postParameters = {
 			southWestLat: t.southWest.lat, 
@@ -117,12 +118,12 @@ function loadViewportMarkers() {
 		$.post("/nearby", postParameters, function(responseJSON){
 
 			/* get responce object */
+			var iteration = i;
 			responseObject = JSON.parse(responseJSON);
 			console.log(responseObject);
-			console.log(i);
+			console.log(iteration);
 		});
 
-		sleep(100);
 	}
 
 
@@ -134,13 +135,4 @@ function loadViewportMarkers() {
 	/* TODO: cache server results */
 
 	/* TODO: display viewport markers */
-}
-
-function sleep(milliseconds) {
-  var start = new Date().getTime();
-  for (var i = 0; i < 1e7; i++) {
-    if ((new Date().getTime() - start) > milliseconds){
-      break;
-    }
-  }
 }
