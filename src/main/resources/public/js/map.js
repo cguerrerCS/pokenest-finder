@@ -54,7 +54,7 @@ function loadViewportMarkers() {
 	var southWestLat = bounds._southWest.lat;
 	var southWestLng = bounds._southWest.lng;
 
-	/* TODO: split current viewport into map tiles */
+	/* TODO: convert longitude bounds to cacheable ranges */
 	var loLng = southWestLng;
 	var hiLng = northEastLng;
 	var minLngBound = Math.floor(loLng/TILE_WIDTH) * (TILE_WIDTH);
@@ -63,18 +63,29 @@ function loadViewportMarkers() {
 	console.log("Longitude high: " + hiLng);
 	console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
 
-	// var loLat = 
+	/* TODO: convert latitude bounds to cacheable ranges */
+	var loLat = southWestLat;
+	var hiLat = northEastLat;
+	var minLatBound = Math.floor(loLat/TILE_HEIGHT) * (TILE_HEIGHT);
+	var maxLatBound = Math.floor(hiLat/TILE_HEIGHT) * (TILE_HEIGHT);
+	console.log("Latitude low: " + loLat);
+	console.log("Latitude high: " + hiLat);
+	console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
 
-	// var lat;
-	// for (lng = minLngBound; lng < math.eval(maxLngBound + "+" + TILE_WIDTH); lng = math.eval(lng + "+" + TILE_WIDTH)) {  
- //    	console.log("lng range: [" + lng.toFixed(2) + "," + math.eval(lng + "+" + TILE_WIDTH).toFixed(2) + "]");
-	// }
-
+	var lat;
 	var lng;
-	for (lng = minLngBound; lng <= maxLngBound; lng = parseFloat(math.eval(lng + "+" + TILE_WIDTH).toFixed(2))) {  
-		console.log("lng real: " + lng);
-    	console.log("lng range: [" + lng.toFixed(2) + "," + math.eval(lng + "+" + TILE_WIDTH).toFixed(2) + "]");
+
+	console.log("-------------------------------------------";
+	for (lat = minLatBound; lat <= maxLatBound; lat = parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(2))) {  
+    	for (lng = minLngBound; lng <= maxLngBound; lng = parseFloat(math.eval(lng + "+" + TILE_HEIGHT).toFixed(2))) {  
+    		console.log("southWest point: (" + lat + "," + lng + ")");
+    		console.log("northEast point: (" + math.eval(lat + "+" + TILE_HEIGHT).toFixed(2) + "," + math.eval(lng + "+" + TILE_WIDTH).toFixed(2) + ")");
+ 			console.log("-------------------------------------------";
+		}
 	}
+
+	
+	
 
 	/* TODO: request map tile info from the server */
 
