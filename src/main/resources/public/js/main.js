@@ -170,7 +170,7 @@ $( document ).ready(function() {
 	// locate every nearby pokemon
 	loadPokeRadar();
 
-	    // user style location picker
+	// user style location picker
     sitemap.on('move', function () {
 		modalLocationMarker.setLatLng(sitemap.getCenter());
 	});

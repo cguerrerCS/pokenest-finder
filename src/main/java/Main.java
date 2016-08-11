@@ -84,16 +84,12 @@ public class Main {
 		
 		Spark.post("/nearby", (request, response) -> {
 
-			List<Map<String, Object>> results = pokedex.nearby();
-			
-//			QueryParamsMap queryMap = request.queryMap();
-//			String pokemon = queryMap.value("pokemon");
-//			double lat = Double.parseDouble(queryMap.value("lat"));
-//			double lng = Double.parseDouble(queryMap.value("lng"));
-//			java.sql.Timestamp timestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
-//			System.out.println(String.format("%s nest sighting reported.", pokemon));	
-//			pokedex.Add(pokemon, lat, lng, timestamp);
-			
+			QueryParamsMap queryMap = request.queryMap();
+			double southWestLat = Double.parseDouble(queryMap.value("southWestLat"));
+			double southWestLng = Double.parseDouble(queryMap.value("southWestLng"));
+			double northEastLat = Double.parseDouble(queryMap.value("northEastLat"));
+			double northEastLng = Double.parseDouble(queryMap.value("northEastLng"));
+			List<Map<String, Object>> results = pokedex.betterNearby(southWestLat, southWestLng, northEastLat, northEastLng);
 			return GSON.toJson(results);
 		});
 

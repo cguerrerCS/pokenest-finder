@@ -108,6 +108,53 @@ public class Pokedex {
 		return results;
 	} 
 	
+	public List<Map<String, Object>> betterNearby(double southWestLat,
+			double southWestLng, double northEastLat, double northEastLng) {
+
+		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
+		
+		/* bounds */
+	    double minlat = southWestLat;
+	    double maxlat = northEastLat;
+	    double minlng = southWestLng;
+	    double maxlng = northEastLng;
+
+		try {
+			
+		    String query = "SELECT * FROM pokedex WHERE "
+		        + "lat >= ? AND lat <= ? "
+		        + "AND lng >= ? AND lng <= ?;";
+
+		    PreparedStatement prep = conn.prepareStatement(query);
+		    prep.setDouble(1, minlat);
+		    prep.setDouble(2, maxlat);
+		    prep.setDouble(3, minlng);
+		    prep.setDouble(4, maxlng);
+		    ResultSet rs = prep.executeQuery();
+
+			while (rs.next()) {
+				String id = rs.getString("id");
+				String name = rs.getString("pokemon");
+				String lat = rs.getString("lat");
+				String lng = rs.getString("lng");
+				String timestamp = rs.getString("time");
+			
+				Map<String, Object> data = new HashMap<>();
+				data.put("id", id);
+				data.put("pokemon", name);
+				data.put("lat", lat);
+				data.put("lng", lng);
+				data.put("timestamp", timestamp);
+				results.add(data);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return results;
+	}
+	
 	public List<String> GetDatabaseRowsAsStrings() {
 
 		ArrayList<String> output = new ArrayList<String>();

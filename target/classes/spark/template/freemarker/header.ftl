@@ -55,6 +55,9 @@
 <!-- Include Twitter's open source typeahead box -->
 <script src="js/typeahead.js"></script>
 
+<!-- MathJS for float arithmetic -->
+<script src="js/math.js"></script>
+
 <!-- Main pokemon nest finder javascript -->
 <script src="js/main.js"></script>
 <script src="js/pokedex.js"></script>

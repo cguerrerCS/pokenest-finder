@@ -46,32 +46,30 @@ const FLOAT_PRECISION = 2; // floating point rounded using .toFixed(FLOAT_PRECIS
 
 function loadViewportMarkers() {
 
-	console.log("processing current viewport and loading markers...");
-
-	/* get user's current viewport as a latlng bounding box */
+	/* user's current viewport as a latlng bounding box */
 	var bounds = pokemap.getBounds();
 	var northEastLat = bounds._northEast.lat;
 	var northEastLng = bounds._northEast.lng;
 	var southWestLat = bounds._southWest.lat;
 	var southWestLng = bounds._southWest.lng;
 
-	/* convert longitude bounds to cacheable ranges (string form) */
+	/* convert longitude bounds to cacheable tiles (string form) */
 	var loLng = southWestLng;
 	var hiLng = northEastLng;
 	var minLngBound = Math.floor(loLng/TILE_WIDTH) * (TILE_WIDTH);
 	var maxLngBound = Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH);
-	console.log("Longitude low: " + loLng);
-	console.log("Longitude high: " + hiLng);
-	console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
+	// console.log("Longitude low: " + loLng);
+	// console.log("Longitude high: " + hiLng);
+	// console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
 
-	/* convert latitude bounds to cacheable ranges (string form) */
+	/* convert latitude bounds to cacheable tiles (string form) */
 	var loLat = southWestLat;
 	var hiLat = northEastLat;
 	var minLatBound = Math.floor(loLat/TILE_HEIGHT) * (TILE_HEIGHT);
 	var maxLatBound = Math.floor(hiLat/TILE_HEIGHT) * (TILE_HEIGHT);
-	console.log("Latitude low: " + loLat);
-	console.log("Latitude high: " + hiLat);
-	console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
+	// console.log("Latitude low: " + loLat);
+	// console.log("Latitude high: " + hiLat);
+	// console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
 
 	var tiles = [];
 	var lat;
@@ -83,27 +81,39 @@ function loadViewportMarkers() {
     		var southWestPoint = {lat: lat, lng: lng};
     		var northEastPoint = {lat: parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION)), lng: parseFloat(math.eval(lng + "+" + TILE_WIDTH).toFixed(FLOAT_PRECISION))};
 
- 			// draw all southwest bounding box points
- 			L.circle([southWestPoint.lat, southWestPoint.lng], 10, {
-    			color: 'red',
-    			fillColor: '#f03',
-    			fillOpacity: 0.5
-			}).addTo(pokemap);
+ 			// southwest tile bounding box visualization
+ 			// 	L.circle([southWestPoint.lat, southWestPoint.lng], 10, {
+   			//  	color: 'red',
+   			//  	fillColor: '#f03',
+   			//  	fillOpacity: 0.5
+			// }).addTo(pokemap);
 
- 			// draw all northeast bounding box points
-			L.circle([northEastPoint.lat, northEastPoint.lng], 10, {
-    			color: 'blue',
-    			fillColor: '#4d4dff',
-    			fillOpacity: 0.5
-			}).addTo(pokemap);
+ 			// northeast tile bounding box visualization
+			// L.circle([northEastPoint.lat, northEastPoint.lng], 10, {
+   			// 		color: 'blue',
+   			//  	fillColor: '#4d4dff',
+   			//  	fillOpacity: 0.5
+			// }).addTo(pokemap);
 
-			// tiles defined latlng bounding boxes
-			tiles.push({northEast: northEastPoint, southWest: southWestPoint});
+			
+
+			// tiles defined at latlng bounding boxes (two latlng points)
+			var tile = {northEast: northEastPoint, southWest: southWestPoint};
+			tiles.push(tile);
 		}
 	}
 
-	console.log(tiles);
-	
+	// var t = tiles[0];
+
+	// var postParameters = {
+	// 	southWestLat: t.southWest.lat, 
+	// 	southWestLng: t.southWest.lng,
+	// 	northEastLat: t.northEast.lat, 
+	// 	northEastLng: t.northEast.lng
+	// }	
+
+	// console.log(tiles);
+
 	/* TODO: request map tile info from the server */
 
 	/* TODO: cache server results */
