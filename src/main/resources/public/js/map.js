@@ -123,18 +123,24 @@ function loadViewportMarkers() {
 		// 	console.log(i);
 		// });
 
-		(function(iteration, pp) {
+		// loadtile function sets its "private" variable using a closure
+		var loadtile = (function() {
+
+			var iteration = i;
+			var arguments = postParameters;
         	
-        	$.post("/nearby", pp, function(responseJSON) {
+        	return function () {
+        		$.post("/nearby", arguments, function(responseJSON) {
+					responseObject = JSON.parse(responseJSON);
+					console.log(responseObject);
+					console.log(arguments);
+					console.log(iteration);
+				});
+			}
 
-				/* get responce object */
-				responseObject = JSON.parse(responseJSON);
-				console.log(responseObject);
-				console.log(postParameters);
-				console.log(iteration);
-			});
+    	})();
 
-    	})(i, postParameters);
+    	loadtile();
 	}
 
 
