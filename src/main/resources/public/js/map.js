@@ -139,11 +139,19 @@ function loadViewportMarkers() {
 					];
 
 					/* self deleting loading rectangle */
-					var rectangle = L.rectangle(rectBounds, {color: "#99ff66", weight: 0}).addTo(pokemap);
+					var rectangle = L.rectangle(rectBounds, {color: '#99ff66', weight: 0}).addTo(pokemap);
 					setTimeout(function(){ 
-						pokemap.removeLayer(rectangle);
+						rectangle.setStyle({fillColor: '#ffff66'});
 					}, 10000);
 
+					setTimeout(function(){ 
+						rectangle.setStyle({fillColor: '##ff4d4d'});
+					}, 15000);
+
+					setTimeout(function(){ 
+						pokemap.removeLayer(rectangle);
+					}, 20000);
+					
 					// northeast tile bounding box visualization
 					// var m1 = L.circle([privatePostParameters.northEastLat, privatePostParameters.northEastLng], 10, {
 		   			// 		color: 'red',
