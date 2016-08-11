@@ -108,7 +108,7 @@ function loadViewportMarkers() {
 		
 		var t = tiles[i];
 
-		var postParameters = {
+		var sharedPostParameters = {
 			southWestLat: t.southWest.lat, 
 			southWestLng: t.southWest.lng,
 			northEastLat: t.northEast.lat, 
@@ -124,18 +124,25 @@ function loadViewportMarkers() {
 		// });
 
 		// loadtile function sets its "private" variable using a closure
-		var loadtile = (function(i, postParameters) {
+		var loadtile = (function(i) {
 
+			var privatePostParameters = {
+				southWestLat: sharedPostParameters.southWestLat, 
+				southWestLng: sharedPostParameters.southWestLng,
+				northEastLat: sharedPostParameters.northEastLat, 
+				northEastLng: sharedPostParameters.northEastLng
+			}	
+			
         	return function () {
-        		$.post("/nearby", postParameters, function(responseJSON) {
+        		$.post("/nearby", privatePostParameters, function(responseJSON) {
 					responseObject = JSON.parse(responseJSON);
 					console.log(responseObject);
-					console.log(postParameters);
+					console.log(privatePostParameters);
 					console.log(i);
 				});
 			}
 
-    	})(i, postParameters);
+    	})(i);
 
     	loadtile();
 	}
