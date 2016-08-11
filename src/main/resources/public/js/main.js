@@ -534,7 +534,7 @@ function loadPokeRadar() {
 	/* remove old pokenest markers */
 	for (i = 0; i < nestMarkers.length; i++) { 
 		var marker = nestMarkers[i];
-		pokemap.removeLayer(marker)
+		pokemap.removeLayer(marker);
 	}
 	nestMarkers = [];
 

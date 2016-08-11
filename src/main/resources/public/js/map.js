@@ -133,19 +133,30 @@ function loadViewportMarkers() {
 					console.log(privatePostParameters);
 					console.log(i);
 
+					var rectBounds = [
+						[privatePostParameters.southWestLat, privatePostParameters.southWestLng], 
+						[privatePostParameters.northEastLat, privatePostParameters.northEastLng]
+					];
+
+					/* self deleting loading rectangle */
+					var rectangle = L.rectangle(rectBounds, {color: "#ff7800", weight: 1}).addTo(pokemap);
+					setTimeout(function(){ 
+						pokemap.removeLayer(rectangle);
+					}, 5000);
+
 					// northeast tile bounding box visualization
-					L.circle([privatePostParameters.northEastLat, privatePostParameters.northEastLng], 10, {
-		   				color: 'red',
-   			  			fillColor: '#f03',
-		   			 	fillOpacity: 0.5
-					}).addTo(pokemap);
+					// var m1 = L.circle([privatePostParameters.northEastLat, privatePostParameters.northEastLng], 10, {
+		   			// 		color: 'red',
+   					// 	  	fillColor: '#f03',
+		   			// 	    fillOpacity: 0.5
+					// }).addTo(pokemap);
 
 					// southwest tile bounding box visualization
-		 			L.circle([privatePostParameters.southWestLat, privatePostParameters.southWestLng], 10, {
-		   			 	color: 'blue',
-					    fillColor: '#4d4dff',
-						fillOpacity: 0.5
-					}).addTo(pokemap);
+		 			// 	var m2 = L.circle([privatePostParameters.southWestLat, privatePostParameters.southWestLng], 10, {
+		   			// 	   color: 'blue',
+					//     fillColor: '#4d4dff',
+					// 	   fillOpacity: 0.5
+					// }).addTo(pokemap);
 
 					/* parse results of response object */
 					for (i = 0; i < responseObject.length; i++) { 
