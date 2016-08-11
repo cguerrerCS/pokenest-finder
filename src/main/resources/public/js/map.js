@@ -120,8 +120,10 @@ function loadViewportMarkers() {
 
 					var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
 					var d2 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.northEastLng, 'M').toFixed(2));
+					console.log("d1: " + d1);
+					console.log("d2: " + d2);
 
-					if ((d1 <= SEARCH_RADIUS) || (d2 < SEARCH_RADIUS)) {
+					if ((d1 <= SEARCH_RADIUS) || (d2 <= SEARCH_RADIUS)) {
 
 		        		$.post("/nearby", privatePostParameters, function(responseJSON) {
 							
