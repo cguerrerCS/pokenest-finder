@@ -130,7 +130,7 @@ function loadViewportMarkers() {
 				/* get responce object */
 				responseObject = JSON.parse(responseJSON);
 				console.log(responseObject);
-				console.log(postParameters)
+				console.log(postParameters);
 				console.log(iteration);
 			});
 
