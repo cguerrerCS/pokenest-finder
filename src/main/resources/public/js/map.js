@@ -61,7 +61,7 @@ function loadViewportMarkers() {
 	var maxLngBound = (Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH)) + (PADDING * TILE_WIDTH);
 	// console.log("Longitude low: " + loLng);
 	// console.log("Longitude high: " + hiLng);
-	// console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
+	console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
 
 	/* convert latitude bounds to cacheable tiles (string form) */
 	var loLat = southWestLat;
@@ -70,7 +70,7 @@ function loadViewportMarkers() {
 	var maxLatBound = (Math.floor(hiLat/TILE_HEIGHT) * (TILE_HEIGHT)) + (PADDING * TILE_HEIGHT);
 	// console.log("Latitude low: " + loLat);
 	// console.log("Latitude high: " + hiLat);
-	// console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
+	console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
 
 	var tiles = [];
 	var lat;
