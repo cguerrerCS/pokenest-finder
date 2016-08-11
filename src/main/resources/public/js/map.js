@@ -81,6 +81,19 @@ function loadViewportMarkers() {
     		console.log("southWest point: (" + lat + "," + lng + ")");
     		console.log("northEast point: (" + math.eval(lat + "+" + TILE_HEIGHT).toFixed(2) + "," + math.eval(lng + "+" + TILE_WIDTH).toFixed(2) + ")");
  			console.log("-------------------------------------------");
+
+ 			// draw all southwest points
+ 			L.circle([lat, lng], 10, {
+    			color: 'red',
+    			fillColor: '#f03',
+    			fillOpacity: 0.5
+			}).addTo(pokemap);
+
+			// currentLocationMarker = L.circle([0, 0], 10, {
+   //  			color: 'red',
+   //  			fillColor: '#f03',
+   //  			fillOpacity: 0.5
+			// }).addTo(pokemap);
 		}
 	}
 
