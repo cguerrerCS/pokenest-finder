@@ -134,7 +134,7 @@ function loadViewportMarkers() {
 					console.log(i);
 
 					// northeast tile bounding box visualization
-					L.circle([northEastPoint.lat, northEastPoint.lng], 10, {
+					L.circle([privatePostParameters.northEastLat, privatePostParameters.northEastLng], 10, {
 		   				color: 'red',
    			  			fillColor: '#f03',
 		   			 	fillOpacity: 0.5
