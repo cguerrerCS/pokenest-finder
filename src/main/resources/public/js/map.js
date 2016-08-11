@@ -124,21 +124,18 @@ function loadViewportMarkers() {
 		// });
 
 		// loadtile function sets its "private" variable using a closure
-		var loadtile = (function() {
+		var loadtile = (function(i, postParameters) {
 
-			var iteration = i;
-			var arguments = postParameters;
-        	
         	return function () {
-        		$.post("/nearby", arguments, function(responseJSON) {
+        		$.post("/nearby", postParameters, function(responseJSON) {
 					responseObject = JSON.parse(responseJSON);
 					console.log(responseObject);
-					console.log(arguments);
-					console.log(iteration);
+					console.log(postParameters);
+					console.log(i);
 				});
 			}
 
-    	})();
+    	})(i, postParameters);
 
     	loadtile();
 	}
