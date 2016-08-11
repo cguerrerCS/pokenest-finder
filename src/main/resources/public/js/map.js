@@ -40,8 +40,8 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	return dist
 }
 
-const TILE_WIDTH = 0.1;    // latlng units
-const TILE_HEIGHT = 0.1;   // latlng units
+const TILE_WIDTH = 0.01;    // latlng units
+const TILE_HEIGHT = 0.01;   // latlng units
 const FLOAT_PRECISION = 2; // floating point rounded using .toFixed(FLOAT_PRECISION)
 
 function loadViewportMarkers() {
