@@ -194,14 +194,18 @@ $( document ).ready(function() {
 		
 	});
 
-	// tile based markers
-	loadViewportMarkers();
+	
 
 	// by default, follow user
 	// setInterval(function() { update(); }, 2000);
 
 	// find pokemon within viewport
 	// setInterval(function() { loadPokeRadar(); }, 10000);
+	
+	// tile based markers
+	loadViewportMarkers();
+	setInterval(function() { loadViewportMarkers(); }, 10000);
+	
 
 	$('#submitbtn').on('click', function() {
 
