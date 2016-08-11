@@ -111,7 +111,8 @@ function loadViewportMarkers() {
 				console.log("ID: " + tileID);
 
 				// if tileID does not exist in CACHE as a key
-				if (!(tileID in CACHE)) {
+				// if (!(tileID in CACHE)) {
+				if (true) {
 
 					// get current location
 					var currentLat = currentLocationMarker.getLatLng().lat;
