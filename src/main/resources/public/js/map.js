@@ -40,8 +40,9 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	return dist
 }
 
-const TILE_WIDTH = 0.01;  // latlng units
-const TILE_HEIGHT = 0.01; // latlng units
+const TILE_WIDTH = 0.1;    // latlng units
+const TILE_HEIGHT = 0.1;   // latlng units
+const FLOAT_PRECISION = 1; // floating point rounded using .toFixed(FLOAT_PRECISION)
 
 function loadViewportMarkers() {
 
@@ -75,15 +76,13 @@ function loadViewportMarkers() {
 	var lat;
 	var lng;
 
-	console.log("-------------------------------------------");
-	for (lat = minLatBound; lat <= maxLatBound; lat = parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(2))) {  
-    	for (lng = minLngBound; lng <= maxLngBound; lng = parseFloat(math.eval(lng + "+" + TILE_HEIGHT).toFixed(2))) {  
+	for (lat = minLatBound; lat <= maxLatBound; lat = parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION))) {  
+    	for (lng = minLngBound; lng <= maxLngBound; lng = parseFloat(math.eval(lng + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION))) {  
 
     		var southWestPoint = {lat: lat, lng: lng};
-    		var northEastPoint = {lat: parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(2)), lng: parseFloat(math.eval(lng + "+" + TILE_WIDTH).toFixed(2))};
-    		console.log("southWest point: (" + southWestPoint.lat + "," + southWestPoint.lng + ")");
-    		console.log("northEast point: (" + northEastPoint.lat + "," + northEastPoint.lng + ")");
- 			console.log("-------------------------------------------");
+    		var northEastPoint = {lat: parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION)), lng: parseFloat(math.eval(lng + "+" + TILE_WIDTH).toFixed(FLOAT_PRECISION))};
+    		// console.log("southWest point: (" + southWestPoint.lat + "," + southWestPoint.lng + ")");
+    		// console.log("northEast point: (" + northEastPoint.lat + "," + northEastPoint.lng + ")");
 
  			// draw all southwest bounding box points
  			L.circle([southWestPoint.lat, southWestPoint.lng], 10, {
@@ -98,6 +97,9 @@ function loadViewportMarkers() {
     			fillColor: '#4d4dff',
     			fillOpacity: 0.5
 			}).addTo(pokemap);
+
+			var boundingBox = {northEast: northEastPoint, southWest: southWestPoint};
+			console.log(boundingBox);
 		}
 	}
 
