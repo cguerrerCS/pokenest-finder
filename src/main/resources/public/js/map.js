@@ -133,6 +133,13 @@ function loadViewportMarkers() {
 					console.log(privatePostParameters);
 					console.log(i);
 
+					// southwest tile bounding box visualization
+		 			L.circle([privatePostParameters.southWestLat, privatePostParameters.southWestLng], 10, {
+		   			 	color: 'blue',
+					     	fillColor: '#4d4dff',
+						  	fillOpacity: 0.5
+					}).addTo(pokemap);
+
 					/* parse results of response object */
 					for (i = 0; i < responseObject.length; i++) { 
     		
@@ -155,13 +162,6 @@ function loadViewportMarkers() {
 							lat: lat,
 							lng: lng
 						}
-
-						// southwest tile bounding box visualization
-			 			L.circle([privatePostParameters.southWestLat, privatePostParameters.southWestLng], 10, {
-			   			 	color: 'blue',
-   					     	fillColor: '#4d4dff',
-   						  	fillOpacity: 0.5
-						}).addTo(pokemap);
 
 						L.marker([lat, lng], options).addTo(pokemap);
 					}
