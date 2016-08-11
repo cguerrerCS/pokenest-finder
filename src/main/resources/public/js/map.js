@@ -95,8 +95,6 @@ function loadViewportMarkers() {
    			//  	fillOpacity: 0.5
 			// }).addTo(pokemap);
 
-			
-
 			// tiles defined at latlng bounding boxes (two latlng points)
 			var tile = {northEast: northEastPoint, southWest: southWestPoint};
 			tiles.push(tile);
@@ -106,24 +104,15 @@ function loadViewportMarkers() {
 	var i;
 	for (i = 0; i < tiles.length; i++) {
 		
-		var t = tiles[i];
-
+		/* post parameters redefined by each asynchronous function */
 		var sharedPostParameters = {
-			southWestLat: t.southWest.lat, 
-			southWestLng: t.southWest.lng,
-			northEastLat: t.northEast.lat, 
-			northEastLng: t.northEast.lng
+			southWestLat: tiles[i].southWest.lat, 
+			southWestLng: tiles[i].southWest.lng,
+			northEastLat: tiles[i].northEast.lat, 
+			northEastLng: tiles[i].northEast.lng
 		}	
 
-		// $.post("/nearby", postParameters, function(responseJSON) {
-
-		// 	/* get responce object */
-		// 	responseObject = JSON.parse(responseJSON);
-		// 	console.log(responseObject);
-		// 	console.log(i);
-		// });
-
-		// loadtile function sets its "private" variable using a closure
+		/* loadtile function sets its "private" variables using a closure (copy of i value and clone of postParameters)*/
 		var loadtile = (function(i) {
 
 			var privatePostParameters = {
@@ -135,10 +124,41 @@ function loadViewportMarkers() {
 			
         	return function () {
         		$.post("/nearby", privatePostParameters, function(responseJSON) {
+					
+        			/* get responce object */
 					responseObject = JSON.parse(responseJSON);
-					console.log(responseObject);
+
+					/* debugging logs */
+					console.log(responseObject);	
 					console.log(privatePostParameters);
 					console.log(i);
+
+					/* parse results of response object */
+					for (i = 0; i < responseObject.length; i++) { 
+    		
+    					data = responseObject[i];
+    					var id = data.id;
+    					var name = data.pokemon.toLowerCase();
+    					var lat = parseFloat(data.lat);
+    					var lng = parseFloat(data.lng);
+	    				var icon = L.icon({	
+	    					iconUrl: 'http://www.pokestadium.com/sprites/diamond-pearl/' + name + '.png',
+	    					iconSize:     [96, 96], // size of the icon
+	    					iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
+	    					popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
+						});
+    				
+						var options = {
+							icon: icon,
+							id: id,
+							pokemon: name,
+							lat: lat,
+							lng: lng
+						}
+
+						L.marker([lat, lng], options).addTo(pokemap);
+						
+					}
 				});
 			}
 
