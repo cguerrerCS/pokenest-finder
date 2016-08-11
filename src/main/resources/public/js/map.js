@@ -40,8 +40,8 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	return dist
 }
 
-const TILE_WIDTH = 0.1;    // latlng units
-const TILE_HEIGHT = 0.1;   // latlng units
+const TILE_WIDTH = 0.5;    // latlng units
+const TILE_HEIGHT = 0.5;   // latlng units
 const FLOAT_PRECISION = 2; // floating point rounded using .toFixed(FLOAT_PRECISION)
 const PADDING = 2;         // number of padding tiles added to bounding box
 var CACHE = {};            // tile cache
