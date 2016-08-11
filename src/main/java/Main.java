@@ -89,6 +89,9 @@ public class Main {
 			double southWestLng = Double.parseDouble(queryMap.value("southWestLng"));
 			double northEastLat = Double.parseDouble(queryMap.value("northEastLat"));
 			double northEastLng = Double.parseDouble(queryMap.value("northEastLng"));
+			
+			// TODO: error check provided bounds
+			
 			List<Map<String, Object>> results = pokedex.betterNearby(southWestLat, southWestLng, northEastLat, northEastLng);
 			return GSON.toJson(results);
 		});

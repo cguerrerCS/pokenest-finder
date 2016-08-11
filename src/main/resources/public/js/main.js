@@ -168,7 +168,7 @@ $( document ).ready(function() {
 	pokemap.on('locationerror', onLocationError);
 
 	// locate every nearby pokemon
-	loadPokeRadar();
+	// loadPokeRadar();
 
 	// user style location picker
     sitemap.on('move', function () {
@@ -195,6 +195,7 @@ $( document ).ready(function() {
 		
 	});
 
+	// tile based markers
 	loadViewportMarkers();
 
 	// by default, follow user
