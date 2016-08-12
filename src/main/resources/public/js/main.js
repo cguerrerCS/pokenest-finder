@@ -651,14 +651,15 @@ function update() {
 
 function onLocationFound(e) {
 
-	if (!initialLocationFound) {
-		initialLocationFound = true;
-		loadViewportMarkers();
-	}
-
     var newLatLng = new L.LatLng(e.latlng.lat, e.latlng.lng);
     currentLocationMarker.setLatLng(newLatLng);
     console.log("user's current location: (" + newLatLng.lat + " ," + newLatLng.lng + ")");
+
+    /* start an initial scan */
+    if (!initialLocationFound) {
+		initialLocationFound = true;
+		loadViewportMarkers();
+	}
 }
 
 function onLocationError(e) {
