@@ -124,7 +124,7 @@ function loadViewportMarkers() {
     					color: 'red',
     					fillColor: '#f03',
     					fillOpacity: 0.9
-					}).addTo(mymap);
+					}).addTo(pokemap);
 
 					var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
 					var d2 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.northEastLng, 'M').toFixed(2));
