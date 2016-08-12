@@ -117,6 +117,7 @@ function loadViewportMarkers() {
 					// get current location
 					var currentLat = currentLocationMarker.getLatLng().lat;
 					var currentLng = currentLocationMarker.getLatLng().lng;
+					console.log("scan center: (" + currentLat + " ," + currentLng + ")");
 
 					var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
 					var d2 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.northEastLng, 'M').toFixed(2));
