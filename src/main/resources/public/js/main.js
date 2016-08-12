@@ -208,7 +208,10 @@ $( document ).ready(function() {
 	// 	}
 	// }, (1000 * 10));
 
-	FastPokeMapScan()
+	setInterval(function() {
+		FastPokeMapScan()
+	}(1000 * 6));
+	
 	
 
 	$('#submitbtn').on('click', function() {
