@@ -208,7 +208,7 @@ $( document ).ready(function() {
 		if (initialLocationFound) {
 			loadViewportMarkers(); 
 		}
-	}, (1000 * 20));
+	}, (1000 * 10));
 	
 
 	$('#submitbtn').on('click', function() {
