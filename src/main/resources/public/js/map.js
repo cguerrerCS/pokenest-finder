@@ -157,7 +157,7 @@ function loadViewportMarkers() {
 							}, 1000 * 5);
 
 							/* progress bar increases for each loaded square */
-							progress = (progress + 10) % 100;
+							progress = (progress + 1) % 100;
 							$("#pokenest-progress-bar").css("width", progress + "%");
 
 							/* parse results of response object */
