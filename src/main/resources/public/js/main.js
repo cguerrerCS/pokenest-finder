@@ -193,9 +193,7 @@ $( document ).ready(function() {
 		// lng = Number(position['lng']).toFixed(5);
 		// console.log(position);
 		
-	});
-
-	
+	});	
 
 	// by default, follow user
 	setInterval(function() { update(); }, 2000);

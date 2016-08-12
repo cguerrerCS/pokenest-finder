@@ -50,6 +50,26 @@ var SEARCH_RADIUS = 50.0    // default 20 mile search radius
 var MARKERIDS = {};
 var MARKERTIMERS = {};
 
+function FastPokeMapScan() {
+	
+	var lat = 29.7604
+	var lng = -95.3698
+
+	 $.ajax({
+        dataType: "json",
+        url: "https://api.fastpokemap.com/?lat=" + lat + "&lng=" + lng,
+        success: function (data) {
+            console.log("Successful scan");
+            console.log(data);
+        },
+        timeout: 30000        
+    }).fail( function( xhr, status ) {
+        console.log("Scan failed");
+        console.log(xhr);
+        console.log(status);
+    });
+}
+
 function loadViewportMarkers() {
 
 	console.log(MARKERIDS);
@@ -153,6 +173,10 @@ function loadViewportMarkers() {
 		        			/* get responce object */
 							responseObject = JSON.parse(responseJSON);
 
+							/* progress bar increases for each loaded square */
+							progress = (progress + increment) % 100;
+							$("#pokenest-progress-bar").css("width", progress + "%");
+
 							/* self deleting loading rectangle */
 							var rectBounds = [
 								[privatePostParameters.southWestLat, privatePostParameters.southWestLng], 
@@ -249,11 +273,6 @@ function loadViewportMarkers() {
 							/* place key in cache */
 							// CACHE[tileID] = undefined;
 						});
-
-
-						/* progress bar increases for each loaded square */
-						progress = (progress + increment) % 100;
-						$("#pokenest-progress-bar").css("width", progress + "%");
 					}
 				}
 			}
