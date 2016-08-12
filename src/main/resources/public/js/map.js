@@ -123,7 +123,7 @@ function loadViewportMarkers() {
 					var circle = L.circle([currentLat, currentLng], (SEARCH_RADIUS * 1609), {
     					color: 'red',
     					fillColor: '#f03',
-    					fillOpacity: 0.9
+    					fillOpacity: 0.2
 					}).addTo(pokemap);
 
 					var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
