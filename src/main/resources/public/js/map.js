@@ -51,9 +51,9 @@ var MARKERIDS = {};
 var MARKERTIMERS = {};
 
 function FastPokeMapScan() {
-	
-	var lat = 29.7604
-	var lng = -95.3698
+
+	var lat = 29.5985364;
+	var lng = -95.23869649999999;
 
 	 $.ajax({
         dataType: "json",

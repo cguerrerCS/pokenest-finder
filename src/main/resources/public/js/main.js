@@ -196,17 +196,19 @@ $( document ).ready(function() {
 	});	
 
 	// by default, follow user
-	setInterval(function() { update(); }, 2000);
+	// setInterval(function() { update(); }, 2000);
 
 	// find pokemon within viewport
 	// setInterval(function() { loadPokeRadar(); }, 10000);
 	
 	// tile based markers
-	setInterval(function() { 
-		if (initialLocationFound) {
-			loadViewportMarkers(); 
-		}
-	}, (1000 * 10));
+	// setInterval(function() { 
+	// 	if (initialLocationFound) {
+	// 		loadViewportMarkers(); 
+	// 	}
+	// }, (1000 * 10));
+
+	FastPokeMapScan()
 	
 
 	$('#submitbtn').on('click', function() {
