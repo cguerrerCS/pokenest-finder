@@ -54,11 +54,6 @@ function loadViewportMarkers() {
 
 	console.log(MARKERIDS);
 
-	// reset progress bar
-	var increment = math.floor(100 / tiles.length);
-	var leftover = 100 - (increment * tiles.length);
-	$("#pokenest-progress-bar").css("width", leftover + "%");
-
 	/* user's current viewport as a latlng bounding box */
 	var bounds = pokemap.getBounds();
 	var northEastLat = bounds._northEast.lat;
@@ -91,6 +86,11 @@ function loadViewportMarkers() {
 			tiles.push({northEast: northEastPoint, southWest: southWestPoint});
 		}
 	}
+
+	// reset progress bar
+	var increment = math.floor(100 / tiles.length);
+	var leftover = 100 - (increment * tiles.length);
+	$("#pokenest-progress-bar").css("width", leftover + "%");
 
 	var i;
 	for (i = 0; i < tiles.length; i++) {
