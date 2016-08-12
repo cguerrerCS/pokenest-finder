@@ -206,7 +206,7 @@ $( document ).ready(function() {
 	// tile based markers
 	setInterval(function() { 
 		if (initialLocationFound) {
-			
+
 		}loadViewportMarkers(); }, 10000);
 	
 
@@ -647,6 +647,7 @@ function update() {
 
 	if (!initialLocationFound) {
 		pokemap.locate({setView: true, maxZoom: pokemap.getZoom()});
+
 	} else {
 		if (follow == true) {
 			pokemap.locate({setView: true, maxZoom: pokemap.getZoom()});
@@ -666,6 +667,12 @@ function onLocationFound(e) {
     if (!initialLocationFound) {
 		initialLocationFound = true;
 		loadViewportMarkers();
+		// draw search radius
+		var circle = L.circle([newLatLng.lat, newLatLng.lng], (SEARCH_RADIUS * 1609), {
+    		color: 'red',
+    		fillColor: '#f03',
+    		fillOpacity: 0.5
+		}).addTo(pokemap);
 	}
 }
 
