@@ -105,9 +105,9 @@ function loadViewportMarkers() {
 			}	
 
 			// calculate tile width in miles
-			var tileWidth = parseFloat(distance(privatePostParameters.southWestLat, privatePostParameters.southWestLng
+			var tileWidth = parseFloat(distance(privatePostParameters.southWestLat, privatePostParameters.southWestLng,
 				privatePostParameters.northEastLat, privatePostParameters.southWestLng, 'M').toFixed(2));
-			console.log(tileWidth);
+			console.log("latlng tile width: " + tileWidth + " mi");
 
 			
         	return function () {
