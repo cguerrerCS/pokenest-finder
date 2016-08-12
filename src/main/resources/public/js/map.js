@@ -45,10 +45,13 @@ const TILE_HEIGHT = 0.1;    // latlng units
 const FLOAT_PRECISION = 2;  // floating point rounded using .toFixed(FLOAT_PRECISION)
 const PADDING = 0;          // number of padding tiles added to bounding box
 
-var CACHE = {};            // tile cache
-var SEARCH_RADIUS = 50.0   // default 20 mile search radius
+var CACHE = {};             // tile cache
+var SEARCH_RADIUS = 50.0    // default 20 mile search radius
+var MARKERIDS = {};
 
 function loadViewportMarkers() {
+
+	console.log(MARKERIDS);
 
 	/* user's current viewport as a latlng bounding box */
 	var bounds = pokemap.getBounds();
@@ -116,7 +119,6 @@ function loadViewportMarkers() {
 				var tileID = privatePostParameters.southWestLat + ":" + privatePostParameters.southWestLng;
 				console.log("ID: " + tileID);
 
-
 				// if tileID does not exist in CACHE as a key
 				// if (!(tileID in CACHE)) {
 				if (true) {
@@ -156,17 +158,9 @@ function loadViewportMarkers() {
 
 							/* self deleting loading rectangle */
 							var rectangle = L.rectangle(rectBounds, {color: '#99ff66', weight: 0}).addTo(pokemap);
-							// setTimeout(function(){ 
-							// 	rectangle.setStyle({fillColor: '#ffff66'});
-							// }, 10000);
-
-							// setTimeout(function(){ 
-							// 	rectangle.setStyle({fillColor: '#ff4d4d'});
-							// }, 15000);
-
 							setTimeout(function(){ 
 								pokemap.removeLayer(rectangle);
-							}, 20000);
+							}, 1000 * 5);
 
 							// northeast tile bounding box visualization
 							// var m1 = L.circle([privatePostParameters.northEastLat, privatePostParameters.northEastLng], 10, {
@@ -187,55 +181,61 @@ function loadViewportMarkers() {
 		    		
 		    					data = responseObject[i];
 		    					var id = data.id;
-		    					var name = data.pokemon.toLowerCase();
-		    					var lat = parseFloat(data.lat);
-		    					var lng = parseFloat(data.lng);
-			    				var icon = L.icon({	
-			    					iconUrl: 'http://www.pokestadium.com/sprites/diamond-pearl/' + name + '.png',
-			    					iconSize:     [96, 96], // size of the icon
-			    					iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
-			    					popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
-								});
-		    				
-								var options = {
-									icon: icon,
-									id: id,
-									pokemon: name,
-									lat: lat,
-									lng: lng
+
+		    					/* if marker is not already drawn */
+		    					if (!(id in MARKERIDS)) {
+
+		    						MARKERIDS[id] = true;
+			    					var name = data.pokemon.toLowerCase();
+			    					var lat = parseFloat(data.lat);
+			    					var lng = parseFloat(data.lng);
+				    				var icon = L.icon({	
+				    					iconUrl: 'http://www.pokestadium.com/sprites/diamond-pearl/' + name + '.png',
+				    					iconSize:     [96, 96], // size of the icon
+				    					iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
+				    					popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
+									});
+			    				
+									var options = {
+										icon: icon,
+										id: id,
+										pokemon: name,
+										lat: lat,
+										lng: lng
+									}
+
+									var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
+			    
+						    			var pokemon = this.options.pokemon;
+						    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
+						    			var id = this.options.id;
+						    			console.log(id + " " + pokemon);
+						    			selectedMarkerID = id;
+
+						    			// show pokenest info modal
+						    			$('#markerdata-header').html(pokemon + " Pokenest Info");
+
+						    			var privileged = false;
+						    			var cookie = getCookie("access");
+						    			if (cookie == "true") {
+						    				privileged = true;
+						    			}
+
+						    			if (privileged) {
+						    				$('#removeEntryBtn').show();
+						    			} else {
+						    				$('#removeEntryBtn').hide();
+						    			}
+						    			$('#myMarkerModal').modal();
+
+						    			var lat1 = currentLocationMarker.getLatLng().lat;
+						    			var lon1 = currentLocationMarker.getLatLng().lng;
+						    			var lat2 = parseFloat(this.options.lat);
+						    			var lon2 = parseFloat(this.options.lng);
+						    			var dist = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
+						    			$('#markerdata-distance').html("Distance   <b>" + dist + "</b> mi.");
+			    					});	
 								}
-
-								var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
-		    
-					    			var pokemon = this.options.pokemon;
-					    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
-					    			var id = this.options.id;
-					    			console.log(id + " " + pokemon);
-					    			selectedMarkerID = id;
-
-					    			// show pokenest info modal
-					    			$('#markerdata-header').html(pokemon + " Pokenest Info");
-
-					    			var privileged = false;
-					    			var cookie = getCookie("access");
-					    			if (cookie == "true") {
-					    				privileged = true;
-					    			}
-
-					    			if (privileged) {
-					    				$('#removeEntryBtn').show();
-					    			} else {
-					    				$('#removeEntryBtn').hide();
-					    			}
-					    			$('#myMarkerModal').modal();
-
-					    			var lat1 = currentLocationMarker.getLatLng().lat;
-					    			var lon1 = currentLocationMarker.getLatLng().lng;
-					    			var lat2 = parseFloat(this.options.lat);
-					    			var lon2 = parseFloat(this.options.lng);
-					    			var dist = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
-					    			$('#markerdata-distance').html("Distance   <b>" + dist + "</b> mi.");
-		    					});	
 							}
 
 							/* place key in cache */
