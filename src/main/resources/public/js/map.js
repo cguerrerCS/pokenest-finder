@@ -109,16 +109,16 @@ function loadViewportMarkers() {
 			}	
 
 			// calculate tile width in miles
-			var tileWidth = parseFloat(distance(privatePostParameters.southWestLat, privatePostParameters.southWestLng,
-				privatePostParameters.northEastLat, privatePostParameters.southWestLng, 'M').toFixed(2));
-			console.log("latlng tile width: " + tileWidth + " mi");
+			// var tileWidth = parseFloat(distance(privatePostParameters.southWestLat, privatePostParameters.southWestLng,
+			// 	privatePostParameters.northEastLat, privatePostParameters.southWestLng, 'M').toFixed(2));
+			// console.log("latlng tile width: " + tileWidth + " mi");
 
 			
         	return function () {
 
         		// tiles identified using a corner latlng coordinate (unique to tile)
 				var tileID = privatePostParameters.southWestLat + ":" + privatePostParameters.southWestLng;
-				console.log("ID: " + tileID);
+				// console.log("ID: " + tileID);
 
 				// if tileID does not exist in CACHE as a key
 				// if (!(tileID in CACHE)) {
@@ -127,7 +127,7 @@ function loadViewportMarkers() {
 					// get current location
 					var currentLat = currentLocationMarker.getLatLng().lat;
 					var currentLng = currentLocationMarker.getLatLng().lng;
-					console.log("scan center: (" + currentLat + " ," + currentLng + ")");
+					// console.log("scan center: (" + currentLat + " ," + currentLng + ")");
 
 					/* 
 					 * d1 : distance from user's location to the top left corner of cache tile 
@@ -193,7 +193,6 @@ function loadViewportMarkers() {
 						    			var pokemon = this.options.pokemon;
 						    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
 						    			var id = this.options.id;
-						    			console.log(id + " " + pokemon);
 						    			selectedMarkerID = id;
 
 						    			// show pokenest info modal
@@ -230,19 +229,23 @@ function loadViewportMarkers() {
 
 								} else {
 
-									// update marker information
-									MARKERIDS[id].options.pokemon = "updated";
-
+									// TODO: update marker information
+									// ...
+								
 									// reset marker's expiration timer
 									clearTimeout(MARKERTIMERS[id]);
 									MARKERTIMERS[id] = setTimeout(function(){
+
+										delete MARKERIDS[id];
+										delete MARKERTIMERS[id];
 										pokemap.removeLayer(MARKERIDS[id]);
+
 									}, 1000 * 60);
 								}
 							}
 
 							/* place key in cache */
-							CACHE[tileID] = undefined;
+							// CACHE[tileID] = undefined;
 						});
 					}
 				}
