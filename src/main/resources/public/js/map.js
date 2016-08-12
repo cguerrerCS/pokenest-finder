@@ -236,9 +236,9 @@ function loadViewportMarkers() {
 									clearTimeout(MARKERTIMERS[id]);
 									MARKERTIMERS[id] = setTimeout(function(){
 
+										pokemap.removeLayer(MARKERIDS[id]);
 										delete MARKERIDS[id];
 										delete MARKERTIMERS[id];
-										pokemap.removeLayer(MARKERIDS[id]);
 
 									}, 1000 * 60);
 								}
