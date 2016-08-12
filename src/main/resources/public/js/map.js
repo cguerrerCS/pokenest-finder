@@ -126,12 +126,18 @@ function loadViewportMarkers() {
 					var currentLng = currentLocationMarker.getLatLng().lng;
 					console.log("scan center: (" + currentLat + " ," + currentLng + ")");
 
-					var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
+					/* 
+					 * d1 : distance from user's location to the top left corner of cache tile 
+					 * d2 : distance from user's location to the top right corner of cache tile
+					 * d3 : distance from user's location to the bottom right corner of cache tile
+					 * d4 : distance from user's location to the bottom left corner of cache tile
+					 */
+					var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.southWestLng, 'M').toFixed(2));
 					var d2 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.northEastLng, 'M').toFixed(2));
-					console.log("d1: " + d1);
-					console.log("d2: " + d2);
+					var d3 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.northEastLng, 'M').toFixed(2));
+					var d4 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
 
-					if ((d1 <= SEARCH_RADIUS) || (d2 <= SEARCH_RADIUS)) {
+					if ((d1 <= SEARCH_RADIUS) || (d2 <= SEARCH_RADIUS) || (d3 <= SEARCH_RADIUS) || (d4 <= SEARCH_RADIUS)) {
 
 		        		$.post("/nearby", privatePostParameters, function(responseJSON) {
 							
