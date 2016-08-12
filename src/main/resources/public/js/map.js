@@ -53,6 +53,7 @@ var MARKERTIMERS = {};
 function loadViewportMarkers() {
 
 	console.log(MARKERIDS);
+	$("#pokenest-progress-bar").css("width","0%");
 
 	/* user's current viewport as a latlng bounding box */
 	var bounds = pokemap.getBounds();
