@@ -229,7 +229,7 @@ function loadViewportMarkers() {
 								} else {
 
 									// update marker information
-									MARKERIDS[id].pokemon = "updated";
+									MARKERIDS[id].options.pokemon = "updated";
 
 									// reset marker's expiration timer
 									MARKERTIMERS[id] = setTimeout(function(){timedCount()}, 1000 * 60);
