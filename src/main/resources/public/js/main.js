@@ -204,7 +204,10 @@ $( document ).ready(function() {
 	// setInterval(function() { loadPokeRadar(); }, 10000);
 	
 	// tile based markers
-	// setInterval(function() { loadViewportMarkers(); }, 10000);
+	setInterval(function() { 
+		if (initialLocationFound) {
+			
+		}loadViewportMarkers(); }, 10000);
 	
 
 	$('#submitbtn').on('click', function() {

@@ -119,6 +119,13 @@ function loadViewportMarkers() {
 					var currentLng = currentLocationMarker.getLatLng().lng;
 					console.log("scan center: (" + currentLat + " ," + currentLng + ")");
 
+					// draw search radius
+					var circle = L.circle([currentLat, currentLng], (SEARCH_RADIUS * 1609), {
+    					color: 'red',
+    					fillColor: '#f03',
+    					fillOpacity: 0.9
+					}).addTo(mymap);
+
 					var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
 					var d2 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.northEastLng, 'M').toFixed(2));
 					console.log("d1: " + d1);
