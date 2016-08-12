@@ -206,8 +206,9 @@ $( document ).ready(function() {
 	// tile based markers
 	setInterval(function() { 
 		if (initialLocationFound) {
-
-		}loadViewportMarkers(); }, 10000);
+			loadViewportMarkers(); 
+		}
+	}, (1000 * 20));
 	
 
 	$('#submitbtn').on('click', function() {
