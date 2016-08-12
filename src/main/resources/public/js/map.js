@@ -48,6 +48,7 @@ const PADDING = 0;          // number of padding tiles added to bounding box
 var CACHE = {};             // tile cache
 var SEARCH_RADIUS = 50.0    // default 20 mile search radius
 var MARKERIDS = {};
+var MARKERTIMERS = {};
 
 function loadViewportMarkers() {
 
@@ -169,7 +170,6 @@ function loadViewportMarkers() {
 		    					/* if marker is not already drawn */
 		    					if (!(id in MARKERIDS)) {
 
-		    						MARKERIDS[id] = true;
 			    					var name = data.pokemon.toLowerCase();
 			    					var lat = parseFloat(data.lat);
 			    					var lng = parseFloat(data.lng);
@@ -219,6 +219,20 @@ function loadViewportMarkers() {
 						    			var dist = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
 						    			$('#markerdata-distance').html("Distance   <b>" + dist + "</b> mi.");
 			    					});	
+
+									// add marker to map
+									MARKERIDS[id] = m;
+		    					
+									// set marker's expiration timer
+									MARKERTIMERS[id] = setTimeout(function(){timedCount()}, 1000 * 60);
+
+								} else {
+
+									// update marker information
+									MARKERIDS[id].pokemon = "updated";
+
+									// reset marker's expiration timer
+									MARKERTIMERS[id] = setTimeout(function(){timedCount()}, 1000 * 60);
 								}
 							}
 
