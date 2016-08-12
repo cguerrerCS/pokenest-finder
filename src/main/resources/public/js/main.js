@@ -198,7 +198,7 @@ $( document ).ready(function() {
 	
 
 	// by default, follow user
-	// setInterval(function() { update(); }, 2000);
+	setInterval(function() { update(); }, 2000);
 
 	// find pokemon within viewport
 	// setInterval(function() { loadPokeRadar(); }, 10000);
@@ -634,8 +634,8 @@ function locate() {
 
 function update() {
 
-	progress = (progress + 10) % 100;
-	$("#pokenest-progress-bar").css("width", progress + "%");
+	// progress = (progress + 10) % 100;
+	// $("#pokenest-progress-bar").css("width", progress + "%");
 
 	var follow = false;
 	var cookie = getCookie("follow");

@@ -156,6 +156,10 @@ function loadViewportMarkers() {
 								pokemap.removeLayer(rectangle);
 							}, 1000 * 5);
 
+							/* progress bar increases for each loaded square */
+							progress = (progress + 10) % 100;
+							$("#pokenest-progress-bar").css("width", progress + "%");
+
 							/* parse results of response object */
 							for (i = 0; i < responseObject.length; i++) { 
 		    		
