@@ -8,6 +8,7 @@ var currentLocationMarker = undefined;
 var nestMarkers = [];
 var selectedMarkerID = undefined;
 var progress = 0;
+var initialLocationFound = false;
 
 /* Settings */
 // var followUser = false;
@@ -203,7 +204,6 @@ $( document ).ready(function() {
 	// setInterval(function() { loadPokeRadar(); }, 10000);
 	
 	// tile based markers
-	loadViewportMarkers();
 	// setInterval(function() { loadViewportMarkers(); }, 10000);
 	
 
@@ -650,6 +650,12 @@ function update() {
 }
 
 function onLocationFound(e) {
+
+	if (!initialLocationFound) {
+		initialLocationFound = true;
+		loadViewportMarkers();
+	}
+
     var newLatLng = new L.LatLng(e.latlng.lat, e.latlng.lng);
     currentLocationMarker.setLatLng(newLatLng);
     console.log("user's current location: (" + newLatLng.lat + " ," + newLatLng.lng + ")");
