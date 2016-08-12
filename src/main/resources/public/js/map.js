@@ -115,8 +115,10 @@ function loadViewportMarkers() {
 				if (true) {
 
 					// get current location
-					var currentLat = currentLocationMarker.getLatLng().lat;
-					var currentLng = currentLocationMarker.getLatLng().lng;
+					// var currentLat = currentLocationMarker.getLatLng().lat;
+					// var currentLng = currentLocationMarker.getLatLng().lng;
+					var currentLat = 29.5985489;
+					var currentLng = -95.2387814;
 
 					var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
 					var d2 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.northEastLng, 'M').toFixed(2));
