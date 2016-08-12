@@ -103,12 +103,19 @@ function loadViewportMarkers() {
 				northEastLat: sharedPostParameters.northEastLat, 
 				northEastLng: sharedPostParameters.northEastLng
 			}	
+
+			// calculate tile width in miles
+			var tileWidth = parseFloat(distance(privatePostParameters.southWestLat, privatePostParameters.southWestLng
+				privatePostParameters.northEastLat, privatePostParameters.southWestLng, 'M').toFixed(2));
+			console.log(tileWidth);
+
 			
         	return function () {
 
         		// tiles identified using a corner latlng coordinate (unique to tile)
 				var tileID = privatePostParameters.southWestLat + ":" + privatePostParameters.southWestLng;
 				console.log("ID: " + tileID);
+
 
 				// if tileID does not exist in CACHE as a key
 				// if (!(tileID in CACHE)) {
@@ -143,13 +150,13 @@ function loadViewportMarkers() {
 
 							/* self deleting loading rectangle */
 							var rectangle = L.rectangle(rectBounds, {color: '#99ff66', weight: 0}).addTo(pokemap);
-							setTimeout(function(){ 
-								rectangle.setStyle({fillColor: '#ffff66'});
-							}, 10000);
+							// setTimeout(function(){ 
+							// 	rectangle.setStyle({fillColor: '#ffff66'});
+							// }, 10000);
 
-							setTimeout(function(){ 
-								rectangle.setStyle({fillColor: '#ff4d4d'});
-							}, 15000);
+							// setTimeout(function(){ 
+							// 	rectangle.setStyle({fillColor: '#ff4d4d'});
+							// }, 15000);
 
 							setTimeout(function(){ 
 								pokemap.removeLayer(rectangle);
