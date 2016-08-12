@@ -54,6 +54,11 @@ function loadViewportMarkers() {
 
 	console.log(MARKERIDS);
 
+	// reset progress bar
+	var increment = math.floor(100 / tiles.length);
+	var leftover = 100 - (increment * tiles.length);
+	$("#pokenest-progress-bar").css("width", leftover + "%");
+
 	/* user's current viewport as a latlng bounding box */
 	var bounds = pokemap.getBounds();
 	var northEastLat = bounds._northEast.lat;
@@ -158,7 +163,7 @@ function loadViewportMarkers() {
 							}, 1000 * 5);
 
 							/* progress bar increases for each loaded square */
-							progress = (progress + 1) % 100;
+							progress = (progress + increment) % 100;
 							$("#pokenest-progress-bar").css("width", progress + "%");
 
 							/* parse results of response object */
