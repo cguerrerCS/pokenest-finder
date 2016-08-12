@@ -642,10 +642,14 @@ function update() {
 		} 
 	}
 
-	if (follow == true) {
+	if (!initialLocationFound) {
 		pokemap.locate({setView: true, maxZoom: pokemap.getZoom()});
 	} else {
-		pokemap.locate({setView: false, maxZoom: 16});
+		if (follow == true) {
+			pokemap.locate({setView: true, maxZoom: pokemap.getZoom()});
+		} else {
+			pokemap.locate({setView: false, maxZoom: 16});
+		}
 	}
 }
 
