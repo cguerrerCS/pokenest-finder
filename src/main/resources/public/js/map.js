@@ -223,8 +223,10 @@ function loadViewportMarkers() {
 									// add marker to map
 									MARKERIDS[id] = m;
 		    					
-									// set marker's expiration timer
-									MARKERTIMERS[id] = setTimeout(function(){timedCount()}, 1000 * 60);
+									// set marker's expiration timer and clear old timeOur
+									MARKERTIMERS[id] = setTimeout(function(){
+										pokemap.removeLayer(MARKERIDS[id]);
+									}, 1000 * 60);
 
 								} else {
 
@@ -232,7 +234,10 @@ function loadViewportMarkers() {
 									MARKERIDS[id].options.pokemon = "updated";
 
 									// reset marker's expiration timer
-									MARKERTIMERS[id] = setTimeout(function(){timedCount()}, 1000 * 60);
+									clearTimeout(MARKERTIMERS[id]);
+									MARKERTIMERS[id] = setTimeout(function(){
+										pokemap.removeLayer(MARKERIDS[id]);
+									}, 1000 * 60);
 								}
 							}
 
