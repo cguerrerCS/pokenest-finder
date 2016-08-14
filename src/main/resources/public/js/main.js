@@ -202,11 +202,11 @@ $( document ).ready(function() {
 	// setInterval(function() { loadPokeRadar(); }, 10000);
 	
 	// tile based markers
-	// setInterval(function() { 
-	// 	if (initialLocationFound) {
-	// 		loadViewportMarkers(); 
-	// 	}
-	// }, (1000 * 10));
+	setInterval(function() { 
+		if (initialLocationFound) {
+			loadViewportMarkers(); 
+		}
+	}, (1000 * 10));
 
 	$('#submitbtn').on('click', function() {
 
