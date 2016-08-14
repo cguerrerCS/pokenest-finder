@@ -462,7 +462,7 @@ function update() {
 	}
 
 	if (!initialLocationFound) {
-		pokemap.locate({setView: true, maxZoom: pokemap.getZoom()});
+		pokemap.locate({setView: true, maxZoom: 10});
 
 	} else {
 		if (follow == true) {
