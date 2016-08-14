@@ -294,9 +294,21 @@ $( document ).ready(function() {
 			console.log(postParameters);
 			$.post("/remove", postParameters, function(responseJSON){
 				var responseObject = JSON.parse(responseJSON);
-				console.log(responseObject);
+				var success = responseObject.success;
+				var error = responseObject.error;
 	
-				// TODO: pop some toast when request is processed
+				// add notification for user
+				var options =  {
+	    			content: "", 		// text of the snackbar
+	    			style: "snackbar",  // add a custom class to your snackbar
+	    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+				}
+				if (success) {
+					options['content'] = "[" + pokemon + ":" + selectedMarkerID + "] PokéNest location removed.";
+				} else {
+					options['content'] = "Error: " + error;
+				}
+				$.snackbar(options);
 			}); 
 		}
 

@@ -59,7 +59,7 @@ public class Main {
 			double lat;
 			double lng;
 			
-			// TODO: make sure submitted coordinate contains a valid double pair
+			// make sure submitted coordinate contains a valid double pair
 			try {
 				lat = Double.parseDouble(queryMap.value("lat"));
 				lng = Double.parseDouble(queryMap.value("lng"));
@@ -69,16 +69,16 @@ public class Main {
 				return GSON.toJson(results);
 			}
 			
-			// TODO: make sure submitted coordinate is valid (on earth)
+			// make sure submitted coordinate is valid (on earth)
 			if ((lng < -180.0) || (lng > 180) || (lat < -90) || (lat > 90)) {
 				results = ImmutableMap.of("success", false, "error", "Submitted LatLng is invalid.");
 				return GSON.toJson(results);
 			}
 			
-			// TODO: check if Pokemon name is valid
+			// check if Pokemon name is valid
 			String pokemon = queryMap.value("pokemon");
 			if (!pokedex.validPokemon(pokemon)) {
-				results = ImmutableMap.of("success", false, "error", String.format("Invalid Pokemon name %s", pokemon));
+				results = ImmutableMap.of("success", false, "error", String.format("Invalid Pokemon name '%s'", pokemon));
 				return GSON.toJson(results);
 			}
 				
@@ -101,7 +101,13 @@ public class Main {
 			} else {
 				results.put("success", true);
 				results.put("error", "");
-				pokedex.Remove(id);	
+				
+				if (pokedex.ContainsNestID(id)) {
+					pokedex.Remove(id);	
+				} else {
+					results.put("success", false);
+					results.put("error", String.format("DB does not contain ID: %s", id));
+				}
 			}
 			return GSON.toJson(results);
 		});

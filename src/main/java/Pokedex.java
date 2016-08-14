@@ -5,19 +5,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-
-import spark.ModelAndView;
-
-import com.google.common.collect.ImmutableMap;
 import com.heroku.sdk.jdbc.DatabaseUrl;
-
 
 public class Pokedex {
 	
@@ -134,48 +128,34 @@ public class Pokedex {
 		prep.close();
 	}
 	
+	public boolean ContainsNestID(String nestID) throws SQLException {
+		
+		// Fill in schema to create a table called pokedex
+		boolean result = false;
+		String schema = "SELECT * FROM pokedex WHERE id = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, nestID);
+		ResultSet rs = prep.executeQuery();
+		if (rs.next()) {
+			result = true;
+		}
+		// Close the PreparedStatement
+		prep.close();
+		return result;
+	}
+	
 	public void Remove(String id) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
 		String schema = "DELETE FROM pokedex WHERE id = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, id);
-		prep.executeUpdate();
+		prep.executeQuery();
 
 		// Close the PreparedStatement
 		prep.close();
 	}
-	
-	public List<Map<String, Object>> nearby() {
 		
-		List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
-		
-		try {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM pokedex;");
-			while (rs.next()) {
-				String id = rs.getString("id");
-				String name = rs.getString("pokemon");
-				String lat = rs.getString("lat");
-				String lng = rs.getString("lng");
-				String time = rs.getString("time");
-				String confirmed = rs.getString("confirmed");
-				
-				Map<String, Object> data = new HashMap<>();
-				data.put("id", id);
-				data.put("pokemon", name);
-				data.put("lat", lat);
-				data.put("lng", lng);
-				results.add(data);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return results;
-	} 
-	
 	public List<Map<String, Object>> betterNearby(double southWestLat,
 			double southWestLng, double northEastLat, double northEastLng) {
 
