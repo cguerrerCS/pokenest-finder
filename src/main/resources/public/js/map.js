@@ -266,22 +266,21 @@ function loadViewportMarkers() {
 
 								// TODO: reset marker timeout after server ACK
 								var resetExpirationTimer = (function (nestid) {
+									return function() {
 
-									clearTimeout(MARKERTIMERS[nestid]);
-									
-									MARKERTIMERS[nestid] = setTimeout(function() {
+										clearTimeout(MARKERTIMERS[nestid]);
+										MARKERTIMERS[nestid] = setTimeout(function() {
 
-										if (pokemap.hasLayer(MARKERIDS[nestid])) {
-											pokemap.removeLayer(MARKERIDS[nestid]);
-											delete MARKERIDS[nestid];
-											delete MARKERTIMERS[nestid];
-											console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
-										} else {
-											console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
-										}
-										
-									}, 1000 * 60);
-
+											if (pokemap.hasLayer(MARKERIDS[nestid])) {
+												pokemap.removeLayer(MARKERIDS[nestid]);
+												delete MARKERIDS[nestid];
+												delete MARKERTIMERS[nestid];
+												console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
+											} else {
+												console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
+											}
+										}, 1000 * 60);
+									}
 								})(id);
 
 								resetExpirationTimer();
