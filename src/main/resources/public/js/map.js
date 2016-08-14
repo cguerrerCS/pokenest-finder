@@ -52,7 +52,9 @@ var MARKERTIMERS = {};
 
 function loadViewportMarkers() {
 
-	// console.log(MARKERIDS);
+	// reset progress bar values
+	progress = 0;
+	realProgress = 0.0;
 	$("#pokenest-progress-bar").css("width","0%");
 
 	/* user's current viewport as a latlng bounding box */
@@ -113,8 +115,8 @@ function loadViewportMarkers() {
 	}
 
 	// prepare progress bar for scan
-	var increment = math.floor(100 / tiles.length);
-	var leftover = 100 - (increment * tiles.length);
+	var increment = math.eval(100 + "/" + tiles.length);
+	var leftover = math.floor(100 - (increment * tiles.length));
 	$("#pokenest-progress-bar").css("width", leftover + "%");	
 
 	console.log("loading " + tiles.length + " tiles...");
@@ -180,7 +182,8 @@ function loadViewportMarkers() {
 						responseObject = JSON.parse(responseJSON);
 
 						/* progress bar increases for each loaded square */
-						progress = (progress + increment) % 100;
+						realProgress = (progress + increment) % 100;
+						progress = math.floor(realProgress);
 						$("#pokenest-progress-bar").css("width", progress + "%");
 
 						/* self deleting loading rectangle */
