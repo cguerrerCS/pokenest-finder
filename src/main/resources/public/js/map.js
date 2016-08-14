@@ -165,7 +165,7 @@ function loadViewportMarkers() {
 						responseObject = JSON.parse(responseJSON);
 
 						/* progress bar increases for each loaded square */
-						realProgress = (realProgress + increment) % 100;
+						realProgress = (realProgress + increment) % 101;
 						progress = math.floor(realProgress);
 						$("#pokenest-progress-bar").css("width", progress + "%");
 
