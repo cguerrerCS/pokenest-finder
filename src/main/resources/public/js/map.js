@@ -187,6 +187,7 @@ function loadViewportMarkers() {
 	    		
 	    					var data = responseObject[i];
 	    					var id = data.id;
+	    					var name = data.pokemon.toLowerCase();
 
 	    					/* only create markers for data points within search radius */
 
@@ -194,7 +195,6 @@ function loadViewportMarkers() {
 	    					/* if marker is not already drawn */
 	    					if (!(id in MARKERIDS)) {
 
-		    					var name = data.pokemon.toLowerCase();
 		    					var lat = parseFloat(data.lat);
 		    					var lng = parseFloat(data.lng);
 			    				var icon = L.icon({	
@@ -287,7 +287,7 @@ function loadViewportMarkers() {
 
 								})(name, id);
 
-								console.log(pokename + " Pokenest updated. [id: " + data.id + "]");
+								console.log(name + " Pokenest updated. [id: " + data.id + "]");
 								resetExpirationTimer();
 							}
 						}
