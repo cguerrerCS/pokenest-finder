@@ -52,8 +52,8 @@ var MARKERTIMERS = {};
 
 function loadViewportMarkers() {
 
-	console.log(MARKERIDS);
-	// console.log(MARKERTIMERS);
+	// console.log(MARKERIDS);
+	console.log(MARKERTIMERS);
 
 	// reset progress bar values
 	progress = 0;
@@ -244,9 +244,8 @@ function loadViewportMarkers() {
 		    					});	
 
 								// add marker to map
-								MARKERIDS[id] = m;
 								console.log(data.pokemon.toLowerCase() + " Pokenest added. [id: " + data.id + "]");
-
+								MARKERIDS[id] = m;
 								MARKERTIMERS[id] = setTimeout(function(pokename, nestid) { return function() { 
 
 									if (pokemap.hasLayer(MARKERIDS[nestid])) {
@@ -260,19 +259,6 @@ function loadViewportMarkers() {
 									
 								}; }(name, id), 1000 * 60);
 	    					
-								// set marker's expiration timer and clear old timeOur
-								// MARKERTIMERS[id] = setTimeout(function(){
-
-								// 	if (pokemap.hasLayer(MARKERIDS[id])) {
-								// 		pokemap.removeLayer(MARKERIDS[id]);
-								// 		delete MARKERIDS[id];
-								// 		delete MARKERTIMERS[id];
-								// 		console.log(data.pokemon.toLowerCase() + " Pokenest marker expired. [" + data.id + "]");
-								// 	} else {
-								// 		console.log(data.pokemon.toLowerCase() + " Pokenest marker undefined. [" + data.id + "]");
-								// 	}
-								// }, 1000 * 60);
-
 							} else {
 
 								// TODO: update marker information
