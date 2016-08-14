@@ -249,10 +249,10 @@ function loadViewportMarkers() {
 
 								MARKERTIMERS[id] = setTimeout(function(pokename, nestid) { return function() { 
 
-									if (pokemap.hasLayer(MARKERIDS[id])) {
-										pokemap.removeLayer(MARKERIDS[id]);
-										delete MARKERIDS[id];
-										delete MARKERTIMERS[id];
+									if (pokemap.hasLayer(MARKERIDS[nestid])) {
+										pokemap.removeLayer(MARKERIDS[nestid]);
+										delete MARKERIDS[nestid];
+										delete MARKERTIMERS[nestid];
 										console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
 									} else {
 										console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
