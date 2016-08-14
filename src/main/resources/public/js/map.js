@@ -263,14 +263,28 @@ function loadViewportMarkers() {
 
 								// TODO: update marker information
 								// ...
-							
-								// reset marker's expiration timer
-								// clearTimeout(MARKERTIMERS[id]);
-								// MARKERTIMERS[id] = setTimeout(function(){
-								// 	pokemap.removeLayer(MARKERIDS[id]);
-								// 	delete MARKERIDS[id];
-								// 	delete MARKERTIMERS[id];
-								// }, 1000 * 60);
+
+								// TODO: reset marker timeout after server ACK
+								var resetExpirationTimer = (function (nestid) {
+
+									clearTimeout(MARKERTIMERS[nestid]);
+									
+									MARKERTIMERS[nestid] = setTimeout(function() {
+
+										if (pokemap.hasLayer(MARKERIDS[nestid])) {
+											pokemap.removeLayer(MARKERIDS[nestid]);
+											delete MARKERIDS[nestid];
+											delete MARKERTIMERS[nestid];
+											console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
+										} else {
+											console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
+										}
+										
+									}, 1000 * 60);
+
+								})(id);
+
+								resetExpirationTimer();
 							}
 						}
 
