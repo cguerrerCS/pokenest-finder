@@ -121,7 +121,7 @@ function loadViewportMarkers() {
 
 	console.log("loading " + tiles.length + " tiles...");
 	console.log("increment by " + increment + "%");
-	console.log("real leftover is " + 100 - (increment * tiles.length) + "%");
+	console.log("real leftover is " + (100 - (increment * tiles.length)) + "%");
 	console.log("leftover is " + leftover + "%");
 
 	var i;
