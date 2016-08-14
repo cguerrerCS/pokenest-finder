@@ -216,7 +216,7 @@ function loadViewportMarkers() {
 		    
 					    			var pokemon = this.options.pokemon;
 					    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
-					    			var id = this.options.id;
+					    			id = this.options.id;
 					    			selectedMarkerID = id;
 
 					    			// show pokenest info modal
