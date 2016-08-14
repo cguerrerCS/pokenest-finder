@@ -150,7 +150,7 @@ public class Pokedex {
 		String schema = "DELETE FROM pokedex WHERE id = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, id);
-		prep.executeQuery();
+		prep.executeUpdate();
 
 		// Close the PreparedStatement
 		prep.close();
