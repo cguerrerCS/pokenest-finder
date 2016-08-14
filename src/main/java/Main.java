@@ -99,7 +99,15 @@ public class Main {
 				results.put("success", false);
 				results.put("error", "incorrect password");
 			} else {
-				if (pokedex.ContainsNestID(id)) {
+				boolean contains = true;
+				
+				try {
+					contains = pokedex.ContainsNestID(id);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				
+				if (contains) {
 					results.put("success", true);
 					results.put("error", "");
 					pokedex.Remove(id);	
