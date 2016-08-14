@@ -4,10 +4,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import spark.ModelAndView;
@@ -19,6 +22,7 @@ import com.heroku.sdk.jdbc.DatabaseUrl;
 public class Pokedex {
 	
 	private Connection conn;
+	private Set<String> pokenames;
 	
 	public Pokedex() {
 		
@@ -36,6 +40,70 @@ public class Pokedex {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		// add all names
+		List<String> pokenamesAsList = Arrays.asList(
+				"Bulbasaur",
+				"Charmander", 
+				"Squirtle", 
+				"Caterpie", 
+				"Spearow", 
+				"Ekans", 
+				"Pikachu", 
+				"Sandshrew", 
+				"Nidoran♀", 
+				"Nidoran♂", 
+				"Clefairy", 
+				"Vulpix", 
+				"Jigglypuff",
+				"Zubat", 
+				"Oddish", 
+				"Paras", 
+				"Venonat", 
+				"Diglett", 
+				"Meowth", 
+				"Psyduck", 
+				"Mankey", 
+				"Growlithe",
+				"Poliwag", 
+				"Abra", 
+				"Machop", 
+				"Bellsprout",
+				"Tentacool", 
+				"Geodude", 
+				"Ponyta", 
+				"Slowpoke", 
+				"Magnemite", 
+				"Farfetch'd",
+				"Doduo", 
+				"Seel", 
+				"Grimer", 
+				"Shellder", 
+				"Gastly", 
+				"Onix", 
+				"Drowzee", 
+				"Krabby", 
+				"Voltorb", 
+				"Exeggcute", 
+				"Cubone", 
+				"Lickitung",
+				"Koffing", 
+				"Rhyhorn", 
+				"Chansey", 
+				"Tangela", 
+				"Horsea", 
+				"Goldeen", 
+				"Staryu", 
+				"Scyther", 
+				"Jynx", 
+				"Electabuzz", 
+				"Magmar", 
+				"Pinsir", 
+				"Magikarp", 
+				"Eevee"
+		);
+		
+		pokenames = new HashSet<String>(pokenamesAsList);
 	}
 	
 	public void cleanExit() {
@@ -181,6 +249,15 @@ public class Pokedex {
 		}
 
 		return output;
+	}
+	
+	public boolean validPokemon(String pokename) {
+
+		if (pokenames.contains(pokename)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	private String generateID() {
