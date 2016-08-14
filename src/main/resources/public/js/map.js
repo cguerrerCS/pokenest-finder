@@ -113,7 +113,8 @@ function loadViewportMarkers() {
 	}
 
 	// prepare progress bar for scan
-	// var increment = math.floor(100 / tiles.length);
+	var increment = math.floor(100 / tiles.length);
+	
 	// var leftover = 100 - (increment * tiles.length);
 	// $("#pokenest-progress-bar").css("width", leftover + "%");
 
