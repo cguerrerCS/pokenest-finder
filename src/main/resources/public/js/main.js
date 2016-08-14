@@ -7,7 +7,10 @@ var modalLocationMarker = undefined;
 var currentLocationMarker = undefined;
 var nestMarkers = [];
 var selectedMarkerID = undefined;
+
+var realProgress = 0;
 var progress = 0;
+
 var initialLocationFound = false;
 
 /* Settings */

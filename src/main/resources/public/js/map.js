@@ -148,8 +148,6 @@ function loadViewportMarkers() {
 			// var tileWidth = parseFloat(distance(privatePostParameters.southWestLat, privatePostParameters.southWestLng,
 			// 	privatePostParameters.northEastLat, privatePostParameters.southWestLng, 'M').toFixed(2));
 			// console.log("latlng tile width: " + tileWidth + " mi");
-
-			
         	return function () {
 
         		// tiles identified using a corner latlng coordinate (unique to tile)
@@ -282,6 +280,8 @@ function loadViewportMarkers() {
 						/* place key in cache */
 						// CACHE[tileID] = undefined;
 					});
+
+					
 				}
 			}
     	})(i);
@@ -289,7 +289,9 @@ function loadViewportMarkers() {
     	loadTileMarkers();
 	}
 
-
+	// fill remainder of progress bar, scan is complete 
+	// $("#pokenest-progress-bar").css("width","100%");
+	console.log("scan done.");
 
 	// console.log(tiles);
 
