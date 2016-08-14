@@ -82,9 +82,33 @@ function loadViewportMarkers() {
 
 	for (lat = minLatBound; lat <= maxLatBound; lat = parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION))) {  
     	for (lng = minLngBound; lng <= maxLngBound; lng = parseFloat(math.eval(lng + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION))) {  
+
+    		// define bounds for a latlng bounding box
     		var southWestPoint = {lat: lat, lng: lng};
     		var northEastPoint = {lat: parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION)), lng: parseFloat(math.eval(lng + "+" + TILE_WIDTH).toFixed(FLOAT_PRECISION))};
-			tiles.push({northEast: northEastPoint, southWest: southWestPoint});
+			
+			// tile is defined as a latlng bounding box (two latlng points)
+    		var tile = {northEast: northEastPoint, southWest: southWestPoint};
+
+    		// get user's last recorded current location
+			var currentLat = currentLocationMarker.getLatLng().lat;
+			var currentLng = currentLocationMarker.getLatLng().lng;
+
+    		/* 
+			 * d1 : distance from user's location to the top left corner of cache tile 
+		     * d2 : distance from user's location to the top right corner of cache tile
+		     * d3 : distance from user's location to the bottom right corner of cache tile
+		     * d4 : distance from user's location to the bottom left corner of cache tile
+			 */
+			var d1 = parseFloat(distance(currentLat, currentLng, tile.northEast.lat, tile.southWest.lng, 'M').toFixed(2));
+			var d2 = parseFloat(distance(currentLat, currentLng, tile.northEast.lat, tile.northEast.lng, 'M').toFixed(2));
+			var d3 = parseFloat(distance(currentLat, currentLng, tile.southWest.lat, tile.northEast.lng, 'M').toFixed(2));
+			var d4 = parseFloat(distance(currentLat, currentLng, tile.southWest.lat, tile.southWest.lng, 'M').toFixed(2));
+
+    		// only sending post requests about tiles within our search radius
+    		if ((d1 <= SEARCH_RADIUS) || (d2 <= SEARCH_RADIUS) || (d3 <= SEARCH_RADIUS) || (d4 <= SEARCH_RADIUS)) {
+				tiles.push(tile);
+			}
 		}
 	}
 
@@ -131,8 +155,8 @@ function loadViewportMarkers() {
 				if (true) {
 
 					// get current location
-					var currentLat = currentLocationMarker.getLatLng().lat;
-					var currentLng = currentLocationMarker.getLatLng().lng;
+					// var currentLat = currentLocationMarker.getLatLng().lat;
+					// var currentLng = currentLocationMarker.getLatLng().lng;
 					// console.log("scan center: (" + currentLat + " ," + currentLng + ")");
 
 					/* 
@@ -141,119 +165,116 @@ function loadViewportMarkers() {
 					 * d3 : distance from user's location to the bottom right corner of cache tile
 					 * d4 : distance from user's location to the bottom left corner of cache tile
 					 */
-					var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.southWestLng, 'M').toFixed(2));
-					var d2 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.northEastLng, 'M').toFixed(2));
-					var d3 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.northEastLng, 'M').toFixed(2));
-					var d4 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
+					// var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.southWestLng, 'M').toFixed(2));
+					// var d2 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.northEastLng, 'M').toFixed(2));
+					// var d3 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.northEastLng, 'M').toFixed(2));
+					// var d4 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
 
-					if ((d1 <= SEARCH_RADIUS) || (d2 <= SEARCH_RADIUS) || (d3 <= SEARCH_RADIUS) || (d4 <= SEARCH_RADIUS)) {
+	        		$.post("/nearby", privatePostParameters, function(responseJSON) {
+						
+	        			/* get responce object */
+						responseObject = JSON.parse(responseJSON);
 
-		        		$.post("/nearby", privatePostParameters, function(responseJSON) {
-							
-		        			/* get responce object */
-							responseObject = JSON.parse(responseJSON);
+						/* progress bar increases for each loaded square */
+						progress = (progress + increment) % 100;
+						$("#pokenest-progress-bar").css("width", progress + "%");
 
-							/* progress bar increases for each loaded square */
-							progress = (progress + increment) % 100;
-							$("#pokenest-progress-bar").css("width", progress + "%");
+						/* self deleting loading rectangle */
+						var rectBounds = [
+							[privatePostParameters.southWestLat, privatePostParameters.southWestLng], 
+							[privatePostParameters.northEastLat, privatePostParameters.northEastLng]
+						];
+						var rectangle = L.rectangle(rectBounds, {color: '#99ff66', weight: 0}).addTo(pokemap);
+						setTimeout(function(){ 
+							pokemap.removeLayer(rectangle);
+						}, 1000 * 5);
 
-							/* self deleting loading rectangle */
-							var rectBounds = [
-								[privatePostParameters.southWestLat, privatePostParameters.southWestLng], 
-								[privatePostParameters.northEastLat, privatePostParameters.northEastLng]
-							];
-							var rectangle = L.rectangle(rectBounds, {color: '#99ff66', weight: 0}).addTo(pokemap);
-							setTimeout(function(){ 
-								pokemap.removeLayer(rectangle);
-							}, 1000 * 5);
+						/* parse results of response object */
+						for (i = 0; i < responseObject.length; i++) { 
+	    		
+	    					data = responseObject[i];
+	    					var id = data.id;
 
-							/* parse results of response object */
-							for (i = 0; i < responseObject.length; i++) { 
-		    		
-		    					data = responseObject[i];
-		    					var id = data.id;
+	    					/* if marker is not already drawn */
+	    					if (!(id in MARKERIDS)) {
 
-		    					/* if marker is not already drawn */
-		    					if (!(id in MARKERIDS)) {
-
-			    					var name = data.pokemon.toLowerCase();
-			    					var lat = parseFloat(data.lat);
-			    					var lng = parseFloat(data.lng);
-				    				var icon = L.icon({	
-				    					iconUrl: 'http://www.pokestadium.com/sprites/diamond-pearl/' + name + '.png',
-				    					iconSize:     [96, 96], // size of the icon
-				    					iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
-				    					popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
-									});
-			    				
-									var options = {
-										icon: icon,
-										id: id,
-										pokemon: name,
-										lat: lat,
-										lng: lng
-									}
-
-									var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
-			    
-						    			var pokemon = this.options.pokemon;
-						    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
-						    			var id = this.options.id;
-						    			selectedMarkerID = id;
-
-						    			// show pokenest info modal
-						    			$('#markerdata-header').html(pokemon + " Pokenest Info");
-
-						    			var privileged = false;
-						    			var cookie = getCookie("access");
-						    			if (cookie == "true") {
-						    				privileged = true;
-						    			}
-
-						    			if (privileged) {
-						    				$('#removeEntryBtn').show();
-						    			} else {
-						    				$('#removeEntryBtn').hide();
-						    			}
-						    			$('#myMarkerModal').modal();
-
-						    			var lat1 = currentLocationMarker.getLatLng().lat;
-						    			var lon1 = currentLocationMarker.getLatLng().lng;
-						    			var lat2 = parseFloat(this.options.lat);
-						    			var lon2 = parseFloat(this.options.lng);
-						    			var dist = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
-						    			$('#markerdata-distance').html("Distance   <b>" + dist + "</b> mi.");
-			    					});	
-
-									// add marker to map
-									MARKERIDS[id] = m;
-		    					
-									// set marker's expiration timer and clear old timeOur
-									MARKERTIMERS[id] = setTimeout(function(){
-										pokemap.removeLayer(MARKERIDS[id]);
-									}, 1000 * 60);
-
-								} else {
-
-									// TODO: update marker information
-									// ...
-								
-									// reset marker's expiration timer
-									clearTimeout(MARKERTIMERS[id]);
-									MARKERTIMERS[id] = setTimeout(function(){
-
-										pokemap.removeLayer(MARKERIDS[id]);
-										delete MARKERIDS[id];
-										delete MARKERTIMERS[id];
-
-									}, 1000 * 60);
+		    					var name = data.pokemon.toLowerCase();
+		    					var lat = parseFloat(data.lat);
+		    					var lng = parseFloat(data.lng);
+			    				var icon = L.icon({	
+			    					iconUrl: 'http://www.pokestadium.com/sprites/diamond-pearl/' + name + '.png',
+			    					iconSize:     [96, 96], // size of the icon
+			    					iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
+			    					popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
+								});
+		    				
+								var options = {
+									icon: icon,
+									id: id,
+									pokemon: name,
+									lat: lat,
+									lng: lng
 								}
-							}
 
-							/* place key in cache */
-							// CACHE[tileID] = undefined;
-						});
-					}
+								var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
+		    
+					    			var pokemon = this.options.pokemon;
+					    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
+					    			var id = this.options.id;
+					    			selectedMarkerID = id;
+
+					    			// show pokenest info modal
+					    			$('#markerdata-header').html(pokemon + " Pokenest Info");
+
+					    			var privileged = false;
+					    			var cookie = getCookie("access");
+					    			if (cookie == "true") {
+					    				privileged = true;
+					    			}
+
+					    			if (privileged) {
+					    				$('#removeEntryBtn').show();
+					    			} else {
+					    				$('#removeEntryBtn').hide();
+					    			}
+					    			$('#myMarkerModal').modal();
+
+					    			var lat1 = currentLocationMarker.getLatLng().lat;
+					    			var lon1 = currentLocationMarker.getLatLng().lng;
+					    			var lat2 = parseFloat(this.options.lat);
+					    			var lon2 = parseFloat(this.options.lng);
+					    			var dist = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
+					    			$('#markerdata-distance').html("Distance   <b>" + dist + "</b> mi.");
+		    					});	
+
+								// add marker to map
+								MARKERIDS[id] = m;
+	    					
+								// set marker's expiration timer and clear old timeOur
+								MARKERTIMERS[id] = setTimeout(function(){
+									pokemap.removeLayer(MARKERIDS[id]);
+								}, 1000 * 60);
+
+							} else {
+
+								// TODO: update marker information
+								// ...
+							
+								// reset marker's expiration timer
+								clearTimeout(MARKERTIMERS[id]);
+								MARKERTIMERS[id] = setTimeout(function(){
+
+									pokemap.removeLayer(MARKERIDS[id]);
+									delete MARKERIDS[id];
+									delete MARKERTIMERS[id];
+
+								}, 1000 * 60);
+							}
+						}
+
+						/* place key in cache */
+						// CACHE[tileID] = undefined;
+					});
 				}
 			}
     	})(i);
