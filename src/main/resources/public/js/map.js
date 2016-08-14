@@ -52,6 +52,8 @@ var MARKERTIMERS = {};
 
 function loadViewportMarkers() {
 
+	console.log(MARKERIDS);
+
 	// reset progress bar values
 	progress = 0;
 	realProgress = 0.0;
@@ -119,10 +121,10 @@ function loadViewportMarkers() {
 	var leftover = math.floor(100 - (increment * tiles.length));
 	$("#pokenest-progress-bar").css("width", leftover + "%");	
 
-	console.log("loading " + tiles.length + " tiles...");
-	console.log("increment by " + increment + "%");
-	console.log("real leftover is " + (100 - (increment * tiles.length)) + "%");
-	console.log("leftover is " + leftover + "%");
+	// console.log("loading " + tiles.length + " tiles...");
+	// console.log("increment by " + increment + "%");
+	// console.log("real leftover is " + (100 - (increment * tiles.length)) + "%");
+	// console.log("leftover is " + leftover + "%");
 
 	var i;
 	for (i = 0; i < tiles.length; i++) {
@@ -186,7 +188,7 @@ function loadViewportMarkers() {
 	    					var id = data.id;
 
 	    					/* only create markers for data points within search radius */
-	    					
+
 
 	    					/* if marker is not already drawn */
 	    					if (!(id in MARKERIDS)) {
@@ -276,10 +278,6 @@ function loadViewportMarkers() {
 
     	loadTileMarkers();
 	}
-
-	// fill remainder of progress bar, scan is complete 
-	// $("#pokenest-progress-bar").css("width","100%");
-	console.log("scan done.");
 
 	// console.log(tiles);
 
