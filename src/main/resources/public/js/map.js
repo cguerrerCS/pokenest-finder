@@ -253,9 +253,9 @@ function loadViewportMarkers() {
 										pokemap.removeLayer(MARKERIDS[id]);
 										delete MARKERIDS[id];
 										delete MARKERTIMERS[id];
-										console.log(pokename + " Pokenest marker expired. [" + pokeid + "]");
+										console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
 									} else {
-										console.log(pokename + " Pokenest marker undefined. [" + pokeid + "]");
+										console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
 									}
 									
 								}; }(name, id), 1000 * 60);
