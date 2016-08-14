@@ -287,7 +287,7 @@ function loadViewportMarkers() {
 
 								})(name, id);
 
-								console.log(name + " Pokenest updated. [id: " + data.id + "]");
+								console.log(pokename + " Pokenest updated. [id: " + data.id + "]");
 								resetExpirationTimer();
 							}
 						}
