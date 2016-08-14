@@ -104,6 +104,7 @@ public class Main {
 				try {
 					contains = pokedex.ContainsNestID(id);
 				} catch (SQLException e) {
+					// throws error when no results are returned...?
 					e.printStackTrace();
 				}
 				

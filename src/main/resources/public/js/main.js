@@ -296,6 +296,9 @@ $( document ).ready(function() {
 				var responseObject = JSON.parse(responseJSON);
 				var success = responseObject.success;
 				var error = responseObject.error;
+
+				console.log("remove results below...");
+				console.log(responseObject);
 	
 				// add notification for user
 				var options =  {
