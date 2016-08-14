@@ -72,14 +72,14 @@ function loadViewportMarkers() {
 	var hiLng = northEastLng;
 	var minLngBound = parseFloat(math.eval((Math.floor(loLng/TILE_WIDTH) * (TILE_WIDTH)) + "-" + (PADDING * TILE_WIDTH)).toFixed(FLOAT_PRECISION));
 	var maxLngBound = parseFloat(math.eval((Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH)) + "+" + (PADDING * TILE_WIDTH)).toFixed(FLOAT_PRECISION));
-	console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
+	// console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
 
 	/* convert latitude bounds to cacheable tiles (string form) */
 	var loLat = southWestLat;
 	var hiLat = northEastLat;
 	var minLatBound = parseFloat(math.eval((Math.floor(loLat/TILE_HEIGHT) * (TILE_HEIGHT)) + "-" + (PADDING * TILE_HEIGHT)).toFixed(FLOAT_PRECISION));
 	var maxLatBound = parseFloat(math.eval((Math.floor(hiLat/TILE_HEIGHT) * (TILE_HEIGHT)) + "+" + (PADDING * TILE_HEIGHT)).toFixed(FLOAT_PRECISION));
-	console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
+	// console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
 
 	var tiles = [];
 	var lat;
@@ -249,10 +249,13 @@ function loadViewportMarkers() {
 	    					
 								// set marker's expiration timer and clear old timeOur
 								MARKERTIMERS[id] = setTimeout(function(){
-									pokemap.removeLayer(MARKERIDS[id]);
-									delete MARKERIDS[id];
-									delete MARKERTIMERS[id];
-									console.log(data.pokemon.toLowerCase() + " Pokenest expired. [id: " + data.id + "]");
+
+									if (pokemap.hasLayer(MARKERIDS[id])) {
+										pokemap.removeLayer(MARKERIDS[id]);
+										delete MARKERIDS[id];
+										delete MARKERTIMERS[id];
+										console.log(data.pokemon.toLowerCase() + " Pokenest expired. [id: " + data.id + "]");
+									}
 								}, 1000 * 60);
 
 							} else {
