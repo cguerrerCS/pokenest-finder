@@ -504,3 +504,8 @@ function getCookie(cname) {
     }
     return "";
 }
+
+/* parse autocomplete results */
+function iconURL(pokemonName) {
+	return 'http://www.pokestadium.com/sprites/diamond-pearl/' + pokemonName + '.png';
+}
