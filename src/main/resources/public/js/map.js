@@ -52,8 +52,8 @@ var MARKERTIMERS = {};
 
 function loadViewportMarkers() {
 
-	console.log(MARKERIDS);
-	console.log(MARKERTIMERS);
+	// console.log(MARKERIDS);
+	// console.log(MARKERTIMERS);
 
 	// reset progress bar values
 	progress = 0;
@@ -245,6 +245,7 @@ function loadViewportMarkers() {
 
 								// add marker to map
 								MARKERIDS[id] = m;
+								console.log(data.pokemon.toLowerCase() + " Pokenest added. [id: " + data.id + "]");
 	    					
 								// set marker's expiration timer and clear old timeOur
 								MARKERTIMERS[id] = setTimeout(function(){
