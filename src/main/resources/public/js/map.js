@@ -50,26 +50,6 @@ var SEARCH_RADIUS = 50.0    // default 20 mile search radius
 var MARKERIDS = {};
 var MARKERTIMERS = {};
 
-function FastPokeMapScan() {
-
-	var lat = 29.5985364;
-	var lng = -95.23869649999999;
-
-	 $.ajax({
-        dataType: "json",
-        url: "https://api.fastpokemap.com/?lat=" + lat + "&lng=" + lng,
-        success: function (data) {
-            console.log("Successful scan");
-            console.log(data);
-        },
-        timeout: 30000        
-    }).fail( function( xhr, status ) {
-        console.log("Scan failed");
-        console.log(xhr);
-        console.log(status);
-    });
-}
-
 function loadViewportMarkers() {
 
 	console.log(MARKERIDS);

@@ -208,12 +208,6 @@ $( document ).ready(function() {
 	// 	}
 	// }, (1000 * 10));
 
-	setInterval(function() {
-		FastPokeMapScan()
-	}(1000 * 6));
-	
-	
-
 	$('#submitbtn').on('click', function() {
 
 		/* hide modal and post sighting to server */
