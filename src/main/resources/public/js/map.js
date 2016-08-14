@@ -265,11 +265,12 @@ function loadViewportMarkers() {
 								// ...
 
 								// TODO: reset marker timeout after server ACK
-								var resetExpirationTimer = (function (nestid) {
+								var resetExpirationTimer = (function (pokename, nestid) {
 									return function() {
 
 										clearTimeout(MARKERTIMERS[nestid]);
-										MARKERTIMERS[nestid] = setTimeout(function() {
+
+										MARKERTIMERS[id] = setTimeout(function(pokename, nestid) { return function() { 
 
 											if (pokemap.hasLayer(MARKERIDS[nestid])) {
 												pokemap.removeLayer(MARKERIDS[nestid]);
@@ -279,9 +280,12 @@ function loadViewportMarkers() {
 											} else {
 												console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
 											}
-										}, 1000 * 60);
+											
+										}; }(name, id), 1000 * 60);
+
 									}
-								})(id);
+
+								})(name, id);
 
 								resetExpirationTimer();
 							}
@@ -290,8 +294,6 @@ function loadViewportMarkers() {
 						/* place key in cache */
 						// CACHE[tileID] = undefined;
 					});
-
-					
 				}
 			}
     	})(i);
