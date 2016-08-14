@@ -431,7 +431,6 @@ $( document ).ready(function() {
 		'Kabuto', 
 		'Aerodactyl', 
 		'Snorlax' 
-		// 'Dratini'
 	];
 
 	$('#pokemon-typeahead .typeahead').typeahead({
@@ -488,9 +487,9 @@ function onLocationFound(e) {
 		loadViewportMarkers();
 		// draw search radius
 		var circle = L.circle([newLatLng.lat, newLatLng.lng], (SEARCH_RADIUS * 1609), {
-    		color: 'red',
-    		fillColor: '#f03',
-    		fillOpacity: 0.2
+    		color: '#EF5350',
+    		fillColor: '#FFCDD2',
+    		fillOpacity: 0.1
 		}).addTo(pokemap);
 	}
 }
