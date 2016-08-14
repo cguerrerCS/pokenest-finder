@@ -199,7 +199,7 @@ $( document ).ready(function() {
 	});	
 
 	// by default, follow user
-	// setInterval(function() { update(); }, 2000);
+	setInterval(function() { update(); }, 2000);
 
 	// find pokemon within viewport
 	// setInterval(function() { loadPokeRadar(); }, 10000);
@@ -359,126 +359,62 @@ $( document ).ready(function() {
 
 	var pokemon = [
 		'Bulbasaur',
-		'Ivysaur',
-		'Venusaur', 
 		'Charmander', 
-		'Charmeleon', 
-		'Charizard', 
 		'Squirtle', 
-		'Wartortle', 
-		'Blastoise', 
 		'Caterpie', 
-		'Metapod', 
-		'Butterfree', 
 		'Weedle', 
-		'Kakuna', 
-		'Beedrill', 
 		'Pidgey', 
-		'Pidgeotto', 
-		'Pidgeot', 
 		'Rattata', 
-		'Raticate', 
 		'Spearow', 
-		'Fearow', 
 		'Ekans', 
-		'Arbok', 
 		'Pikachu', 
-		'Raichu', 
 		'Sandshrew', 
-		'Sandslash', 
 		'Nidoran♀', 
-		'Nidorina', 
-		'Nidoqueen', 
 		'Nidoran♂', 
-		'Nidorino', 
-		'Nidoking', 
 		'Clefairy', 
-		'Clefable', 
 		'Vulpix', 
-		'Ninetales', 
 		'Jigglypuff', 
-		'Wigglytuff', 
 		'Zubat', 
-		'Golbat', 
 		'Oddish', 
-		'Gloom', 
-		'Vileplume', 
 		'Paras', 
-		'Parasect', 
 		'Venonat', 
-		'Venomoth', 
 		'Diglett', 
-		'Dugtrio', 
 		'Meowth', 
-		'Persian', 
 		'Psyduck', 
-		'Golduck', 
 		'Mankey', 
-		'Primeape', 
 		'Growlithe', 
-		'Arcanine', 
 		'Poliwag', 
-		'Poliwhirl', 
-		'Poliwrath', 
 		'Abra', 
-		'Kadabra', 
-		'Alakazam', 
 		'Machop', 
-		'Machoke', 
-		'Machamp', 
 		'Bellsprout', 
-		'Weepinbell',
-		'Victreebel',
 		'Tentacool', 
-		'Tentacruel', 
 		'Geodude', 
-		'Graveler', 
-		'Golem', 
 		'Ponyta', 
-		'Rapidash', 
 		'Slowpoke', 
-		'Slowbro', 
 		'Magnemite', 
-		'Magneton', 
 		"Farfetch'd", 
 		'Doduo', 
-		'Dodrio', 
 		'Seel', 
-		'Dewgong', 
 		'Grimer', 
-		'Muk', 
 		'Shellder', 
-		'Cloyster', 
 		'Gastly', 
-		'Haunter', 
-		'Gengar', 
 		'Onix', 
 		'Drowzee', 
-		'Hypno', 
 		'Krabby', 
-		'Kingler', 
 		'Voltorb', 
-		'Electrode', 
 		'Exeggcute', 
-		'Exeggutor', 
 		'Cubone', 
-		'Marowak', 
 		'Hitmonlee', 
 		'Hitmonchan', 
 		'Lickitung', 
 		'Koffing', 
-		'Weezing', 
 		'Rhyhorn', 
-		'Rhydon', 
 		'Chansey', 
 		'Tangela', 
 		'Kangaskhan', 
 		'Horsea', 
-		'Seadra', 
 		'Goldeen', 
-		'Seaking', 
 		'Staryu', 
-		'Starmie', 
 		'Mr. Mime', 
 		'Scyther', 
 		'Jynx', 
@@ -489,26 +425,13 @@ $( document ).ready(function() {
 		'Magikarp', 
 		'Gyarados', 
 		'Lapras', 
-		'Ditto', 
 		'Eevee', 
-		'Vaporeon', 
-		'Jolteon', 
-		'Flareon', 
 		'Porygon', 
 		'Omanyte', 
-		'Omastar', 
 		'Kabuto', 
-		'Kabutops', 
 		'Aerodactyl', 
-		'Snorlax', 
-		'Articuno', 
-		'Zapdos', 
-		'Moltres', 
-		'Dratini', 
-		'Dragonair',
-		'Dragonite', 
-		'Mewtwo', 
-		'Mew' 
+		'Snorlax' 
+		// 'Dratini'
 	];
 
 	$('#pokemon-typeahead .typeahead').typeahead({
@@ -522,111 +445,6 @@ $( document ).ready(function() {
 	});
 
 });
-
-/* Locate all pokemon nests within current viewport */
-function loadPokeRadar() {
-
-	console.log("pokeradar search...");
-	var bounds = pokemap.getBounds();
-
-	var viewport = {
-		southWestLat: bounds._southWest.lat, 
-		southWestLng: bounds._southWest.lng,
-		northEastLat: bounds._northEast.lat, 
-		northEastLng: bounds._northEast.lng
-	}
-
-	var postParameters = viewport;
-
-	/* remove old pokenest markers */
-	for (i = 0; i < nestMarkers.length; i++) { 
-		var marker = nestMarkers[i];
-		pokemap.removeLayer(marker);
-	}
-	nestMarkers = [];
-
-	/* load in updated pokenest markers */
-	$.post("/nearby", postParameters, function(responseJSON){
-
-		/* get responce object */
-		responseObject = JSON.parse(responseJSON);
-
-		console.log(responseObject)
-		
-		/* parse results of response object */
-		for (i = 0; i < responseObject.length; i++) { 
-    		
-    		data = responseObject[i];
-    		var id = data.id;
-    		var name = data.pokemon.toLowerCase();
-    		var lat = parseFloat(data.lat);
-    		var lng = parseFloat(data.lng);
-    		var icon = L.icon({
-    			// iconUrl: name + '.png',
-    			iconUrl: 'http://www.pokestadium.com/sprites/diamond-pearl/' + name + '.png',
-    			iconSize:     [96, 96], // size of the icon
-    			iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
-    			popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
-			});
-
-			var options = {
-				icon: icon,
-				id: id,
-				pokemon: name,
-				lat: lat,
-				lng: lng
-			}
-
-    		var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
-    
-    			var pokemon = this.options.pokemon;
-    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
-    			var id = this.options.id;
-    			console.log(id + " " + pokemon);
-    			selectedMarkerID = id;
-
-    			// show pokenest info modal
-    			$('#markerdata-header').html(pokemon + " Pokenest Info");
-
-    			var privileged = false;
-    			var cookie = getCookie("access");
-    			if (cookie == "true") {
-    				privileged = true;
-    			}
-
-    			if (privileged) {
-    				$('#removeEntryBtn').show();
-    			} else {
-    				$('#removeEntryBtn').hide();
-    			}
-    			$('#myMarkerModal').modal();
-
-    			var lat1 = currentLocationMarker.getLatLng().lat;
-    			var lon1 = currentLocationMarker.getLatLng().lng;
-    			var lat2 = parseFloat(this.options.lat);
-    			var lon2 = parseFloat(this.options.lng);
-
-    			console.log("lat1: " + lat1);
-    			console.log("lon1: " + lon1);
-    			console.log("lat2: " + lat2);
-    			console.log("lon2: " + lon1);
-    			$('#markerdata-distance').html("Distance   <b>" + distance(lat1, lon1, lat2, lon2, 'M').toFixed(2) + "</b> mi.");
-    		});
-
-			// store additional marker data
-			// var googleMapsLink = "http://www.google.com/maps/place/" + data.lat + "," + data.lng;
-    		// var pokevisionLink = "https://pokevision.com/#/@" + data.lat + "," + data.lng;
-			// data["pokevisionLink"] = pokevisionLink;
-			// data["googleMapsLink"] = googleMapsLink;
-
-			// cache marker data for later
-			// markerData[m] = data;
-
-			// cache nest marker reference for later
-			nestMarkers.push(m);
-		}
-	}); 
-}
 
 function locate() {
 	pokemap.locate({setView: true, maxZoom: 16});

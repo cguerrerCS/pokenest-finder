@@ -185,6 +185,9 @@ function loadViewportMarkers() {
 	    					data = responseObject[i];
 	    					var id = data.id;
 
+	    					/* only create markers for data points within search radius */
+	    					
+
 	    					/* if marker is not already drawn */
 	    					if (!(id in MARKERIDS)) {
 
