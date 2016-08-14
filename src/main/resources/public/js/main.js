@@ -296,9 +296,6 @@ $( document ).ready(function() {
 				var responseObject = JSON.parse(responseJSON);
 				var success = responseObject.success;
 				var error = responseObject.error;
-
-				console.log("remove results below...");
-				console.log(responseObject);
 	
 				// add notification for user
 				var options =  {
@@ -307,7 +304,7 @@ $( document ).ready(function() {
 	    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 				}
 				if (success) {
-					options['content'] = "[" + pokemon + ":" + selectedMarkerID + "] PokéNest location removed.";
+					options['content'] = "[" + selectedMarkerID + "] PokéNest location removed.";
 				} else {
 					options['content'] = "Error: " + error;
 				}
