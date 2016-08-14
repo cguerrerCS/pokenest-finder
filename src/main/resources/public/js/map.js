@@ -46,7 +46,7 @@ const FLOAT_PRECISION = 2;  // floating point rounded using .toFixed(FLOAT_PRECI
 const PADDING = 0;          // number of padding tiles added to bounding box
 
 var CACHE = {};             // tile cache
-var SEARCH_RADIUS = 50.0    // default 20 mile search radius
+var SEARCH_RADIUS = 30.0    // default 30 mile search radius
 var MARKERIDS = {};
 var MARKERTIMERS = {};
 
