@@ -248,6 +248,8 @@ function loadViewportMarkers() {
 								// set marker's expiration timer and clear old timeOur
 								MARKERTIMERS[id] = setTimeout(function(){
 									pokemap.removeLayer(MARKERIDS[id]);
+									delete MARKERIDS[id];
+									delete MARKERTIMERS[id];
 								}, 1000 * 60);
 
 							} else {
@@ -258,11 +260,9 @@ function loadViewportMarkers() {
 								// reset marker's expiration timer
 								clearTimeout(MARKERTIMERS[id]);
 								MARKERTIMERS[id] = setTimeout(function(){
-
 									pokemap.removeLayer(MARKERIDS[id]);
 									delete MARKERIDS[id];
 									delete MARKERTIMERS[id];
-
 								}, 1000 * 60);
 							}
 						}
