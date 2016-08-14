@@ -52,7 +52,7 @@ var MARKERTIMERS = {};
 
 function loadViewportMarkers() {
 
-	// console.log(MARKERIDS);
+	console.log(MARKERIDS);
 	// console.log(MARKERTIMERS);
 
 	// reset progress bar values
@@ -254,9 +254,9 @@ function loadViewportMarkers() {
 										pokemap.removeLayer(MARKERIDS[id]);
 										delete MARKERIDS[id];
 										delete MARKERTIMERS[id];
-										console.log(data.pokemon.toLowerCase() + " Pokenest expired. [id: " + data.id + "]");
+										console.log(data.pokemon.toLowerCase() + " Pokenest marker expired. [" + data.id + "]");
 									} else {
-										console.log(data.pokemon.toLowerCase() + " Pokenest layer undefined. [id: " + data.id + "]");
+										console.log(data.pokemon.toLowerCase() + " Pokenest marker undefined. [" + data.id + "]");
 									}
 								}, 1000 * 60);
 
