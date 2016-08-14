@@ -489,7 +489,7 @@ function onLocationFound(e) {
 		var circle = L.circle([newLatLng.lat, newLatLng.lng], (SEARCH_RADIUS * 1609), {
     		color: '#EF5350',
     		fillColor: '#FFCDD2',
-    		fillOpacity: 0.1
+    		fillOpacity: 0.2
 		}).addTo(pokemap);
 	}
 }
