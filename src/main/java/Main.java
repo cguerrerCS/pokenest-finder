@@ -99,10 +99,9 @@ public class Main {
 				results.put("success", false);
 				results.put("error", "incorrect password");
 			} else {
-				results.put("success", true);
-				results.put("error", "");
-				
 				if (pokedex.ContainsNestID(id)) {
+					results.put("success", true);
+					results.put("error", "");
 					pokedex.Remove(id);	
 				} else {
 					results.put("success", false);
