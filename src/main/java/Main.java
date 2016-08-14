@@ -78,7 +78,7 @@ public class Main {
 			// TODO: check if Pokemon name is valid
 			String pokemon = queryMap.value("pokemon");
 			if (!pokedex.validPokemon(pokemon)) {
-				results = ImmutableMap.of("success", false, "error", "Submitted LatLng is invalid.");
+				results = ImmutableMap.of("success", false, "error", String.format("Invalid Pokemon name %s", pokemon));
 				return GSON.toJson(results);
 			}
 				
