@@ -246,19 +246,32 @@ function loadViewportMarkers() {
 								// add marker to map
 								MARKERIDS[id] = m;
 								console.log(data.pokemon.toLowerCase() + " Pokenest added. [id: " + data.id + "]");
-	    					
-								// set marker's expiration timer and clear old timeOur
-								MARKERTIMERS[id] = setTimeout(function(){
+
+								MARKERTIMERS[id] = setTimeout(function(pokename, nestid) { return function() { 
 
 									if (pokemap.hasLayer(MARKERIDS[id])) {
 										pokemap.removeLayer(MARKERIDS[id]);
 										delete MARKERIDS[id];
 										delete MARKERTIMERS[id];
-										console.log(data.pokemon.toLowerCase() + " Pokenest marker expired. [" + data.id + "]");
+										console.log(pokename + " Pokenest marker expired. [" + pokeid + "]");
 									} else {
-										console.log(data.pokemon.toLowerCase() + " Pokenest marker undefined. [" + data.id + "]");
+										console.log(pokename + " Pokenest marker undefined. [" + pokeid + "]");
 									}
-								}, 1000 * 60);
+									
+								}; }(name, id), 1000 * 60);
+	    					
+								// set marker's expiration timer and clear old timeOur
+								// MARKERTIMERS[id] = setTimeout(function(){
+
+								// 	if (pokemap.hasLayer(MARKERIDS[id])) {
+								// 		pokemap.removeLayer(MARKERIDS[id]);
+								// 		delete MARKERIDS[id];
+								// 		delete MARKERTIMERS[id];
+								// 		console.log(data.pokemon.toLowerCase() + " Pokenest marker expired. [" + data.id + "]");
+								// 	} else {
+								// 		console.log(data.pokemon.toLowerCase() + " Pokenest marker undefined. [" + data.id + "]");
+								// 	}
+								// }, 1000 * 60);
 
 							} else {
 
