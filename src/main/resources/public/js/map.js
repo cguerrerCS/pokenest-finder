@@ -255,6 +255,8 @@ function loadViewportMarkers() {
 										delete MARKERIDS[id];
 										delete MARKERTIMERS[id];
 										console.log(data.pokemon.toLowerCase() + " Pokenest expired. [id: " + data.id + "]");
+									} else {
+										console.log(data.pokemon.toLowerCase() + " Pokenest layer undefined. [id: " + data.id + "]");
 									}
 								}, 1000 * 60);
 
