@@ -189,9 +189,10 @@ $( document ).ready(function() {
 		modalLocationMarker.setLatLng(sitemap.getCenter());
 
 		setTimeout(function() { modalLocationMarker.setLatLng(sitemap.getCenter()); }, 500);
+		setTimeout(function() { modalLocationMarker.setLatLng(sitemap.getCenter()); }, 1000);
 
 		// var cnt = sitemap.getCenter();
-	 //    var position = modalLocationMarker.getLatLng();
+	 	// var position = modalLocationMarker.getLatLng();
 		// lat = Number(position['lat']).toFixed(5);
 		// lng = Number(position['lng']).toFixed(5);
 		// console.log(position);
