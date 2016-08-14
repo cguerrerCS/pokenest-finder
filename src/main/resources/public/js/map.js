@@ -121,6 +121,7 @@ function loadViewportMarkers() {
 
 	console.log("loading " + tiles.length + " tiles...");
 	console.log("increment by " + increment + "%");
+	console.log("real leftover is " + 100 - (increment * tiles.length) + "%");
 	console.log("leftover is " + leftover + "%");
 
 	var i;
@@ -157,22 +158,6 @@ function loadViewportMarkers() {
 				// if tileID does not exist in CACHE as a key
 				// if (!(tileID in CACHE)) {
 				if (true) {
-
-					// get current location
-					// var currentLat = currentLocationMarker.getLatLng().lat;
-					// var currentLng = currentLocationMarker.getLatLng().lng;
-					// console.log("scan center: (" + currentLat + " ," + currentLng + ")");
-
-					/* 
-					 * d1 : distance from user's location to the top left corner of cache tile 
-					 * d2 : distance from user's location to the top right corner of cache tile
-					 * d3 : distance from user's location to the bottom right corner of cache tile
-					 * d4 : distance from user's location to the bottom left corner of cache tile
-					 */
-					// var d1 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.southWestLng, 'M').toFixed(2));
-					// var d2 = parseFloat(distance(currentLat, currentLng, privatePostParameters.northEastLat, privatePostParameters.northEastLng, 'M').toFixed(2));
-					// var d3 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.northEastLng, 'M').toFixed(2));
-					// var d4 = parseFloat(distance(currentLat, currentLng, privatePostParameters.southWestLat, privatePostParameters.southWestLng, 'M').toFixed(2));
 
 	        		$.post("/nearby", privatePostParameters, function(responseJSON) {
 						
