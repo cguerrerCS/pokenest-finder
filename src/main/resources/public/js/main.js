@@ -155,11 +155,11 @@ $( document ).ready(function() {
 	// var pulsingIcon = L.icon.pulse({iconSize:[15,15],color:'blue'});
 	// currentLocationMarker = L.marker([0,0],{icon: pulsingIcon}).addTo(pokemap);
 
-	currentLocationMarker = L.circle([0, 0], 10, {
-    	color: 'red',
-    	fillColor: '#f03',
-    	fillOpacity: 0.5
-	}).addTo(pokemap);
+	// currentLocationMarker = L.circle([0, 0], 10, {
+ //    	color: 'red',
+ //    	fillColor: '#f03',
+ //    	fillOpacity: 0.5
+	// }).addTo(pokemap);
 
 	modalLocationMarker = L.circle([0, 0], 10, {
     	color: 'red',
@@ -167,7 +167,6 @@ $( document ).ready(function() {
     	fillOpacity: 0.5,
     	zIndexOffset: 1000
 	}).addTo(sitemap);
-
 
 	/** bind the locationfound event to the function onLocationFound()
     in other words, tell Leaflet what to do once locate() is successful 
