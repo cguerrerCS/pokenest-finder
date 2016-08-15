@@ -40,10 +40,10 @@ function distance(lat1, lon1, lat2, lon2, unit) {
 	return dist
 }
 
-const TILE_WIDTH = 0.1;     // latlng units
-const TILE_HEIGHT = 0.1;    // latlng units
-const FLOAT_PRECISION = 2;  // floating point rounded using .toFixed(FLOAT_PRECISION)
-const PADDING = 0;          // number of padding tiles added to bounding box
+const TILE_WIDTH = 0.25;     // latlng units
+const TILE_HEIGHT = 0.25;    // latlng units
+const FLOAT_PRECISION = 2;   // floating point rounded using .toFixed(FLOAT_PRECISION)
+const PADDING = 0;           // number of padding tiles added to bounding box
 
 var SEARCH_RADIUS = 30.0    // default 30 mile search radius
 var MARKERIDS = {};
