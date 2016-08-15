@@ -168,12 +168,25 @@ function loadViewportMarkers() {
 						pokemap.removeLayer(rectangle);
 					}, 1000 * 5);
 
+					/* filter any results outside of our search radius */
+					var filteredDataPoints = [];
+					for (i = 0; i < responseObject.length; i++) {
+						var currentLat = currentLocationMarker.getLatLng().lat;
+						var currentLng = currentLocationMarker.getLatLng().lng;
+						var dataPointDist = parseFloat(distance(currentLat, currentLng, responseObject[i].lat, responseObject[i].lng, 'M').toFixed(2));
+	    				if (dataPointDist <= SEARCH_RADIUS) {
+	    					filteredDataPoints.push(responseObject[i]);
+	    				}
+					}
+
 					/* parse results of response object */
-					for (i = 0; i < responseObject.length; i++) { 
+					for (i = 0; i < filteredDataPoints.length; i++) { 
     		
-    					var data = responseObject[i];
+    					var data = filteredDataPoints[i];
     					var id = data.id;
     					var name = data.pokemon.toLowerCase();
+    					var lat = parseFloat(data.lat);
+	    				var lng = parseFloat(data.lng);
 
     					/* only create markers for data points within search radius */
 
@@ -181,8 +194,7 @@ function loadViewportMarkers() {
     					/* if marker is not already drawn */
     					if (!(id in MARKERIDS)) {
 
-	    					var lat = parseFloat(data.lat);
-	    					var lng = parseFloat(data.lng);
+	    					
 		    				var icon = L.icon({	
 		    					iconUrl: iconURL(data.pokemon),
 		    					iconSize:     [96, 96], // size of the icon
