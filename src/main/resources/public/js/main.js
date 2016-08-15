@@ -54,11 +54,13 @@ $( document ).ready(function() {
 
 	// modal map used to select and submit a new nest location
 	sitemap = L.map('sitemapid', {
-		zoomControl: false, 
+		zoomControl: false,
+		inertia: false, 
 		center: [29.7604, -95.3698],
 		zoom: 10
 	});
 
+	sitemap.touchZoom.disable();
 	sitemap.doubleClickZoom.disable(); 
 	sitemap.scrollWheelZoom.disable();
 
