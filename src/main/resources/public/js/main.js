@@ -355,9 +355,8 @@ $( document ).ready(function() {
 		// TODO: create an with the selected nest icon and place in the center markers
 		var pokenestIcon = L.icon({	
 		    iconUrl: iconURL(selectedInfoMarker.options.pokemon),
-		    iconSize:    [96, 96], // size of the icon
-		    iconAnchor:  [48, 48], // point of the icon which will correspond to marker's location
-		    popupAnchor: [-3, -20] // point from which the popup should open relative to the iconAnchor
+		    iconSize:    [64, 64], // size of the icon
+		    iconAnchor:  [32, 32], // point of the icon which will correspond to marker's location
 		});
 		nestDetailsMarker.setIcon(pokenestIcon);
 
