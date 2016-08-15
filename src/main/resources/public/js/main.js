@@ -180,6 +180,7 @@ $( document ).ready(function() {
 
     pokemap.on('moveend', function() { 
      	// console.log(pokemap.getBounds());
+     	setTimeout(function() { modalLocationMarker.setLatLng(sitemap.getCenter()); }, 500);
 	});
 
 	//Dragend event of map for update marker position
@@ -189,7 +190,6 @@ $( document ).ready(function() {
 		modalLocationMarker.setLatLng(sitemap.getCenter());
 
 		setTimeout(function() { modalLocationMarker.setLatLng(sitemap.getCenter()); }, 500);
-		setTimeout(function() { modalLocationMarker.setLatLng(sitemap.getCenter()); }, 1000);
 
 		// var cnt = sitemap.getCenter();
 	 	// var position = modalLocationMarker.getLatLng();
