@@ -244,8 +244,8 @@ function loadViewportMarkers() {
 
 				    			// TODO: update directions link
 				    			var googleMapsDirectionsURL = "https://www.google.com/maps/@" + lat + "," + lng;
-				    			$('markerdata-directions-link').attr('href', googleMapsDirectionsURL);
-				    			
+				    			$('#markerdata-directions-link').attr('href', googleMapsDirectionsURL);
+
 				    			$('#myMarkerModal').modal();
 	    					});	
 
