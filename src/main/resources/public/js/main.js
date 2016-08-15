@@ -363,6 +363,9 @@ $( document ).ready(function() {
 
 	    // TODO: adjust view to center on selected pokenest coordinates
 	    infomap.setView(selectedInfoMarker.getLatLng(), 16);
+
+	    // TODO: adjust position of nest marker
+	    nestDetailsMarker.setLatLng(infomap.getCenter());
 	});
 
 	/* autocomplete code for Pokemon name lookup */
