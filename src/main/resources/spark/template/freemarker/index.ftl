@@ -63,7 +63,12 @@
         <div id="infomapid" style="height:280px; width: 100%;"></div>
 
         <!-- Distance information regarding selected Pokenest -->
-        <h5 id="markerdata-distance"></h5>
+        <h4 id="markerdata-distance"></h4>
+
+        <!-- Link to Google maps directions -->
+        <h4 id="markerdata-directions">
+          <a id="markerdata-directions-link" target="_blank" href="#">Get Directions</a>
+        </h4>
 
       </div>
 

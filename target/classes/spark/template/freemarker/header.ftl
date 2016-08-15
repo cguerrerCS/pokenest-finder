@@ -29,6 +29,9 @@
 <!-- Include CSS add ons required for leaflet easy button -->
 <link rel="stylesheet" href="../node_modules/leaflet-easybutton/src/easy-button.css" />
 
+<!-- Include CSS add ons required for leaflet pulse icons -->
+<link rel="stylesheet" href="../node_modules/leaflet-pulse-icon/dist/L.Icon.Pulse.css" />
+
 <!-- Custom Stylesheets for PokeNest -->
 <link rel="stylesheet" href="css/custom-bootstrap.css">
 <link rel="stylesheet" href="css/main.css">
@@ -41,6 +44,9 @@
 
 <!-- Include Javascript add ons required for leaflet easy button -->
 <script src="../node_modules/leaflet-easybutton/src/easy-button.js"></script>
+
+<!-- Include Javascript add ons required for leaflet pulse icons -->
+<script src="../node_modules/leaflet-pulse-icon/dist/L.Icon.Pulse.js"></script>
 
 <!-- Bootstrap Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

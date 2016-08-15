@@ -195,7 +195,6 @@ function loadViewportMarkers() {
 
     					/* if marker is not already drawn */
     					if (!(id in MARKERIDS)) {
-
 	    					
 		    				var icon = L.icon({	
 		    					iconUrl: iconURL(data.pokemon),
@@ -242,6 +241,11 @@ function loadViewportMarkers() {
 				    			var lon2 = parseFloat(this.options.lng);
 				    			var dist = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
 				    			$('#markerdata-distance').html("Distance   <b>" + dist + "</b> mi.");
+
+				    			// TODO: update directions link
+				    			var googleMapsDirectionsURL = "https://www.google.com/maps/@" + lat + "," + lng;
+				    			$('markerdata-directions-link').attr('href', googleMapsDirectionsURL);
+				    			
 				    			$('#myMarkerModal').modal();
 	    					});	
 
