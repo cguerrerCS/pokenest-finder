@@ -152,7 +152,7 @@ $( document ).ready(function() {
     	accessToken: 'pk.eyJ1IjoiY2d1ZXJyZXIiLCJhIjoiY2lxdmlzYmgxMDAxM2Z2bThvcm9kNGx1YiJ9.GdNs-_3lu5C2HrTqEbYGWg'
 	}).addTo(sitemap);
 
-	var pulsingIcon = L.icon.pulse({iconSize:[15,15],color:'blue'});
+	var pulsingIcon = L.icon.pulse({iconSize:[12,12],color:'#2196F3'});
 	currentLocationMarker = L.marker([0,0],{
 		icon: pulsingIcon, 
 		zIndexOffset: 1000
