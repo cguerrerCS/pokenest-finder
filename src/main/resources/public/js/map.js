@@ -45,7 +45,7 @@ const TILE_HEIGHT = 0.25;    // latlng units
 const FLOAT_PRECISION = 2;   // floating point rounded using .toFixed(FLOAT_PRECISION)
 const PADDING = 0;           // number of padding tiles added to bounding box
 
-var SEARCH_RADIUS = 30.0    // default 30 mile search radius
+var SEARCH_RADIUS = 40.0    // default 30 mile search radius
 var MARKERIDS = {};
 var MARKERTIMERS = {};
 
@@ -159,14 +159,14 @@ function loadViewportMarkers() {
 					$("#pokenest-progress-bar").css("width", progress + "%");
 
 					/* self deleting loading rectangle */
-					var rectBounds = [
-						[privatePostParameters.southWestLat, privatePostParameters.southWestLng], 
-						[privatePostParameters.northEastLat, privatePostParameters.northEastLng]
-					];
-					var rectangle = L.rectangle(rectBounds, {color: '#99ff66', weight: 0}).addTo(pokemap);
-					setTimeout(function(){ 
-						pokemap.removeLayer(rectangle);
-					}, 1000 * 5);
+					// var rectBounds = [
+					// 	[privatePostParameters.southWestLat, privatePostParameters.southWestLng], 
+					// 	[privatePostParameters.northEastLat, privatePostParameters.northEastLng]
+					// ];
+					// var rectangle = L.rectangle(rectBounds, {color: '#99ff66', weight: 0}).addTo(pokemap);
+					// setTimeout(function(){ 
+					// 	pokemap.removeLayer(rectangle);
+					// }, 1000 * 5);
 
 					/* filter any results outside of our search radius */
 					var filteredDataPoints = [];
