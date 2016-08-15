@@ -61,7 +61,7 @@ $( document ).ready(function() {
 
 
 	// map to display pokemon nest details arial view
-	infomap = L.map('nest-details-map', {
+	infomap = L.map('infomapid', {
 		zoomControl: false,
 		inertia: false, 
 		center: [29.7604, -95.3698],
