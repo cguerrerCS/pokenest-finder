@@ -178,25 +178,16 @@ $( document ).ready(function() {
 		modalLocationMarker.setLatLng(sitemap.getCenter());
 	});
 
+    // MoveEnd event of map to update marker position (fixes inertia bug)
     pokemap.on('moveend', function() { 
-     	// console.log(pokemap.getBounds());
+     	modalLocationMarker.setLatLng(sitemap.getCenter());
      	setTimeout(function() { modalLocationMarker.setLatLng(sitemap.getCenter()); }, 500);
 	});
 
-	//Dragend event of map for update marker position
+	// Dragend event of map to update marker position
 	sitemap.on('dragend', function(e) {
-
-		// console.log("dragging")
 		modalLocationMarker.setLatLng(sitemap.getCenter());
-
-		setTimeout(function() { modalLocationMarker.setLatLng(sitemap.getCenter()); }, 500);
-
-		// var cnt = sitemap.getCenter();
-	 	// var position = modalLocationMarker.getLatLng();
-		// lat = Number(position['lat']).toFixed(5);
-		// lng = Number(position['lng']).toFixed(5);
-		// console.log(position);
-		
+		setTimeout(function() { modalLocationMarker.setLatLng(sitemap.getCenter()); }, 500);		
 	});	
 
 	// by default, follow user
