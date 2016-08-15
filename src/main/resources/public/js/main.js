@@ -7,9 +7,9 @@ var infomap = undefined;
 // var modalCurrentLocation = undefined;
 var modalLocationMarker = undefined;
 var currentLocationMarker = undefined;
+var selectedInfoMarker = undefined;
 
 var nestMarkers = [];
-var selectedMarkerID = undefined;
 var realProgress = 0;
 var progress = 0;
 var initialLocationFound = false;
@@ -309,7 +309,7 @@ $( document ).ready(function() {
 	    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 				}
 				if (success) {
-					options['content'] = "[" + selectedMarkerID + "] PokéNest location removed.";
+					options['content'] = "[" + selectedInfoMarker.options.id + "] PokéNest location removed.";
 				} else {
 					options['content'] = "Error: " + error;
 				}
@@ -352,7 +352,14 @@ $( document ).ready(function() {
 
 	    // TODO: get location of selected pokenest
 
+
 		// TODO: create a marker with the pokemon's icon and place in the center
+		var pokenestIcon = L.icon({	
+		    iconUrl: iconURL("Cubone"),
+		    iconSize:    [96, 96], // size of the icon
+		    iconAnchor:  [48, 48], // point of the icon which will correspond to marker's location
+		    popupAnchor: [-3, -20] // point from which the popup should open relative to the iconAnchor
+		});
 
 	    // TODO: adjust view to center on selected pokenest coordinates
 	});
