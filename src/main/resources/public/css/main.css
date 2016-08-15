@@ -26,6 +26,10 @@ button:focus {
   left: 0;
 }
 
+#markerdata-googlemap-directions a, #markerdata-googlemap-directions a:hover, #markerdata-googlemap-directions a:focus {
+  color: #337ab7;
+}
+
 #sitemapid .leaflet-control-attribution {
   display: none;
 }
@@ -60,7 +64,7 @@ button:focus {
   display: none;
 }
 
-.pokenest-logo-txt a, a:hover, a:focus {
+.pokenest-logo-txt a, .pokenest-logo-txt a:hover, .pokenest-logo-txt a:focus {
   color: white;
 }
 
