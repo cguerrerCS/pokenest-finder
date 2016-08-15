@@ -154,6 +154,7 @@ $( document ).ready(function() {
 
 	var pulsingIcon = L.icon.pulse({iconSize:[20,20],color:'blue'});
 	currentLocationMarker = L.marker([50,15],{icon: pulsingIcon}).addTo(pokemap);
+	currentLocationMarker.bringToFront();
 
 	// currentLocationMarker = L.circle([0, 0], 10, {
  //    	color: 'red',
