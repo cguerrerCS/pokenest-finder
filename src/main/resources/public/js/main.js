@@ -5,8 +5,6 @@ var sitemap = undefined;
 var infomap = undefined;
 
 // var modalCurrentLocation = undefined;
-
-
 var modalLocationMarker = undefined;
 var currentLocationMarker = undefined;
 
@@ -350,7 +348,7 @@ $( document ).ready(function() {
 	$('#myMarkerModal').on('show.bs.modal', function(){
 
 		// adjust map sizing for modal
-	    setTimeout(function() { sitemap.invalidateSize(); }, 500);
+	    setTimeout(function() { info.invalidateSize(); }, 500);
 
 	    // TODO: get location of selected pokenest
 
