@@ -2,6 +2,8 @@
 /* Globally defined Pokenest variables */
 var pokemap = undefined;
 var sitemap = undefined;
+var infomap = undefined;
+
 var modalCurrentLocation = undefined;
 var modalLocationMarker = undefined;
 var currentLocationMarker = undefined;
@@ -55,7 +57,6 @@ $( document ).ready(function() {
 	// modal map used to select and submit a new nest location
 	sitemap = L.map('sitemapid', {
 		zoomControl: false,
-		inertia: false, 
 		center: [29.7604, -95.3698],
 		zoom: 10
 	});
@@ -63,6 +64,20 @@ $( document ).ready(function() {
 	sitemap.touchZoom.disable();
 	sitemap.doubleClickZoom.disable(); 
 	sitemap.scrollWheelZoom.disable();
+
+
+	// map to display pokemon nest details arial view
+	infomap = L.map('nest-details-map', {
+		zoomControl: false,
+		inertia: false, 
+		center: [29.7604, -95.3698],
+		zoom: 10
+	});
+
+	infomap.touchZoom.disable();
+	infomap.doubleClickZoom.disable(); 
+	infomap.scrollWheelZoom.disable();
+	infomap.dragging.disable();
 
 	// add additional easy buttons to leaflet map
 	L.easyButton({
@@ -152,6 +167,13 @@ $( document ).ready(function() {
     	accessToken: 'pk.eyJ1IjoiY2d1ZXJyZXIiLCJhIjoiY2lxdmlzYmgxMDAxM2Z2bThvcm9kNGx1YiJ9.GdNs-_3lu5C2HrTqEbYGWg'
 	}).addTo(sitemap);
 
+	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    	attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    	maxZoom: 18,
+    	id: 'cguerrer.0ndip406',
+    	accessToken: 'pk.eyJ1IjoiY2d1ZXJyZXIiLCJhIjoiY2lxdmlzYmgxMDAxM2Z2bThvcm9kNGx1YiJ9.GdNs-_3lu5C2HrTqEbYGWg'
+	}).addTo(infomap);
+
 	var pulsingIcon = L.icon.pulse({iconSize:[12,12],color:'#1E88E5'});
 	currentLocationMarker = L.marker([0,0],{
 		icon: pulsingIcon, 
@@ -171,18 +193,15 @@ $( document ).ready(function() {
 	pokemap.on('locationfound', onLocationFound);
 	pokemap.on('locationerror', onLocationError);
 
-	// locate every nearby pokemon
-	// loadPokeRadar();
+    // MoveEnd event of map to update marker position (fixes inertia bug)
+    sitemap.on('moveend', function() { 
+     	modalLocationMarker.setLatLng(sitemap.getCenter());
+     	setTimeout(function() { modalLocationMarker.setLatLng(sitemap.getCenter()); }, 500);
+	});	
 
 	// user style location picker
     sitemap.on('move', function () {
 		modalLocationMarker.setLatLng(sitemap.getCenter());
-	});
-
-    // MoveEnd event of map to update marker position (fixes inertia bug)
-    pokemap.on('moveend', function() { 
-     	modalLocationMarker.setLatLng(sitemap.getCenter());
-     	setTimeout(function() { modalLocationMarker.setLatLng(sitemap.getCenter()); }, 500);
 	});
 
 	// Dragend event of map to update marker position

@@ -58,7 +58,13 @@
       </div>
 
       <div class="modal-body">
+
+        <!-- Modal map used to provide arial zoomed in view of selected nest -->
+        <div id="nest-details-map" style="height:280px; width: 100%;"></div>
+
+        <!-- Distance information regarding selected Pokenest -->
         <h5 id="markerdata-distance"></h5>
+
       </div>
 
       <div class="modal-footer">
