@@ -153,7 +153,7 @@ $( document ).ready(function() {
 	}).addTo(sitemap);
 
 	var pulsingIcon = L.icon.pulse({iconSize:[20,20],color:'blue'});
-	var currentLocationMarker = L.marker([50,15],{icon: pulsingIcon}).addTo(pokemap);
+	currentLocationMarker = L.marker([50,15],{icon: pulsingIcon}).addTo(pokemap);
 
 	// currentLocationMarker = L.circle([0, 0], 10, {
  //    	color: 'red',
