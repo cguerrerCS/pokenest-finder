@@ -4,11 +4,12 @@ var pokemap = undefined;
 var sitemap = undefined;
 var infomap = undefined;
 
-// var modalCurrentLocation = undefined;
+/* markers used for mini-maps */
 var modalLocationMarker = undefined;
+var nestDetailsMarker = undefined;
+
 var currentLocationMarker = undefined;
 var selectedInfoMarker = undefined;
-
 var nestMarkers = [];
 var realProgress = 0;
 var progress = 0;
@@ -181,6 +182,10 @@ $( document ).ready(function() {
     	zIndexOffset: 1000
 	}).addTo(sitemap);
 
+	nestDetailsMarker = L.marker([0, 0], 10, {
+    	zIndexOffset: 1000
+	}).addTo(infomap);
+
 	/** bind the locationfound event to the function onLocationFound()
     in other words, tell Leaflet what to do once locate() is successful 
 	**/
@@ -338,9 +343,6 @@ $( document ).ready(function() {
 		// adjust map sizing for modal
 	    setTimeout(function() { sitemap.invalidateSize(); }, 500);
 
-	    // get user's current recorded location
-	    // modalCurrentLocation = currentLocationMarker.getLatLng();
-
 	    // adjust view to center on current location
 	    sitemap.setView(currentLocationMarker.getLatLng(), 16);
 	});
@@ -350,18 +352,17 @@ $( document ).ready(function() {
 		// adjust map sizing for modal
 	    setTimeout(function() { infomap.invalidateSize(); }, 500);
 
-	    // TODO: get location of selected pokenest
-
-
-		// TODO: create a marker with the pokemon's icon and place in the center
+		// TODO: create an with the selected nest icon and place in the center markers
 		var pokenestIcon = L.icon({	
-		    iconUrl: iconURL("Cubone"),
+		    iconUrl: iconURL(selectedInfoMarker.options.pokemon),
 		    iconSize:    [96, 96], // size of the icon
 		    iconAnchor:  [48, 48], // point of the icon which will correspond to marker's location
 		    popupAnchor: [-3, -20] // point from which the popup should open relative to the iconAnchor
 		});
+		nestDetailsMarker.setIcon(pokenestIcon);
 
 	    // TODO: adjust view to center on selected pokenest coordinates
+	    infomap.setView(selectedInfoMarker.getLatLng(), 16);
 	});
 
 	/* autocomplete code for Pokemon name lookup */
@@ -559,5 +560,6 @@ function iconURL(pokemonName) {
 			resourceURL = "../img/pokemon-sprites/" + pokemonName + ".png";
 	}
 
+	console.log("resourceURL: " + resourceURL);
 	return resourceURL;
 }

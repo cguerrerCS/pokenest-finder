@@ -222,7 +222,7 @@ function loadViewportMarkers() {
 				    			selectedInfoMarker = this;
 
 				    			// show pokenest info modal
-				    			$('#markerdata-header').html(pokemon + " Pokenest Info");
+				    			$('#markerdata-header').html(pokemon + " Pokenest Details");
 
 				    			var privileged = false;
 				    			var cookie = getCookie("access");
@@ -235,14 +235,14 @@ function loadViewportMarkers() {
 				    			} else {
 				    				$('#removeEntryBtn').hide();
 				    			}
-				    			$('#myMarkerModal').modal();
-
+				    		
 				    			var lat1 = currentLocationMarker.getLatLng().lat;
 				    			var lon1 = currentLocationMarker.getLatLng().lng;
 				    			var lat2 = parseFloat(this.options.lat);
 				    			var lon2 = parseFloat(this.options.lng);
 				    			var dist = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
 				    			$('#markerdata-distance').html("Distance   <b>" + dist + "</b> mi.");
+				    			$('#myMarkerModal').modal();
 	    					});	
 
 							// add marker to map
