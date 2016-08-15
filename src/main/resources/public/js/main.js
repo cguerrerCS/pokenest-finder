@@ -4,21 +4,17 @@ var pokemap = undefined;
 var sitemap = undefined;
 var infomap = undefined;
 
-var modalCurrentLocation = undefined;
+// var modalCurrentLocation = undefined;
+
+
 var modalLocationMarker = undefined;
 var currentLocationMarker = undefined;
+
 var nestMarkers = [];
 var selectedMarkerID = undefined;
-
 var realProgress = 0;
 var progress = 0;
-
 var initialLocationFound = false;
-
-/* Settings */
-// var followUser = false;
-// var privileged = false;
-// var password = "";
 
 /* Define sprite sheet dimensions for image compression */
 var pokemon_sprites = {
@@ -338,8 +334,6 @@ $( document ).ready(function() {
 
 	$('#myModal').on('show.bs.modal', function(){
 
-		console.log("show modal");
-
 		// clear previous user information information
 		$('#pokemon-modal-input').val("");
 
@@ -347,14 +341,23 @@ $( document ).ready(function() {
 	    setTimeout(function() { sitemap.invalidateSize(); }, 500);
 
 	    // get user's current recorded location
-	    modalCurrentLocation = currentLocationMarker.getLatLng()
+	    // modalCurrentLocation = currentLocationMarker.getLatLng();
 
 	    // adjust view to center on current location
 	    sitemap.setView(currentLocationMarker.getLatLng(), 16);
 	});
 
-	/* Logic for location toggle */
+	$('#myMarkerModal').on('show.bs.modal', function(){
 
+		// adjust map sizing for modal
+	    setTimeout(function() { sitemap.invalidateSize(); }, 500);
+
+	    // TODO: get location of selected pokenest
+
+		// TODO: create a marker with the pokemon's icon and place in the center
+
+	    // TODO: adjust view to center on selected pokenest coordinates
+	});
 
 	/* autocomplete code for Pokemon name lookup */
 	var substringMatcher = function(strs) {
