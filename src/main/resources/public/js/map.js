@@ -245,7 +245,7 @@ function loadViewportMarkers() {
 				    			var googleMapsViewURL = "https://www.google.com/maps/@" + lat2 + "," + lon2;
 				    			$('#markerdata-googlemap-view-link').attr('href', googleMapsViewURL);
 
-				    			var googleMapsDirectionsURL = "https://www.google.es/maps/dir/" + lat1 + "," + lon1 +"/" + lat2 + "," + lon2;
+				    			var googleMapsDirectionsURL = "https://www.google.com/maps/dir/" + lat1 + "," + lon1 +"/" + lat2 + "," + lon2;
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
 
 				    			$('#myMarkerModal').modal();
