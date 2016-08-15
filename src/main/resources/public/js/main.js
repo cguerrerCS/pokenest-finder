@@ -152,18 +152,11 @@ $( document ).ready(function() {
     	accessToken: 'pk.eyJ1IjoiY2d1ZXJyZXIiLCJhIjoiY2lxdmlzYmgxMDAxM2Z2bThvcm9kNGx1YiJ9.GdNs-_3lu5C2HrTqEbYGWg'
 	}).addTo(sitemap);
 
-	var pulsingIcon = L.icon.pulse({iconSize:[12,12],color:'#2196F3'});
+	var pulsingIcon = L.icon.pulse({iconSize:[12,12],color:'#1E88E5'});
 	currentLocationMarker = L.marker([0,0],{
 		icon: pulsingIcon, 
 		zIndexOffset: 1000
 	}).addTo(pokemap);
-
-	// currentLocationMarker = L.circle([0, 0], 10, {
- //    	color: 'red',
- //    	fillColor: '#f03',
- //    	fillOpacity: 0.5,
- //    	zIndexOffset: 1000
-	// }).addTo(pokemap);
 
 	modalLocationMarker = L.circle([0, 0], 10, {
     	color: 'red',
