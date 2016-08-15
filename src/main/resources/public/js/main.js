@@ -152,9 +152,8 @@ $( document ).ready(function() {
     	accessToken: 'pk.eyJ1IjoiY2d1ZXJyZXIiLCJhIjoiY2lxdmlzYmgxMDAxM2Z2bThvcm9kNGx1YiJ9.GdNs-_3lu5C2HrTqEbYGWg'
 	}).addTo(sitemap);
 
-	var pulsingIcon = L.icon.pulse({iconSize:[20,20],color:'blue'});
-	currentLocationMarker = L.marker([50,15],{icon: pulsingIcon}).addTo(pokemap);
-	currentLocationMarker.bringToFront();
+	var pulsingIcon = L.icon.pulse({iconSize:[15,15],color:'blue'});
+	currentLocationMarker = L.marker([0,0],{icon: pulsingIcon}).addTo(pokemap);
 
 	// currentLocationMarker = L.circle([0, 0], 10, {
  //    	color: 'red',
