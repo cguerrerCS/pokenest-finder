@@ -485,9 +485,9 @@ function onLocationFound(e) {
 		loadViewportMarkers();
 		// draw search radius
 		var circle = L.circle([newLatLng.lat, newLatLng.lng], (SEARCH_RADIUS * 1609), {
-    		color: '#EF5350',
-    		fillColor: '#EF5350',
-    		fillOpacity: 0.3
+    		color: '#EF5350'
+    		//fillColor: '#EF5350',
+    		//fillOpacity: 0.3
 		}).addTo(pokemap);
 	}
 }
