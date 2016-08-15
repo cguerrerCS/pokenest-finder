@@ -65,9 +65,6 @@
         <!-- Distance information regarding selected Pokenest -->
         <h4 id="markerdata-distance"></h4>
 
-        <!-- Link to Google Maps view -->
-        <h4 id="markerdata-googlemap-view"><a id="markerdata-googlemap-view-link" target="_blank" href="#">View with Google Maps</a></h4>
-
         <!-- Link to Google Maps directions -->
         <h4 id="markerdata-googlemap-directions"> <a id="markerdata-googlemap-directions-link" target="_blank" href="#">Get Directions</a></h4>
 
