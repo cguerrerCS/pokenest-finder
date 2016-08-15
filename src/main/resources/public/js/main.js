@@ -518,7 +518,27 @@ function getCookie(cname) {
     return "";
 }
 
-/* parse autocomplete results */
+/* parse autocomplete box result, get resource URL */
 function iconURL(pokemonName) {
-	return 'http://www.pokestadium.com/sprites/diamond-pearl/' + pokemonName + '.png';
+
+	// convert pokemon name to lowercase
+	pokemonName = pokemonName.toLowerCase();
+
+	// cover general and special cases regarding naming
+	var resourceURL;
+	switch(pokemonName) {
+		case "Nidoran♂":
+			resourceURL = "../img/pokemon-sprites/nidoranm.png";
+			break;
+		case "Nidoran♀":
+			resourceURL = "../img/pokemon-sprites/nidoranf.png";
+			break;
+		case "Farfetch'd":
+			resourceURL = "../img/pokemon-sprites/farfetchd.png";
+			break;
+		default:
+			resourceURL = "../img/pokemon-sprites/" + pokemonName + ".png";
+	}
+
+	return resourceURL;
 }
