@@ -176,6 +176,8 @@ function loadViewportMarkers() {
 						var dataPointDist = parseFloat(distance(currentLat, currentLng, responseObject[i].lat, responseObject[i].lng, 'M').toFixed(2));
 	    				if (dataPointDist <= SEARCH_RADIUS) {
 	    					filteredDataPoints.push(responseObject[i]);
+	    				} else {
+	    					console.log(responseObject[i].pokemon + " Pokenest filtered from post results.")
 	    				}
 					}
 
