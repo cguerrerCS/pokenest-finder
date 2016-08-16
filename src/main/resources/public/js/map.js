@@ -191,6 +191,13 @@ function loadViewportMarkers() {
 	    				var lng = parseFloat(data.lng);
 	    				var confirmed = (parseInt(data.confirmed) == 1);
 
+	    				var icon = L.icon({	
+	    					iconUrl: iconURL(data.pokemon),
+	    					iconSize:     [96, 96], // size of the icon
+	    					iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
+	    					popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
+						});
+
 						var options = {
 							icon: icon,
 							zIndexOffset: 500,
@@ -204,14 +211,6 @@ function loadViewportMarkers() {
     					/* if marker is not already drawn */
     					if (!(id in MARKERIDS)) {
 	    					
-		    				var icon = L.icon({	
-		    					iconUrl: iconURL(data.pokemon),
-		    					iconSize:     [96, 96], // size of the icon
-		    					iconAnchor:   [48, 48], // point of the icon which will correspond to marker's location
-		    					popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
-							});
-	    				
-							
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
 	    
 	    						console.log(this.options);
