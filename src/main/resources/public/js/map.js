@@ -46,8 +46,9 @@ const FLOAT_PRECISION = 2;   // floating point rounded using .toFixed(FLOAT_PREC
 const PADDING = 0;           // number of padding tiles added to bounding box
 
 var SEARCH_RADIUS = 40.0     // default 40 mile search radius
-var MARKERIDS = {};
-var MARKERTIMERS = {};
+var MARKERIDS = {};          // id -> marker reference
+var MARKERDATA = {};         // id -> marker data
+var MARKERTIMERS = {};       // id -> marker expiration timer
 
 function loadViewportMarkers() {
 
@@ -187,8 +188,6 @@ function loadViewportMarkers() {
     					var data = filteredDataPoints[i];
     					var id = data.id;
     					var name = data.pokemon.toLowerCase();
-    					var lat = parseFloat(data.lat);
-	    				var lng = parseFloat(data.lng);
 	    				var confirmed = (parseInt(data.confirmed) == 1);
 
 	    				var icon = L.icon({	
@@ -202,10 +201,7 @@ function loadViewportMarkers() {
 							icon: icon,
 							zIndexOffset: 500,
 							id: id,
-							pokemon: name,
-							lat: lat,
-							lng: lng,
-							confirmed: confirmed
+							pokemon: name
 						}
 
     					/* if marker is not already drawn */
@@ -235,8 +231,8 @@ function loadViewportMarkers() {
 				    		
 				    			var lat1 = currentLocationMarker.getLatLng().lat;
 				    			var lon1 = currentLocationMarker.getLatLng().lng;
-				    			var lat2 = parseFloat(this.options.lat);
-				    			var lon2 = parseFloat(this.options.lng);
+				    			var lat2 = parseFloat(this.getLatLng().lat);
+				    			var lon2 = parseFloat(this.getLatLng().lng);
 				    			var dist = parseFloat(distance(lat1, lon1, lat2, lon2, 'M').toFixed(2));
 				    			$('#markerdata-distance').html("Distance   <b>" + dist + "</b> mi.");
 
@@ -244,7 +240,7 @@ function loadViewportMarkers() {
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
 
 				    			console.log("confirmed value: " + confirmed);
-				    			$('#markerdata-confirmed').html("Confirmed  <b>" + confirmed + "</b>");
+				    			$('#markerdata-confirmed').html("Confirmed  <b>" + MARKERDATA[id].confirmed + "</b>");
 				    			
 				    			$('#myMarkerModal').modal();
 	    					});	
@@ -252,11 +248,13 @@ function loadViewportMarkers() {
 							// add marker to map
 							console.log(data.pokemon.toLowerCase() + " Pokenest added. [id: " + data.id + "]");
 							MARKERIDS[id] = m;
+							MARKERDATA[id] = data; 
 							MARKERTIMERS[id] = setTimeout(function(pokename, nestid) { return function() { 
 
 								if (pokemap.hasLayer(MARKERIDS[nestid])) {
 									pokemap.removeLayer(MARKERIDS[nestid]);
 									delete MARKERIDS[nestid];
+									delete MARKERDATA[nestid];
 									delete MARKERTIMERS[nestid];
 									console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
 								} else {
@@ -281,6 +279,7 @@ function loadViewportMarkers() {
 										if (pokemap.hasLayer(MARKERIDS[nestid])) {
 											pokemap.removeLayer(MARKERIDS[nestid]);
 											delete MARKERIDS[nestid];
+											delete MARKERDATA[nestid];
 											delete MARKERTIMERS[nestid];
 											console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
 										} else {
