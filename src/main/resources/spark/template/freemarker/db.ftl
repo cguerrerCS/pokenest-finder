@@ -18,7 +18,7 @@
 	</div>
 
 	<!-- Bootstrap Modal for Pokenest Datapoint Info -->
-	<div class="modal fade" id="myDetailsModal" tabindex="-1" role="dialog" aria-labelledby="myMarkerModalLabel">
+	<div class="modal fade" id="myMarkerModal" tabindex="-1" role="dialog" aria-labelledby="myMarkerModalLabel">
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      
