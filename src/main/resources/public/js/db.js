@@ -5,6 +5,9 @@ var selectedNestId = undefined;
 
 $( document ).ready(function() {
 
+	// material design startup
+	$.material.init();
+
 	// TODO: setup mini map & mini map marker
 	infomap = L.map('infomapid', {
 		zoomControl: false,
@@ -63,11 +66,11 @@ $( document ).ready(function() {
 
 		// TODO: give option to delete if password is stored in a cookie
 		if (privileged) {
-			$("removeEntryBtn").show();
-			$("confirmEntryBtn").show();
+			$("#removeEntryBtn").show();
+			$("#confirmEntryBtn").show();
 		} else {
-			$("removeEntryBtn").hide();
-			$("confirmEntryBtn").hide();
+			$("#removeEntryBtn").hide();
+			$("#confirmEntryBtn").hide();
 		}
 
 		// TODO: show modal after all values are set
