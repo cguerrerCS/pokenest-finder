@@ -64,6 +64,8 @@ $( document ).ready(function() {
 	    nestDetailsMarker.setLatLng(coordinates);
 
 		// TODO: give option to delete if password is stored in a cookie
+
+		// TODO: show modal after all values are set
 		$('#myMarkerModal').modal();
 	});
 

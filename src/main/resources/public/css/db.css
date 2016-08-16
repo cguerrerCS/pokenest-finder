@@ -18,3 +18,18 @@
 	margin-right: 0px;
 	margin-bottom: 2px;
 }
+
+#infomapid .leaflet-control-attribution {
+  display: none;
+}
+
+.modal-header img {
+  float: left;
+  width: 40px;
+  height: 40px;
+}
+
+.modal-header h4 {
+  position: relative;
+  top: 8px;
+}

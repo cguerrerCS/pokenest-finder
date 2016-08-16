@@ -38,7 +38,7 @@
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	        <button id="removeEntryBtn" type="button" class="btn btn-primary btn-raised btn-danger">Remove</button>
-	        <button id="confirmEntryBtn" type="button" class="btn btn-primary btn-raised btn-danger">Remove</button>
+	        <button id="confirmEntryBtn" type="button" class="btn btn-primary btn-raised btn-success">Confirm</button>
 	      </div>
 
 	    </div>
