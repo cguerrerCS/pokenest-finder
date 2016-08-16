@@ -33,8 +33,9 @@
 <link rel="stylesheet" href="../node_modules/leaflet-pulse-icon/dist/L.Icon.Pulse.css" />
 
 <!-- Custom Stylesheets for PokeNest -->
-<link rel="stylesheet" href="css/custom-bootstrap.css">
-<link rel="stylesheet" href="css/main.css">
+<!-- <link rel="stylesheet" href="css/custom-bootstrap.css"> -->
+<!-- <link rel="stylesheet" href="css/main.css"> -->
+<link rel="stylesheet" href="css/db.css">
 
 <!-- Again, we're serving up the unminified source for clarity. -->
 <script src="js/jquery-2.1.1.js"></script>
@@ -65,3 +66,4 @@
 <!-- <script src="js/main.js"></script> -->
 <!-- <script src="js/pokedex.js"></script> -->
 <!-- <script src="js/map.js"></script> -->
+<script src="js/db.js"></script>
