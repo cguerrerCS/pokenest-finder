@@ -243,11 +243,8 @@ function loadViewportMarkers() {
 				    			var googleMapsDirectionsURL = "https://www.google.com/maps/dir/" + lat1 + "," + lon1 +"/" + lat2 + "," + lon2;
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
 
-				    			if (confirmed) {
-									$('#markerdata-confirmed').html("Confirmed  <b>True</b>");
-				    			} else {
-				    				$('#markerdata-confirmed').html("Confirmed  <b>False</b>");
-				    			}
+				    			confirmed.log("confirmed value: " + confirmed);
+				    			$('#markerdata-confirmed').html("Confirmed  <b>" + confirmed + "</b>");
 				    			
 				    			$('#myMarkerModal').modal();
 	    					});	
