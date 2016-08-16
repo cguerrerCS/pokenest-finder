@@ -92,7 +92,7 @@ $( document ).ready(function() {
 					$('#follow-setting').prop( "checked" , false);
 				} else {
 					if (follow == "true") {
-						$('#follow-setting').prop( "checked" , true);
+						$('#follow-setting').prop( "checked" ,true);
 					} else {
 						$('#follow-setting').prop( "checked" , false);
 					}

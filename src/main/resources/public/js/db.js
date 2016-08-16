@@ -82,6 +82,38 @@ $( document ).ready(function() {
 		// adjust map sizing to fit modal
 	    setTimeout(function() { infomap.invalidateSize(); }, 500);
 	});
+
+	$('#removeEntryBtn').on('click', function() {
+
+		var privileged = (getCookie("access") == "true");
+		var password = getCookie("passwd");
+
+		if (privileged) {
+
+			var postParameters = {id: selectedNestId, password: password};
+			$.post("/remove", postParameters, function(responseJSON){
+
+				var responseObject = JSON.parse(responseJSON);
+				var success = responseObject.success;
+				var error = responseObject.error;
+	
+				// add notification for user
+				var options =  {
+	    			content: "", 		// text of the snackbar
+	    			style: "snackbar",  // add a custom class to your snackbar
+	    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+				}
+				if (success) {
+					options['content'] = "[" + selectedNestId + "] PokéNest location removed.";
+				} else {
+					options['content'] = "Error: " + error;
+				}
+				$.snackbar(options);
+			}); 
+		}
+
+		$('#myMarkerModal').modal('hide');
+	});
 });
 
 function iconURL(pokemonName) {
