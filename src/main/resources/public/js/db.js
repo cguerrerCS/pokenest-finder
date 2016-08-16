@@ -1,6 +1,7 @@
 /* Globally defined Pokenest variables */
 var infomap = undefined;
 var nestDetailsMarker = undefined;
+var selectedNestId = undefined;
 
 $( document ).ready(function() {
 
@@ -37,14 +38,11 @@ $( document ).ready(function() {
 		var lat = parseFloat((this.children[2].innerText.split(':')[1]).trim());
 		var lng = parseFloat((this.children[3].innerText.split(':')[1]).trim());
 		var coordinates = new L.LatLng(lat, lng);
+		selectedNestId = id;
 
 		// TODO: extract user's cookie data regarding privileged access
 		var privileged = (getCookie("access") == "true");
 		var password = getCookie("passwd");
-
-		console.log(id);
-		console.log(privileged);
-		console.log(password);
 
 		// TODO: fill in nest details nest modal
 		$('#markerdata-header').html(pokemon + " Pokenest Details");
@@ -64,6 +62,13 @@ $( document ).ready(function() {
 	    nestDetailsMarker.setLatLng(coordinates);
 
 		// TODO: give option to delete if password is stored in a cookie
+		if (privileged) {
+			$("removeEntryBtn").show();
+			$("confirmEntryBtn").show();
+		} else {
+			$("removeEntryBtn").hide();
+			$("confirmEntryBtn").hide();
+		}
 
 		// TODO: show modal after all values are set
 		$('#myMarkerModal').modal();

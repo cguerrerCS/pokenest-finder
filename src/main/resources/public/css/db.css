@@ -19,6 +19,10 @@
 	margin-bottom: 2px;
 }
 
+button:focus {
+  outline:0;
+}
+
 #infomapid .leaflet-control-attribution {
   display: none;
 }
