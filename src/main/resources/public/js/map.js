@@ -266,7 +266,7 @@ function loadViewportMarkers() {
 						} else {
 
 							// TODO: update marker information
-							console.log(MARKERIDS[id].options.confirmed = confirmed);
+							MARKERDATA[id] = data;
 
 							// TODO: reset marker timeout after server ACK
 							var resetExpirationTimer = (function (pokename, nestid) {
