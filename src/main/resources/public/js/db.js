@@ -4,7 +4,9 @@ $( document ).ready(function() {
 	console.log("DB JavaScript loaded.");
 
 	$('.db-list-item').click(function() {
-		console.log(this.find("p"));
+		this.each( function( index, element ){
+    		console.log( $( this ).text() );
+		});
 	});
 	
 	// TODO: add check listeners to list items
