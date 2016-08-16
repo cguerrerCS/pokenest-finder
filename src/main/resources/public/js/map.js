@@ -242,7 +242,7 @@ function loadViewportMarkers() {
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
 
 				    			console.log("confirmed value: " + confirmed);
-				    			$('#markerdata-confirmed').html("Confirmed  <b>" + MARKERDATA[id].confirmed + "</b>");
+				    			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[id].confirmed == 1) + "</b>");
 				    			
 				    			$('#myMarkerModal').modal();
 	    					});	
