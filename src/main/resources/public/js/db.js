@@ -4,12 +4,9 @@ $( document ).ready(function() {
 	console.log("DB JavaScript loaded.");
 
 	$('.db-list-item').click(function() {
-		console.log(this);
-		console.log(this[0]);
-
+		console.log(this.children());
 	});
 	
-
 	// TODO: add check listeners to list items
 
 		// TODO: on click display nest details modal
