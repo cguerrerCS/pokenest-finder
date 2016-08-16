@@ -189,7 +189,7 @@ function loadViewportMarkers() {
     					var name = data.pokemon.toLowerCase();
     					var lat = parseFloat(data.lat);
 	    				var lng = parseFloat(data.lng);
-	    				var confirrmed = parseInt(data.confirrmed);
+	    				var confirmed = parseInt(data.confirrmed);
 
     					/* only create markers for data points within search radius */
 
@@ -210,8 +210,8 @@ function loadViewportMarkers() {
 								id: id,
 								pokemon: name,
 								lat: lat,
-								lng: lng
-								confirrmed: confirrmed
+								lng: lng,
+								confirmed: confirmed
 							}
 
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
