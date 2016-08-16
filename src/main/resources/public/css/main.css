@@ -64,7 +64,7 @@ button:focus {
   display: none;
 }
 
-.pokenest-logo-txt a, .pokenest-logo-txt a:hover, .pokenest-logo-txt a:focus {
+a.pokenest-logo-txt, a.pokenest-logo-txt:hover, a.pokenest-logo-txt:focus {
   color: white;
 }
 
