@@ -218,12 +218,12 @@ public class Pokedex {
 				String time = rs.getString("time");
 				String confirmed = rs.getString("confirmed");
 				StringBuilder sb = new StringBuilder();
-				sb.append(String.format("<p>id: %s</p><br>", id));
-				sb.append(String.format("<p>pokemon: %s</p><br>", name));
-				sb.append(String.format("<p>lat: %s</p><br>", lat));
-				sb.append(String.format("<p>lng: %s</p><br>", lng));
-				sb.append(String.format("<p>time: %s</p><br>", time));
-				sb.append(String.format("<p>confirmed: %s</p>", confirmed));
+				sb.append(String.format("<p class='db-data'>id: %s</p>", id));
+				sb.append(String.format("<p class='db-data'>pokemon: %s</p>", name));
+				sb.append(String.format("<p class='db-data'>lat: %s</p>", lat));
+				sb.append(String.format("<p class='db-data'>lng: %s</p>", lng));
+				sb.append(String.format("<p class='db-data'>time: %s</p>", time));
+				sb.append(String.format("<p class='db-data'>confirmed: %s</p>", confirmed));
 				String data = sb.toString();
 				output.add(data);
 			}
