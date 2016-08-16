@@ -4,7 +4,7 @@ $( document ).ready(function() {
 	console.log("DB JavaScript loaded.");
 
 	$('.db-list-item').click(function() {
-		console.log(this.children());
+		console.log(this.find("p"));
 	});
 	
 	// TODO: add check listeners to list items
