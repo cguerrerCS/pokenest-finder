@@ -36,6 +36,7 @@ $( document ).ready(function() {
 		var pokemon = (this.children[1].innerText.split(':')[1]).trim();
 		var lat = parseFloat((this.children[2].innerText.split(':')[1]).trim());
 		var lng = parseFloat((this.children[3].innerText.split(':')[1]).trim());
+		var coordinates = new L.LatLng(lat, lng);
 
 		// TODO: extract user's cookie data regarding privileged access
 		var privileged = (getCookie("access") == "true");
@@ -50,17 +51,17 @@ $( document ).ready(function() {
 
 		// TODO: create an with the selected nest icon and place in the center markers
 		var pokenestIcon = L.icon({	
-		    iconUrl: iconURL(selectedInfoMarker.options.pokemon),
+		    iconUrl: iconURL(pokemon),
 		    iconSize:    [64, 64], // size of the icon
 		    iconAnchor:  [32, 32], // point of the icon which will correspond to marker's location
 		});
 		nestDetailsMarker.setIcon(pokenestIcon);
 
 		// TODO: adjust view to center on selected pokenest coordinates
-	    infomap.setView(selectedInfoMarker.getLatLng(), 16);
+	    infomap.setView(coordinates, 16);
 
 	    // TODO: adjust position of nest marker
-	    nestDetailsMarker.setLatLng(selectedInfoMarker.getLatLng());
+	    nestDetailsMarker.setLatLng(coordinates);
 
 		// TODO: give option to delete if password is stored in a cookie
 		$('#myMarkerModal').modal();
