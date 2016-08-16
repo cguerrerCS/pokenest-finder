@@ -5,6 +5,8 @@ $( document ).ready(function() {
 
 	$('.db-list-item').click(function() {
 		console.log(this);
+		console.log(this[0]);
+
 	});
 	
 
