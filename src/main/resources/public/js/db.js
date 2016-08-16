@@ -1,11 +1,12 @@
 
 $( document ).ready(function() {
 
-	$('.db-list-item').each( function(index, li) {
-		li.click(function() {
-			console.log("list item clicked");
-		});
+	console.log("DB JavaScript loaded.");
+
+	$('.db-list-item').click(function() {
+		console.log(this);
 	});
+	
 
 	// TODO: add check listeners to list items
 
