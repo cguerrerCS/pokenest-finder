@@ -213,6 +213,7 @@ function loadViewportMarkers() {
 	    					
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
 	    
+	    						console.log(this);
 				    			var pokemon = this.options.pokemon;
 				    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
 				    			id = this.options.id;
@@ -267,7 +268,7 @@ function loadViewportMarkers() {
 						} else {
 
 							// TODO: update marker information
-							console.log(MARKERIDS[id]);
+							console.log(MARKERIDS[id].options.confirmed = confirmed);
 
 							// TODO: reset marker timeout after server ACK
 							var resetExpirationTimer = (function (pokename, nestid) {
