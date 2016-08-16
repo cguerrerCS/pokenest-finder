@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <#include "header.ftl">
+  <#include "db-header.ftl">
 </head>
 
 <body>
