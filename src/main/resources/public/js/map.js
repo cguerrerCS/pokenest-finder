@@ -185,7 +185,6 @@ function loadViewportMarkers() {
 					for (i = 0; i < filteredDataPoints.length; i++) { 
     		
     					var data = filteredDataPoints[i];
-    					console.log(data);
     					var id = data.id;
     					var name = data.pokemon.toLowerCase();
     					var lat = parseFloat(data.lat);
@@ -217,6 +216,7 @@ function loadViewportMarkers() {
 
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
 	    
+	    						console.log(this.options);
 				    			var pokemon = this.options.pokemon;
 				    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
 				    			id = this.options.id;
