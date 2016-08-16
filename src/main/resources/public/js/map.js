@@ -191,8 +191,15 @@ function loadViewportMarkers() {
 	    				var lng = parseFloat(data.lng);
 	    				var confirmed = (parseInt(data.confirmed) == 1);
 
-    					/* only create markers for data points within search radius */
-
+						var options = {
+							icon: icon,
+							zIndexOffset: 500,
+							id: id,
+							pokemon: name,
+							lat: lat,
+							lng: lng,
+							confirmed: confirmed
+						}
 
     					/* if marker is not already drawn */
     					if (!(id in MARKERIDS)) {
@@ -204,16 +211,7 @@ function loadViewportMarkers() {
 		    					popupAnchor:  [-3, -20] // point from which the popup should open relative to the iconAnchor
 							});
 	    				
-							var options = {
-								icon: icon,
-								zIndexOffset: 500,
-								id: id,
-								pokemon: name,
-								lat: lat,
-								lng: lng,
-								confirmed: confirmed
-							}
-
+							
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
 	    
 	    						console.log(this.options);
@@ -247,9 +245,9 @@ function loadViewportMarkers() {
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
 
 				    			if (confirmed) {
-									$('#markerdata-confirmed').html("Confirmed  <b>true</b>");
+									$('#markerdata-confirmed').html("Confirmed  <b>True</b>");
 				    			} else {
-				    				$('#markerdata-confirmed').html("Confirmed  <b>false</b>");
+				    				$('#markerdata-confirmed').html("Confirmed  <b>False</b>");
 				    			}
 				    			
 				    			$('#myMarkerModal').modal();
@@ -274,7 +272,7 @@ function loadViewportMarkers() {
 						} else {
 
 							// TODO: update marker information
-							// ...
+							MARKERIDS[id].options = options;
 
 							// TODO: reset marker timeout after server ACK
 							var resetExpirationTimer = (function (pokename, nestid) {
