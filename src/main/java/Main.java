@@ -166,7 +166,8 @@ public class Main {
 						}
 					} else {
 						results.put("success", false);
-						results.put("error", String.format("Nest [%ds] already confirmed.", id));
+						results.put("error", String.format("Nest [%s] already confirmed.", id));
+						return GSON.toJson(results);
 					}
 					
 					results.put("success", true);
