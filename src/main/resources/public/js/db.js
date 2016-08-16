@@ -7,6 +7,7 @@ $( document ).ready(function() {
 
 	// material design startup
 	$.material.init();
+	$.material.ripples(".db-list-item");
 
 	// TODO: setup mini map & mini map marker
 	infomap = L.map('infomapid', {
