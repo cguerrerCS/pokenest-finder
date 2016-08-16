@@ -217,10 +217,14 @@ public class Pokedex {
 				String lng = rs.getString("lng");
 				String time = rs.getString("time");
 				String confirmed = rs.getString("confirmed");
-				String data = String.format("<p>" + "id: %s<br>"
-						+ "pokemon: %s<br>" + "lat: %s<br>" + "lng: %s<br>"
-						+ "time: %s<br>" + "confirmed: %s</p>", id, name, lat,
-						lng, time, confirmed);
+				StringBuilder sb = new StringBuilder();
+				sb.append(String.format("<p>id: %s</p><br>", id));
+				sb.append(String.format("<p>pokemon: %s</p><br>", name));
+				sb.append(String.format("<p>lat: %s</p><br>", lat));
+				sb.append(String.format("<p>lng: %s</p><br>", lng));
+				sb.append(String.format("<p>time: %s</p><br>", time));
+				sb.append(String.format("<p>confirmed: %s</p>", confirmed));
+				String data = sb.toString();
 				output.add(data);
 			}
 
