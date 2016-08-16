@@ -58,9 +58,6 @@
 <!-- SnackbarJS Toast & Snackbar notifications -->
 <script src="snackbarjs/dist/snackbar.min.js"></script>
 
-<!-- Include Twitter's open source typeahead box -->
-<!-- <script src="js/typeahead.js"></script> -->
-
 <!-- MathJS for float arithmetic -->
 <script src="js/math.js"></script>
 

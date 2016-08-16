@@ -10,7 +10,7 @@
 	<h1>Database Contents</h1>
 	<ul id="database-list" class="list-group">
 	<#list results as x>
-	  <li class="db-list-item"> 
+	  <li class="list-group-item db-list-item"> 
 	  	${x}
 	  </li>
 	</#list>
