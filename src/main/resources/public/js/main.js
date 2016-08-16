@@ -56,7 +56,7 @@ $( document ).ready(function() {
 		zoom: 10
 	});
 
-	sitemap.touchZoom.disable();
+	// sitemap.touchZoom.disable();
 	sitemap.doubleClickZoom.disable(); 
 	sitemap.scrollWheelZoom.disable();
 
@@ -69,7 +69,7 @@ $( document ).ready(function() {
 		zoom: 10
 	});
 
-	// infomap.touchZoom.disable();
+	infomap.touchZoom.disable();
 	infomap.doubleClickZoom.disable(); 
 	infomap.scrollWheelZoom.disable();
 	infomap.dragging.disable();
