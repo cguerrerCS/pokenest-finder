@@ -2,3 +2,10 @@
 .db-list-item:hover {
 	background-color: #F1F8E9;
 }
+
+.db-data {
+	padding-left: 0px;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+}
