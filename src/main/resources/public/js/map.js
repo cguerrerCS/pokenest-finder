@@ -213,7 +213,6 @@ function loadViewportMarkers() {
 	    					
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
 	    
-	    						console.log(this.options);
 				    			var pokemon = this.options.pokemon;
 				    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
 				    			id = this.options.id;
@@ -230,7 +229,7 @@ function loadViewportMarkers() {
 				    				$('#confirmEntryBtn').show();
 				    			} else {
 				    				$('#removeEntryBtn').hide();
-				    				$('#confirmEntryBtn').show();
+				    				$('#confirmEntryBtn').hide();
 				    			}
 				    		
 				    			var lat1 = currentLocationMarker.getLatLng().lat;
@@ -268,7 +267,7 @@ function loadViewportMarkers() {
 						} else {
 
 							// TODO: update marker information
-							MARKERIDS[id].options = options;
+							console.log(MARKERIDS[id]);
 
 							// TODO: reset marker timeout after server ACK
 							var resetExpirationTimer = (function (pokename, nestid) {
