@@ -6,14 +6,19 @@ $( document ).ready(function() {
 		
 		// TODO: extract nest id from selected DOM element
 		var id = (this.children[0].innerText.split(':')[1]).trim();
+		var pokemon = (this.children[1].innerText.split(':')[1]).trim();
+		var lat = parseFloat((this.children[2].innerText.split(':')[1]).trim());
+		var lng = parseFloat((this.children[3].innerText.split(':')[1]).trim());
 
-		// TODO: extract user's password from saved cookies
+		// TODO: extract user's cookie data regarding privileged access
+		var privileged = (getCookie("access") == "true");
 		var password = getCookie("passwd");
 
-		// TODO: on click display nest details modal
+		// TODO: fill in nest details nest modal
 
 		// TODO: give option to delete if password is stored in a cookie
 		console.log(id);
+		console.log(privileged);
 		console.log(password);
 	});
 });
