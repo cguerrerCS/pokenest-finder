@@ -189,7 +189,7 @@ function loadViewportMarkers() {
     					var name = data.pokemon.toLowerCase();
     					var lat = parseFloat(data.lat);
 	    				var lng = parseFloat(data.lng);
-	    				var confirmed = parseInt(data.confirrmed);
+	    				var confirmed = (parseInt(data.confirmed) == 1);
 
     					/* only create markers for data points within search radius */
 
@@ -246,12 +246,12 @@ function loadViewportMarkers() {
 				    			var googleMapsDirectionsURL = "https://www.google.com/maps/dir/" + lat1 + "," + lon1 +"/" + lat2 + "," + lon2;
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
 
-
-				    			console.log(this.options.confirrmed);
-
-
-				    			$('#markerdata-distance').html("Confirmed:  <b>" + dist + "</b> mi.");
-
+				    			if (confirmed) {
+									$('#markerdata-confirmed').html("Confirmed  <b>true</b>");
+				    			} else {
+				    				$('#markerdata-confirmed').html("Confirmed  <b>false</b>");
+				    			}
+				    			
 				    			$('#myMarkerModal').modal();
 	    					});	
 
