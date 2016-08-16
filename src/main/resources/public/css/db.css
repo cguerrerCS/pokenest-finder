@@ -1,4 +1,9 @@
 
+/* Remove all Chrome focus effects */
+*:focus {
+    outline: none !important;
+}
+
 .db-list-item {
 	padding-top: 10px !important;
 	padding-bottom: 10px !important;
@@ -36,4 +41,16 @@ button:focus {
 .modal-header h4 {
   position: relative;
   top: 8px;
+}
+
+#removeEntryBtn {
+	display: none;
+}
+
+#confirmEntryBtn {
+	display: none;
+} 
+
+.modal-title {
+	margin-right: 30px;
 }
