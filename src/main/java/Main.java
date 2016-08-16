@@ -109,9 +109,69 @@ public class Main {
 				}
 				
 				if (contains) {
+					pokedex.Remove(id);	
 					results.put("success", true);
 					results.put("error", "");
-					pokedex.Remove(id);	
+				} else {
+					results.put("success", false);
+					results.put("error", String.format("DB does not contain ID: %s", id));
+				}
+			}
+			return GSON.toJson(results);
+		});
+		
+		Spark.post("/confirm", (request, response) -> {
+
+			Map<String, Object> results = new HashMap<String, Object>();
+			QueryParamsMap queryMap = request.queryMap();
+			String id = queryMap.value("id");
+			String password = queryMap.value("password");
+			
+			if (!password.equals("password")) {
+				results.put("success", false);
+				results.put("error", "incorrect password");
+			} else {
+				boolean contains = true;
+				try {
+					contains = pokedex.ContainsNestID(id);
+				} catch (SQLException e) {
+					e.printStackTrace();
+					results.put("success", false);
+					results.put("error", "Server error.");
+					return GSON.toJson(results);
+				}
+				
+				if (contains) {
+					
+					boolean confirmed = true;
+					try {
+						confirmed = pokedex.isConfirmed(id);
+					} catch (SQLException e) {
+						e.printStackTrace();
+						results.put("success", false);
+						results.put("error", "Server error.");
+						return GSON.toJson(results);
+					}
+					
+					if (!confirmed) {
+						try { 
+							pokedex.Confirm(id);
+							results.put("success", true);
+							results.put("error", "");
+						} catch (SQLException e) {
+							e.printStackTrace();
+							results.put("success", false);
+							results.put("error", "Server error.");
+							return GSON.toJson(results);
+						}
+					} else {
+						results.put("success", false);
+						results.put("error", String.format("Nest [%ds] already confirmed.", id));
+					}
+					
+					results.put("success", true);
+					results.put("error", "");
+					
 				} else {
 					results.put("success", false);
 					results.put("error", String.format("DB does not contain ID: %s", id));

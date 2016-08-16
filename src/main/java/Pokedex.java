@@ -155,6 +155,38 @@ public class Pokedex {
 		// Close the PreparedStatement
 		prep.close();
 	}
+	
+	public void Confirm(String id) throws SQLException {
+		
+		// Fill in schema to create a table called pokedex
+		String schema = "UPDATE pokedex SET confirmed = ? WHERE id = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setInt(1, 1);
+		prep.setString(2, id);
+		prep.executeUpdate();
+
+		// Close the PreparedStatement
+		prep.close();
+	}
+	
+	public boolean isConfirmed(String id) throws SQLException {
+		
+		// Fill in schema to create a table called pokedex
+		boolean result = false;
+		String schema = "SELECT confirmed FROM pokedex WHERE id = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, id);
+		ResultSet rs = prep.executeQuery();
+		if (rs.next()) {
+			int confirmed = rs.getInt("confirmed");
+			if (confirmed == 1) {
+				result = true;
+			}
+		}
+		// Close the PreparedStatement
+		prep.close();
+		return result;
+	}
 		
 	public List<Map<String, Object>> betterNearby(double southWestLat,
 			double southWestLng, double northEastLat, double northEastLng) {

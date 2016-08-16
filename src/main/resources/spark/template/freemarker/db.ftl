@@ -7,7 +7,7 @@
 <body>
 
 	<div class="container">
-		<h1>PokéNest Database Contents</h1>
+		<h1>PokéNest Database</h1>
 		<ul id="database-list" class="list-group">
 		<#list results as x>
 		  <li class="list-group-item db-list-item"> 
