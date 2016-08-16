@@ -364,7 +364,7 @@ $( document ).ready(function() {
 	    infomap.setView(selectedInfoMarker.getLatLng(), 16);
 
 	    // TODO: adjust position of nest marker
-	    nestDetailsMarker.setLatLng(infomap.getCenter());
+	    nestDetailsMarker.setLatLng(infomap.getLatLng());
 	});
 
 	/* autocomplete code for Pokemon name lookup */
