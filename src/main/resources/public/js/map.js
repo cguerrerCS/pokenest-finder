@@ -189,6 +189,8 @@ function loadViewportMarkers() {
     					var id = data.id;
     					var name = data.pokemon.toLowerCase();
 	    				var confirmed = (parseInt(data.confirmed) == 1);
+	    				var lat = parseFloat(data.lat);
+	    				var lng = parseFloat(data.lng);
 
 	    				var icon = L.icon({	
 	    					iconUrl: iconURL(data.pokemon),
