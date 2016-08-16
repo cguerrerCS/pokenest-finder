@@ -291,17 +291,12 @@ $( document ).ready(function() {
 
 	$('#removeEntryBtn').on('click', function() {
 
-		var privileged = false;
-		var cookie = getCookie("access");
-		if (cookie == "true") {
-			privileged = true;
-		}
-
+		var privileged = (getCookie("access") == "true");
 		var password = getCookie("passwd");
-		var postParameters = {id: selectedMarkerID, password: password};
+		
 		if (privileged) {
 
-			console.log(postParameters);
+			var postParameters = {id: selectedInfoMarker.options.id, password: password};
 			$.post("/remove", postParameters, function(responseJSON){
 				var responseObject = JSON.parse(responseJSON);
 				var success = responseObject.success;
@@ -315,6 +310,38 @@ $( document ).ready(function() {
 				}
 				if (success) {
 					options['content'] = "[" + selectedInfoMarker.options.id + "] PokéNest location removed.";
+				} else {
+					options['content'] = "Error: " + error;
+				}
+				$.snackbar(options);
+			}); 
+		}
+
+		$('#myMarkerModal').modal('hide');
+	});
+
+	$('#confirmEntryBtn').on('click', function() {
+
+		var privileged = (getCookie("access") == "true");
+		var password = getCookie("passwd");
+
+		if (privileged) {
+
+			var postParameters = {id: selectedInfoMarker.options.id, password: password};
+			$.post("/confirm", postParameters, function(responseJSON){
+
+				var responseObject = JSON.parse(responseJSON);
+				var success = responseObject.success;
+				var error = responseObject.error;
+	
+				// add notification for user
+				var options =  {
+	    			content: "", 		// text of the snackbar
+	    			style: "snackbar",  // add a custom class to your snackbar
+	    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+				}
+				if (success) {
+					options['content'] = "[" + selectedInfoMarker.options.id + "] PokéNest location confirmed.";
 				} else {
 					options['content'] = "Error: " + error;
 				}

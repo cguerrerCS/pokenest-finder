@@ -43,14 +43,6 @@ button:focus {
   top: 8px;
 }
 
-#removeEntryBtn {
-	display: none;
-}
-
-#confirmEntryBtn {
-	display: none;
-} 
-
 .modal-title {
 	margin-right: 30px;
 }

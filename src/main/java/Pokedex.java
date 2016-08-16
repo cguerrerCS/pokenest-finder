@@ -218,6 +218,7 @@ public class Pokedex {
 				String lat = rs.getString("lat");
 				String lng = rs.getString("lng");
 				String timestamp = rs.getString("time");
+				int confirmed = rs.getInt("confirmed");
 			
 				Map<String, Object> data = new HashMap<>();
 				data.put("id", id);
@@ -225,6 +226,7 @@ public class Pokedex {
 				data.put("lat", lat);
 				data.put("lng", lng);
 				data.put("timestamp", timestamp);
+				data.put("confirmed", confirmed);
 				results.add(data);
 			}
 

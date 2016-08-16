@@ -65,6 +65,9 @@
         <!-- Distance information regarding selected Pokenest -->
         <h4 id="markerdata-distance"></h4>
 
+        <!-- Confirmation information regarding selected Pokenest -->
+        <h4 id="markerdata-confirmed"></h4>
+
         <!-- Link to Google Maps directions -->
         <h4 id="markerdata-googlemap-directions"> <a id="markerdata-googlemap-directions-link" target="_blank" href="#">Get Directions</a></h4>
 
@@ -73,6 +76,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button id="removeEntryBtn" type="button" class="btn btn-primary btn-raised btn-danger">Remove</button>
+        <button id="confirmEntryBtn" type="button" class="btn btn-primary btn-raised btn-success">Confirm</button>
       </div>
 
     </div>

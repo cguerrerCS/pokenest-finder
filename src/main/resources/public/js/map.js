@@ -45,7 +45,7 @@ const TILE_HEIGHT = 0.25;    // latlng units
 const FLOAT_PRECISION = 2;   // floating point rounded using .toFixed(FLOAT_PRECISION)
 const PADDING = 0;           // number of padding tiles added to bounding box
 
-var SEARCH_RADIUS = 40.0     // default 30 mile search radius
+var SEARCH_RADIUS = 40.0     // default 40 mile search radius
 var MARKERIDS = {};
 var MARKERTIMERS = {};
 
@@ -189,6 +189,7 @@ function loadViewportMarkers() {
     					var name = data.pokemon.toLowerCase();
     					var lat = parseFloat(data.lat);
 	    				var lng = parseFloat(data.lng);
+	    				var confirrmed = parseInt(data.confirrmed);
 
     					/* only create markers for data points within search radius */
 
@@ -210,6 +211,7 @@ function loadViewportMarkers() {
 								pokemon: name,
 								lat: lat,
 								lng: lng
+								confirrmed: confirrmed
 							}
 
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
@@ -223,16 +225,14 @@ function loadViewportMarkers() {
 				    			// show pokenest info modal
 				    			$('#markerdata-header').html(pokemon + " Pokenest Details");
 
-				    			var privileged = false;
-				    			var cookie = getCookie("access");
-				    			if (cookie == "true") {
-				    				privileged = true;
-				    			}
-
+				    			
+				    			var privileged = (getCookie("access") == "true");
 				    			if (privileged) {
 				    				$('#removeEntryBtn').show();
+				    				$('#confirmEntryBtn').show();
 				    			} else {
 				    				$('#removeEntryBtn').hide();
+				    				$('#confirmEntryBtn').show();
 				    			}
 				    		
 				    			var lat1 = currentLocationMarker.getLatLng().lat;
@@ -244,6 +244,12 @@ function loadViewportMarkers() {
 
 				    			var googleMapsDirectionsURL = "https://www.google.com/maps/dir/" + lat1 + "," + lon1 +"/" + lat2 + "," + lon2;
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
+
+
+				    			console.log(this.options.confirrmed);
+
+
+				    			$('#markerdata-distance').html("Confirmed:  <b>" + dist + "</b> mi.");
 
 				    			$('#myMarkerModal').modal();
 	    					});	
