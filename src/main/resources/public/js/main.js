@@ -58,8 +58,7 @@ $( document ).ready(function() {
 
 	// sitemap.touchZoom.disable();
 	sitemap.doubleClickZoom.disable(); 
-	sitemap.scrollWheelZoom.disable();
-
+	// sitemap.scrollWheelZoom.disable();
 
 	// map to display pokemon nest details arial view
 	infomap = L.map('infomapid', {
