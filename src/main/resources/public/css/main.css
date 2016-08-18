@@ -74,7 +74,7 @@ a.pokenest-logo-img, a.pokenest-logo-img:hover, a.pokenest-logo-img:focus {
 
 .leaflet-pulsing-icon {
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: white;
 }
 

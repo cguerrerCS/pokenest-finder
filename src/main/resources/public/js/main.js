@@ -59,7 +59,7 @@ $( document ).ready(function() {
 	});
 
 	// sitemap.touchZoom.disable();
-	sitemap.doubleClickZoom.disable(); 
+	// sitemap.doubleClickZoom.disable(); 
 	// sitemap.scrollWheelZoom.disable();
 
 	// map to display pokemon nest details arial view
@@ -170,7 +170,7 @@ $( document ).ready(function() {
     	accessToken: 'pk.eyJ1IjoiY2d1ZXJyZXIiLCJhIjoiY2lxdmlzYmgxMDAxM2Z2bThvcm9kNGx1YiJ9.GdNs-_3lu5C2HrTqEbYGWg'
 	}).addTo(infomap);
 
-	var pulsingIcon = L.icon.pulse({iconSize:[12,12],color:'#1E88E5'});
+	var pulsingIcon = L.icon.pulse({iconSize:[16,16],color:'#1E88E5'});
 	currentLocationMarker = L.marker([0,0],{
 		icon: pulsingIcon, 
 		zIndexOffset: 1000
@@ -499,6 +499,7 @@ $( document ).ready(function() {
 });
 
 function locate() {
+
 	pokemap.locate({setView: true, maxZoom: 16});
 }
 
@@ -524,21 +525,18 @@ function onLocationFound(e) {
     var newLatLng = new L.LatLng(e.latlng.lat, e.latlng.lng);
     currentLocationMarker.setLatLng(newLatLng);
     searchRadiusMarker.setLatLng(newLatLng);
-    
+
     console.log("user's current location: (" + newLatLng.lat + " ," + newLatLng.lng + ")");
 
     /* start an initial scan */
     if (!initialLocationFound) {
 		initialLocationFound = true;
 		loadViewportMarkers();
-		// draw search radius
-		// searchRadiusMarker = L.circle([newLatLng.lat, newLatLng.lng], (SEARCH_RADIUS * 1609), {
-  //   		color: '#00E676'
-		// }).addTo(pokemap);
 	}
 }
 
 function onLocationError(e) {
+
 	console.log(e.message);
 }
 
