@@ -29,7 +29,7 @@
 
         <!-- Twitter Typeahead for Pokemon autocorrect -->
       	<div id="pokemon-typeahead">
-  			 <input id="pokemon-modal-input" class="typeahead form-control" type="text" placeholder="Pokémon species">
+  			 <input id="pokemon-modal-input" class="typeahead form-control" type="text" placeholder="Pokémon species" autofocus>
 		    </div>
 
         <!-- Modal map used to mark Pokemon sighting location-->
