@@ -72,6 +72,12 @@ a.pokenest-logo-img, a.pokenest-logo-img:hover, a.pokenest-logo-img:focus {
   color: white;
 }
 
+.leaflet-pulsing-icon {
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+}
+
 a:link {
     text-decoration: none;
 }
