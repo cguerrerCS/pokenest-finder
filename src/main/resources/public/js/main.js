@@ -575,13 +575,13 @@ function iconURL(pokemonName) {
 	// cover general and special cases regarding naming
 	var resourceURL;
 	switch(pokemonName) {
-		case "Nidoran♂":
+		case "nidoran♂":
 			resourceURL = "../img/pokemon-sprites/nidoranm.png";
 			break;
-		case "Nidoran♀":
+		case "nidoran♀":
 			resourceURL = "../img/pokemon-sprites/nidoranf.png";
 			break;
-		case "Farfetch'd":
+		case "farfetch'd":
 			resourceURL = "../img/pokemon-sprites/farfetchd.png";
 			break;
 		default:
