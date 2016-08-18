@@ -11,5 +11,5 @@
   <div id="pokenest-progress-container" class="progress">
   	<div id="pokenest-progress-bar" class="progress-bar"></div>
   </div>
-
+  
 </nav>

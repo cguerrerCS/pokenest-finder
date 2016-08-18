@@ -68,6 +68,10 @@ a.pokenest-logo-txt, a.pokenest-logo-txt:hover, a.pokenest-logo-txt:focus {
   color: white;
 }
 
+a.pokenest-logo-img, a.pokenest-logo-img:hover, a.pokenest-logo-img:focus {
+  color: white;
+}
+
 a:link {
     text-decoration: none;
 }
