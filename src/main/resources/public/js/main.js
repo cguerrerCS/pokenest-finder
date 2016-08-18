@@ -7,6 +7,7 @@ var infomap = undefined;
 /* markers used for mini-maps */
 var modalLocationMarker = undefined;
 var nestDetailsMarker = undefined;
+var searchRadiusMarker = undefined;
 
 var currentLocationMarker = undefined;
 var selectedInfoMarker = undefined;
@@ -185,6 +186,11 @@ $( document ).ready(function() {
 	nestDetailsMarker = L.marker([0, 0], 10, {
     	zIndexOffset: 1000
 	}).addTo(infomap);
+
+	// radius is defined in meters so did rough miles to meters conversion
+	searchRadiusMarker = L.circle([0, 0], (SEARCH_RADIUS * 1609), {
+    	color: '#00E676'
+	}).addTo(pokemap);
 
 	/** bind the locationfound event to the function onLocationFound()
     in other words, tell Leaflet what to do once locate() is successful 
@@ -498,25 +504,16 @@ function locate() {
 
 function update() {
 
-	// progress = (progress + 10) % 100;
-	// $("#pokenest-progress-bar").css("width", progress + "%");
-
-	var follow = false;
-	var cookie = getCookie("follow");
-
-	if (cookie != "") {
-		if (cookie == "true") {
-			follow = true;
-		} 
-	}
+	var follow = (getCookie("follow") == "true");
 
 	if (!initialLocationFound) {
 		pokemap.locate({setView: true, maxZoom: 10});
-
 	} else {
 		if (follow == true) {
+			// center user's viewport at current location, preserving user's zoom level
 			pokemap.locate({setView: true, maxZoom: pokemap.getZoom()});
 		} else {
+			// otherwise, simply locate the user
 			pokemap.locate({setView: false, maxZoom: 16});
 		}
 	}
@@ -526,6 +523,8 @@ function onLocationFound(e) {
 
     var newLatLng = new L.LatLng(e.latlng.lat, e.latlng.lng);
     currentLocationMarker.setLatLng(newLatLng);
+    searchRadiusMarker.setLatLng(newLatLng);
+    
     console.log("user's current location: (" + newLatLng.lat + " ," + newLatLng.lng + ")");
 
     /* start an initial scan */
@@ -533,11 +532,9 @@ function onLocationFound(e) {
 		initialLocationFound = true;
 		loadViewportMarkers();
 		// draw search radius
-		var circle = L.circle([newLatLng.lat, newLatLng.lng], (SEARCH_RADIUS * 1609), {
-    		color: '#00E676'
-    		// fillColor: '#FFEBEE',
-    		// fillOpacity: 0.5
-		}).addTo(pokemap);
+		// searchRadiusMarker = L.circle([newLatLng.lat, newLatLng.lng], (SEARCH_RADIUS * 1609), {
+  //   		color: '#00E676'
+		// }).addTo(pokemap);
 	}
 }
 
