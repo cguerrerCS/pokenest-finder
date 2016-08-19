@@ -103,14 +103,14 @@
           <h4>Search Filter</h4> 
           <div class="radio">
             <label>
-              <input type="radio" name="sample1" value="option1" checked="">
+              <input type="radio" name="markerfilter" value="all" checked="">
               Show all PokéNests
             </label>
           </div>
 
           <div class="radio">
             <label>
-              <input type="radio" name="sample1" value="option1">
+              <input type="radio" name="markerfilter" value="verified">
               Only show verified PokéNests
             </label>
           </div>

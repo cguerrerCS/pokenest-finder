@@ -278,12 +278,15 @@ $( document ).ready(function() {
 
 	$('#applysettingsbtn').on('click', function() {
 
-		// apply user's selected settings
-		// followUser = $('#follow-setting').prop( "checked" );
+		// record basic seach filter settings
+		var filter = $("input[name=marker-filter]:checked").val(); 
+		console.log("radio val: " + filter);
 		
+		// record follow and access cookies
 		setCookie("follow", $('#follow-setting').prop( "checked" ), 1);
 		setCookie("access", $('#access-setting').prop( "checked" ), 1);
 
+		// if privileged access is toggled save corresponding password
 		if ($('#access-setting').prop( "checked" ) == true) {
 			setCookie("passwd", $('#access-password').val(), 1);
 		} else {
