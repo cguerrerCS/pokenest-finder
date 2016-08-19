@@ -279,8 +279,7 @@ $( document ).ready(function() {
 	$('#applysettingsbtn').on('click', function() {
 
 		// record basic seach filter settings
-		var filter = $("input[name=marker-filter]:checked").val(); 
-		console.log("radio val: " + filter);
+		setCookie("marker-filter", $("input[name=marker-filter]:checked").val(), 1);
 		
 		// record follow and access cookies
 		setCookie("follow", $('#follow-setting').prop( "checked" ), 1);
