@@ -100,6 +100,24 @@
       <div class="modal-body">
 
         <div class="form-group">
+          <h4>Search Filter</h4> 
+          <div class="radio">
+            <label>
+              <input type="radio" name="sample1" value="option1" checked="">
+              Show all PokéNests
+            </label>
+          </div>
+
+          <div class="radio">
+            <label>
+              <input type="radio" name="sample1" value="option1">
+              Only show verified PokéNests
+            </label>
+          </div>
+          <hr>
+        </div>
+
+        <div class="form-group">
           <h4>Location</h4>
           <div class="togglebutton">
               <label>
