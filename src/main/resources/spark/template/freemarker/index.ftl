@@ -100,6 +100,17 @@
       <div class="modal-body">
 
         <div class="form-group">
+          <h4>Location</h4>
+          <div class="togglebutton">
+              <label>
+                Follow Location
+                <input id="follow-setting" type="checkbox">
+              </label>
+          </div>
+          <hr>
+        </div>
+
+        <div class="form-group">
           <h4>PokéNest Search Filter</h4>
           <div class="radio">
             <label>
@@ -120,17 +131,6 @@
               <input id="marker-filter-radio-3" type="radio" name="marker-filter" value="all">
               Show all reported PokéNests
             </label>
-          </div>
-          <hr>
-        </div>
-
-        <div class="form-group">
-          <h4>Location</h4>
-          <div class="togglebutton">
-              <label>
-                Follow Location
-                <input id="follow-setting" type="checkbox">
-              </label>
           </div>
           <hr>
         </div>
