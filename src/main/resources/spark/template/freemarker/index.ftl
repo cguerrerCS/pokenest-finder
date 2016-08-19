@@ -100,18 +100,25 @@
       <div class="modal-body">
 
         <div class="form-group">
-          <h4>Search Filter</h4> 
+          <h4>PokéNest Search Filter</h4>
           <div class="radio">
             <label>
-              <input type="radio" name="marker-filter" value="all" checked="">
-              Show all PokéNests
+              <input type="radio" name="marker-filter" value="verified">
+              Only show verified PokéNests
             </label>
           </div>
 
           <div class="radio">
             <label>
-              <input type="radio" name="marker-filter" value="verified">
-              Only show verified PokéNests
+              <input type="radio" name="marker-filter" value="nonverified">
+              Only show non verified PokéNests
+            </label>
+          </div>
+
+          <div class="radio">
+            <label>
+              <input type="radio" name="marker-filter" value="all" checked="">
+              Show all reported PokéNests
             </label>
           </div>
           <hr>

@@ -585,7 +585,5 @@ function iconURL(pokemonName) {
 		default:
 			resourceURL = "../img/pokemon-sprites/" + pokemonName + ".png";
 	}
-
-	console.log("resourceURL: " + resourceURL);
 	return resourceURL;
 }

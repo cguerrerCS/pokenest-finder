@@ -44,8 +44,9 @@ const TILE_WIDTH = 0.25;     // latlng units
 const TILE_HEIGHT = 0.25;    // latlng units
 const FLOAT_PRECISION = 2;   // floating point rounded using .toFixed(FLOAT_PRECISION)
 const PADDING = 0;           // number of padding tiles added to bounding box
+const MARKERTIMEOUT = 15;    // number of seconds marker can exist without ACK from server
 
-var SEARCH_RADIUS = 50.0     // default 50 mile search radius
+var SEARCH_RADIUS = 50.0;    // default 50 mile search radius
 var MARKERIDS = {};          // id -> marker reference
 var MARKERDATA = {};         // id -> marker data
 var MARKERTIMERS = {};       // id -> marker expiration timer
@@ -169,12 +170,14 @@ function loadViewportMarkers() {
 					// 	pokemap.removeLayer(rectangle);
 					// }, 1000 * 5);
 
-					/* filter any results outside of our search radius */
+					/* filter any results outside of our search radius, also filter out results according to set filters */
 					var filteredDataPoints = [];
 					for (i = 0; i < responseObject.length; i++) {
 						var currentLat = currentLocationMarker.getLatLng().lat;
 						var currentLng = currentLocationMarker.getLatLng().lng;
 						var dataPointDist = parseFloat(distance(currentLat, currentLng, responseObject[i].lat, responseObject[i].lng, 'M').toFixed(2));
+						var pokenestMarkerFilter = getCookie("marker-filter");
+
 	    				if (dataPointDist <= SEARCH_RADIUS) {
 	    					filteredDataPoints.push(responseObject[i]);
 	    				} else {
@@ -263,7 +266,7 @@ function loadViewportMarkers() {
 									console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
 								}
 								
-							}; }(name, id), 1000 * 60);
+							}; }(name, id), 1000 * MARKERTIMEOUT);
     					
 						} else {
 
@@ -288,7 +291,7 @@ function loadViewportMarkers() {
 											console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
 										}
 										
-									}; }(name, id), 1000 * 60);
+									}; }(name, id), 1000 * MARKERTIMEOUT);
 
 								}
 
