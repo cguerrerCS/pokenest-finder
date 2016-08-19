@@ -1,4 +1,12 @@
 
+/* Pokenest Radio buttons ************************************************************* */
+.radio input[type=radio]:checked ~ .circle {
+	border-color: #00e676;
+}
+
+.radio input[type=radio]:checked ~ .check, label.radio-inline input[type=radio]:checked ~ .check {
+	background-color: #00e676;
+}
 
 /* Pokenest toggle buttons ************************************************************ */
 
