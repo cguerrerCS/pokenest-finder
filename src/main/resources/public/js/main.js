@@ -85,9 +85,12 @@ $( document ).ready(function() {
 				var follow = getCookie("follow");
 				var access = getCookie("access");
 				var passwd = getCookie("passwd");
+				var markerfilter = getCookie("marker-filter");
+
 				console.log("follow-cookie: '" + follow + "'");
 				console.log("access-cookie: '" + access + "'");
 				console.log("passwd-cookie: '" + passwd + "'");
+				console.log("marker-filter: '" + markerfilter + "'");
 
 				if (follow == "") {
 					$('#follow-setting').prop( "checked" , false);
@@ -116,6 +119,15 @@ $( document ).ready(function() {
 						$('#access-password').hide();
 						$('#access-setting').prop( "checked" , false);
 					}
+				}
+
+				if (markerfilter == "verified") {
+					$("#marker-filter-radio-1").prop("checked", true);
+				} else if (markerfilter == "nonverified") {
+					$("#marker-filter-radio-2").prop("checked", true);
+				} else {
+					// either cookie is not yet set or set to default value "all"
+					$("#marker-filter-radio-3").prop("checked", true);
 				}
 					
 				$("#mySettingsModal").modal();

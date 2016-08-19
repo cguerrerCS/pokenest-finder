@@ -191,6 +191,7 @@ function loadViewportMarkers() {
 	    							filteredDataPoints.push(responseObject[i]);
 	    						}
 	    					} else {
+	    						// get here if cookie is not set or set to value "all", no filter
 	    						filteredDataPoints.push(responseObject[i]);
 	    					}
 
