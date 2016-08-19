@@ -177,9 +177,23 @@ function loadViewportMarkers() {
 						var currentLng = currentLocationMarker.getLatLng().lng;
 						var dataPointDist = parseFloat(distance(currentLat, currentLng, responseObject[i].lat, responseObject[i].lng, 'M').toFixed(2));
 						var pokenestMarkerFilter = getCookie("marker-filter");
+						var nestConfirmed = (parseInt(responseObject[i].confirmed) == 1);
 
 	    				if (dataPointDist <= SEARCH_RADIUS) {
-	    					filteredDataPoints.push(responseObject[i]);
+	    					
+							// additional filtering based on nest marker filter values
+	    					if (pokenestMarkerFilter == "verified") {
+	    						if (nestConfirmed) {
+	    							filteredDataPoints.push(responseObject[i]);
+	    						}
+	    					} else if (pokenestMarkerFilter == "nonverified") {
+	    						if (!nestConfirmed) {
+	    							filteredDataPoints.push(responseObject[i]);
+	    						}
+	    					} else {
+	    						filteredDataPoints.push(responseObject[i]);
+	    					}
+
 	    				} else {
 	    					console.log(responseObject[i].pokemon + " Pokenest filtered from post results.")
 	    				}
