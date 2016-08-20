@@ -111,6 +111,31 @@
         </div>
 
         <div class="form-group">
+          <h4>PokéNest Search Filter</h4>
+          <div class="radio">
+            <label>
+              <input id="marker-filter-radio-1" type="radio" name="marker-filter" value="verified">
+              Only show verified PokéNests
+            </label>
+          </div>
+
+          <div class="radio">
+            <label>
+              <input id="marker-filter-radio-2" type="radio" name="marker-filter" value="nonverified">
+              Only show non verified PokéNests
+            </label>
+          </div>
+
+          <div class="radio">
+            <label>
+              <input id="marker-filter-radio-3" type="radio" name="marker-filter" value="all">
+              Show all reported PokéNests
+            </label>
+          </div>
+          <hr>
+        </div>
+
+        <div class="form-group">
           <h4>Access</h4>
           <div class="togglebutton">
               <label id="access-toggle">
