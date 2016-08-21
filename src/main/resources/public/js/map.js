@@ -313,7 +313,7 @@ function loadViewportMarkers() {
 function updateSelectedMarkerModalData() {
 
 	// if some marker has been selected
-	if (!(selectedInfoMarker === undefined)) {
+	if (selectedInfoMarker !== undefined) {
 		$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[selectedInfoMarker.options.nestid].confirmed == 1) + "</b>");
 		// show or hide privileged action buttons
 		var privileged = (getCookie("access") == "true");
