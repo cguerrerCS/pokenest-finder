@@ -26,7 +26,7 @@ public class Pokedex {
 			// Fill in schema to create a table called Pokedex
 			String schema = "CREATE TABLE IF NOT EXISTS pokedex(" + "id TEXT," + "pokemon TEXT,"
 					+ "lat DECIMAL," + "lng DECIMAL," + "time TIMESTAMP,"
-					+ "confirmed SMALLINT);";
+					+ "confirmed SMALLINT, upvotes SMALLINT, downvotes SMALLINT);";
 
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate(schema);

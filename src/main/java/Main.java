@@ -26,7 +26,7 @@ public class Main {
   }
   
   private String[] args;
-  private Connection conn;
+//  private Connection conn;
   private Pokedex pokedex;
   
   private Main(String[] args) {
