@@ -314,15 +314,23 @@ function updateSelectedMarkerModalData() {
 
 	// if some marker has been selected
 	if (selectedInfoMarker !== undefined) {
-		$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[selectedInfoMarker.options.nestid].confirmed == 1) + "</b>");
-		// show or hide privileged action buttons
-		var privileged = (getCookie("access") == "true");
-		if (privileged) {
-			$('#removeEntryBtn').show();
-			$('#confirmEntryBtn').show();
+
+		// TODO: check that selected marker has not been removed
+		if (MARKERDATA[selectedInfoMarker.options.nestid] !== undefined) {
+
+			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[selectedInfoMarker.options.nestid].confirmed == 1) + "</b>");
+			// show or hide privileged action buttons
+			var privileged = (getCookie("access") == "true");
+			if (privileged) {
+				$('#removeEntryBtn').show();
+				$('#confirmEntryBtn').show();
+			} else {
+				$('#removeEntryBtn').hide();
+				$('#confirmEntryBtn').hide();
+			}
+
 		} else {
-			$('#removeEntryBtn').hide();
-			$('#confirmEntryBtn').hide();
+			console.log("selected nest has been removed from DB.")
 		}
 	}
 }
