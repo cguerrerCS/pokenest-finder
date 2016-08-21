@@ -334,10 +334,11 @@ $( document ).ready(function() {
 					options['content'] = "Error: " + error;
 				}
 				$.snackbar(options);
-			}); 
-		}
 
-		$('#myMarkerModal').modal('hide');
+				// hide modal and deselect
+				$('#myMarkerModal').modal('hide');
+			}); 
+		}		
 	});
 
 	$('#confirmEntryBtn').on('click', function() {
@@ -366,10 +367,11 @@ $( document ).ready(function() {
 					options['content'] = "Error: " + error;
 				}
 				$.snackbar(options);
+
+				// hide modal and deselect
+				$('#myMarkerModal').modal('hide');
 			}); 
 		}
-
-		$('#myMarkerModal').modal('hide');
 	});
 
 	$('#access-toggle').on('click', function() {
@@ -415,7 +417,6 @@ $( document ).ready(function() {
 	});
 
 	$('#myMarkerModal').on('hidden.bs.modal', function () {
-		console.log("Reset selected marker reference.")
     	selectedInfoMarker = undefined;
 	});
 
