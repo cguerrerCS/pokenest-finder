@@ -192,7 +192,7 @@ public class Pokedex {
 				int downvotes = rs.getInt("downvotes");
 			
 				Map<String, Object> data = new HashMap<>();
-				data.put("id", nestid);
+				data.put("nestid", nestid);
 				data.put("pokemon", name);
 				data.put("lat", lat);
 				data.put("lng", lng);

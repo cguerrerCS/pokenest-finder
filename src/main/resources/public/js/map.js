@@ -70,19 +70,18 @@ function loadViewportMarkers() {
 	var hiLng = northEastLng;
 	var minLngBound = parseFloat(math.eval((Math.floor(loLng/TILE_WIDTH) * (TILE_WIDTH)) + "-" + (PADDING * TILE_WIDTH)).toFixed(FLOAT_PRECISION));
 	var maxLngBound = parseFloat(math.eval((Math.floor(hiLng/TILE_WIDTH) * (TILE_WIDTH)) + "+" + (PADDING * TILE_WIDTH)).toFixed(FLOAT_PRECISION));
-	// console.log("Longitude bounds: [" + minLngBound + "," + maxLngBound + "]");
 
 	/* convert latitude bounds to cacheable tiles (string form) */
 	var loLat = southWestLat;
 	var hiLat = northEastLat;
 	var minLatBound = parseFloat(math.eval((Math.floor(loLat/TILE_HEIGHT) * (TILE_HEIGHT)) + "-" + (PADDING * TILE_HEIGHT)).toFixed(FLOAT_PRECISION));
 	var maxLatBound = parseFloat(math.eval((Math.floor(hiLat/TILE_HEIGHT) * (TILE_HEIGHT)) + "+" + (PADDING * TILE_HEIGHT)).toFixed(FLOAT_PRECISION));
-	// console.log("Latitude bounds: [" + minLatBound + "," + maxLatBound + "]");
 
 	var tiles = [];
 	var lat;
 	var lng;
 
+	// filter view port tiles, only post for tiles that have one corner in search radius circle
 	for (lat = minLatBound; lat <= maxLatBound; lat = parseFloat(math.eval(lat + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION))) {  
     	for (lng = minLngBound; lng <= maxLngBound; lng = parseFloat(math.eval(lng + "+" + TILE_HEIGHT).toFixed(FLOAT_PRECISION))) {  
 
@@ -120,11 +119,6 @@ function loadViewportMarkers() {
 	var leftover = math.floor(100 - (increment * tiles.length));
 	$("#pokenest-progress-bar").css("width", leftover + "%");	
 
-	// console.log("loading " + tiles.length + " tiles...");
-	// console.log("increment by " + increment + "%");
-	// console.log("real leftover is " + (100 - (increment * tiles.length)) + "%");
-	// console.log("leftover is " + leftover + "%");
-
 	var i;
 	for (i = 0; i < tiles.length; i++) {
 		
@@ -160,19 +154,10 @@ function loadViewportMarkers() {
 					progress = math.floor(realProgress);
 					$("#pokenest-progress-bar").css("width", progress + "%");
 
-					/* self deleting loading rectangle */
-					// var rectBounds = [
-					// 	[privatePostParameters.southWestLat, privatePostParameters.southWestLng], 
-					// 	[privatePostParameters.northEastLat, privatePostParameters.northEastLng]
-					// ];
-					// var rectangle = L.rectangle(rectBounds, {color: '#99ff66', weight: 0}).addTo(pokemap);
-					// setTimeout(function(){ 
-					// 	pokemap.removeLayer(rectangle);
-					// }, 1000 * 5);
-
 					/* filter any results outside of our search radius, also filter out results according to set filters */
 					var filteredDataPoints = [];
 					for (i = 0; i < responseObject.length; i++) {
+
 						var currentLat = currentLocationMarker.getLatLng().lat;
 						var currentLng = currentLocationMarker.getLatLng().lng;
 						var dataPointDist = parseFloat(distance(currentLat, currentLng, responseObject[i].lat, responseObject[i].lng, 'M').toFixed(2));
@@ -204,7 +189,7 @@ function loadViewportMarkers() {
 					for (i = 0; i < filteredDataPoints.length; i++) { 
     		
     					var data = filteredDataPoints[i];
-    					var id = data.id;
+    					var id = data.nestid;
     					var name = data.pokemon.toLowerCase();
 	    				var confirmed = (parseInt(data.confirmed) == 1);
 	    				var lat = parseFloat(data.lat);
@@ -229,8 +214,7 @@ function loadViewportMarkers() {
 	    					
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
 	    
-	    						console.log(this);
-				    			var pokemon = this.options.pokemon;
+	    						var pokemon = this.options.pokemon;
 				    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
 				    			id = this.options.id;
 				    			selectedMarkerID = id;
@@ -239,7 +223,7 @@ function loadViewportMarkers() {
 				    			// show pokenest info modal
 				    			$('#markerdata-header').html(pokemon + " Pokenest Details");
 
-				    			
+				    			// show or hide privileged action buttons
 				    			var privileged = (getCookie("access") == "true");
 				    			if (privileged) {
 				    				$('#removeEntryBtn').show();
