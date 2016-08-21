@@ -190,7 +190,7 @@ function loadViewportMarkers() {
     		
     					var data = filteredDataPoints[i];
     					var id = data.nestid;
-    					var name = data.pokemon.toLowerCase();
+    					var name = data.pokemon;
 	    				var confirmed = (parseInt(data.confirmed) == 1);
 	    				var lat = parseFloat(data.lat);
 	    				var lng = parseFloat(data.lng);
@@ -204,8 +204,8 @@ function loadViewportMarkers() {
 
 						var options = {
 							icon: icon,
-							zIndexOffset: 500,
-							id: id,
+							zIndexOffset: 500
+							nestid: id,
 							pokemon: name
 						}
 
@@ -214,26 +214,17 @@ function loadViewportMarkers() {
 	    					
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
 	    
-	    						var pokemon = this.options.pokemon;
-				    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
-				    			// id = this.options.id;
+	    						// var pokemon = this.options.pokemon;
+				    			// pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
+				    			var id = this.options.nestid;
+				    			
+				    			// Log the selected marker and corresponding nestid
 				    			selectedMarkerID = id;
 				    			selectedInfoMarker = this;
 
-				    			// show pokenest info modal
-				    			$('#markerdata-header').html(pokemon + " Pokenest Details");
+				    			// Fill in nest data for modal
+				    			$('#markerdata-header').html(MARKERDATA[id].pokemon + " Pokenest Details");
 
-				    			// show or hide privileged action buttons
-				    			var privileged = (getCookie("access") == "true");
-				    			if (privileged) {
-				    				$('#removeEntryBtn').show();
-				    				$('#confirmEntryBtn').show();
-				    			} else {
-				    				$('#removeEntryBtn').hide();
-				    				$('#confirmEntryBtn').hide();
-				    			}
-				    		
-				    			// Fill in modal data
 				    			var lat1 = currentLocationMarker.getLatLng().lat;
 				    			var lon1 = currentLocationMarker.getLatLng().lng;
 				    			var lat2 = parseFloat(this.getLatLng().lat);
@@ -246,7 +237,18 @@ function loadViewportMarkers() {
 
 				    			$('#markerdata-id').html("ID  <b>" + MARKERDATA[id].nestid + "</b>");
 				    			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[id].confirmed == 1) + "</b>");
+
+				    			// show or hide privileged action buttons
+				    			var privileged = (getCookie("access") == "true");
+				    			if (privileged) {
+				    				$('#removeEntryBtn').show();
+				    				$('#confirmEntryBtn').show();
+				    			} else {
+				    				$('#removeEntryBtn').hide();
+				    				$('#confirmEntryBtn').hide();
+				    			}
 				    			
+				    			// show marker details modal
 				    			$('#myMarkerModal').modal();
 	    					});	
 
