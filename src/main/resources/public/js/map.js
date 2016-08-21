@@ -219,7 +219,6 @@ function loadViewportMarkers() {
 				    			var nestid = this.options.nestid;
 				    			
 				    			// Log the selected marker and corresponding nestid
-				    			selectedMarkerID = nestid;
 				    			selectedInfoMarker = this;
 
 				    			// Fill in nest data for modal
@@ -314,7 +313,7 @@ function loadViewportMarkers() {
 function updateSelectedMarkerModalData() {
 
 	// Update any updateable data related to nest marker (confirmed, upvotes, downvotes, privileges)
-	$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
+	$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[selectedInfoMarker.options.nestid].confirmed == 1) + "</b>");
 
 	// show or hide privileged action buttons
 	var privileged = (getCookie("access") == "true");
