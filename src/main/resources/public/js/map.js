@@ -205,12 +205,14 @@ function loadViewportMarkers() {
 						var options = {
 							icon: icon,
 							zIndexOffset: 500,
+							pokemon: name,
 							nestid: id
 						}
 
     					/* if marker is not already drawn */
     					if (!(id in MARKERIDS)) {
 	    					
+	    					// Define action for when a nest marker is selected
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
 	    
 	    						// nestid is stored as an option for nest marker
@@ -250,10 +252,11 @@ function loadViewportMarkers() {
 				    			$('#myMarkerModal').modal();
 	    					});	
 
-							// add marker to map
+							// Add nest marker to the map
 							console.log(data.pokemon.toLowerCase() + " Pokenest added. [id: " + data.id + "]");
 							MARKERIDS[id] = m;
 							MARKERDATA[id] = data; 
+
 							MARKERTIMERS[id] = setTimeout(function(pokename, nestid) { return function() { 
 
 								if (pokemap.hasLayer(MARKERIDS[nestid])) {
