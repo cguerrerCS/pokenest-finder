@@ -216,7 +216,7 @@ function loadViewportMarkers() {
 	    
 	    						var pokemon = this.options.pokemon;
 				    			pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
-				    			id = this.options.id;
+				    			// id = this.options.id;
 				    			selectedMarkerID = id;
 				    			selectedInfoMarker = this;
 
@@ -233,6 +233,7 @@ function loadViewportMarkers() {
 				    				$('#confirmEntryBtn').hide();
 				    			}
 				    		
+				    			// Fill in modal data
 				    			var lat1 = currentLocationMarker.getLatLng().lat;
 				    			var lon1 = currentLocationMarker.getLatLng().lng;
 				    			var lat2 = parseFloat(this.getLatLng().lat);
@@ -243,7 +244,7 @@ function loadViewportMarkers() {
 				    			var googleMapsDirectionsURL = "https://www.google.com/maps/dir/" + lat1 + "," + lon1 +"/" + lat2 + "," + lon2;
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
 
-				    			$('#markerdata-id').html("ID  <b>" + MARKERDATA[id].id + "</b>");
+				    			$('#markerdata-id').html("ID  <b>" + MARKERDATA[id].nestid + "</b>");
 				    			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[id].confirmed == 1) + "</b>");
 				    			
 				    			$('#myMarkerModal').modal();
