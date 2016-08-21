@@ -25,14 +25,19 @@ public class Pokedex {
 			// Get database URL directly from Heroku
 			this.conn = DatabaseUrl.extract().getConnection();
 			
-			// Fill in schema to create a table called Pokedex
+			// Fill in schema to create a table to store nest data
 			String schema = "CREATE TABLE IF NOT EXISTS pokenest(" + "id TEXT," + "pokemon TEXT,"
 					+ "lat DECIMAL," + "lng DECIMAL," + "time TIMESTAMP,"
 					+ "confirmed SMALLINT," + "upvotes SMALLINT," + "downvotes SMALLINT);";
-			
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate(schema);
-						
+			
+			// Fill in schema to create a table to store voting data
+			schema = "CREATE TABLE IF NOT EXISTS votes(" + "username TEXT," + "id TEXT,"
+					+ "vote SMALLINT);";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(schema);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
