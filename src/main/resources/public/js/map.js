@@ -204,7 +204,7 @@ function loadViewportMarkers() {
 
 						var options = {
 							icon: icon,
-							zIndexOffset: 500
+							zIndexOffset: 500,
 							nestid: id,
 							pokemon: name
 						}
