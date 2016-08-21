@@ -21,13 +21,15 @@ public class Pokedex {
 	public Pokedex() {
 		
 		try {
+			
+			// Get database URL directly from Heroku
 			this.conn = DatabaseUrl.extract().getConnection();
 			
 			// Fill in schema to create a table called Pokedex
-			String schema = "CREATE TABLE IF NOT EXISTS pokedex(" + "id TEXT," + "pokemon TEXT,"
+			String schema = "CREATE TABLE IF NOT EXISTS pokenest(" + "id TEXT," + "pokemon TEXT,"
 					+ "lat DECIMAL," + "lng DECIMAL," + "time TIMESTAMP,"
-					+ "confirmed SMALLINT, upvotes SMALLINT, downvotes SMALLINT);";
-
+					+ "confirmed SMALLINT," + "upvotes SMALLINT," + "downvotes SMALLINT);";
+			
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate(schema);
 						
@@ -114,7 +116,7 @@ public class Pokedex {
 			throws SQLException {
 
 		// Fill in schema to create a table called pokedex
-		String schema = "INSERT INTO pokedex VALUES(?,?,?,?,?,?);";					
+		String schema = "INSERT INTO pokenest VALUES(?,?,?,?,?,?,?,?);";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, generateID());
 		prep.setString(2, pokemon);
@@ -122,6 +124,8 @@ public class Pokedex {
 		prep.setDouble(4, lng);
 		prep.setTimestamp(5, timestamp);
 		prep.setInt(6, 0);
+		prep.setInt(7, 0);
+		prep.setInt(8, 0);
 		prep.executeUpdate();
 
 		// Close the PreparedStatement
@@ -132,7 +136,7 @@ public class Pokedex {
 		
 		// Fill in schema to create a table called pokedex
 		boolean result = false;
-		String schema = "SELECT * FROM pokedex WHERE id = ?;";					
+		String schema = "SELECT * FROM pokenest WHERE id = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, nestID);
 		ResultSet rs = prep.executeQuery();
@@ -147,7 +151,7 @@ public class Pokedex {
 	public void Remove(String id) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
-		String schema = "DELETE FROM pokedex WHERE id = ?;";					
+		String schema = "DELETE FROM pokenest WHERE id = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, id);
 		prep.executeUpdate();
@@ -159,7 +163,7 @@ public class Pokedex {
 	public void Confirm(String id) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
-		String schema = "UPDATE pokedex SET confirmed = ? WHERE id = ?;";					
+		String schema = "UPDATE pokenest SET confirmed = ? WHERE id = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setInt(1, 1);
 		prep.setString(2, id);
@@ -173,7 +177,7 @@ public class Pokedex {
 		
 		// Fill in schema to create a table called pokedex
 		boolean result = false;
-		String schema = "SELECT confirmed FROM pokedex WHERE id = ?;";					
+		String schema = "SELECT confirmed FROM pokenest WHERE id = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, id);
 		ResultSet rs = prep.executeQuery();
@@ -201,7 +205,7 @@ public class Pokedex {
 
 		try {
 			
-		    String query = "SELECT * FROM pokedex WHERE "
+		    String query = "SELECT * FROM pokenest WHERE "
 		        + "lat >= ? AND lat <= ? "
 		        + "AND lng >= ? AND lng <= ?;";
 
@@ -243,7 +247,7 @@ public class Pokedex {
 
 		try {
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM pokedex;");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM pokenest;");
 			while (rs.next()) {
 				String id = rs.getString("id");
 				String name = rs.getString("pokemon");
@@ -251,12 +255,16 @@ public class Pokedex {
 				String lng = rs.getString("lng");
 				String time = rs.getString("time");
 				String confirmed = rs.getString("confirmed");
+				String upvotes = rs.getString("upvotes");
+				String downvotes = rs.getString("downvotes");
 				StringBuilder sb = new StringBuilder();
 				sb.append(String.format("<p class='db-data'>id: %s</p>", id));
 				sb.append(String.format("<p class='db-data'>pokemon: %s</p>", name));
 				sb.append(String.format("<p class='db-data'>lat: %s</p>", lat));
 				sb.append(String.format("<p class='db-data'>lng: %s</p>", lng));
 				sb.append(String.format("<p class='db-data'>time: %s</p>", time));
+				sb.append(String.format("<p class='db-data'>upvotes: %s</p>", upvotes));
+				sb.append(String.format("<p class='db-data'>downvotes: %s</p>", downvotes));
 				sb.append(String.format("<p class='db-data'>confirmed: %s</p>", confirmed));
 				String data = sb.toString();
 				output.add(data);
