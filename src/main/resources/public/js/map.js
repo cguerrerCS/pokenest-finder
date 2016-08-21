@@ -277,7 +277,7 @@ function loadViewportMarkers() {
 							// TODO: if selected marker nestid data changes, update the corresponding details modal
 							if (selectedInfoMarker !== undefined) {
 								if (MARKERDATA[selectedInfoMarker.options.nestid] !== undefined) {
-									if (selectedInfoMarker.nestid == data.nestid) {
+									if (selectedInfoMarker.options.nestid == data.nestid) {
 										updateSelectedMarkerModalData();
 									}
 								} 
