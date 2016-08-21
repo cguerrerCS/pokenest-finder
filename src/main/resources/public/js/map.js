@@ -272,17 +272,18 @@ function loadViewportMarkers() {
     					
 						} else {
 
-							// TODO: update marker information
+							// update marker information
 							MARKERDATA[id] = data;
 
-							// TODO: reset marker timeout after server ACK
+							// TODO: if selected marker nestid data changes, update the corresponding details modal
+							updateSelectedMarkerModalData();
+
+							// reset marker timeout after server ACK
 							var resetExpirationTimer = (function (pokename, nestid) {
 								return function() {
 
 									clearTimeout(MARKERTIMERS[nestid]);
-
 									MARKERTIMERS[id] = setTimeout(function(pokename, nestid) { return function() { 
-
 										if (pokemap.hasLayer(MARKERIDS[nestid])) {
 											pokemap.removeLayer(MARKERIDS[nestid]);
 											delete MARKERIDS[nestid];
@@ -292,7 +293,6 @@ function loadViewportMarkers() {
 										} else {
 											console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
 										}
-										
 									}; }(name, id), 1000 * MARKERTIMEOUT);
 
 								}
@@ -308,5 +308,21 @@ function loadViewportMarkers() {
     	})(i);
 
     	loadTileMarkers();
+	}
+}
+
+function updateSelectedMarkerModalData() {
+
+	// Update any updateable data related to nest marker (confirmed, upvotes, downvotes, privileges)
+	$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
+
+	// show or hide privileged action buttons
+	var privileged = (getCookie("access") == "true");
+	if (privileged) {
+		$('#removeEntryBtn').show();
+		$('#confirmEntryBtn').show();
+	} else {
+		$('#removeEntryBtn').hide();
+		$('#confirmEntryBtn').hide();
 	}
 }
