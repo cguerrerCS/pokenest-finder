@@ -252,7 +252,7 @@ function loadViewportMarkers() {
 	    					});	
 
 							// Add nest marker to the map
-							console.log(data.pokemon.toLowerCase() + " Pokenest added. [id: " + data.id + "]");
+							console.log(data.pokemon.toLowerCase() + " Pokenest added. [id: " + data.nestid + "]");
 							MARKERIDS[id] = m;
 							MARKERDATA[id] = data; 
 							MARKERTIMERS[id] = setTimeout(function(pokename, nestid) { return function() { 
@@ -298,7 +298,7 @@ function loadViewportMarkers() {
 
 							})(name, id);
 
-							console.log(name + " Pokenest updated. [id: " + data.id + "]");
+							console.log(name + " Pokenest updated. [id: " + data.nestid + "]");
 							resetExpirationTimer();
 						}
 					}
@@ -313,7 +313,7 @@ function loadViewportMarkers() {
 function updateSelectedMarkerModalData() {
 
 	// if some marker has been selected
-	if (typeof selectedInfoMarker != undefined) {
+	if (!(selectedInfoMarker === undefined)) {
 		$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[selectedInfoMarker.options.nestid].confirmed == 1) + "</b>");
 		// show or hide privileged action buttons
 		var privileged = (getCookie("access") == "true");
