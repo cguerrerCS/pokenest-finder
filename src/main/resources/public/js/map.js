@@ -275,8 +275,14 @@ function loadViewportMarkers() {
 							MARKERDATA[id] = data;
 
 							// TODO: if selected marker nestid data changes, update the corresponding details modal
-							updateSelectedMarkerModalData();
-
+							if (selectedInfoMarker !== undefined) {
+								if (MARKERDATA[selectedInfoMarker.options.nestid] !== undefined) {
+									if (selectedInfoMarker.nestid == data.nestid) {
+										updateSelectedMarkerModalData();
+									}
+								} 
+							}
+							
 							// reset marker timeout after server ACK
 							var resetExpirationTimer = (function (pokename, nestid) {
 								return function() {
