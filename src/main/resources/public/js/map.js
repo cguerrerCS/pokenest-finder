@@ -309,19 +309,20 @@ function loadViewportMarkers() {
     	loadTileMarkers();
 	}
 }
-
+/* Update any updateable data related to nest marker (confirmed, upvotes, downvotes, privileges) */
 function updateSelectedMarkerModalData() {
 
-	// Update any updateable data related to nest marker (confirmed, upvotes, downvotes, privileges)
-	$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[selectedInfoMarker.options.nestid].confirmed == 1) + "</b>");
-
-	// show or hide privileged action buttons
-	var privileged = (getCookie("access") == "true");
-	if (privileged) {
-		$('#removeEntryBtn').show();
-		$('#confirmEntryBtn').show();
-	} else {
-		$('#removeEntryBtn').hide();
-		$('#confirmEntryBtn').hide();
+	// if some marker has been selected
+	if (typeof selectedInfoMarker != undefined) {
+		$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[selectedInfoMarker.options.nestid].confirmed == 1) + "</b>");
+		// show or hide privileged action buttons
+		var privileged = (getCookie("access") == "true");
+		if (privileged) {
+			$('#removeEntryBtn').show();
+			$('#confirmEntryBtn').show();
+		} else {
+			$('#removeEntryBtn').hide();
+			$('#confirmEntryBtn').hide();
+		}
 	}
 }
