@@ -256,7 +256,6 @@ function loadViewportMarkers() {
 							console.log(data.pokemon.toLowerCase() + " Pokenest added. [id: " + data.id + "]");
 							MARKERIDS[id] = m;
 							MARKERDATA[id] = data; 
-
 							MARKERTIMERS[id] = setTimeout(function(pokename, nestid) { return function() { 
 
 								if (pokemap.hasLayer(MARKERIDS[nestid])) {

@@ -316,7 +316,7 @@ $( document ).ready(function() {
 		
 		if (privileged) {
 
-			var postParameters = {id: selectedInfoMarker.options.id, password: password};
+			var postParameters = {id: selectedInfoMarker.options.nestid, password: password};
 			$.post("/remove", postParameters, function(responseJSON){
 				var responseObject = JSON.parse(responseJSON);
 				var success = responseObject.success;
@@ -329,7 +329,7 @@ $( document ).ready(function() {
 	    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 				}
 				if (success) {
-					options['content'] = "[" + selectedInfoMarker.options.id + "] PokéNest location removed.";
+					options['content'] = "[" + selectedInfoMarker.options.nestid + "] PokéNest location removed.";
 				} else {
 					options['content'] = "Error: " + error;
 				}
@@ -347,7 +347,7 @@ $( document ).ready(function() {
 
 		if (privileged) {
 
-			var postParameters = {id: selectedInfoMarker.options.id, password: password};
+			var postParameters = {id: selectedInfoMarker.options.nestid, password: password};
 			$.post("/confirm", postParameters, function(responseJSON){
 
 				var responseObject = JSON.parse(responseJSON);
@@ -361,7 +361,7 @@ $( document ).ready(function() {
 	    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 				}
 				if (success) {
-					options['content'] = "[" + selectedInfoMarker.options.id + "] PokéNest location confirmed.";
+					options['content'] = "[" + selectedInfoMarker.options.nestid + "] PokéNest location confirmed.";
 				} else {
 					options['content'] = "Error: " + error;
 				}
