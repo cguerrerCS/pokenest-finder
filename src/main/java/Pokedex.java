@@ -19,91 +19,51 @@ public class Pokedex {
 	private Set<String> pokenames;
 	
 	public Pokedex() {
-		
+
 		try {
-			
+
 			// Get database URL directly from Heroku
 			this.conn = DatabaseUrl.extract().getConnection();
-			
+
 			// Fill in schema to create a table to store nest data
-			String schema = "CREATE TABLE IF NOT EXISTS pokenest(" + "nestid TEXT," + "pokemon TEXT,"
-					+ "lat DECIMAL," + "lng DECIMAL," + "time TIMESTAMP,"
-					+ "confirmed SMALLINT," + "upvotes SMALLINT," + "downvotes SMALLINT);";
+			String schema = "CREATE TABLE IF NOT EXISTS pokenest("
+					+ "nestid TEXT," + "pokemon TEXT," + "lat DECIMAL,"
+					+ "lng DECIMAL," + "time TIMESTAMP,"
+					+ "confirmed SMALLINT," + "upvotes SMALLINT,"
+					+ "downvotes SMALLINT);";
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate(schema);
-			
+
 			// Fill in schema to create a table to store voting data
-			schema = "CREATE TABLE IF NOT EXISTS votes(" + "nestid TEXT," + "username TEXT,"
-					+ "vote SMALLINT);";
+			schema = "CREATE TABLE IF NOT EXISTS votes(" + "nestid TEXT,"
+					+ "username TEXT," + "vote SMALLINT);";
 			stmt = conn.createStatement();
 			stmt.executeUpdate(schema);
-			
+
+			// Fill in schema to create a table to store trainer login details
+			schema = "CREATE TABLE IF NOT EXISTS users(" + "username TEXT,"
+					+ "salt TEXT," + "password TEXT);";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(schema);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		// add all names
-		List<String> pokenamesAsList = Arrays.asList(
-				"Bulbasaur",
-				"Charmander", 
-				"Squirtle", 
-				"Caterpie", 
-				"Spearow", 
-				"Ekans", 
-				"Pikachu", 
-				"Sandshrew", 
-				"Nidoran♀", 
-				"Nidoran♂", 
-				"Clefairy", 
-				"Vulpix", 
-				"Jigglypuff",
-				"Zubat", 
-				"Oddish", 
-				"Paras", 
-				"Venonat", 
-				"Diglett", 
-				"Meowth", 
-				"Psyduck", 
-				"Mankey", 
-				"Growlithe",
-				"Poliwag", 
-				"Abra", 
-				"Machop", 
-				"Bellsprout",
-				"Tentacool", 
-				"Geodude", 
-				"Ponyta", 
-				"Slowpoke", 
-				"Magnemite", 
-				"Farfetch'd",
-				"Doduo", 
-				"Seel", 
-				"Grimer", 
-				"Shellder", 
-				"Gastly", 
-				"Onix", 
-				"Drowzee", 
-				"Krabby", 
-				"Voltorb", 
-				"Exeggcute", 
-				"Cubone", 
-				"Lickitung",
-				"Koffing", 
-				"Rhyhorn", 
-				"Chansey", 
-				"Tangela", 
-				"Horsea", 
-				"Goldeen", 
-				"Staryu", 
-				"Scyther", 
-				"Jynx", 
-				"Electabuzz", 
-				"Magmar", 
-				"Pinsir", 
-				"Magikarp", 
-				"Eevee"
-		);
-		
+		List<String> pokenamesAsList = Arrays.asList("Bulbasaur", "Charmander",
+				"Squirtle", "Caterpie", "Spearow", "Ekans", "Pikachu",
+				"Sandshrew", "Nidoran♀", "Nidoran♂", "Clefairy", "Vulpix",
+				"Jigglypuff", "Zubat", "Oddish", "Paras", "Venonat", "Diglett",
+				"Meowth", "Psyduck", "Mankey", "Growlithe", "Poliwag", "Abra",
+				"Machop", "Bellsprout", "Tentacool", "Geodude", "Ponyta",
+				"Slowpoke", "Magnemite", "Farfetch'd", "Doduo", "Seel",
+				"Grimer", "Shellder", "Gastly", "Onix", "Drowzee", "Krabby",
+				"Voltorb", "Exeggcute", "Cubone", "Lickitung", "Koffing",
+				"Rhyhorn", "Chansey", "Tangela", "Horsea", "Goldeen", "Staryu",
+				"Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir",
+				"Magikarp", "Eevee");
+
 		pokenames = new HashSet<String>(pokenamesAsList);
 	}
 	
@@ -137,13 +97,13 @@ public class Pokedex {
 		prep.close();
 	}
 	
-	public boolean ContainsNestID(String nestID) throws SQLException {
+	public boolean ContainsNestID(String nestid) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
 		boolean result = false;
 		String schema = "SELECT * FROM pokenest WHERE nestid = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
-		prep.setString(1, nestID);
+		prep.setString(1, nestid);
 		ResultSet rs = prep.executeQuery();
 		if (rs.next()) {
 			result = true;
@@ -153,38 +113,38 @@ public class Pokedex {
 		return result;
 	}
 	
-	public void Remove(String id) throws SQLException {
+	public void Remove(String nestid) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
 		String schema = "DELETE FROM pokenest WHERE nestid = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
-		prep.setString(1, id);
+		prep.setString(1, nestid);
 		prep.executeUpdate();
 
 		// Close the PreparedStatement
 		prep.close();
 	}
 	
-	public void Confirm(String id) throws SQLException {
+	public void Confirm(String nestid) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
 		String schema = "UPDATE pokenest SET confirmed = ? WHERE nestid = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setInt(1, 1);
-		prep.setString(2, id);
+		prep.setString(2, nestid);
 		prep.executeUpdate();
 
 		// Close the PreparedStatement
 		prep.close();
 	}
 	
-	public boolean isConfirmed(String id) throws SQLException {
+	public boolean isConfirmed(String nestid) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
 		boolean result = false;
 		String schema = "SELECT confirmed FROM pokenest WHERE nestid = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
-		prep.setString(1, id);
+		prep.setString(1, nestid);
 		ResultSet rs = prep.executeQuery();
 		if (rs.next()) {
 			int confirmed = rs.getInt("confirmed");
@@ -222,19 +182,23 @@ public class Pokedex {
 		    ResultSet rs = prep.executeQuery();
 
 			while (rs.next()) {
-				String id = rs.getString("id");
+				String nestid = rs.getString("nestid");
 				String name = rs.getString("pokemon");
 				String lat = rs.getString("lat");
 				String lng = rs.getString("lng");
 				String timestamp = rs.getString("time");
 				int confirmed = rs.getInt("confirmed");
+				int upvotes = rs.getInt("upvotes");
+				int downvotes = rs.getInt("downvotes");
 			
 				Map<String, Object> data = new HashMap<>();
-				data.put("id", id);
+				data.put("id", nestid);
 				data.put("pokemon", name);
 				data.put("lat", lat);
 				data.put("lng", lng);
 				data.put("timestamp", timestamp);
+				data.put("upvotes", upvotes);
+				data.put("downvotes", downvotes);
 				data.put("confirmed", confirmed);
 				results.add(data);
 			}
