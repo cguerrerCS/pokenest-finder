@@ -205,8 +205,7 @@ function loadViewportMarkers() {
 						var options = {
 							icon: icon,
 							zIndexOffset: 500,
-							nestid: id,
-							pokemon: name
+							nestid: id
 						}
 
     					/* if marker is not already drawn */
@@ -214,16 +213,15 @@ function loadViewportMarkers() {
 	    					
 							var m = L.marker([lat, lng], options).addTo(pokemap).on('click', function() {
 	    
-	    						// var pokemon = this.options.pokemon;
-				    			// pokemon = pokemon.charAt(0).toUpperCase() + pokemon.slice(1);
-				    			var id = this.options.nestid;
+	    						// nestid is stored as an option for nest marker
+				    			var nestid = this.options.nestid;
 				    			
 				    			// Log the selected marker and corresponding nestid
-				    			selectedMarkerID = id;
+				    			selectedMarkerID = nestid;
 				    			selectedInfoMarker = this;
 
 				    			// Fill in nest data for modal
-				    			$('#markerdata-header').html(MARKERDATA[id].pokemon + " Pokenest Details");
+				    			$('#markerdata-header').html(MARKERDATA[nestid].pokemon + " Pokenest Details");
 
 				    			var lat1 = currentLocationMarker.getLatLng().lat;
 				    			var lon1 = currentLocationMarker.getLatLng().lng;
@@ -235,8 +233,8 @@ function loadViewportMarkers() {
 				    			var googleMapsDirectionsURL = "https://www.google.com/maps/dir/" + lat1 + "," + lon1 +"/" + lat2 + "," + lon2;
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
 
-				    			$('#markerdata-id').html("ID  <b>" + MARKERDATA[id].nestid + "</b>");
-				    			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[id].confirmed == 1) + "</b>");
+				    			$('#markerdata-id').html("ID  <b>" + MARKERDATA[nestid].nestid + "</b>");
+				    			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
 
 				    			// show or hide privileged action buttons
 				    			var privileged = (getCookie("access") == "true");
