@@ -26,14 +26,14 @@ public class Pokedex {
 			this.conn = DatabaseUrl.extract().getConnection();
 			
 			// Fill in schema to create a table to store nest data
-			String schema = "CREATE TABLE IF NOT EXISTS pokenest(" + "id TEXT," + "pokemon TEXT,"
+			String schema = "CREATE TABLE IF NOT EXISTS pokenest(" + "nestid TEXT," + "pokemon TEXT,"
 					+ "lat DECIMAL," + "lng DECIMAL," + "time TIMESTAMP,"
 					+ "confirmed SMALLINT," + "upvotes SMALLINT," + "downvotes SMALLINT);";
 			Statement stmt = conn.createStatement();
 			stmt.executeUpdate(schema);
 			
 			// Fill in schema to create a table to store voting data
-			schema = "CREATE TABLE IF NOT EXISTS votes(" + "username TEXT," + "id TEXT,"
+			schema = "CREATE TABLE IF NOT EXISTS votes(" + "nestid TEXT," + "username TEXT,"
 					+ "vote SMALLINT);";
 			stmt = conn.createStatement();
 			stmt.executeUpdate(schema);
@@ -141,7 +141,7 @@ public class Pokedex {
 		
 		// Fill in schema to create a table called pokedex
 		boolean result = false;
-		String schema = "SELECT * FROM pokenest WHERE id = ?;";					
+		String schema = "SELECT * FROM pokenest WHERE nestid = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, nestID);
 		ResultSet rs = prep.executeQuery();
@@ -156,7 +156,7 @@ public class Pokedex {
 	public void Remove(String id) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
-		String schema = "DELETE FROM pokenest WHERE id = ?;";					
+		String schema = "DELETE FROM pokenest WHERE nestid = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, id);
 		prep.executeUpdate();
@@ -168,7 +168,7 @@ public class Pokedex {
 	public void Confirm(String id) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
-		String schema = "UPDATE pokenest SET confirmed = ? WHERE id = ?;";					
+		String schema = "UPDATE pokenest SET confirmed = ? WHERE nestid = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setInt(1, 1);
 		prep.setString(2, id);
@@ -182,7 +182,7 @@ public class Pokedex {
 		
 		// Fill in schema to create a table called pokedex
 		boolean result = false;
-		String schema = "SELECT confirmed FROM pokenest WHERE id = ?;";					
+		String schema = "SELECT confirmed FROM pokenest WHERE nestid = ?;";					
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, id);
 		ResultSet rs = prep.executeQuery();
@@ -254,7 +254,7 @@ public class Pokedex {
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM pokenest;");
 			while (rs.next()) {
-				String id = rs.getString("id");
+				String id = rs.getString("nestid");
 				String name = rs.getString("pokemon");
 				String lat = rs.getString("lat");
 				String lng = rs.getString("lng");
