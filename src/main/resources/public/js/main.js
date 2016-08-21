@@ -414,6 +414,11 @@ $( document ).ready(function() {
 	    nestDetailsMarker.setLatLng(selectedInfoMarker.getLatLng());
 	});
 
+	$('#myMarkerModal').on('hidden.bs.modal', function () {
+		console.log("Reset selected marker reference.")
+    	selectedInfoMarker = undefined;
+	});
+
 	/* autocomplete code for Pokemon name lookup */
 	var substringMatcher = function(strs) {
 	return function findMatches(q, cb) {

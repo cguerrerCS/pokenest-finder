@@ -330,7 +330,15 @@ function updateSelectedMarkerModalData() {
 			}
 
 		} else {
-			console.log("selected nest has been removed from DB.")
+			console.log("selected nest has been removed from DB.");
+
+			// add notification for user
+			var options =  {
+    			content: "Selected nest has been removed from the database.",
+    			style: "snackbar",  // add a custom class to your snackbar
+    			timeout: 4000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+			}
+			$.snackbar(options);
 		}
 	}
 }
