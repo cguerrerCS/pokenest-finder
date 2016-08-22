@@ -155,18 +155,20 @@ function loadViewportMarkers() {
 					var nests = responseObject.nests;
 
 					console.log(responseObject);
+					console.log(typeof success);
+					console.log("true" == success);
 
 					// add failure notification for user
-					var options =  {
-	    				content: "", 		// text of the snackbar
-	    				style: "snackbar",  // add a custom class to your snackbar
-	    				timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
-					}
+					// var options =  {
+	    // 				content: "", 		// text of the snackbar
+	    // 				style: "snackbar",  // add a custom class to your snackbar
+	    // 				timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+					// }
 
-					if (!(success)) {
-						options['content'] = "Error: " + error;
-					}
-					$.snackbar(options);
+					// if (success) {
+					// 	options['content'] = "Error: " + error;
+					// } 
+					// $.snackbar(options);
 
 					/* progress bar increases for each loaded square */
 					realProgress = (realProgress + increment) % 101;
