@@ -37,6 +37,10 @@
     padding-bottom: 20px !important;
 }*/
 
+.navbar-toggle {
+	margin-left: 3px;
+}
+
 .navbar-nav {
 	margin-top: 0px;
 	margin-bottom: 0px;
