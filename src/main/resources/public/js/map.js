@@ -163,7 +163,7 @@ function loadViewportMarkers() {
 	    				timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 					}
 
-					if (!success) {
+					if !(success) {
 						options['content'] = "Error: " + error;
 					}
 					$.snackbar(options);
