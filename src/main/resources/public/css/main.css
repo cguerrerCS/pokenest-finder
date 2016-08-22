@@ -57,6 +57,10 @@ button:focus {
   color: white;
 }
 
+.navbar-toggle {
+  padding-top: 11px;
+}
+
 #access-password {
   width: 50%;
   margin-left: 20px;
