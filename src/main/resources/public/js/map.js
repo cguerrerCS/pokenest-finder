@@ -150,6 +150,22 @@ function loadViewportMarkers() {
         			/* get responce object */
 					responseObject = JSON.parse(responseJSON);
 
+					var success = responseObject.success;
+					var error = responseObject.error;
+					var nests = responseObject.nests;
+
+					// add failure notification for user
+					var options =  {
+	    				content: "", 		// text of the snackbar
+	    				style: "snackbar",  // add a custom class to your snackbar
+	    				timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+					}
+
+					if (!success) {
+						options['content'] = "Error: " + error;
+					}
+					$.snackbar(options);
+
 					/* progress bar increases for each loaded square */
 					realProgress = (realProgress + increment) % 101;
 					progress = math.floor(realProgress);
@@ -157,32 +173,32 @@ function loadViewportMarkers() {
 
 					/* filter any results outside of our search radius, also filter out results according to set filters */
 					var filteredDataPoints = [];
-					for (i = 0; i < responseObject.length; i++) {
+					for (i = 0; i < nests.length; i++) {
 
 						var currentLat = currentLocationMarker.getLatLng().lat;
 						var currentLng = currentLocationMarker.getLatLng().lng;
-						var dataPointDist = parseFloat(distance(currentLat, currentLng, responseObject[i].lat, responseObject[i].lng, 'M').toFixed(2));
+						var dataPointDist = parseFloat(distance(currentLat, currentLng, nests[i].lat, nests[i].lng, 'M').toFixed(2));
 						var pokenestMarkerFilter = getCookie("marker-filter");
-						var nestConfirmed = (parseInt(responseObject[i].confirmed) == 1);
+						var nestConfirmed = (parseInt(nests[i].confirmed) == 1);
 
 	    				if (dataPointDist <= SEARCH_RADIUS) {
 	    					
 							// additional filtering based on nest marker filter values
 	    					if (pokenestMarkerFilter == "verified") {
 	    						if (nestConfirmed) {
-	    							filteredDataPoints.push(responseObject[i]);
+	    							filteredDataPoints.push(nests[i]);
 	    						}
 	    					} else if (pokenestMarkerFilter == "nonverified") {
 	    						if (!nestConfirmed) {
-	    							filteredDataPoints.push(responseObject[i]);
+	    							filteredDataPoints.push(nests[i]);
 	    						}
 	    					} else {
 	    						// get here if cookie is not set or set to value "all", no filter
-	    						filteredDataPoints.push(responseObject[i]);
+	    						filteredDataPoints.push(nests[i]);
 	    					}
 
 	    				} else {
-	    					console.log(responseObject[i].pokemon + " Pokenest filtered from post results.")
+	    					console.log(nests[i].pokemon + " Pokenest filtered from post results.")
 	    				}
 					}
 

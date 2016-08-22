@@ -115,12 +115,40 @@ public class Pokedex {
 		prep.close();
 	}
 	
+	/**
+	 * Check if pokenest database table contains specified nest id.
+	 * @param nestid specified nest id
+	 * @return true if pokenest table contains nest id, false otherwise
+	 * @throws SQLException
+	 */
 	public boolean ContainsNestID(String nestid) throws SQLException {
 		
-		// Fill in schema to create a table called pokedex
+		// Fill in schema to check if nest id already exists
 		String schema = "SELECT exists (SELECT 1 from pokenest where nestid = ? LIMIT 1);";			
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, nestid);
+		ResultSet rs = prep.executeQuery();
+		rs.next();
+		boolean result = rs.getBoolean("exists");
+		
+		// Close the PreparedStatement
+		prep.close();
+		
+		return result;
+	}
+	
+	/**
+	 * Check if username already exists in the users database table.
+	 * @param username user provided username
+	 * @return true is username is taken, false otherwise
+	 * @throws SQLException
+	 */
+	public boolean ContainsUsername(String username) throws SQLException {
+		
+		// Fill in schema to check if username is already taken
+		String schema = "SELECT exists (SELECT 1 from users where username = ? LIMIT 1);";			
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, username);
 		ResultSet rs = prep.executeQuery();
 		rs.next();
 		boolean result = rs.getBoolean("exists");
@@ -272,7 +300,7 @@ public class Pokedex {
 			return false;
 		}
 	}
-	
+		
 	private String generateID() {
 		return UUID.randomUUID().toString();
 	}

@@ -181,6 +181,24 @@ public class Main {
 			return GSON.toJson(results);
 		});
 		
+		Spark.post("/login", (request, response) -> {
+			QueryParamsMap queryMap = request.queryMap();
+			String username = queryMap.value("username");
+			String password = queryMap.value("password");
+			Map<String, Object> sessionCookie = ImmutableMap.of("username", "", "token", "", "created", "");
+			Map<String, Object> results = ImmutableMap.of("success", true, "error", "", "sessionCookie", sessionCookie);
+			return GSON.toJson(results);
+		});
+		
+		Spark.post("/signup", (request, response) -> {
+			QueryParamsMap queryMap = request.queryMap();
+			String username = queryMap.value("username");
+			String password = queryMap.value("password");
+			Map<String, Object> sessionCookie = ImmutableMap.of("username", "", "token", "", "created", "");
+			Map<String, Object> results = ImmutableMap.of("success", true, "error", "", "token", "");
+			return GSON.toJson(results);
+		});
+		
 		Spark.post("/nearby", (request, response) -> {
 
 			QueryParamsMap queryMap = request.queryMap();
@@ -188,10 +206,23 @@ public class Main {
 			double southWestLng = Double.parseDouble(queryMap.value("southWestLng"));
 			double northEastLat = Double.parseDouble(queryMap.value("northEastLat"));
 			double northEastLng = Double.parseDouble(queryMap.value("northEastLng"));
+			List<Map<String, Object>> nests = new ArrayList<Map<String, Object>>();
+			Map<String, Object> results;
 			
 			// TODO: error check provided bounds
+			if ((southWestLng < -180.0) || (southWestLng > 180) || (southWestLat < -90) || (southWestLat > 90)) {
+				results =  ImmutableMap.of("success", false, "error", "SouthWest [lat,lng] bound invalid.", "nests", nests);
+				return GSON.toJson(results);
+			}
 			
-			List<Map<String, Object>> results = pokedex.betterNearby(southWestLat, southWestLng, northEastLat, northEastLng);
+			// TODO: error check provided bounds
+			if ((northEastLng < -180.0) || (northEastLng > 180) || (northEastLat < -90) || (northEastLat > 90)) {
+				results =  ImmutableMap.of("success", false, "error", "NorthEast [lat,lng] bound invalid.", "nests", nests);
+				return GSON.toJson(results);
+			}
+						
+			nests = pokedex.betterNearby(southWestLat, southWestLng, northEastLat, northEastLng);
+			results = ImmutableMap.of("success", true, "error", "", "nests", nests);
 			return GSON.toJson(results);
 		});
 
