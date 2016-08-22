@@ -156,7 +156,8 @@ function loadViewportMarkers() {
 
 					console.log(responseObject);
 					console.log(typeof success);
-					console.log("true" == success);
+					console.log(success);
+					console.log(!success);
 
 					// add failure notification for user
 					// var options =  {
