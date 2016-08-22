@@ -154,6 +154,8 @@ function loadViewportMarkers() {
 					var error = responseObject.error;
 					var nests = responseObject.nests;
 
+					console.log(responseObject);
+
 					// add failure notification for user
 					var options =  {
 	    				content: "", 		// text of the snackbar
