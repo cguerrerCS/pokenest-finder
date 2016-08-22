@@ -8,8 +8,10 @@
 	</div>
 
 	<div class="navbar-login navbar-collapse collapse navbar-warning-collapse">
-		<a href="javascript:void(0)" class="pokenest-login">Log In </a>
-		<a href="javascript:void(0)" class="pokenest-signup btn btn-raised btn-success">Sign Up</a>
+		<ul class="nav navbar-nav navbar-right">
+			<li> <a href="javascript:void(0)" class="pokenest-login">Log In </a> </li>
+			<li> <a href="javascript:void(0)" class="pokenest-signup btn btn-raised btn-success">Sign Up</a> </li>
+		</ul>
 	</div>
   </div>
 
