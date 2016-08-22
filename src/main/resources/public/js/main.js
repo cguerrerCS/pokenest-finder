@@ -42,7 +42,6 @@ $( document ).ready(function() {
 
 	// material design startup
 	$.material.init()
-	$.material.ripples(".navbar");
 
     // pokemon nest map
 	pokemap = L.map('mapid', {
