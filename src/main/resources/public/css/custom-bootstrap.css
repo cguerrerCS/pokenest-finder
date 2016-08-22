@@ -37,6 +37,11 @@
     padding-bottom: 20px !important;
 }*/
 
+.navbar-nav {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
 .navbar .navbar-nav > li > a {
     color: inherit;
     padding-top: 15px;

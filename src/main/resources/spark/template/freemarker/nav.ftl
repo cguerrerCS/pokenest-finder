@@ -15,8 +15,8 @@
 
 	<div class="navbar-collapse collapse navbar-warning-collapse">
 	 	<ul class="nav navbar-nav navbar-right">
-	  		<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	  		<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	  		<li><a class="pokenest-signup" href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	  		<li><a class="pokenest-login"  href="javascript:void(0)"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 		</ul>
     </div>
   </div>
