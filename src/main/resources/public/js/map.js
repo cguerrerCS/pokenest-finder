@@ -51,6 +51,7 @@ var MARKERIDS = {};          // id -> marker reference
 var MARKERDATA = {};         // id -> marker data
 var MARKERTIMERS = {};       // id -> marker expiration timer
 
+/* load map tiles in user's current viewport */ 
 function loadViewportMarkers() {
 
 	// reset progress bar values, prep for a new load
@@ -315,6 +316,7 @@ function loadViewportMarkers() {
     	loadTileMarkers();
 	}
 }
+
 /* Update any updateable data related to nest marker (confirmed, upvotes, downvotes, privileges) */
 function updateSelectedMarkerModalData() {
 

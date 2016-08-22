@@ -1,3 +1,6 @@
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,6 +14,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+
+import com.google.common.collect.ImmutableMap;
 import com.heroku.sdk.jdbc.DatabaseUrl;
 
 public class Pokedex {
@@ -43,6 +48,12 @@ public class Pokedex {
 			// Fill in schema to create a table to store trainer login details
 			schema = "CREATE TABLE IF NOT EXISTS users(" + "username TEXT,"
 					+ "salt TEXT," + "password TEXT);";
+			stmt = conn.createStatement();
+			stmt.executeUpdate(schema);
+			
+			// Fill in schema to create a table to store trainer login sessions
+			schema = "CREATE TABLE IF NOT EXISTS sessions(" + "username TEXT,"
+					+ "token TEXT," + "created INT);";
 			stmt = conn.createStatement();
 			stmt.executeUpdate(schema);
 
@@ -83,7 +94,14 @@ public class Pokedex {
 		// Fill in schema to create a table called pokedex
 		String schema = "INSERT INTO pokenest VALUES(?,?,?,?,?,?,?,?);";					
 		PreparedStatement prep = conn.prepareStatement(schema);
-		prep.setString(1, generateID());
+
+		// Generate a nest id, loop until collision free 
+		String nestid = generateID();
+		while (this.ContainsNestID(nestid) == true) {
+			nestid = generateID();
+		}
+
+		prep.setString(1, nestid);
 		prep.setString(2, pokemon);
 		prep.setDouble(3, lat);
 		prep.setDouble(4, lng);
@@ -100,16 +118,16 @@ public class Pokedex {
 	public boolean ContainsNestID(String nestid) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
-		boolean result = false;
-		String schema = "SELECT * FROM pokenest WHERE nestid = ?;";					
+		String schema = "SELECT exists (SELECT 1 from pokenest where nestid = ? LIMIT 1);";			
 		PreparedStatement prep = conn.prepareStatement(schema);
 		prep.setString(1, nestid);
 		ResultSet rs = prep.executeQuery();
-		if (rs.next()) {
-			result = true;
-		}
+		rs.next();
+		boolean result = rs.getBoolean("exists");
+		
 		// Close the PreparedStatement
 		prep.close();
+		
 		return result;
 	}
 	
@@ -256,8 +274,88 @@ public class Pokedex {
 	}
 	
 	private String generateID() {
-		String unique = UUID.randomUUID().toString();
-		// check for collision..?
-		return unique;
+		return UUID.randomUUID().toString();
+	}
+		
+	public Map<String, Object> signUpHandler(String username, String password) {
+		
+		
+		
+		/* TODO: make sure password is secure */
+		
+		/* TODO: make sure username is unique */
+		
+		/* TODO: make sure username uses "safe" characters */
+		
+		/* TODO: generate session token */
+		
+		/* TODO: generate a salt for the new user (secures password) */
+		
+		/* TODO: make sure session token is unique */
+		
+		Map<String, Object> results = ImmutableMap.of("success", true, "error", "", "token", "");
+		return results;
+	}
+	
+	public void addUser() {
+		
+		/* TODO: insert into 'users' database table */
+		
+		/* TODO: insert into 'sessions' database table */	
+	}
+	
+	private static String saltAndHashInput(String input, byte[] salt) {
+		
+		String generatedPassword = null;
+        try {
+            // Create MessageDigest instance for MD5
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            //Add password bytes to digest
+            md.update(salt);
+            //Get the hash's bytes 
+            byte[] bytes = md.digest(input.getBytes());
+            //This bytes[] has bytes in decimal format;
+            //Convert it to hexadecimal format
+            StringBuilder sb = new StringBuilder();
+            for(int i=0; i< bytes.length ;i++)
+            {
+                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+            }
+            //Get complete hashed password in hex format
+            generatedPassword = sb.toString();
+        } 
+        catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return generatedPassword;
+	}
+	
+	/**
+	 * Generates random salt.
+	 */
+	private static String generateSalt() {
+		StringBuilder buf = new StringBuilder();
+		SecureRandom sr = new SecureRandom();
+		// log2(52^6)=34.20... so, this is about 32bit strong (entropy).
+		for (int i = 0; i < 6; i++) {
+			boolean upper = sr.nextBoolean();
+			char ch = (char) (sr.nextInt(26) + 'a');
+			if (upper)
+				ch = Character.toUpperCase(ch);
+			buf.append(ch);
+		}
+		return buf.toString();
+	}
+	
+	private boolean usernameIsUnique() {
+		return true;
+	}		
+	
+	private static boolean passwordIsSecure(String password) {
+		return true;
+	}
+	
+	private static boolean usesSafeCharacters(String s) {
+		return true;
 	}
 }
