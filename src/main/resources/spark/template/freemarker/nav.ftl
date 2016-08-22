@@ -1,15 +1,14 @@
 
 <nav class="navbar navbar-default navbar-fixed-top">
 
-  <div class="container">
+  <div class="container-fluid">
+  	
 	<div class="navbar-header">
-
 		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-warning-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-
 		<a href="javascript:void(0)" class="pokenest-logo-img"><img src='../img/eggs.png' alt="logo" height="38" width="44"></a>
 		<a href="javascript:void(0)" class="pokenest-logo-txt">PokéNest</a>
 	</div>
