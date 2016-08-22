@@ -159,6 +159,10 @@ function loadViewportMarkers() {
 					console.log(success);
 					console.log(!success);
 
+					if (!success) {
+						console.log("FAILED!");
+					}
+
 					// add failure notification for user
 					// var options =  {
 	    // 				content: "", 		// text of the snackbar
