@@ -154,22 +154,20 @@ function loadViewportMarkers() {
 					var error = responseObject.error;
 					var nests = responseObject.nests;
 
-					console.log(responseObject);
-					console.log(typeof success);
-					console.log(success);
-					console.log(!success);
-
 					if (!success) {
 						console.log("FAILED!");
+						console.log(responseObject);
+
+						var options =  {
+	    					content: "", 		// text of the snackbar
+	    					style: "snackbar",  // add a custom class to your snackbar
+	    					timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+						}
 					}
 
 					// add failure notification for user
-					// var options =  {
-	    // 				content: "", 		// text of the snackbar
-	    // 				style: "snackbar",  // add a custom class to your snackbar
-	    // 				timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
-					// }
 
+					
 					// if (success) {
 					// 	options['content'] = "Error: " + error;
 					// } 
