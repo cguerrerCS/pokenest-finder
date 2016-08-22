@@ -154,24 +154,18 @@ function loadViewportMarkers() {
 					var error = responseObject.error;
 					var nests = responseObject.nests;
 
+					// add failure notification for user when tile does not load correctly
 					if (!success) {
-						console.log("FAILED!");
-						console.log(responseObject);
 
 						var options =  {
 	    					content: "", 		// text of the snackbar
 	    					style: "snackbar",  // add a custom class to your snackbar
 	    					timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 						}
+
+						options['content'] = "Error: " + error;
+						$.snackbar(options);
 					}
-
-					// add failure notification for user
-
-					
-					// if (success) {
-					// 	options['content'] = "Error: " + error;
-					// } 
-					// $.snackbar(options);
 
 					/* progress bar increases for each loaded square */
 					realProgress = (realProgress + increment) % 101;
