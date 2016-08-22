@@ -38,17 +38,20 @@ button:focus {
   display: none;
 }
 
+/*
 .pokenest-logo-img img {
   display: inline-block;
   margin-left: 14px;
   margin-bottom: 17px;
   margin-right: 2px;
 }
+*/
 
 .pokenest-logo-txt {
   display: inline-block;
-  padding-top: 12px;
-  padding-bottom: 5px;
+  padding-top: 8px;
+  padding-bottom: 10px;
+  padding-left: 20px;
   font-size: 25px; 
   font-family: 'Lato', serif;
   color: white;
