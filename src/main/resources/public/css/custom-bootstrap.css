@@ -37,6 +37,12 @@
     padding-bottom: 20px !important;
 }*/
 
+.navbar .navbar-nav > li > a {
+    color: inherit;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
 #pokenest-progress-container {
 	width: 110%;
 	position: fixed;
