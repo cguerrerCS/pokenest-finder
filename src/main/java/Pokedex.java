@@ -307,8 +307,6 @@ public class Pokedex {
 		
 	public Map<String, Object> signUpHandler(String username, String password) {
 		
-		
-		
 		/* TODO: make sure password is secure */
 		
 		/* TODO: make sure username is unique */
@@ -364,7 +362,7 @@ public class Pokedex {
 	private static String generateSalt() {
 		StringBuilder buf = new StringBuilder();
 		SecureRandom sr = new SecureRandom();
-		// log2(52^6)=34.20... so, this is about 32bit strong (entropy).
+		// log2(52^6)=34.20, approximately 32 bit entropy.
 		for (int i = 0; i < 6; i++) {
 			boolean upper = sr.nextBoolean();
 			char ch = (char) (sr.nextInt(26) + 'a');

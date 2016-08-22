@@ -4,16 +4,12 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-import java.net.URI;
-import java.net.URISyntaxException;
 
 import spark.QueryParamsMap;
 import spark.Spark;
 import spark.template.freemarker.FreeMarkerEngine;
 import spark.ModelAndView;
 
-import com.heroku.sdk.jdbc.DatabaseUrl;
 import com.google.common.collect.ImmutableMap;
 import com.google.gson.Gson;
 
@@ -25,12 +21,11 @@ public class Main {
 	  new Main(args).run();
   }
   
-  private String[] args;
-//  private Connection conn;
+  // private String[] args;
   private Pokedex pokedex;
   
   private Main(String[] args) {
-	  this.args = args;
+	  // this.args = args;
   }
   
   private void run() {
@@ -182,20 +177,20 @@ public class Main {
 		});
 		
 		Spark.post("/login", (request, response) -> {
-			QueryParamsMap queryMap = request.queryMap();
-			String username = queryMap.value("username");
-			String password = queryMap.value("password");
+//			QueryParamsMap queryMap = request.queryMap();
+//			String username = queryMap.value("username");
+//			String password = queryMap.value("password");
 			Map<String, Object> sessionCookie = ImmutableMap.of("username", "", "token", "", "created", "");
 			Map<String, Object> results = ImmutableMap.of("success", true, "error", "", "sessionCookie", sessionCookie);
 			return GSON.toJson(results);
 		});
 		
 		Spark.post("/signup", (request, response) -> {
-			QueryParamsMap queryMap = request.queryMap();
-			String username = queryMap.value("username");
-			String password = queryMap.value("password");
+//			QueryParamsMap queryMap = request.queryMap();
+//			String username = queryMap.value("username");
+//			String password = queryMap.value("password");
 			Map<String, Object> sessionCookie = ImmutableMap.of("username", "", "token", "", "created", "");
-			Map<String, Object> results = ImmutableMap.of("success", true, "error", "", "token", "");
+			Map<String, Object> results = ImmutableMap.of("success", true, "error", "", "sessionCookie", sessionCookie);
 			return GSON.toJson(results);
 		});
 		
