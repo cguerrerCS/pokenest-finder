@@ -283,6 +283,7 @@ $( document ).ready(function() {
 		// clear modal test boxes
 		$('#inputUsername').val("");
 		$('#inputPassword').val("");
+		$('#inputPasswordRepeat').val("");
 
 		// open up login modal
 		$("#signupModal").modal();
