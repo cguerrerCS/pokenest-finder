@@ -337,38 +337,6 @@ $( document ).ready(function() {
 				}
 			});
 		}
-
-		// send sign up post request to the server
-		var postParameters = {username: username, password: password};
-		$.post("/signup", postParameters, function(responseJSON){
-
-			var responseObject = JSON.parse(responseJSON);
-			var success = responseObject.success;
-			var error = responseObject.error;
-			var sessionCookie = responseObject.sessionCookie;
-
-			console.log(sessionCookie);
-
-			// add notification for user
-			var options =  {
-    			content: "", 		// text of the snackbar
-    			style: "snackbar",  // add a custom class to your snackbar
-    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
-			}
-			if (success) {
-				options['content'] = "PokéNest account created for trainer '" + username + "'";
-			} else {
-				options['content'] = "Error: " + error;
-			}
-			$.snackbar(options);
-
-			// hide login and sign up buttons, instead show logged in as 'username'
-
-			// hide modal
-			if (success) {
-				$("#signupModal").modal('hide');
-			}
-		}); 
 	});
 
 	$('#login-trigger').on('click', function() {
