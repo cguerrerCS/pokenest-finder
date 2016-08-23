@@ -171,23 +171,32 @@
 
       <div class="modal-body">
 
-        <!-- Username input box -->
+          <!-- Username input box --> 
+          <div class="form-group is-empty">
+            <label for="inputUsername" class="col-md-2 control-label">Username</label>
+            <div class="col-md-10">
+              <input type="email" class="form-control" id="inputUsername" placeholder="Username">
+            </div>
+          </div>
         
-        <!-- Password input box -->
-        
+          <!-- Password input box -->
+          <div class="form-group is-empty">
+            <label for="inputPassword" class="col-md-2 control-label">Password</label>
+            <div class="col-md-10">
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+            </div>
+          </div>
+
       </div>
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         <button id="signupbtn" type="button" class="btn btn-primary btn-raised btn-info">Create Account</button>
       </div>
-      
+
     </div>
   </div>
 </div>
-
-
-
 
 </body>
 </html>
