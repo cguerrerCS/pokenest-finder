@@ -53,7 +53,7 @@ public class Pokedex {
 			
 			// Fill in schema to create a table to store trainer login sessions
 			schema = "CREATE TABLE IF NOT EXISTS sessions(" + "username TEXT,"
-					+ "token TEXT," + "created INT);";
+					+ "token TEXT," + "created BIGINT);";
 			stmt = conn.createStatement();
 			stmt.executeUpdate(schema);
 
@@ -96,11 +96,12 @@ public class Pokedex {
 		PreparedStatement prep = conn.prepareStatement(schema);
 
 		// Generate a nest id, loop until collision free 
-		String nestid = generateID();
+		String nestid = SecurityUtil.GenerateRandString();
 		while (this.ContainsNestID(nestid) == true) {
-			nestid = generateID();
+			nestid = SecurityUtil.GenerateRandString();
 		}
-
+		
+		// fill in prepared statement data
 		prep.setString(1, nestid);
 		prep.setString(2, pokemon);
 		prep.setDouble(3, lat);
@@ -300,88 +301,24 @@ public class Pokedex {
 			return false;
 		}
 	}
+				
+	public void AddTrainer(String username, String salt, String password) throws SQLException {
 		
-	private String generateID() {
-		return UUID.randomUUID().toString();
-	}
+		// Fill in schema to create a table called users
+		String schema = "INSERT INTO users VALUES(?,?,?);";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, username);
+		prep.setString(2, salt);
+		prep.setString(3, password);
 		
-	public Map<String, Object> signUpHandler(String username, String password) {
-		
-		/* TODO: make sure password is secure */
-		
-		/* TODO: make sure username is unique */
-		
-		/* TODO: make sure username uses "safe" characters */
-		
-		/* TODO: generate session token */
-		
-		/* TODO: generate a salt for the new user (secures password) */
-		
-		/* TODO: make sure session token is unique */
-		
-		Map<String, Object> results = ImmutableMap.of("success", true, "error", "", "token", "");
-		return results;
+		// Close the PreparedStatement
+		prep.close();
 	}
 	
-	public void addUser() {
+	public void addUser(String username, String salt, String saltedAndHashedPassword, String saltedAndHashedToken, int created) {
 		
 		/* TODO: insert into 'users' database table */
 		
 		/* TODO: insert into 'sessions' database table */	
-	}
-	
-	private static String saltAndHashInput(String input, byte[] salt) {
-		
-		String generatedPassword = null;
-        try {
-            // Create MessageDigest instance for MD5
-            MessageDigest md = MessageDigest.getInstance("MD5");
-            //Add password bytes to digest
-            md.update(salt);
-            //Get the hash's bytes 
-            byte[] bytes = md.digest(input.getBytes());
-            //This bytes[] has bytes in decimal format;
-            //Convert it to hexadecimal format
-            StringBuilder sb = new StringBuilder();
-            for(int i=0; i< bytes.length ;i++)
-            {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-            //Get complete hashed password in hex format
-            generatedPassword = sb.toString();
-        } 
-        catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return generatedPassword;
-	}
-	
-	/**
-	 * Generates random salt.
-	 */
-	private static String generateSalt() {
-		StringBuilder buf = new StringBuilder();
-		SecureRandom sr = new SecureRandom();
-		// log2(52^6)=34.20, approximately 32 bit entropy.
-		for (int i = 0; i < 6; i++) {
-			boolean upper = sr.nextBoolean();
-			char ch = (char) (sr.nextInt(26) + 'a');
-			if (upper)
-				ch = Character.toUpperCase(ch);
-			buf.append(ch);
-		}
-		return buf.toString();
-	}
-	
-	private boolean usernameIsUnique() {
-		return true;
-	}		
-	
-	private static boolean passwordIsSecure(String password) {
-		return true;
-	}
-	
-	private static boolean usesSafeCharacters(String s) {
-		return true;
 	}
 }

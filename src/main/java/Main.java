@@ -194,15 +194,35 @@ public class Main {
 			String password = queryMap.value("password");
 
 			// TODO: check if password meets security requirements
-			boolean secure = SecurityUtil.PasswordIsSecure(password);
-			if (!secure) {
-				results = ImmutableMap.of("success", false,
-						"error", "Provided password is not secure", "sessionCookie", "");
+			if (!SecurityUtil.PasswordIsSecure(password)) {
+				results = ImmutableMap.of("success", false, "error",
+						"Provided password is not secure",
+						"sessionCookie", "");
 				return GSON.toJson(results);
 			}
 
+			// TODO: check if username is already taken
+			if (pokedex.ContainsUsername(username)) {
+				results = ImmutableMap.of("success", false, "error",
+						String.format(
+								"Provided username '%s' is taken",
+								username), "sessionCookie", "");
+				return GSON.toJson(results);
+			}
+			
+			// TODO: generate new user's salt value
+			String salt = SecurityUtil.GenerateSalt();
+			
+			// TODO: generate a session token for the user
+			String token = SecurityUtil.GenerateRandString();
+			String saltedAndHashedToken = SecurityUtil.StandardSaltAndHashInput(salt, token);
+			String saltedAndHashedPassword = SecurityUtil.SlowSaltAndHashPassword(salt, password);
+			
+			// TODO: add trainer to the users database
+			
+			
 			sessionCookie = ImmutableMap.of("username",
-					username, "token", "lool", "created", 1234);
+					username, "token", token, "created", 1234);
 			results = ImmutableMap.of("success", true,
 					"error", "", "sessionCookie", sessionCookie);
 			return GSON.toJson(results);
