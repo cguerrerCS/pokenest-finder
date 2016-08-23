@@ -186,11 +186,25 @@ public class Main {
 		});
 		
 		Spark.post("/signup", (request, response) -> {
-//			QueryParamsMap queryMap = request.queryMap();
-//			String username = queryMap.value("username");
-//			String password = queryMap.value("password");
-			Map<String, Object> sessionCookie = ImmutableMap.of("username", "", "token", "", "created", "");
-			Map<String, Object> results = ImmutableMap.of("success", true, "error", "", "sessionCookie", sessionCookie);
+			
+			Map<String, Object> results;
+			Map<String, Object> sessionCookie;
+			QueryParamsMap queryMap = request.queryMap();
+			String username = queryMap.value("username");
+			String password = queryMap.value("password");
+
+			// TODO: check if password meets security requirements
+			boolean secure = SecurityUtil.PasswordIsSecure(password);
+			if (!secure) {
+				results = ImmutableMap.of("success", false,
+						"error", "Provided password is not secure", "sessionCookie", "");
+				return GSON.toJson(results);
+			}
+
+			sessionCookie = ImmutableMap.of("username",
+					username, "token", "lool", "created", 1234);
+			results = ImmutableMap.of("success", true,
+					"error", "", "sessionCookie", sessionCookie);
 			return GSON.toJson(results);
 		});
 		
