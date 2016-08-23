@@ -15,6 +15,6 @@ public class SecurityUtil {
 	 */
 	public static boolean PasswordIsSecure(String password) {
 		String pattern = "^(.{0,7}|[^0-9]*|[^A-Z]*|[^a-z]*|[a-zA-Z0-9]*)$";
-		return password.matches(pattern);
+		return !password.matches(pattern);
 	}
 }
