@@ -175,8 +175,9 @@
           <div class="form-group">
             <label for="inputUsername" class="col-md-2 control-label">Username</label>
             <div class="col-md-10">
-              <input type="email" class="form-control" id="inputUsername" placeholder="Username">
+              <input type="text" class="form-control" id="inputUsername" placeholder="Username">
             </div>
+            <span id="usernameSignupHelp" class="help-block">Please enter a valid username</span>
           </div>
         
           <!-- Password input box -->
@@ -185,6 +186,7 @@
             <div class="col-md-10">
               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
+            <span id="passwordSignupHelp" class="help-block">Please enter a valid password</span>
           </div>
 
       </div>
