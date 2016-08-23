@@ -158,5 +158,36 @@
   </div>
 </div>
 
+<!-- Bootstrap Modal for trainer signup -->
+<div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <img src='../img/pokeball.png' alt='Pokeball Icon'>  
+        <h4 class="modal-title" id="myModalLabel">Sign in</h4> 
+      </div>
+
+      <div class="modal-body">
+
+        <!-- Username input box -->
+        
+        <!-- Password input box -->
+        
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button id="signupbtn" type="button" class="btn btn-primary btn-raised btn-success">Report</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+
+
 </body>
 </html>

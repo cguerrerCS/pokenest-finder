@@ -228,9 +228,6 @@ $( document ).ready(function() {
 
 	// by default, follow user
 	setInterval(function() { update(); }, 2000);
-
-	// find pokemon within viewport
-	// setInterval(function() { loadPokeRadar(); }, 10000);
 	
 	// tile based markers
 	setInterval(function() { 
@@ -280,11 +277,14 @@ $( document ).ready(function() {
 		}); 
 	});
 
-	$('#pokevision-btn').on('click', function() {
+	// login handlers
+	$('#signup-trigger').on('click', function() {
+		// open up login modal
+		$("#signupModal").modal();
+	});
 
-		// show pokevision modal with iframe
-		console.log("loading pokevision iframe");
-
+	$('#login-trigger').on('click', function() {
+		// open up signup modal
 	});
 
 	$('#applysettingsbtn').on('click', function() {
@@ -416,6 +416,7 @@ $( document ).ready(function() {
 	});
 
 	$('#myMarkerModal').on('hidden.bs.modal', function () {
+
     	selectedInfoMarker = undefined;
 	});
 

@@ -15,8 +15,12 @@
 
 	<div class="navbar-collapse collapse navbar-warning-collapse">
 	 	<ul class="nav navbar-nav navbar-right">
-	  		<li><a class="pokenest-signup" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	  		<li><a class="pokenest-login"  data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	  		<li>
+	  			<a id="signup-trigger" class="pokenest-signup" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
+	  		</li>
+	  		<li>
+	  			<a id="login-trigger" class="pokenest-login"  data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+	  		</li>
 		</ul>
     </div>
   </div>
