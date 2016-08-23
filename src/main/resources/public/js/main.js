@@ -288,6 +288,21 @@ $( document ).ready(function() {
 		$("#signupModal").modal();
 	});
 
+	$('#signupbtn').on('click', function() {
+
+		// get textbox values form sign in modal
+		var username = $('#inputUsername').val();
+		var password = $('#inputPassword').val();
+
+		// TODO: send sign up post request to the server
+		console.log("Signing up for Pokenest...");
+		console.log("username: " + username);
+		console.log("password: " + password);
+
+		// close modal
+		$("#signupModal").modal('hide');
+	});
+
 	$('#login-trigger').on('click', function() {
 		// open up signup modal
 	});
