@@ -217,9 +217,10 @@ public class Main {
 			String token = SecurityUtil.GenerateRandString();
 			String saltedAndHashedToken = SecurityUtil.StandardSaltAndHashInput(salt, token);
 			String saltedAndHashedPassword = SecurityUtil.SlowSaltAndHashPassword(salt, password);
+			long created = System.currentTimeMillis() / 1000L;
 			
 			// TODO: add trainer to the users database
-			
+			pokedex.AddTrainer(username, salt, saltedAndHashedPassword, saltedAndHashedToken, created);
 			
 			sessionCookie = ImmutableMap.of("username",
 					username, "token", token, "created", 1234);

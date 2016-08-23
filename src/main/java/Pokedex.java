@@ -302,7 +302,7 @@ public class Pokedex {
 		}
 	}
 				
-	public void AddTrainer(String username, String salt, String password) throws SQLException {
+	public void AddTrainer(String username, String salt, String password, String token, long created) throws SQLException {
 		
 		// Fill in schema to create a table called users
 		String schema = "INSERT INTO users VALUES(?,?,?);";					
@@ -311,6 +311,16 @@ public class Pokedex {
 		prep.setString(2, salt);
 		prep.setString(3, password);
 		
+		// Close the PreparedStatement
+		prep.close();
+		
+		// Fill in schema to create a table called users
+		schema = "INSERT INTO sessions VALUES(?,?,?);";					
+		prep = conn.prepareStatement(schema);
+		prep.setString(1, username);
+		prep.setString(2, token);
+		prep.setLong(3, created);
+				
 		// Close the PreparedStatement
 		prep.close();
 	}
