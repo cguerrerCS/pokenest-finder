@@ -172,7 +172,7 @@
       <div class="modal-body">
 
           <!-- Username input box --> 
-          <div class="form-group">
+          <div class="form-group signup-form-group">
             <label for="inputUsername" class="col-md-2 control-label">Username</label>
             <div class="col-md-10">
               <input type="text" class="form-control" id="inputUsername" placeholder="Username">
@@ -180,7 +180,7 @@
           </div>
         
           <!-- Password input box -->
-          <div class="form-group">
+          <div class="form-group signup-form-group">
             <label for="inputPassword" class="col-md-2 control-label">Password</label>
             <div class="col-md-10">
               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
