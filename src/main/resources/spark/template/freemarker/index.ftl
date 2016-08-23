@@ -177,7 +177,6 @@
             <div class="col-md-10">
               <input type="text" class="form-control" id="inputUsername" placeholder="Username">
             </div>
-            <span id="usernameSignupHelp" class="help-block">Please enter a valid username</span>
           </div>
         
           <!-- Password input box -->
@@ -186,7 +185,6 @@
             <div class="col-md-10">
               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
             </div>
-            <span id="passwordSignupHelp" class="help-block">Please enter a valid password</span>
           </div>
 
       </div>
