@@ -318,6 +318,8 @@ $( document ).ready(function() {
 			}
 			$.snackbar(options);
 
+			// hide login and sign up buttons, instead show logged in as 'username'
+
 			// hide modal
 			$("#signupModal").modal('hide');
 		}); 

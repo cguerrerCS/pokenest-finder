@@ -191,7 +191,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button id="signupbtn" type="button" class="btn btn-primary btn-raised btn-info">Create Account</button>
+        <button id="signupbtn" type="submit" class="btn btn-primary btn-raised btn-info">Create Account</button>
       </div>
 
     </div>
