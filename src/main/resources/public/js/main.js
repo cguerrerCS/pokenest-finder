@@ -318,12 +318,9 @@ $( document ).ready(function() {
 			}
 			$.snackbar(options);
 
-			// hide modal and deselect
-			$('#myMarkerModal').modal('hide');
+			// hide modal
+			$("#signupModal").modal('hide');
 		}); 
-
-		// close modal
-		$("#signupModal").modal('hide');
 	});
 
 	$('#login-trigger').on('click', function() {
