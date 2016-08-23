@@ -172,7 +172,7 @@
       <div class="modal-body">
 
           <!-- Username input box --> 
-          <div class="form-group is-empty">
+          <div class="form-group">
             <label for="inputUsername" class="col-md-2 control-label">Username</label>
             <div class="col-md-10">
               <input type="email" class="form-control" id="inputUsername" placeholder="Username">
@@ -180,7 +180,7 @@
           </div>
         
           <!-- Password input box -->
-          <div class="form-group is-empty">
+          <div class="form-group">
             <label for="inputPassword" class="col-md-2 control-label">Password</label>
             <div class="col-md-10">
               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
