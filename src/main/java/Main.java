@@ -204,16 +204,15 @@ public class Main {
 			}
 
 			// TODO: check if username is already taken
-//			if (pokedex.ContainsUsername(username)) {
-//				results = ImmutableMap.of("success", false, "error",
-//						String.format(
-//								"Provided username '%s' is taken",
-//								username), "sessionCookie", "");
-//				return GSON.toJson(results);
-//			}
-//			
+			if (pokedex.ContainsUsername(username)) {
+				results = ImmutableMap.of("success", false, "error",
+						String.format(
+								"Provided username '%s' is taken",
+								username), "sessionCookie", "");
+				return GSON.toJson(results);
+			}
+			
 			// TODO: generate new user's salt value
-			// String salt = SecurityUtil.GenerateSalt();
 			String salt = BCrypt.gensalt();
 			
 			// TODO: generate a session token for the user
@@ -225,10 +224,10 @@ public class Main {
 			// TODO: add trainer to the users database
 			pokedex.AddTrainer(username, salt, saltedAndHashedPassword, saltedAndHashedToken, created);
 			
-			sessionCookie = ImmutableMap.of("username",
-					username, "token", token, "created", 1234);
-			results = ImmutableMap.of("success", true,
-					"error", "", "sessionCookie", sessionCookie);
+			sessionCookie = ImmutableMap.of("username", username,
+					"token", token, "created", created);
+			results = ImmutableMap.of("success", true, "error", "",
+					"sessionCookie", sessionCookie);
 			return GSON.toJson(results);
 		});
 		

@@ -310,6 +310,7 @@ public class Pokedex {
 		prep.setString(1, username);
 		prep.setString(2, salt);
 		prep.setString(3, password);
+		prep.executeUpdate();
 		
 		// Close the PreparedStatement
 		prep.close();
@@ -320,6 +321,7 @@ public class Pokedex {
 		prep.setString(1, username);
 		prep.setString(2, token);
 		prep.setLong(3, created);
+		prep.executeUpdate();
 				
 		// Close the PreparedStatement
 		prep.close();
