@@ -187,6 +187,14 @@
             </div>
           </div>
 
+          <!-- Repeat password for usability -->
+          <div class="form-group signup-form-group">
+            <label for="inputPasswordRepeat" class="col-md-2 control-label">Password</label>
+            <div class="col-md-10">
+              <input type="password" class="form-control" id="inputPasswordRepeat" placeholder="Repeat Password">
+            </div>
+          </div>
+
       </div>
 
       <div class="modal-footer">
