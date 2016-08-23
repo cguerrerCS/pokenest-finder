@@ -79,6 +79,27 @@ $( document ).ready(function() {
 		position: 'bottomright', 
 		states:[{
 			onClick: function() {
+				$("#myModal").modal();
+			},
+			icon:'<i class="material-icons">add_location</i>'
+		}]
+	}).addTo(pokemap);
+
+	L.easyButton({
+		position: 'bottomright', 
+		states:[{
+			onClick: function() {
+				console.log("finding current location...");
+				locate();
+			},
+			icon:'<i class="material-icons">my_location</i>'
+		}]
+	}).addTo(pokemap);
+
+	L.easyButton({
+		position: 'bottomright', 
+		states:[{
+			onClick: function() {
 				
 				/* Load any saved settings from cookies */
 				var follow = getCookie("follow");
@@ -132,27 +153,6 @@ $( document ).ready(function() {
 				$("#mySettingsModal").modal();
 			},
 			icon:'<i class="material-icons">settings</i>'
-		}]
-	}).addTo(pokemap);
-
-	L.easyButton({
-		position: 'bottomright', 
-		states:[{
-			onClick: function() {
-				console.log("finding current location...");
-				locate();
-			},
-			icon:'<i class="material-icons">my_location</i>'
-		}]
-	}).addTo(pokemap);
-
-	L.easyButton({
-		position: 'bottomright', 
-		states:[{
-			onClick: function() {
-				$("#myModal").modal();
-			},
-			icon:'<i class="material-icons">add_location</i>'
 		}]
 	}).addTo(pokemap);
 
