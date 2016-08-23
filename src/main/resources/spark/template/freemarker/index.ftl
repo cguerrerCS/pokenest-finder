@@ -178,10 +178,10 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button id="signupbtn" type="button" class="btn btn-primary btn-raised btn-success">Report</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="signupbtn" type="button" class="btn btn-primary btn-raised btn-info">Create Account</button>
       </div>
-
+      
     </div>
   </div>
 </div>
