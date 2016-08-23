@@ -279,6 +279,11 @@ $( document ).ready(function() {
 
 	// login handlers
 	$('#signup-trigger').on('click', function() {
+
+		// clear modal test boxes
+		$('#inputUsername').val("");
+		$('#inputPassword').val("");
+
 		// open up login modal
 		$("#signupModal").modal();
 	});
