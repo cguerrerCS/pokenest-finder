@@ -76,7 +76,7 @@ $( document ).ready(function() {
 
 	// add additional easy buttons to leaflet map
 	L.easyButton({
-		position: 'topright', 
+		position: 'bottomright', 
 		states:[{
 			onClick: function() {
 				
@@ -136,7 +136,7 @@ $( document ).ready(function() {
 	}).addTo(pokemap);
 
 	L.easyButton({
-		position: 'topright', 
+		position: 'bottomright', 
 		states:[{
 			onClick: function() {
 				console.log("finding current location...");
@@ -147,7 +147,7 @@ $( document ).ready(function() {
 	}).addTo(pokemap);
 
 	L.easyButton({
-		position: 'topright', 
+		position: 'bottomright', 
 		states:[{
 			onClick: function() {
 				$("#myModal").modal();
