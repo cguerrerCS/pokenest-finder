@@ -321,7 +321,9 @@ $( document ).ready(function() {
 			// hide login and sign up buttons, instead show logged in as 'username'
 
 			// hide modal
-			$("#signupModal").modal('hide');
+			if (success) {
+				$("#signupModal").modal('hide');
+			}
 		}); 
 	});
 
