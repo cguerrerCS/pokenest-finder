@@ -190,6 +190,11 @@ $( document ).ready(function() {
 
 			/* restore height and add fluff if error persists  */ 
 			$("#signup-password-container").css("height", (defaultHeight + (HINT_HEIGHT * hints)) + "px" );
+			
+		} else {
+
+			/* no error restore to default height */
+			$("#signup-password-container").css("height", (defaultHeight) + "px" );
 		}
 
 	}).blur(function(e) {
