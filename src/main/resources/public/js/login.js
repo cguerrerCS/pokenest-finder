@@ -21,6 +21,9 @@ $( document ).ready(function() {
 		passwordError = false;
 		hints = 0;
 
+		// clean up any leftover error classes
+		$( "#signup-password-container" ).removeClass( "has-error" );
+
 		// remove existent password hints
 		clearPasswordHints();
 
