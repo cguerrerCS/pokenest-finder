@@ -593,8 +593,12 @@ $( document ).ready(function() {
     	if ( password.length < 8 ) {
     		hints++;
     		passwordError = true;
-    		$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
-    		$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
+
+    		if($('#passhint1').length == 0) { 
+    			$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
+    			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
+    		}
+    		
 		} else {
     		$("#password-hints").remove("#passhint1");
 		}
