@@ -107,11 +107,6 @@ $( document ).ready(function() {
 				var passwd = getCookie("passwd");
 				var markerfilter = getCookie("marker-filter");
 
-				console.log("follow-cookie: '" + follow + "'");
-				console.log("access-cookie: '" + access + "'");
-				console.log("passwd-cookie: '" + passwd + "'");
-				console.log("marker-filter: '" + markerfilter + "'");
-
 				if (follow == "") {
 					$('#follow-setting').prop( "checked" , false);
 				} else {
@@ -360,6 +355,9 @@ $( document ).ready(function() {
 			setCookie("passwd", "", 1);
 			$('#access-password').val("");
 		}
+
+		// log changed cookie values
+		displayCookies();
 		
 		// hide the settings modal
 		$('#mySettingsModal').modal('hide');
@@ -661,4 +659,16 @@ function iconURL(pokemonName) {
 			resourceURL = "../img/pokemon-sprites/" + pokemonName + ".png";
 	}
 	return resourceURL;
+}
+
+/* debugging tool for checking saved cookie values */
+function displayCookies() {
+	var follow = getCookie("follow");
+	var access = getCookie("access");
+	var passwd = getCookie("passwd");
+	var markerfilter = getCookie("marker-filter");
+	console.log("follow-cookie: '" + follow + "'");
+	console.log("access-cookie: '" + access + "'");
+	console.log("passwd-cookie: '" + passwd + "'");
+	console.log("marker-filter: '" + markerfilter + "'");
 }
