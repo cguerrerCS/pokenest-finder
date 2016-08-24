@@ -71,7 +71,7 @@
 	margin-right: 30px;
 }
 
-.help-block {
+.form-group .help-block {
 	display: none;
 	position: static;
 }
