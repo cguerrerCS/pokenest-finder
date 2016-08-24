@@ -597,7 +597,7 @@ $( document ).ready(function() {
     	var h = $("#signup-password-container").height();
     	var hiddenhints = 3;
     	var fluff = 12;
-    	var offset = ((h - (12 * hiddenhints)) + fluff) + "px";
+    	var offset = ((h - (12 * hiddenhints)) - fluff) + "px";
     	console.log("height: " + h);
     	console.log("height delta (subtract) " + offset);
     	$("#signup-password-container").css("height", offset);
