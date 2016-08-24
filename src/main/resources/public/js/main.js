@@ -575,10 +575,14 @@ $( document ).ready(function() {
 	$('#inputPassword').keyup(function() {
 
     	console.log("keyup");
-    	
+
 	}).focus(function() {
 
     	console.log("show hints");
+    	var h = $("#signup-password-container").height();
+    	var hints = 1;
+    	var offset = (h + (12 * hints)) + "px";
+    	$("#signup-password-container").css("height", offset);
     	$("passhint1").show();
     	// $("passhint2").show();
     	// $("passhint3").show();
@@ -587,6 +591,10 @@ $( document ).ready(function() {
 
 	}).blur(function() {
     	console.log("hide hints");
+    	var h = $("#signup-password-container").height();
+    	var hiddenhints = 1;
+    	var offset = (h - (12 * hiddenhints)) + "px";
+    	$("#signup-password-container").css("height", offset);
     	$("passhint1").hide();
     	// $("passhint2").hide();
     	// $("passhint3").hide();
