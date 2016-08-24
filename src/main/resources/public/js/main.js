@@ -636,8 +636,8 @@ $( document ).ready(function() {
 
 		}
 
-		/* check for at least one lowercase letter */
-		if ( !password.match(/[a-z]/) ) {
+		/* check for at least one capital letter */
+		if ( !password.match(/[A-Z]/) ) {
 		
 			/* increment number of hints to show and display error */
 			passwordError = true;
@@ -659,11 +659,27 @@ $( document ).ready(function() {
 
 		}
 
-		/* check for at least one upppercase letter */
-		if ( password.match(/[A-Z]/) ) {
-			console.log("has capital");
+		/* check for at least one lowercase letter */
+		if ( password.match(/[a-z]/) ) {
+
+			/* increment number of hints to show and display error */
 			passwordError = true;
 			hints++; 
+
+			/* add hint if it does not exist */
+    		if($('#passhint3').length == 0) { 
+    			$("#password-hints").append("<span id='passhint4' class='help-block'> At least one lowercase letter </span>");
+    			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
+    		}
+			
+		} else {
+
+			/* remove hint if it exists */
+			if($('#passhint4').length != 0) { 
+    			$("#passhint4").remove();
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
+    		}
+
 		}
 
 		/* check for at least one special character */
