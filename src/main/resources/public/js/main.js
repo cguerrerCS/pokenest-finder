@@ -572,12 +572,26 @@ $( document ).ready(function() {
 	});
 
 	/* code for form validation hints */
-	$('#inputPasswordRepeat').keyup(function() {
+	$('#inputPassword').keyup(function() {
+
     	console.log("keyup");
+    	
 	}).focus(function() {
+
     	console.log("show hints");
+    	$("passhint1").show();
+    	$("passhint2").show();
+    	$("passhint3").show();
+    	$("passhint4").show();
+    	$("passhint5").show();
+
 	}).blur(function() {
     	console.log("hide hints");
+    	$("passhint1").hide();
+    	$("passhint2").hide();
+    	$("passhint3").hide();
+    	$("passhint4").hide();
+    	$("passhint5").hide();
 	});
 });
 

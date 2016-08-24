@@ -71,6 +71,10 @@
 	margin-right: 30px;
 }
 
+.help-block {
+	display: none;
+}
+
 .navbar, .navbar.navbar-default {
 	background-color: #2196F3;
 	border-radius: 0px;
