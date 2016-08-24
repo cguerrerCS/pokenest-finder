@@ -7,7 +7,6 @@ var HINT_HEIGHT = 22; // height + margin
 
 $( document ).ready(function() {
 
-	// login handlers
 	$('#signup-trigger').on('click', function() {
 
 		// clear modal test boxes
@@ -71,9 +70,7 @@ $( document ).ready(function() {
 	});
 
 	$('#login-trigger').on('click', function() {
-		// open up signup modal
 	});
-
 
 	$('#inputPassword').keyup(function(e) {
 
@@ -190,12 +187,14 @@ $( document ).ready(function() {
 
 			/* restore height and add fluff if error persists  */ 
 			$("#signup-password-container").css("height", (defaultHeight + (HINT_HEIGHT * hints)) + "px" );
-			
-		} else {
 
-			/* no error restore to default height */
-			$("#signup-password-container").css("height", (defaultHeight) + "px" );
 		}
+
+		// } else {
+
+		// 	/* no error restore to default height */
+		// 	$("#signup-password-container").css("height", (defaultHeight) + "px" );
+		// }
 
 	}).blur(function(e) {
 		// e.preventDefault();
