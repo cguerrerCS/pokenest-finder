@@ -574,6 +574,7 @@ $( document ).ready(function() {
 	/* code for form validation hints */
 	var defaultHeight = $("#signup-password-container").height();
 	var passwordError = false;
+	var hints = 0;
 
 	// <span id="passhint1" class="help-block"> Be at least 8 characters </span>
  //    <span id="passhint2" class="help-block"> At least one number </span>
@@ -585,9 +586,6 @@ $( document ).ready(function() {
 
     	console.log("keyup");
     	var password = $('#inputPassword').val();
-
-    	/* count hints */
-    	var hints = 0;
 
 		/* check for invalid password length */
     	if ( password.length < 8 ) {
@@ -682,56 +680,29 @@ $( document ).ready(function() {
 
 		}
 
-		/* check for at least one special character */
-		// if ( password.match(^(?=[\w!@#$%^&*()+]{6,})(?:.*[!@#$%^&*()+]+.*)$) ) {
-		// 	console.log("has special");
-		// }
+		/* TODO: check for at least one special character */
 
-		// if (passwordError) {
-		// 	$( "#signup-password-container" ).addClass( "has-error" );
-		// } else {
-		// 	$( "#signup-password-container" ).removeClass( "has-error" );
-		// }
-    	
+		if (passwordError) {
+			$("#signup-password-container").css("height", ($("#signup-password-container").height() + 20) + "px");
+		} else {
+			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 20) + "px");
+		}    	
     	
 	}).focus(function(e) {
-
 		e.preventDefault();
 
-    	// console.log("show hints");
-    	// var h = $("#signup-password-container").height();
-    	// var hints = 5;
-    	// var fluff = 20;
-    	// var offset = ((h + (12 * hints)) + fluff) + "px";
-    	// console.log("height: " + h);
-    	// console.log("height delta (add)" + offset);
-    	// $("#signup-password-container").css("height", offset);
-    	// $("passhint1").show();
-    	// $("passhint2").show();
-    	// $("passhint3").show();
-    	// $("passhint4").show();
-    	// $("passhint5").show();
+		if (passwordError) {
+
+			/* restore height and add fluff */ 
+			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px" );
+			$("#signup-password-container").css("height", ($("#signup-password-container").height() + 20) + "px");
+		}
 
 	}).blur(function(e) {
-
 		e.preventDefault();
-    	
-    	// var h = $("#signup-password-container").height();
-    	// var hiddenhints = 5;
-    	// var fluff = 20;
-    	// var offset = ((h - (12 * hiddenhints)) - fluff) + "px";
-    	// console.log("height: " + h);
-    	// console.log("height delta (subtract) " + offset);
-    	
+    	    	
     	/* reset element height to default */
     	$("#signup-password-container").css("height", defaultHeight);
-
-    	/* hide ANY password hint */
-    	// $("passhint1").hide();
-    	// $("passhint2").hide();
-    	// $("passhint3").hide();
-    	// $("passhint4").hide();
-    	// $("passhint5").hide();
 	});
 });
 
