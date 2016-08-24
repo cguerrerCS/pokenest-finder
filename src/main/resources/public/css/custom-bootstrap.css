@@ -73,6 +73,7 @@
 
 .help-block {
 	display: none;
+	position: static;
 }
 
 .navbar, .navbar.navbar-default {

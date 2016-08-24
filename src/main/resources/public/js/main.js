@@ -588,7 +588,6 @@ $( document ).ready(function() {
     	$("passhint1").show();
     	$("passhint2").show();
     	$("passhint3").show();
-
     	// $("passhint4").show();
     	// $("passhint5").show();
 
