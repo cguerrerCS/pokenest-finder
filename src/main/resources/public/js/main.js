@@ -593,9 +593,9 @@ $( document ).ready(function() {
     	if ( password.length < 8 ) {
 
     		/* increment number of hints to show and display error */
-    		hints++;
     		passwordError = true;
-
+    		hints++;
+    		
     		/* add hint if it does not exist */
     		if($('#passhint1').length == 0) { 
     			
@@ -615,16 +615,36 @@ $( document ).ready(function() {
 		/* check for at least one digit */
 		if ( password.match(/\d/) ) {
 			console.log("has one digit");
+			passwordError = true;
+			hints++; 
+
+			/* add hint if it does not exist */
+    		if($('#passhint2').length == 0) { 
+    			$("#password-hints").append("<span id='passhint2' class='help-block'> At least one digit </span>");
+    			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
+    		}
+
+		} else {
+
+			/* remove hint if it exists */
+			if($('#passhint2').length != 0) { 
+    			$("#passhint2").remove();
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
+    		}
 		}
 
 		/* check for at least one lowercase letter */
 		if ( password.match(/[a-z]/) ) {
 			console.log("has lowercase");
+			passwordError = true;
+			hints++; 
 		}
 
 		/* check for at least one upppercase letter */
 		if ( password.match(/[A-Z]/) ) {
 			console.log("has capital");
+			passwordError = true;
+			hints++; 
 		}
 
 		/* check for at least one special character */
