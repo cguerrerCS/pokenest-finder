@@ -180,10 +180,11 @@
           </div>
         
           <!-- Password input box -->
-          <div class="form-group signup-form-group">
+          <div id="signup-password-container" class="form-group signup-form-group">
             <label for="inputPassword" class="col-md-2 control-label">Password</label>
             <div class="col-md-10">
               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              <div id="password-hints"></div>
             </div>
           </div>
 

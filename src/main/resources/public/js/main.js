@@ -589,38 +589,55 @@ $( document ).ready(function() {
     	/* count hints */
     	var hints = 0;
 
-    	/* if password has been partially typed */
-    	if (password.length > 0) {
+		/* check for invalid password length */
+    	if ( password.length < 8 ) {
 
-			/* check for invalid password length */
-	    	if ( password.length < 8 ) {
+    		/* increment number of hints to show and display error */
+    		hints++;
+    		passwordError = true;
 
-	    		/* increment number of hints to show and display error */
-	    		hints++;
-	    		passwordError = true;
+    		/* add hint if it does not exist */
+    		if($('#passhint1').length == 0) { 
+    			
+    			$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
+    			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
+    		}
+    		
+		} else {
 
-	    		/* add hint if it does not exist */
-	    		if($('#passhint1').length == 0) { 
-	    			
-	    			$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
-	    			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
-	    		}
-	    		
-			} else {
+			/* remove hint if it exists */
+			if($('#passhint1').length != 0) { 
+    			$("#passhint1").remove();
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
+    		}
+		}
 
-				/* remove hint if it exists */
-				if($('#passhint1').length != 0) { 
-	    			$("#passhint1").remove();
-	    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
-	    		}
-			}
+		/* check for at least one digit */
+		if ( password.match(/\d/) ) {
+			console.log("has one digit");
+		}
 
-			// if (passwordError) {
-			// 	$( "#signup-password-container" ).addClass( "has-error" );
-			// } else {
-			// 	$( "#signup-password-container" ).removeClass( "has-error" );
-			// }
-    	}
+		/* check for at least one lowercase letter */
+		if ( password.match(/[a-z]/) ) {
+			console.log("has lowercase");
+		}
+
+		/* check for at least one upppercase letter */
+		if ( password.match(/[A-Z]/) ) {
+			console.log("has capital");
+		}
+
+		/* check for at least one special character */
+		if ( password.match(^(?=[\w!@#$%^&*()+]{6,})(?:.*[!@#$%^&*()+]+.*)$) ) {
+			console.log("has special");
+		}
+
+		// if (passwordError) {
+		// 	$( "#signup-password-container" ).addClass( "has-error" );
+		// } else {
+		// 	$( "#signup-password-container" ).removeClass( "has-error" );
+		// }
+    	
     	
 	}).focus(function(e) {
 
