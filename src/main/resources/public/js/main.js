@@ -580,8 +580,8 @@ $( document ).ready(function() {
 
     	console.log("show hints");
     	var h = $("#signup-password-container").height();
-    	var hints = 3;
-    	var fluff = 16;
+    	var hints = 5;
+    	var fluff = 20;
     	var offset = ((h + (12 * hints)) + fluff) + "px";
     	console.log("height: " + h);
     	console.log("height delta (add)" + offset);
@@ -589,14 +589,14 @@ $( document ).ready(function() {
     	$("passhint1").show();
     	$("passhint2").show();
     	$("passhint3").show();
-    	// $("passhint4").show();
-    	// $("passhint5").show();
+    	$("passhint4").show();
+    	$("passhint5").show();
 
 	}).blur(function() {
     	console.log("hide hints");
     	var h = $("#signup-password-container").height();
-    	var hiddenhints = 3;
-    	var fluff = 16;
+    	var hiddenhints = 5;
+    	var fluff = 20;
     	var offset = ((h - (12 * hiddenhints)) - fluff) + "px";
     	console.log("height: " + h);
     	console.log("height delta (subtract) " + offset);
@@ -604,8 +604,8 @@ $( document ).ready(function() {
     	$("passhint1").hide();
     	$("passhint2").hide();
     	$("passhint3").hide();
-    	// $("passhint4").hide();
-    	// $("passhint5").hide();
+    	$("passhint4").hide();
+    	$("passhint5").hide();
 	});
 });
 
