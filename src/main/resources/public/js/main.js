@@ -586,11 +586,7 @@ $( document ).ready(function() {
     	console.log("height delta (add)" + offset);
     	$("#signup-password-container").css("height", offset);
     	$("passhint1").show();
-
-    	$("passhint2").css("top", "12px");
     	$("passhint2").show();
-
-    	$("passhint3").css("top", "24px");
     	$("passhint3").show();
 
     	// $("passhint4").show();
