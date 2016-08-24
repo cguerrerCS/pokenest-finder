@@ -572,35 +572,58 @@ $( document ).ready(function() {
 	});
 
 	/* code for form validation hints */
+	var defaultHeight = $("#signup-password-container").height();
+	var passwordError = false;
+
 	$('#inputPassword').keyup(function() {
 
     	console.log("keyup");
+    	var password = $('#inputPassword').val();
+
+    	/* check for invalid password length */
+    	if ( pswd.length < 8 ) {
+    		$("#signup-password-container").css("height", ($("#signup-password-container").height() + 12) + "px");
+    		$("passhint1").show();
+    		passwordError = true;
+		} else {
+    		$("passhint1").hide();
+		}
+
+		if (passwordError) {
+			$( "signup-password-container" ).addClass( "has-error" );
+		} else {
+			$( "signup-password-container" ).removeClass( "has-error" );
+		}
 
 	}).focus(function() {
 
-    	console.log("show hints");
-    	var h = $("#signup-password-container").height();
-    	var hints = 5;
-    	var fluff = 20;
-    	var offset = ((h + (12 * hints)) + fluff) + "px";
-    	console.log("height: " + h);
-    	console.log("height delta (add)" + offset);
-    	$("#signup-password-container").css("height", offset);
-    	$("passhint1").show();
-    	$("passhint2").show();
-    	$("passhint3").show();
-    	$("passhint4").show();
-    	$("passhint5").show();
+    	// console.log("show hints");
+    	// var h = $("#signup-password-container").height();
+    	// var hints = 5;
+    	// var fluff = 20;
+    	// var offset = ((h + (12 * hints)) + fluff) + "px";
+    	// console.log("height: " + h);
+    	// console.log("height delta (add)" + offset);
+    	// $("#signup-password-container").css("height", offset);
+    	// $("passhint1").show();
+    	// $("passhint2").show();
+    	// $("passhint3").show();
+    	// $("passhint4").show();
+    	// $("passhint5").show();
 
 	}).blur(function() {
     	console.log("hide hints");
-    	var h = $("#signup-password-container").height();
-    	var hiddenhints = 5;
-    	var fluff = 20;
-    	var offset = ((h - (12 * hiddenhints)) - fluff) + "px";
-    	console.log("height: " + h);
-    	console.log("height delta (subtract) " + offset);
-    	$("#signup-password-container").css("height", offset);
+    	// var h = $("#signup-password-container").height();
+    	// var hiddenhints = 5;
+    	// var fluff = 20;
+    	// var offset = ((h - (12 * hiddenhints)) - fluff) + "px";
+    	// console.log("height: " + h);
+    	// console.log("height delta (subtract) " + offset);
+    	
+    	/* reset element height to default */
+    	$("#signup-password-container").css("height", defaultHeight);
+
+    	/* hide ANY password hint */
     	$("passhint1").hide();
     	$("passhint2").hide();
     	$("passhint3").hide();
