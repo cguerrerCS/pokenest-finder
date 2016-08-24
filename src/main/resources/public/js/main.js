@@ -617,13 +617,6 @@ $( document ).ready(function() {
     	// $("passhint4").show();
     	// $("passhint5").show();
 
-    	/* hide ANY password hint */
-    	$("passhint1").hide();
-    	$("passhint2").hide();
-    	$("passhint3").hide();
-    	$("passhint4").hide();
-    	$("passhint5").hide();
-
 	}).blur(function() {
     	console.log("hide hints");
     	// var h = $("#signup-password-container").height();
@@ -637,11 +630,11 @@ $( document ).ready(function() {
     	$("#signup-password-container").css("height", defaultHeight);
 
     	/* hide ANY password hint */
-    	$("passhint1").hide();
-    	$("passhint2").hide();
-    	$("passhint3").hide();
-    	$("passhint4").hide();
-    	$("passhint5").hide();
+    	// $("passhint1").hide();
+    	// $("passhint2").hide();
+    	// $("passhint3").hide();
+    	// $("passhint4").hide();
+    	// $("passhint5").hide();
 	});
 });
 
