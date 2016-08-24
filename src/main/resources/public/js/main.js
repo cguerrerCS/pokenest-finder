@@ -577,7 +577,10 @@ $( document ).ready(function() {
 	var hints = 0;
 	var HINT_HEIGHT = 22; // height + margin
 
-	$('#inputPassword').keyup(function() {
+	$('#inputPassword').keyup(function(e) {
+
+		/* prevent default */
+		e.preventDefault();
 
 		/* get user password */
     	var password = $('#inputPassword').val();
