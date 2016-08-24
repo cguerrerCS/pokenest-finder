@@ -575,24 +575,33 @@ $( document ).ready(function() {
 	var defaultHeight = $("#signup-password-container").height();
 	var passwordError = false;
 
+	/* hide all hints by default */
+
+
 	$('#inputPassword').keyup(function() {
 
     	console.log("keyup");
     	var password = $('#inputPassword').val();
 
+    	/* count hints */
+    	var hints = 0;
+
     	/* check for invalid password length */
     	if ( password.length < 8 ) {
-    		$("#signup-password-container").css("height", ($("#signup-password-container").height() + 12) + "px");
-    		$("passhint1").show();
+
+    		hints++;
     		passwordError = true;
+    		$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
+    		$("passhint1").show();
+
 		} else {
     		$("passhint1").hide();
 		}
 
 		if (passwordError) {
-			$( "signup-password-container" ).addClass( "has-error" );
+			$( "#signup-password-container" ).addClass( "has-error" );
 		} else {
-			$( "signup-password-container" ).removeClass( "has-error" );
+			$( "#signup-password-container" ).removeClass( "has-error" );
 		}
 
 	}).focus(function() {
