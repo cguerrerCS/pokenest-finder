@@ -588,8 +588,9 @@ $( document ).ready(function() {
 		/* get user password */
     	var password = $('#inputPassword').val();
 
-    	/* recount hints */
+    	/* recount hints, reset error bool */
     	hints = 0;
+    	passwordError = false;
 
 		/* check for invalid password length */
     	if ( password.length < 8 ) {

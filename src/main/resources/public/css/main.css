@@ -74,7 +74,7 @@ button:focus {
 .signup-form-group {
   padding: 0px;
   margin: 0px;
-/*  height: 100px;*/
+  height: 80px;
 }
 
 a.pokenest-logo-txt, a.pokenest-logo-txt:hover, a.pokenest-logo-txt:focus {
