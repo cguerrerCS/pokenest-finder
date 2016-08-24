@@ -72,7 +72,7 @@
 }
 
 .help-block {
-	display: none !important;
+	display: none;
 	position: static;
 }
 
