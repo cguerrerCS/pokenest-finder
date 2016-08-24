@@ -575,6 +575,12 @@ $( document ).ready(function() {
 	var defaultHeight = $("#signup-password-container").height();
 	var passwordError = false;
 
+	// <span id="passhint1" class="help-block"> Be at least 8 characters </span>
+ //    <span id="passhint2" class="help-block"> At least one number </span>
+ //    <span id="passhint3" class="help-block"> At least one capital letter </span>
+ //    <span id="passhint4" class="help-block"> At least one lowercase letter </span>
+ //    <span id="passhint5" class="help-block"> At least one special character </span>
+
 	$('#inputPassword').keyup(function() {
 
     	console.log("keyup");
@@ -585,21 +591,19 @@ $( document ).ready(function() {
 
     	/* check for invalid password length */
     	if ( password.length < 8 ) {
-
     		hints++;
     		passwordError = true;
+    		$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
     		$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
-    		$("passhint1").show();
-
 		} else {
-    		$("passhint1").hide();
+    		$("#password-hints").remove("#passhint1"
 		}
 
-		if (passwordError) {
-			$( "#signup-password-container" ).addClass( "has-error" );
-		} else {
-			$( "#signup-password-container" ).removeClass( "has-error" );
-		}
+		// if (passwordError) {
+		// 	$( "#signup-password-container" ).addClass( "has-error" );
+		// } else {
+		// 	$( "#signup-password-container" ).removeClass( "has-error" );
+		// }
 
 	}).focus(function() {
 
