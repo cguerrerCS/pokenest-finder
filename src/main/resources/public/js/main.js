@@ -591,16 +591,23 @@ $( document ).ready(function() {
 
     	/* check for invalid password length */
     	if ( password.length < 8 ) {
+
     		hints++;
     		passwordError = true;
 
+    		/* add hint if it does not exist */
     		if($('#passhint1').length == 0) { 
     			$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
     			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
     		}
     		
 		} else {
-    		$("#password-hints").remove("#passhint1");
+
+			/* remove hint if it exists */
+			if($('#passhint1').length != 0) { 
+    			$("#password-hints").remove("#passhint1");
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
+    		}
 		}
 
 		// if (passwordError) {
