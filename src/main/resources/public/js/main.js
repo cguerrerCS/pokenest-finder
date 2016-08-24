@@ -330,7 +330,7 @@ $( document ).ready(function() {
 				}
 				$.snackbar(options);
 
-				// hide login and sign up buttons, instead show logged in as 'username'
+				// TODO: hide login and sign up buttons, instead show logged in as 'username'
 
 				// hide modal
 				if (success) {
@@ -603,7 +603,7 @@ function onLocationFound(e) {
     currentLocationMarker.setLatLng(newLatLng);
     searchRadiusMarker.setLatLng(newLatLng);
 
-    console.log("user's current location: (" + newLatLng.lat + " ," + newLatLng.lng + ")");
+    // console.log("user's current location: (" + newLatLng.lat + " ," + newLatLng.lng + ")");
 
     /* start an initial scan */
     if (!initialLocationFound) {

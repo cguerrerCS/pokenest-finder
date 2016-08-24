@@ -198,8 +198,6 @@ function loadViewportMarkers() {
 	    						filteredDataPoints.push(nests[i]);
 	    					}
 
-	    				} else {
-	    					console.log(nests[i].pokemon + " Pokenest filtered from post results.")
 	    				}
 					}
 
@@ -270,7 +268,7 @@ function loadViewportMarkers() {
 	    					});	
 
 							// Add nest marker to the map
-							console.log(data.pokemon.toLowerCase() + " Pokenest added. [id: " + data.nestid + "]");
+							// console.log(data.pokemon.toLowerCase() + " Pokenest added. [id: " + data.nestid + "]");
 							MARKERIDS[id] = m;
 							MARKERDATA[id] = data; 
 							MARKERTIMERS[id] = setTimeout(function(pokename, nestid) { return function() { 
@@ -280,7 +278,7 @@ function loadViewportMarkers() {
 									delete MARKERIDS[nestid];
 									delete MARKERDATA[nestid];
 									delete MARKERTIMERS[nestid];
-									console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
+									// console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
 								} else {
 									console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
 								}
@@ -312,7 +310,7 @@ function loadViewportMarkers() {
 											delete MARKERIDS[nestid];
 											delete MARKERDATA[nestid];
 											delete MARKERTIMERS[nestid];
-											console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
+											// console.log(pokename + " Pokenest marker expired. [" + nestid + "]");
 										} else {
 											console.log(pokename + " Pokenest marker undefined. [" + nestid + "]");
 										}
@@ -322,7 +320,7 @@ function loadViewportMarkers() {
 
 							})(name, id);
 
-							console.log(name + " Pokenest updated. [id: " + data.nestid + "]");
+							// console.log(name + " Pokenest updated. [id: " + data.nestid + "]");
 							resetExpirationTimer();
 						}
 					}
