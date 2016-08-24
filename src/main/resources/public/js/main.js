@@ -598,6 +598,7 @@ $( document ).ready(function() {
 
     		/* add hint if it does not exist */
     		if($('#passhint1').length == 0) { 
+    			
     			$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
     			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
     		}
@@ -635,8 +636,10 @@ $( document ).ready(function() {
     	// $("passhint4").show();
     	// $("passhint5").show();
 
-	}).blur(function() {
-    	console.log("hide hints");
+	}).blur(function(e) {
+
+		e.preventDefault();
+    	
     	// var h = $("#signup-password-container").height();
     	// var hiddenhints = 5;
     	// var fluff = 20;
