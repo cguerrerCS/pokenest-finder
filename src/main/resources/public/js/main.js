@@ -610,11 +610,13 @@ $( document ).ready(function() {
     			$("#passhint1").remove();
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
     		}
+
 		}
 
 		/* check for at least one digit */
-		if ( password.match(/\d/) ) {
-			console.log("has one digit");
+		if ( !password.match(/\d/) ) {
+			
+			/* increment number of hints to show and display error */
 			passwordError = true;
 			hints++; 
 
@@ -631,13 +633,30 @@ $( document ).ready(function() {
     			$("#passhint2").remove();
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
     		}
+
 		}
 
 		/* check for at least one lowercase letter */
-		if ( password.match(/[a-z]/) ) {
-			console.log("has lowercase");
+		if ( !password.match(/[a-z]/) ) {
+		
+			/* increment number of hints to show and display error */
 			passwordError = true;
 			hints++; 
+
+			/* add hint if it does not exist */
+    		if($('#passhint3').length == 0) { 
+    			$("#password-hints").append("<span id='passhint3' class='help-block'> At least one capital letter </span>");
+    			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
+    		}
+
+		} else {
+
+			/* remove hint if it exists */
+			if($('#passhint3').length != 0) { 
+    			$("#passhint3").remove();
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
+    		}
+
 		}
 
 		/* check for at least one upppercase letter */
