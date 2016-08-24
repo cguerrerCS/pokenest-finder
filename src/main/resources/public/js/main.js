@@ -577,12 +577,6 @@ $( document ).ready(function() {
 	var hints = 0;
 	var HINT_HEIGHT = 22; // height + margin
 
-	// <span id="passhint1" class="help-block"> Be at least 8 characters </span>
- //    <span id="passhint2" class="help-block"> At least one number </span>
- //    <span id="passhint3" class="help-block"> At least one capital letter </span>
- //    <span id="passhint4" class="help-block"> At least one lowercase letter </span>
- //    <span id="passhint5" class="help-block"> At least one special character </span>
-
 	$('#inputPassword').keyup(function() {
 
 		/* get user password */
@@ -686,16 +680,16 @@ $( document ).ready(function() {
 		}
     	
 	}).focus(function(e) {
-		e.preventDefault();
+		// e.preventDefault();
 
 		if (passwordError) {
 
-			/* restore height and add fluff */ 
+			/* restore height and add fluff if error persists  */ 
 			$("#signup-password-container").css("height", (defaultHeight + (HINT_HEIGHT * hints)) + "px" );
 		}
 
 	}).blur(function(e) {
-		e.preventDefault();
+		// e.preventDefault();
     	    	
     	/* reset element height to default */
     	$("#signup-password-container").css("height", defaultHeight);
