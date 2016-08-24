@@ -571,6 +571,14 @@ $( document ).ready(function() {
 		source: substringMatcher(pokemon)
 	});
 
+	/* code for form validation hints */
+	$('#inputPasswordRepeat').keyup(function() {
+    	console.log("keyup");
+	}).focus(function() {
+    	console.log("show hints");
+	}).blur(function() {
+    	console.log("hide hints");
+	});
 });
 
 function locate() {
