@@ -589,35 +589,39 @@ $( document ).ready(function() {
     	/* count hints */
     	var hints = 0;
 
-    	/* check for invalid password length */
-    	if ( password.length < 8 ) {
+    	/* if password has been partially typed */
+    	if (password.length > 0) {
 
-    		/* increment number of hints to show and display error */
-    		hints++;
-    		passwordError = true;
+			/* check for invalid password length */
+	    	if ( password.length < 8 ) {
 
-    		/* add hint if it does not exist */
-    		if($('#passhint1').length == 0) { 
-    			
-    			$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
-    			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
-    		}
-    		
-		} else {
+	    		/* increment number of hints to show and display error */
+	    		hints++;
+	    		passwordError = true;
 
-			/* remove hint if it exists */
-			if($('#passhint1').length != 0) { 
-    			$("#passhint1").remove();
-    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
-    		}
-		}
+	    		/* add hint if it does not exist */
+	    		if($('#passhint1').length == 0) { 
+	    			
+	    			$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
+	    			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
+	    		}
+	    		
+			} else {
 
-		if (passwordError) {
-			$( "#signup-password-container" ).addClass( "has-error" );
-		} else {
-			$( "#signup-password-container" ).removeClass( "has-error" );
-		}
+				/* remove hint if it exists */
+				if($('#passhint1').length != 0) { 
+	    			$("#passhint1").remove();
+	    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
+	    		}
+			}
 
+			// if (passwordError) {
+			// 	$( "#signup-password-container" ).addClass( "has-error" );
+			// } else {
+			// 	$( "#signup-password-container" ).removeClass( "has-error" );
+			// }
+    	}
+    	
 	}).focus(function(e) {
 
 		e.preventDefault();
