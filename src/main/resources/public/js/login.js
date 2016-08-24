@@ -27,6 +27,9 @@ $( document ).ready(function() {
 		// remove existent password hints
 		clearPasswordHints();
 
+		// disable create account button by default
+		$( '#signupbtn' ).prop('disabled', true);
+
 		// open up login modal
 		$("#signupModal").modal();
 	});
