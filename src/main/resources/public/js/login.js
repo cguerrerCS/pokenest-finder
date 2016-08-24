@@ -17,6 +17,10 @@ $( document ).ready(function() {
 		$('#inputPassword').val("");
 		$('#inputPasswordRepeat').val("");
 
+		// reset state variables
+		passwordError = false;
+		hints = 0;
+
 		// open up login modal
 		$("#signupModal").modal();
 	});
@@ -181,28 +185,20 @@ $( document ).ready(function() {
 			$( "#signup-password-container" ).addClass( "has-error" );
 		}
 
-	}).focus(function(e) {
-		// e.preventDefault();
-
+	}).focus(function() {
+	
 		if (passwordError) {
 
 			/* restore height and add fluff if error persists  */ 
 			$("#signup-password-container").css("height", (defaultHeight + (HINT_HEIGHT * hints)) + "px" );
-
 		}
 
-		// } else {
-
-		// 	/* no error restore to default height */
-		// 	$("#signup-password-container").css("height", (defaultHeight) + "px" );
-		// }
-
-	}).blur(function(e) {
-		// e.preventDefault();
-
-		// if (passwordError) {
-		// 	$( "#signup-password-container" ).addClass( "has-error" );
-		// }
+	}).blur(function() {
+		
+		// show red to indicate from info is invalid or missing
+		if (passwordError) {
+			$( "#signup-password-container" ).addClass( "has-error" );
+		}
     	    	
     	/* reset element height to default */
     	$("#signup-password-container").css("height", defaultHeight);
