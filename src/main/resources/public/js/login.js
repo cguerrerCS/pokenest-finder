@@ -1,11 +1,14 @@
 
 /* code for form validation hints */
-var defaultHeight = $("#signup-password-container").height();
+var defaultHeight = undefined; 
 var passwordError = false;
 var hints = 0;
 var HINT_HEIGHT = 22; // height + margin
 
 $( document ).ready(function() {
+
+	// get height of sign up password container 
+	defaultHeight = $("#signup-password-container").height();
 
 	$('#signup-trigger').on('click', function() {
 
@@ -178,8 +181,6 @@ $( document ).ready(function() {
 			$( "#signup-password-container" ).addClass( "has-error" );
 		}
 
-		
-    	
 	}).focus(function(e) {
 		// e.preventDefault();
 
