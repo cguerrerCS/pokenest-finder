@@ -21,6 +21,9 @@ $( document ).ready(function() {
 		passwordError = false;
 		hints = 0;
 
+		// remove existent password hints
+		clearPasswordHints();
+
 		// open up login modal
 		$("#signupModal").modal();
 	});
@@ -205,3 +208,28 @@ $( document ).ready(function() {
 	});
 
 }); 
+
+
+/* clear password hints if they exist */
+function clearPasswordHints() {
+
+	/* password length hint */
+	if( $('#passhint1').length != 0 ) { 
+    	$("#passhint1").remove();
+    }
+
+	/* at least one digit hint */
+	if( $('#passhint2').length != 0 ) { 
+    	$("#passhint2").remove();
+    }
+
+    /* at least one capital letter hint */
+	if( $('#passhint3').length != 0 ) { 
+    	$("#passhint3").remove();
+    }
+
+    /* at least one lowercase letter hint */
+	if( $('#passhint4').length != 0 ) { 
+    	$("#passhint4").remove();
+    }
+}
