@@ -581,7 +581,7 @@ $( document ).ready(function() {
     	var password = $('#inputPassword').val();
 
     	/* check for invalid password length */
-    	if ( pswd.length < 8 ) {
+    	if ( password.length < 8 ) {
     		$("#signup-password-container").css("height", ($("#signup-password-container").height() + 12) + "px");
     		$("passhint1").show();
     		passwordError = true;
