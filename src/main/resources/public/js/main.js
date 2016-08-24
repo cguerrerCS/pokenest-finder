@@ -596,7 +596,7 @@ $( document ).ready(function() {
     		$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
     		$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
 		} else {
-    		$("#password-hints").remove("#passhint1"
+    		$("#password-hints").remove("#passhint1");
 		}
 
 		// if (passwordError) {
