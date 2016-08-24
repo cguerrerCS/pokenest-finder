@@ -582,6 +582,8 @@ $( document ).ready(function() {
     	var h = $("#signup-password-container").height();
     	var hints = 1;
     	var offset = (h + (12 * hints)) + "px";
+    	console.log("height: " + h);
+    	console.log("add " + offset);
     	$("#signup-password-container").css("height", offset);
     	$("passhint1").show();
     	// $("passhint2").show();
@@ -594,6 +596,8 @@ $( document ).ready(function() {
     	var h = $("#signup-password-container").height();
     	var hiddenhints = 1;
     	var offset = (h - (12 * hiddenhints)) + "px";
+    	console.log("height: " + h);
+    	console.log("subtract " + offset);
     	$("#signup-password-container").css("height", offset);
     	$("passhint1").hide();
     	// $("passhint2").hide();
