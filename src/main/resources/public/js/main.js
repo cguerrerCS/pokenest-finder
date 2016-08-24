@@ -667,7 +667,7 @@ $( document ).ready(function() {
 			hints++; 
 
 			/* add hint if it does not exist */
-    		if($('#passhint3').length == 0) { 
+    		if($('#passhint4').length == 0) { 
     			$("#password-hints").append("<span id='passhint4' class='help-block'> At least one lowercase letter </span>");
     			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px");
     		}
@@ -687,11 +687,11 @@ $( document ).ready(function() {
 		// 	console.log("has special");
 		// }
 
-		// if (passwordError) {
-		// 	$( "#signup-password-container" ).addClass( "has-error" );
-		// } else {
-		// 	$( "#signup-password-container" ).removeClass( "has-error" );
-		// }
+		if (passwordError) {
+			$( "#signup-password-container" ).addClass( "has-error" );
+		} else {
+			$( "#signup-password-container" ).removeClass( "has-error" );
+		}
     	
     	
 	}).focus(function(e) {
