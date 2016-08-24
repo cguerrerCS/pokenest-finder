@@ -68,4 +68,5 @@
 <script src="js/main.js"></script>
 <script src="js/pokedex.js"></script>
 <script src="js/map.js"></script>
+<script src="js/login.js"></script>
  
