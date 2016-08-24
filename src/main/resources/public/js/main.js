@@ -628,9 +628,9 @@ $( document ).ready(function() {
 		}
 
 		/* check for at least one special character */
-		if ( password.match(^(?=[\w!@#$%^&*()+]{6,})(?:.*[!@#$%^&*()+]+.*)$) ) {
-			console.log("has special");
-		}
+		// if ( password.match(^(?=[\w!@#$%^&*()+]{6,})(?:.*[!@#$%^&*()+]+.*)$) ) {
+		// 	console.log("has special");
+		// }
 
 		// if (passwordError) {
 		// 	$( "#signup-password-container" ).addClass( "has-error" );
