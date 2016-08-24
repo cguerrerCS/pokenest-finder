@@ -575,13 +575,6 @@ $( document ).ready(function() {
 	var defaultHeight = $("#signup-password-container").height();
 	var passwordError = false;
 
-	/* hide all hints by default */
-	$("passhint1").hide();
-    $("passhint2").hide();
-    $("passhint3").hide();
-    $("passhint4").hide();
-    $("passhint5").hide();
-
 	$('#inputPassword').keyup(function() {
 
     	console.log("keyup");
@@ -623,6 +616,13 @@ $( document ).ready(function() {
     	// $("passhint3").show();
     	// $("passhint4").show();
     	// $("passhint5").show();
+
+    	/* hide ANY password hint */
+    	$("passhint1").hide();
+    	$("passhint2").hide();
+    	$("passhint3").hide();
+    	$("passhint4").hide();
+    	$("passhint5").hide();
 
 	}).blur(function() {
     	console.log("hide hints");
