@@ -580,28 +580,33 @@ $( document ).ready(function() {
 
     	console.log("show hints");
     	var h = $("#signup-password-container").height();
-    	var hints = 1;
+    	var hints = 3;
     	var offset = (h + (12 * hints)) + "px";
     	console.log("height: " + h);
     	console.log("height delta (add)" + offset);
     	$("#signup-password-container").css("height", offset);
     	$("passhint1").show();
-    	// $("passhint2").show();
-    	// $("passhint3").show();
+
+    	$("passhint2").css("top", "12px");
+    	$("passhint2").show();
+
+    	$("passhint3").css("top", "24px");
+    	$("passhint3").show();
+
     	// $("passhint4").show();
     	// $("passhint5").show();
 
 	}).blur(function() {
     	console.log("hide hints");
     	var h = $("#signup-password-container").height();
-    	var hiddenhints = 1;
+    	var hiddenhints = 3;
     	var offset = (h - (12 * hiddenhints)) + "px";
     	console.log("height: " + h);
     	console.log("height delta (subtract) " + offset);
     	$("#signup-password-container").css("height", offset);
     	$("passhint1").hide();
-    	// $("passhint2").hide();
-    	// $("passhint3").hide();
+    	$("passhint2").hide();
+    	$("passhint3").hide();
     	// $("passhint4").hide();
     	// $("passhint5").hide();
 	});
