@@ -575,7 +575,7 @@ $( document ).ready(function() {
 	var defaultHeight = $("#signup-password-container").height();
 	var passwordError = false;
 	var hints = 0;
-	var HINT_HEIGHT = 14; // actual is 12px, added fluff
+	var HINT_HEIGHT = 22; // height + margin
 
 	// <span id="passhint1" class="help-block"> Be at least 8 characters </span>
  //    <span id="passhint2" class="help-block"> At least one number </span>
@@ -602,7 +602,7 @@ $( document ).ready(function() {
     		if($('#passhint1').length == 0) { 
     			
     			$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
-    			$("#signup-password-container").css("height", ($("#signup-password-container").height() + 12) + "px");
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
     		}
     		
 		} else {
@@ -610,7 +610,7 @@ $( document ).ready(function() {
 			/* remove hint if it exists */
 			if($('#passhint1').length != 0) { 
     			$("#passhint1").remove();
-    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
     		}
 
 		}
@@ -625,7 +625,7 @@ $( document ).ready(function() {
 			/* add hint if it does not exist */
     		if($('#passhint2').length == 0) { 
     			$("#password-hints").append("<span id='passhint2' class='help-block'> At least one digit </span>");
-    			$("#signup-password-container").css("height", ($("#signup-password-container").height() + 12) + "px");
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
     		}
 
 		} else {
@@ -633,7 +633,7 @@ $( document ).ready(function() {
 			/* remove hint if it exists */
 			if($('#passhint2').length != 0) { 
     			$("#passhint2").remove();
-    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
     		}
 
 		}
@@ -648,7 +648,7 @@ $( document ).ready(function() {
 			/* add hint if it does not exist */
     		if($('#passhint3').length == 0) { 
     			$("#password-hints").append("<span id='passhint3' class='help-block'> At least one capital letter </span>");
-    			$("#signup-password-container").css("height", ($("#signup-password-container").height() + 12) + "px");
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
     		}
 
 		} else {
@@ -656,7 +656,7 @@ $( document ).ready(function() {
 			/* remove hint if it exists */
 			if($('#passhint3').length != 0) { 
     			$("#passhint3").remove();
-    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
     		}
 
 		}
@@ -671,7 +671,7 @@ $( document ).ready(function() {
 			/* add hint if it does not exist */
     		if($('#passhint4').length == 0) { 
     			$("#password-hints").append("<span id='passhint4' class='help-block'> At least one lowercase letter </span>");
-    			$("#signup-password-container").css("height", ($("#signup-password-container").height() + 12) + "px");
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
     		}
 			
 		} else {
@@ -679,7 +679,7 @@ $( document ).ready(function() {
 			/* remove hint if it exists */
 			if($('#passhint4').length != 0) { 
     			$("#passhint4").remove();
-    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
     		}
 
 		}
@@ -690,7 +690,7 @@ $( document ).ready(function() {
 		if (passwordError) {
 
 			/* restore height and add fluff */ 
-			$("#signup-password-container").css("height", (defaultHeight + (12 * hints)) + "px" );
+			$("#signup-password-container").css("height", (defaultHeight + (HINT_HEIGHT * hints)) + "px" );
 		}
 
 	}).blur(function(e) {
