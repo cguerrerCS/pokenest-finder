@@ -71,10 +71,10 @@ button:focus {
   display: none;
 }
 
-.signup-form-group {
+/*.signup-form-group {
   margin: 0px;
   padding: 0px;
-}
+}*/
 
 a.pokenest-logo-txt, a.pokenest-logo-txt:hover, a.pokenest-logo-txt:focus {
   color: white;
