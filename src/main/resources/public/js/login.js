@@ -200,9 +200,9 @@ $( document ).ready(function() {
 	}).blur(function(e) {
 		// e.preventDefault();
 
-		if (passwordError) {
-			$( "#signup-password-container" ).addClass( "has-error" );
-		}
+		// if (passwordError) {
+		// 	$( "#signup-password-container" ).addClass( "has-error" );
+		// }
     	    	
     	/* reset element height to default */
     	$("#signup-password-container").css("height", defaultHeight);
