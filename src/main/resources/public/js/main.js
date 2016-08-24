@@ -585,8 +585,11 @@ $( document ).ready(function() {
 
 	$('#inputPassword').keyup(function() {
 
-    	console.log("keyup");
+		/* get user password */
     	var password = $('#inputPassword').val();
+
+    	/* recount hints */
+    	hints = 0;
 
 		/* check for invalid password length */
     	if ( password.length < 8 ) {
