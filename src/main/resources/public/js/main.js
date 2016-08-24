@@ -592,6 +592,7 @@ $( document ).ready(function() {
     	/* check for invalid password length */
     	if ( password.length < 8 ) {
 
+    		/* increment number of hints to show and display error */
     		hints++;
     		passwordError = true;
 
@@ -610,13 +611,15 @@ $( document ).ready(function() {
     		}
 		}
 
-		// if (passwordError) {
-		// 	$( "#signup-password-container" ).addClass( "has-error" );
-		// } else {
-		// 	$( "#signup-password-container" ).removeClass( "has-error" );
-		// }
+		if (passwordError) {
+			$( "#signup-password-container" ).addClass( "has-error" );
+		} else {
+			$( "#signup-password-container" ).removeClass( "has-error" );
+		}
 
-	}).focus(function() {
+	}).focus(function(e) {
+
+		e.preventDefault();
 
     	// console.log("show hints");
     	// var h = $("#signup-password-container").height();
