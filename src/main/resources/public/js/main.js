@@ -576,7 +576,11 @@ $( document ).ready(function() {
 	var passwordError = false;
 
 	/* hide all hints by default */
-
+	$("passhint1").hide();
+    $("passhint2").hide();
+    $("passhint3").hide();
+    $("passhint4").hide();
+    $("passhint5").hide();
 
 	$('#inputPassword').keyup(function() {
 
