@@ -660,7 +660,7 @@ $( document ).ready(function() {
 		}
 
 		/* check for at least one lowercase letter */
-		if ( password.match(/[a-z]/) ) {
+		if ( !password.match(/[a-z]/) ) {
 
 			/* increment number of hints to show and display error */
 			passwordError = true;
