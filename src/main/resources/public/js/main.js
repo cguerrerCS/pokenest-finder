@@ -605,7 +605,7 @@ $( document ).ready(function() {
 
 			/* remove hint if it exists */
 			if($('#passhint1').length != 0) { 
-    			$("#password-hints").remove("#passhint1");
+    			$("#passhint1").remove();
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() - 12) + "px");
     		}
 		}
