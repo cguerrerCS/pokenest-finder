@@ -184,6 +184,11 @@
             <label for="inputPassword" class="col-md-2 control-label">Password</label>
             <div class="col-md-10">
               <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+              <span id="passhint1" class="help-block"> Be at least 8 characters </span>
+<!--               <span id="passhint2" class="help-block"> At least one number </span>
+              <span id="passhint3" class="help-block"> At least one capital letter </span>
+              <span id="passhint4" class="help-block"> At least one lowercase letter </span>
+              <span id="passhint5" class="help-block"> At least one special character </span> -->
             </div>
           </div>
 
@@ -192,11 +197,6 @@
             <label for="inputPasswordRepeat" class="col-md-2 control-label">Confirm</label>
             <div class="col-md-10">
               <input type="password" class="form-control" id="inputPasswordRepeat" placeholder="Repeat Password">
-              <span id="passhint1" class="help-block"> Be at least 8 characters </span>
-              <span id="passhint2" class="help-block"> At least one number </span>
-              <span id="passhint3" class="help-block"> At least one capital letter </span>
-              <span id="passhint4" class="help-block"> At least one lowercase letter </span>
-              <span id="passhint5" class="help-block"> At least one special character </span>
             </div>
           </div>
 
