@@ -36,15 +36,10 @@
 	color: #03a9f4;
 }
 
-
 .form-group.is-focused.has-error label,  .form-group.is-focused.has-error label.control-label {
 	color: #f44336;
 }
 
-/*.form-group.has-error label,  .form-group.has-error label.control-label {
-	color: #f44336;
-}
-*/
 /* ************************************************************************************ */
 
 .navbar-toggle {

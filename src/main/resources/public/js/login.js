@@ -107,7 +107,7 @@ $( document ).ready(function() {
     		/* add hint if it does not exist */
     		if($('#passhint1').length == 0) { 
     			
-    			$("#password-hints").append("<span id='passhint1' class='help-block'> Be at least 8 characters </span>");
+    			$("#password-hints").append("<span id='passhint1' class='help-block'> Must be at least 8 characters long </span>");
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
     		}
     		
@@ -130,7 +130,7 @@ $( document ).ready(function() {
 
 			/* add hint if it does not exist */
     		if($('#passhint2').length == 0) { 
-    			$("#password-hints").append("<span id='passhint2' class='help-block'> At least one digit </span>");
+    			$("#password-hints").append("<span id='passhint2' class='help-block'> Include at least one digit </span>");
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
     		}
 
@@ -153,7 +153,7 @@ $( document ).ready(function() {
 
 			/* add hint if it does not exist */
     		if($('#passhint3').length == 0) { 
-    			$("#password-hints").append("<span id='passhint3' class='help-block'> At least one capital letter </span>");
+    			$("#password-hints").append("<span id='passhint3' class='help-block'> Include at least one capital letter </span>");
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
     		}
 
@@ -176,7 +176,7 @@ $( document ).ready(function() {
 
 			/* add hint if it does not exist */
     		if($('#passhint4').length == 0) { 
-    			$("#password-hints").append("<span id='passhint4' class='help-block'> At least one lowercase letter </span>");
+    			$("#password-hints").append("<span id='passhint4' class='help-block'> Include at least one lowercase letter </span>");
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
     		}
 			
@@ -188,6 +188,10 @@ $( document ).ready(function() {
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
     		}
 
+		}
+
+		if ( password.match(/[a-zA-Z0-9]/) ) {
+			console.log("includes special characters");
 		}
 
 	}).focus(function() {
