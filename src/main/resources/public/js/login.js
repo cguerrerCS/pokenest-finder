@@ -2,9 +2,8 @@
 /* code for form validation hints */
 var defaultHeight = undefined; 
 var repeatDefaultHeight = undefined;
-// var passwordCurrent = undefined; // current password 
-// var passwordRepeat  = undefined; // repeat password
 
+/* types of signup errors */
 var usernameError = false;
 var repeatPasswordError = false;
 
@@ -14,6 +13,10 @@ var passwordError = false;
 var HINT_HEIGHT = 22; 
 
 $( document ).ready(function() {
+
+	/* TODO: load session information */
+
+
 
 	/* ************************************************************** */
 	/* ** SIGN UP *************************************************** */
@@ -189,7 +192,6 @@ $( document ).ready(function() {
 			var success = responseObject.success;
 			var error = responseObject.error;
 			var sessionCookie = responseObject.sessionCookie;
-			console.log(sessionCookie);
 
 			// add notification for user
 			var options =  {
@@ -205,6 +207,10 @@ $( document ).ready(function() {
 			$.snackbar(options);
 
 			// TODO: hide login and sign up buttons, instead show logged in as 'username'
+
+			// TODO: set session cookie info
+			setSessionCookie(sessionCookie);
+			showSessionCookie();
 
 			// hide modal
 			if (success) {
@@ -228,7 +234,31 @@ $( document ).ready(function() {
 
 	});
 
-}); 
+});
+
+function showSessionCookie() {
+
+	var username = getCookie("session-username");
+	var token = getCookie("session-token");
+	var created = getCookie("session-created");
+
+	console.log("session-username: '" + username + "'");
+	console.log("session-token: '" + token + "'");
+	console.log("session-created: '" + created + "'");
+}
+
+
+function setSessionCookie(sessionCookie) {
+
+	/* session cookie defined like so, {username, token, created} */
+	setCookie("session-username", sessionCookie.username, 1);
+	setCookie("session-token", sessionCookie.token, 1);
+	setCookie("session-created", sessionCookie.created, 1);
+}
+
+function getSessionCookie() {
+
+}
 
 /* disable signup button if any field is empty */
 function updateSignupBtnState() {
