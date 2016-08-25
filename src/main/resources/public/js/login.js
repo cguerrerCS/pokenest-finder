@@ -190,7 +190,7 @@ $( document ).ready(function() {
 
 		}
 
-		if ( !password.match(/[a-zA-Z0-9]/) ) {
+		if ( !password.match(/[^a-zA-Z0-9]/) ) {
 			console.log("includes special characters");
 
 			/* increment number of hints to show and display error */
@@ -202,7 +202,7 @@ $( document ).ready(function() {
     			$("#password-hints").append("<span id='passhint4' class='help-block'> Include at least one special character </span>");
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
     		}
-    		
+
 		} else {
 
 			/* remove hint if it exists */
@@ -278,5 +278,10 @@ function clearPasswordHints() {
     /* at least one lowercase letter hint */
 	if( $('#passhint4').length != 0 ) { 
     	$("#passhint4").remove();
+    }
+
+    /* at least one special character hint */
+	if( $('#passhint5').length != 0 ) { 
+    	$("#passhint5").remove();
     }
 }
