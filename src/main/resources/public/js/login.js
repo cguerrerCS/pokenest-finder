@@ -244,7 +244,7 @@ $( document ).ready(function() {
 		/* get user password */
     	passwordRepeat = $('#inputPasswordRepeat').val();
     	
-    	if (passwordCurrent != passwordKey) {
+    	if (passwordCurrent != passwordRepeat) {
 
 			/* switch to error state */
     		repeatPasswordError = true;
