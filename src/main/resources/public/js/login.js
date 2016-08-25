@@ -193,7 +193,7 @@ function updateSignupBtnState() {
 
 	var username  = $('#inputUsername').val().trim();
 	var password1 = $('#inputPassword').val().trim();
-	var password2 = $('#inputPasswordRepeat').trim();
+	var password2 = $('#inputPasswordRepeat').val().trim();
 
 	/* if any fields are left unfilled disable signup btn */
 	if ((username == "") || (password1 == "") || (password2 == "")) {
@@ -334,6 +334,14 @@ function validatePasswordGraphical() {
 			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
 		}
 	}
+}
+
+function validatePasswordRepeatGraphical() {
+
+}
+
+function validatePasswordRepeatLogical() {
+
 }
 
 /* enable and revert style */
