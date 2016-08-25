@@ -31,7 +31,7 @@
                 <a id="account-dropdown" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 	<span class="glyphicon glyphicon-user"></span> Username <b class="caret"></b>
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu account-dropdown-menu">
                   <li>
                   	<a id="logout-trigger" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)">Logout</a>
                   </li>
