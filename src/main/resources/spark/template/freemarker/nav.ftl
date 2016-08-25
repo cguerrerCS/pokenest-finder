@@ -19,7 +19,7 @@
 	  		<li>
 	  			<a id="signup-trigger" class="pokenest-signup" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
 	  		</li>
-	  		
+
 	  		<li>
 	  			<a id="login-trigger" class="pokenest-login" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 	  		</li>
@@ -32,6 +32,18 @@
                   </li>
                 </ul>
             </li>
+
+            <li class="dropdown">
+                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown
+                      <b class="caret"></b><div class="ripple-container"></div></a>
+                    <ul class="dropdown-menu">
+                      <li><a href="javascript:void(0)">Action<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 60.8906px; top: 25px; transform: scale(22.125); background-color: rgb(63, 81, 181);"></div><div class="ripple ripple-on ripple-out" style="left: 82.8906px; top: 14px; transform: scale(22.125); background-color: rgb(63, 81, 181);"></div></div></a></li>
+                      
+                      
+                      
+                      
+                    </ul>
+                  </li>
 
 		</ul>
     </div>
