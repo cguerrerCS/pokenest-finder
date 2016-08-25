@@ -21,6 +21,17 @@
 	  		<li>
 	  			<a id="login-trigger" class="pokenest-login"  data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 	  		</li>
+
+	  		<li id="account-dropdown" class="dropdown">
+                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Username
+                  <b class="caret"></b><div class="ripple-container"></div></a>
+                <ul class="dropdown-menu">
+                  <li><a href="javascript:void(0)">Action</a></li>
+                  <li class="divider"></li>
+                  <li><a href="javascript:void(0)">Logout</a></li>
+                </ul>
+            </li>
+            
 		</ul>
     </div>
   </div>
