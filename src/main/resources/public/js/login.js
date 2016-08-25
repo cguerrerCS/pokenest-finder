@@ -207,7 +207,7 @@ function updateSignupBtnState() {
 function validatePasswordLogical() {
 
 	/* perform regular validation */
-	validatePasswordLogical();
+	validatePasswordGraphical();
 
 	/* undo any graphical changes */
     $("#signup-password-container").css("height", defaultHeight);
