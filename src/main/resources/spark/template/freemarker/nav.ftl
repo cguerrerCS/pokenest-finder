@@ -23,7 +23,7 @@
 	  		</li>
 
 	  		<li id="account-dropdown" class="dropdown">
-                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Username</a>
+                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Username</a>
                 <ul class="dropdown-menu">
                   <li>
                   	<a id="logout-trigger" href="javascript:void(0)">Logout</a>
