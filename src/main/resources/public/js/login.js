@@ -1,7 +1,11 @@
 
 /* code for form validation hints */
 var defaultHeight = undefined; 
+var repeatDefaultHeight = undefined;
+var passwordCurrent = undefined; // current password 
+var passwordRepeat  = undefined; // repeat password
 var passwordError = false;
+var repeatPasswordError = false; 
 var hints = 0;
 var HINT_HEIGHT = 22; // height + margin
 
@@ -9,6 +13,7 @@ $( document ).ready(function() {
 
 	// get height of sign up password container 
 	defaultHeight = $("#signup-password-container").height();
+	repeatDefaultHeight = $("#repeat-password-container").height();
 
 	$('#signup-trigger').on('click', function() {
 
@@ -19,6 +24,7 @@ $( document ).ready(function() {
 
 		// reset state variables
 		passwordError = false;
+		repeatPasswordError = false;
 		hints = 0;
 
 		// clean up any leftover error classes
@@ -85,13 +91,14 @@ $( document ).ready(function() {
 		}
 	});
 
-	$('#login-trigger').on('click', function() {
-	});
+	// $('#login-trigger').on('click', function() {
+	// });
 
-	$('#inputPassword').keyup(function() {
+	$( '#inputPassword' ).keyup(function() {
 
 		/* get user password */
     	var password = $('#inputPassword').val();
+    	passwordCurrent = password;
 
     	/* recount hints, reset error bool */
     	hints = 0;
@@ -191,8 +198,7 @@ $( document ).ready(function() {
 		}
 
 		if ( !password.match(/[^a-zA-Z0-9]/) ) {
-			console.log("includes special characters");
-
+		
 			/* increment number of hints to show and display error */
 			passwordError = true;
 			hints++; 
@@ -230,6 +236,46 @@ $( document ).ready(function() {
     	    	
     	/* reset element height to default */
     	$("#signup-password-container").css("height", defaultHeight);
+
+	});
+
+	$( '#inputPasswordRepeat' ).keyup( function() {
+
+		/* get user password */
+    	passwordRepeat = $('#inputPasswordRepeat').val();
+    	
+    	if (passwordCurrent != passwordKey) {
+
+			/* switch to error state */
+    		repeatPasswordError = true;
+
+			/* add hint if it does not exist */
+    		if( $( '#passhint6' ).length == 0) { 
+    			$("#repeat-password-hints").append("<span id='passhint6' class='help-block'> Repeated password does not match </span>");
+    			$("#repeat-password-container").css("height", ($("#repeat-password-container").height() + HINT_HEIGHT) + "px");
+    		} 
+
+    	} else {
+
+			/* remove hint if it exists (if no error) */
+			if ( $( '#passhint6' ).length != 0) { 
+				$( '#passhint6' ).remove();
+				$( '#repeat-password-container' ).css("height", ($("#repeat-password-container").height() - HINT_HEIGHT) + "px");
+			}
+		}
+
+	}).focus( function() {
+
+		if (repeatPasswordError) {
+
+			/* restore height and add fluff if error persists  */ 
+			$("#repeat-password-container").css("height", (defaultHeight + (HINT_HEIGHT * hints)) + "px" );
+		}
+
+
+	}).blur( function() {
+
+
 	});
 
 }); 
@@ -284,4 +330,7 @@ function clearPasswordHints() {
 	if( $('#passhint5').length != 0 ) { 
     	$("#passhint5").remove();
     }
+
+    /* hide repeat password matching hint */
+
 }
