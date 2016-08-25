@@ -2,15 +2,16 @@
 /* code for form validation hints */
 var defaultHeight = undefined; 
 var repeatDefaultHeight = undefined;
-var passwordCurrent = undefined; // current password 
-var passwordRepeat  = undefined; // repeat password
+// var passwordCurrent = undefined; // current password 
+// var passwordRepeat  = undefined; // repeat password
 
 var usernameError = false;
-var passwordError = false;
 var repeatPasswordError = false;
 
+/* variables used by validate password */
 var hints = 0;
-var HINT_HEIGHT = 22; // height + margin
+var passwordError = false;
+var HINT_HEIGHT = 22; 
 
 $( document ).ready(function() {
 
@@ -51,14 +52,13 @@ $( document ).ready(function() {
 		var password = $('#inputPassword').val();
 		var repeatedPassword = $('#inputPasswordRepeat').val();
 
-		if (password != repeatedPassword) {
+		if (passwordError) {
 
-			var options =  {
-    			content: "Repeated password does not match",
-    			style: "snackbar",  // add a custom class to your snackbar
-    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
-			}
-			$.snackbar(options);
+			$( "#signup-password-container" ).addClass( "has-error" );
+
+		} else if (repeatPasswordError) {
+
+			$( "#repeat-password-container" ).addClass( "has-error" );
 
 		} else {
 
@@ -92,7 +92,9 @@ $( document ).ready(function() {
 					$("#signupModal").modal('hide');
 				}
 			});
+
 		}
+
 	});
 
 	// $('#login-trigger').on('click', function() {
@@ -100,11 +102,8 @@ $( document ).ready(function() {
 
 	$( '#inputPassword' ).keyup(function() {
 
-		/* get user password */
-    	var password = $('#inputPassword').val();
-
     	/* check password and add corresponding hints */
-    	validatePassword(password);
+    	validatePassword();
 
 	}).focus(function() {
 	
@@ -117,9 +116,9 @@ $( document ).ready(function() {
 	}).blur(function() {
 		
 		// show red to indicate from info is invalid or missing
-		if (passwordError) {
-			$( "#signup-password-container" ).addClass( "has-error" );
-		} 
+		// if (passwordError) {
+		// 	$( "#signup-password-container" ).addClass( "has-error" );
+		// } 
     	    	
     	/* reset element height to default */
     	$("#signup-password-container").css("height", defaultHeight);
@@ -160,25 +159,26 @@ $( document ).ready(function() {
 			$("#repeat-password-container").css("height", (repeatDefaultHeight + HINT_HEIGHT) + "px" );
 		}
 
-
 	}).blur( function() {
 
 
 		// show red to indicate from info is invalid or missing
-		if (repeatPasswordError) {
-			$( "#repeat-password-container" ).addClass( "has-error" );
-		} 
+		// if (repeatPasswordError) {
+		// 	$( "#repeat-password-container" ).addClass( "has-error" );
+		// } 
     	    	
     	/* reset element height to default */
     	$("#repeat-password-container").css("height", repeatDefaultHeight);
+
 	});
+
 }); 
 
 /* validate, add hints and has-error class accordingly */
-function validatePassword(password) {
+function validatePassword() {
 
-	/* get user password */    	
-	passwordCurrent = password;
+	/* get user password */
+    var password = $('#inputPassword').val();
 
 	/* recount hints, reset error bool */
 	hints = 0;
@@ -228,7 +228,6 @@ function validatePassword(password) {
 			$("#passhint2").remove();
 			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
 		}
-
 	}
 
 	/* check for at least one capital letter */
@@ -251,7 +250,6 @@ function validatePassword(password) {
 			$("#passhint3").remove();
 			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
 		}
-
 	}
 
 	/* check for at least one lowercase letter */
@@ -274,7 +272,6 @@ function validatePassword(password) {
 			$("#passhint4").remove();
 			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
 		}
-
 	}
 
 	/* check for at least one special character */
@@ -297,7 +294,6 @@ function validatePassword(password) {
 			$("#passhint5").remove();
 			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
 		}
-
 	}
 }
 
