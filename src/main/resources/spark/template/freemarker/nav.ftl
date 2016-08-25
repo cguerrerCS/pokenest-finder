@@ -26,10 +26,11 @@
                 <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Username</a>
                 <ul class="dropdown-menu">
                   <li>
-                  	<a id="logout-trigger" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)">Logout</a>
+                  	<a id="logout-trigger" href="javascript:void(0)">Logout</a>
                   </li>
                 </ul>
             </li>
+
 
 		</ul>
     </div>
