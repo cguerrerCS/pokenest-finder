@@ -194,6 +194,14 @@ public class Main {
 			QueryParamsMap queryMap = request.queryMap();
 			String username = queryMap.value("username");
 			String password = queryMap.value("password");
+			
+			// TODO: check that username is not all whitespace 
+			if (!(username.trim().length() > 0)) {
+				results = ImmutableMap.of("success", false, "error",
+						"Username cannot be comprised of all spaces",
+						"sessionCookie", "");
+				return GSON.toJson(results);
+			}
 
 			// TODO: check if password meets security requirements
 			if (!SecurityUtil.PasswordIsSecure(password)) {

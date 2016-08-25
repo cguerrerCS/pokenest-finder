@@ -189,10 +189,11 @@
           </div>
 
           <!-- Repeat password for usability -->
-          <div class="form-group signup-form-group">
+          <div id="repeat-password-container" class="form-group signup-form-group">
             <label for="inputPasswordRepeat" class="col-md-2 control-label">Confirm</label>
             <div class="col-md-10">
               <input type="password" class="form-control" id="inputPasswordRepeat" placeholder="Repeat Password">
+              <div id="repeat-password-hints"></div>
             </div>
           </div>
 
