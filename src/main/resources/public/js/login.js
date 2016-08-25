@@ -132,6 +132,10 @@ $( document ).ready(function() {
 		var password1 = $('#inputPassword').val();
 		var password2 = $('#inputPasswordRepeat').val();
 
+		/* reset default password repeat error val */
+		repeatPasswordError = false;
+
+		/* compare password and repeat */
     	if (password1 != password2) {
 
 			/* switch to error state */
@@ -147,7 +151,6 @@ $( document ).ready(function() {
     	} else {
 
 			/* remove hint if it exists (if no error) */
-			repeatPasswordError = false;
 			if ( $( '#passhint6' ).length != 0) { 
 				$( '#passhint6' ).remove();
 				$( '#repeat-password-container' ).css("height", ($("#repeat-password-container").height() - HINT_HEIGHT) + "px");
