@@ -103,6 +103,8 @@ $( document ).ready(function() {
 
 	$( '#inputPassword' ).keyup(function() {
 
+		updateSignupBtnState();
+
     	/* check password and add corresponding hints */
     	validatePassword();
 
@@ -127,6 +129,8 @@ $( document ).ready(function() {
 	});
 
 	$( '#inputPasswordRepeat' ).keyup( function(e) {
+
+		updateSignupBtnState();
 
 		/* get user inputted passwords */
 		var password1 = $('#inputPassword').val();
@@ -179,6 +183,20 @@ $( document ).ready(function() {
 	});
 
 }); 
+
+function updateSignupBtnState() {
+
+	var username  = $('#inputUsername').val();
+	var password1 = $('#inputPassword').val();
+	var password2 = $('#inputPasswordRepeat').val();
+
+	/* if any fields are left unfilled disable signup btn */
+	if ((username == "") || (password1 == "") || (password2 == "")) {
+		disableSignupBtn();
+	} else {
+		enableSignupBtn();
+	}
+}
 
 /* validate, add hints and has-error class accordingly */
 function validatePassword() {
