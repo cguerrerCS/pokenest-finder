@@ -57,7 +57,7 @@ $( document ).ready(function() {
 
 		// perform logical validation for password and repeat
 		validatePasswordLogical();
-
+		validatePasswordRepeatLogical();
 
 		if (passwordError) {
 			$( "#signup-password-container" ).addClass( "has-error" );
@@ -133,36 +133,11 @@ $( document ).ready(function() {
 
 	$( '#inputPasswordRepeat' ).keyup( function(e) {
 
+		/* update btn state according to form fields */
 		updateSignupBtnState();
 
-		/* get user inputted passwords */
-		var password1 = $('#inputPassword').val();
-		var password2 = $('#inputPasswordRepeat').val();
-
-		/* reset default password repeat error val */
-		repeatPasswordError = false;
-
-		/* compare password and repeat */
-    	if (password1 != password2) {
-
-			/* switch to error state */
-    		repeatPasswordError = true;
-    		$( "#repeat-password-container" ).addClass( "has-error" );
-
-			/* add hint if it does not exist */
-    		if( $( '#passhint6' ).length == 0) { 
-    			$("#repeat-password-hints").append("<span id='passhint6' class='help-block'> Repeated password does not match </span>");
-    			$("#repeat-password-container").css("height", ($("#repeat-password-container").height() + HINT_HEIGHT) + "px");
-    		} 
-
-    	} else {
-
-			/* remove hint if it exists (if no error) */
-			if ( $( '#passhint6' ).length != 0) { 
-				$( '#passhint6' ).remove();
-				$( '#repeat-password-container' ).css("height", ($("#repeat-password-container").height() - HINT_HEIGHT) + "px");
-			}
-		}
+		/* check confirmation password and add corresponding hints */
+		validatePasswordRepeatGraphical();
 
 	}).focus( function() {
 
@@ -336,12 +311,47 @@ function validatePasswordGraphical() {
 	}
 }
 
-function validatePasswordRepeatGraphical() {
-
-}
-
+/* validate, add hints, no height adjustments */
 function validatePasswordRepeatLogical() {
 
+	/* perform regular validation */
+	validatePasswordRepeatGraphical();
+
+	/* undo any graphical changes */
+	$("#repeat-password-container").css("height", repeatDefaultHeight);
+}
+
+/* validate, add hints, height adjusted accordingly (called on keyup) */
+function validatePasswordRepeatGraphical() {
+
+	/* get user inputted passwords */
+	var password1 = $('#inputPassword').val();
+	var password2 = $('#inputPasswordRepeat').val();
+
+	/* reset default password repeat error val */
+	repeatPasswordError = false;
+
+	/* compare password and repeat */
+	if (password1 != password2) {
+
+		/* switch to error state */
+		repeatPasswordError = true;
+		$( "#repeat-password-container" ).addClass( "has-error" );
+
+		/* add hint if it does not exist */
+		if( $( '#passhint6' ).length == 0) { 
+			$("#repeat-password-hints").append("<span id='passhint6' class='help-block'> Repeated password does not match </span>");
+			$("#repeat-password-container").css("height", ($("#repeat-password-container").height() + HINT_HEIGHT) + "px");
+		} 
+
+	} else {
+
+		/* remove hint if it exists (if no error) */
+		if ( $( '#passhint6' ).length != 0) { 
+			$( '#passhint6' ).remove();
+			$( '#repeat-password-container' ).css("height", ($("#repeat-password-container").height() - HINT_HEIGHT) + "px");
+		}
+	}
 }
 
 /* enable and revert style */
