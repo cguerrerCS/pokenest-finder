@@ -52,8 +52,6 @@ $( document ).ready(function() {
 		var password = $('#inputPassword').val();
 		var repeatedPassword = $('#inputPasswordRepeat').val();
 
-		validatePassword();
-
 		if (passwordError) {
 			$( "#signup-password-container" ).addClass( "has-error" );
 		}
