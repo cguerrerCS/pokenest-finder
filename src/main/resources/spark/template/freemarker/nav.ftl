@@ -24,26 +24,26 @@
 	  			<a id="login-trigger" class="pokenest-login" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 	  		</li>
 
-	  		<li id="account-dropdown" class="dropdown">
+<!-- 	  		<li id="account-dropdown" class="dropdown">
                 <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Username</a>
                 <ul class="dropdown-menu">
                   <li>
                   	<a id="logout-trigger" href="javascript:void(0)">Logout</a>
                   </li>
                 </ul>
-            </li>
+            </li> -->
 
-            <li class="dropdown">
-                    <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown
-                      <b class="caret"></b><div class="ripple-container"></div></a>
-                    <ul class="dropdown-menu">
-                      <li><a href="javascript:void(0)">Action<div class="ripple-container"><div class="ripple ripple-on ripple-out" style="left: 60.8906px; top: 25px; transform: scale(22.125); background-color: rgb(63, 81, 181);"></div><div class="ripple ripple-on ripple-out" style="left: 82.8906px; top: 14px; transform: scale(22.125); background-color: rgb(63, 81, 181);"></div></div></a></li>
-                      
-                      
-                      
-                      
-                    </ul>
-                  </li>
+            <li class="dropdown">		
+                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown
+                  <b class="caret"></b><div class="ripple-container"></div></a>
+                <ul class="dropdown-menu">
+                  <li><a href="javascript:void(0)">Action</a></li>
+                  <li><a href="javascript:void(0)">Another action</a></li>
+                  <li><a href="javascript:void(0)">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li><a href="javascript:void(0)">Separated link</a></li>
+                </ul>
+            </li>
 
 		</ul>
     </div>
