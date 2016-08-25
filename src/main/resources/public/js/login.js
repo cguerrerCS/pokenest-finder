@@ -269,15 +269,21 @@ $( document ).ready(function() {
 		if (repeatPasswordError) {
 
 			/* restore height and add fluff if error persists  */ 
-			$("#repeat-password-container").css("height", (defaultHeight + (HINT_HEIGHT * hints)) + "px" );
+			$("#repeat-password-container").css("height", (repeatDefaultHeight + HINT_HEIGHT) + "px" );
 		}
 
 
 	}).blur( function() {
 
 
+		// show red to indicate from info is invalid or missing
+		if (repeatPasswordError) {
+			$( "#repeat-password-container" ).addClass( "has-error" );
+		} 
+    	    	
+    	/* reset element height to default */
+    	$("#repeat-password-container").css("height", repeatDefaultHeight);
 	});
-
 }); 
 
 
