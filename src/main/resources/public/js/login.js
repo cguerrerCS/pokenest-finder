@@ -252,6 +252,7 @@ $( document ).ready(function() {
 
 			/* switch to error state */
     		repeatPasswordError = true;
+    		$( "#repeat-password-container" ).addClass( "has-error" );
 
 			/* add hint if it does not exist */
     		if( $( '#passhint6' ).length == 0) { 
