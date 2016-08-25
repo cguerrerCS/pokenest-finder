@@ -199,7 +199,7 @@ $( document ).ready(function() {
 
 			/* add hint if it does not exist */
     		if($('#passhint5').length == 0) { 
-    			$("#password-hints").append("<span id='passhint4' class='help-block'> Include at least one special character </span>");
+    			$("#password-hints").append("<span id='passhint5' class='help-block'> Include at least one special character </span>");
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
     		}
 
