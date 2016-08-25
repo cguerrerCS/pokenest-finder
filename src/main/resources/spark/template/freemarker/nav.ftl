@@ -16,32 +16,27 @@
 	<div class="navbar-collapse collapse navbar-warning-collapse">
 	 	<ul class="nav navbar-nav navbar-right">
 
+	 		<!-- signup button (trigger) -->
 	  		<li>
 	  			<a id="signup-trigger" class="pokenest-signup" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
 	  		</li>
 
+	  		<!-- login button (trigger) -->
 	  		<li>
 	  			<a id="login-trigger" class="pokenest-login" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 	  		</li>
 
-<!-- 	  		<li id="account-dropdown" class="dropdown">
-                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Username</a>
-                <ul class="dropdown-menu">
-                  <li>
-                  	<a id="logout-trigger" href="javascript:void(0)">Logout</a>
-                  </li>
-                </ul>
-            </li> -->
-
+	  		<!-- account info dropdown -->
             <li class="dropdown">		
                 <a id="account-dropdown" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                	<span class="glyphicon glyphicon-user"></span>Username<b class="caret"></b>
+                	<span class="glyphicon glyphicon-user"></span> Username <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="javascript:void(0)">Logout</a></li>
+                  <li>
+                  	<a id="logout-trigger" class="pokenest-login" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)">Logout</a>
+                  </li>
                 </ul>
             </li>
-
 		</ul>
     </div>
   </div>
