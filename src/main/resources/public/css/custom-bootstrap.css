@@ -57,6 +57,10 @@
     padding-bottom: 15px;
 }
 
+.navbar .dropdown-menu li > a:hover, .navbar.navbar-default .dropdown-menu li > a:hover, .navbar .dropdown-menu li > a:focus, .navbar.navbar-default .dropdown-menu li > a:focus {
+	color: #F44336;
+}
+
 #pokenest-progress-container {
 	width: 110%;
 	position: fixed;
