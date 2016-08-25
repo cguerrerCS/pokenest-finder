@@ -28,7 +28,7 @@ $( document ).ready(function() {
 		clearPasswordHints();
 
 		// disable create account button by default
-		$( '#signupbtn' ).prop('disabled', true);
+		disableSignupBtn();
 
 		// open up login modal
 		$("#signupModal").modal();
@@ -88,7 +88,7 @@ $( document ).ready(function() {
 	$('#login-trigger').on('click', function() {
 	});
 
-	$('#inputPassword').keyup(function(e) {
+	$('#inputPassword').keyup(function() {
 
 		/* get user password */
     	var password = $('#inputPassword').val();
@@ -207,6 +207,8 @@ $( document ).ready(function() {
 		// show red to indicate from info is invalid or missing
 		if (passwordError) {
 			$( "#signup-password-container" ).addClass( "has-error" );
+		} else {
+			enableSignupBtn();
 		}
     	    	
     	/* reset element height to default */
@@ -215,6 +217,28 @@ $( document ).ready(function() {
 
 }); 
 
+
+/* enable and revert style */
+function enableSignupBtn() {
+
+	// disable signup button
+	$( '#signupbtn' ).prop('disabled', false);
+
+	// remove all style classes temporarily
+	$( '#signupbtn' ).addClass( 'btn-raised' );
+	$( '#signupbtn' ).addClass( 'btn-info' );
+}
+
+/* disable and style accordingly */
+function disableSignupBtn() {
+
+	// disable signup button
+	$( '#signupbtn' ).prop('disabled', true);
+
+	// remove all style classes temporarily
+	$( '#signupbtn' ).removeClass( 'btn-raised' );
+	$( '#signupbtn' ).removeClass( 'btn-info' );
+}
 
 /* clear password hints if they exist */
 function clearPasswordHints() {
