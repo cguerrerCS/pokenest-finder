@@ -190,8 +190,8 @@ $( document ).ready(function() {
 
 		}
 
-		if (passwordError) {
-			$( "#signup-password-container" ).addClass( "has-error" );
+		if (!passwordError) {
+			enableSignupBtn();
 		}
 
 	}).focus(function() {
@@ -207,9 +207,7 @@ $( document ).ready(function() {
 		// show red to indicate from info is invalid or missing
 		if (passwordError) {
 			$( "#signup-password-container" ).addClass( "has-error" );
-		} else {
-			enableSignupBtn();
-		}
+		} 
     	    	
     	/* reset element height to default */
     	$("#signup-password-container").css("height", defaultHeight);
