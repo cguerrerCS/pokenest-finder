@@ -236,6 +236,7 @@ $( document ).ready(function() {
 
 });
 
+/* display saved session infomation to the console */
 function showSessionCookie() {
 
 	var username = getCookie("session-username");
@@ -245,6 +246,7 @@ function showSessionCookie() {
 	console.log("session-username: '" + username + "'");
 	console.log("session-token: '" + token + "'");
 	console.log("session-created: '" + created + "'");
+	console.log("session-created: '" + (typeof created) + "'");
 }
 
 
