@@ -230,7 +230,6 @@ $( document ).ready(function() {
 
 }); 
 
-
 /* disable signup button if any field is empty */
 function updateSignupBtnState() {
 

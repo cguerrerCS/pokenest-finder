@@ -95,6 +95,10 @@ a.pokenest-login:hover, a.pokenest-login:focus {
   color: white !important;
 }
 
+#logout-trigger:hover {
+  color: #F44336;
+}
+
 .leaflet-pulsing-icon {
   border-style: solid;
   border-width: 2px;
