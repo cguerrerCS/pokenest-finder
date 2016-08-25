@@ -190,8 +190,27 @@ $( document ).ready(function() {
 
 		}
 
-		if ( password.match(/[a-zA-Z0-9]/) ) {
+		if ( !password.match(/[a-zA-Z0-9]/) ) {
 			console.log("includes special characters");
+
+			/* increment number of hints to show and display error */
+			passwordError = true;
+			hints++; 
+
+			/* add hint if it does not exist */
+    		if($('#passhint5').length == 0) { 
+    			$("#password-hints").append("<span id='passhint4' class='help-block'> Include at least one special character </span>");
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() + HINT_HEIGHT) + "px");
+    		}
+    		
+		} else {
+
+			/* remove hint if it exists */
+			if($('#passhint5').length != 0) { 
+    			$("#passhint5").remove();
+    			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
+    		}
+
 		}
 
 	}).focus(function() {
