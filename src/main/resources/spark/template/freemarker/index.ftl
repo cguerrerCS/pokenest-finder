@@ -208,5 +208,45 @@
   </div>
 </div>
 
+<!-- Bootstrap Modal for trainer login -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <img src='../img/pokeball.png' alt='Pokeball Icon'>  
+        <h4 class="modal-title" id="myModalLabel">Sign up</h4> 
+      </div>
+
+      <div class="modal-body">
+
+          <!-- Username input box --> 
+          <div class="form-group login-form-group">
+            <label for="login-username" class="col-md-2 control-label">Username</label>
+            <div class="col-md-10">
+              <input id="loginUsername" type="text" class="form-control" placeholder="Username">
+            </div>
+          </div>
+        
+          <!-- Password input box -->
+          <div class="form-group login-form-group">
+            <label for="login-password" class="col-md-2 control-label">Password</label>
+            <div class="col-md-10">
+              <input id="login-password" type="password" class="form-control" placeholder="Password">
+            </div>
+          </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="loginbtn" type="submit" class="btn btn-primary btn-raised btn-info">Log In</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

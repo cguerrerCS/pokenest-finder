@@ -41,7 +41,7 @@ $( document ).ready(function() {
 		// remove existent password hints
 		clearPasswordHints();
 
-		// open up login modal
+		// open up signup modal
 		$("#signupModal").modal();
 	});
 
@@ -101,15 +101,17 @@ $( document ).ready(function() {
 		}
 	});
 
-	// $('#login-trigger').on('click', function() {
-	// });
+	$('#login-trigger').on('click', function() {
 
-	
+		// open up login modal
+		$("#loginModal").modal();
+	});
+
 	$( '#inputUsername' ).keyup(function() {
 
 		/* update btn state according to form fields */
 		updateSignupBtnState();
-		
+
 	});
 
 	$( '#inputPassword' ).keyup(function() {
