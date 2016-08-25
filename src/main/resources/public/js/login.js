@@ -15,7 +15,10 @@ var HINT_HEIGHT = 22;
 
 $( document ).ready(function() {
 
-	// get height of sign up password container 
+	/* ************************************************************** */
+	/* ** SIGN UP *************************************************** */
+	/* ************************************************************** */
+
 	defaultHeight = $("#signup-password-container").height();
 	repeatDefaultHeight = $("#repeat-password-container").height();
 
@@ -43,6 +46,7 @@ $( document ).ready(function() {
 
 		// open up signup modal
 		$("#signupModal").modal();
+		
 	});
 
 	$('#signupbtn').on('click', function() {
@@ -99,16 +103,7 @@ $( document ).ready(function() {
 			});
 
 		}
-	});
 
-	$('#login-trigger').on('click', function() {
-
-		// open up login modal
-		$("#loginModal").modal();
-	});
-
-	$('#loginpbtn').on('click', function() {
-		
 	});
 
 	$( '#inputUsername' ).keyup(function() {
@@ -162,6 +157,39 @@ $( document ).ready(function() {
 
 	});
 
+	/* ************************************************************** */
+	/* ** LOG IN **************************************************** */
+	/* ************************************************************** */
+
+	$('#login-trigger').on('click', function() {
+
+		// clear modal test boxes
+		$( '#login-username' ).val("");
+		$( '#login-password' ).val("");
+
+		// open up login modal
+		$("#loginModal").modal();
+
+	});
+
+	$('#loginbtn').on('click', function() {
+
+	});
+
+	$( '#login-username' ).keyup(function() {
+
+		/* update btn state according to form fields */
+		updateLoginBtnState();
+
+	});
+
+	$( '#login-password' ).keyup(function() {
+
+		/* update btn state according to form fields */
+		updateLoginBtnState();
+
+	});
+
 }); 
 
 
@@ -177,6 +205,20 @@ function updateSignupBtnState() {
 		disableSignupBtn();
 	} else {
 		enableSignupBtn();
+	}
+}
+
+/* disable login if any login field is left empty */
+function updateLoginBtnState() {
+
+	var username = $( '#login-username' ).val().trim();
+	var password = $( '#login-password' ).val().trim();
+
+	/* if any fields are left unfilled disable login btn */
+	if ((username == "") || (password1 == "")) {
+		disableLoginButton();
+	} else {
+		enableLoginButton();
 	}
 }
 
@@ -376,6 +418,28 @@ function disableSignupBtn() {
 	// remove all style classes temporarily
 	$( '#signupbtn' ).removeClass( 'btn-raised' );
 	$( '#signupbtn' ).removeClass( 'btn-info' );
+}
+
+/* enable and revert style to login button */
+function enableLoginButton() {
+
+	// disable signup button
+	$( '#loginbtn' ).prop('disabled', false);
+
+	// remove all style classes temporarily
+	$( '#loginbtn' ).addClass( 'btn-raised' );
+	$( '#loginbtn' ).addClass( 'btn-info' );
+}
+
+/* disable and style accordingly */
+function disableLoginButton() {
+
+	// disable signup button
+	$( '#loginbtn' ).prop('disabled', true);
+
+	// remove all style classes temporarily
+	$( '#loginbtn' ).removeClass( 'btn-raised' );
+	$( '#loginbtn' ).removeClass( 'btn-info' );
 }
 
 /* clear password hints if they exist */

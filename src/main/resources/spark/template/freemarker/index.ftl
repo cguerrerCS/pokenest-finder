@@ -225,7 +225,7 @@
           <div class="form-group login-form-group">
             <label for="login-username" class="col-md-2 control-label">Username</label>
             <div class="col-md-10">
-              <input id="loginUsername" type="text" class="form-control" placeholder="Username">
+              <input id="login-username" type="text" class="form-control" placeholder="Username">
             </div>
           </div>
         

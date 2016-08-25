@@ -195,6 +195,10 @@ public class Main {
 			String username = queryMap.value("username");
 			String password = queryMap.value("password");
 			
+			// TODO: clean up any trailing or leading whitespace
+			username = username.trim();
+			password = password.trim();
+			
 			// TODO: check that username is not all whitespace 
 			if (!(username.trim().length() > 0)) {
 				results = ImmutableMap.of("success", false, "error",

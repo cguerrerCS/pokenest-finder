@@ -166,7 +166,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <img src='../img/pokeball.png' alt='Pokeball Icon'>  
-        <h4 class="modal-title" id="myModalLabel">Sign up</h4> 
+        <h4 class="modal-title" id="myModalLabel">Trainer Sign up</h4> 
       </div>
 
       <div class="modal-body">
@@ -190,9 +190,9 @@
 
           <!-- Repeat password for usability -->
           <div id="repeat-password-container" class="form-group signup-form-group">
-            <label for="inputPasswordRepeat" class="col-md-2 control-label">Confirm</label>
+            <label for="inputPasswordRepeat" class="col-md-2 control-label">Confirm Password</label>
             <div class="col-md-10">
-              <input type="password" class="form-control" id="inputPasswordRepeat" placeholder="Repeat Password">
+              <input type="password" class="form-control" id="inputPasswordRepeat" placeholder="Retype Password">
               <div id="repeat-password-hints"></div>
             </div>
           </div>
@@ -202,6 +202,46 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
         <button id="signupbtn" type="submit" class="btn btn-primary btn-raised btn-info">Create Account</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap Modal for trainer login -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <img src='../img/pokeball.png' alt='Pokeball Icon'>  
+        <h4 class="modal-title" id="myModalLabel">Trainer Log In</h4> 
+      </div>
+
+      <div class="modal-body">
+
+          <!-- Username input box --> 
+          <div class="form-group login-form-group">
+            <label for="login-username" class="col-md-2 control-label">Username</label>
+            <div class="col-md-10">
+              <input id="loginUsername" type="text" class="form-control" placeholder="Username">
+            </div>
+          </div>
+        
+          <!-- Password input box -->
+          <div class="form-group login-form-group">
+            <label for="login-password" class="col-md-2 control-label">Password</label>
+            <div class="col-md-10">
+              <input id="login-password" type="password" class="form-control" placeholder="Password">
+            </div>
+          </div>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button id="loginbtn" type="submit" class="btn btn-primary btn-raised btn-info">Log In</button>
       </div>
 
     </div>
