@@ -28,7 +28,7 @@ $( document ).ready(function() {
 		clearPasswordHints();
 
 		// disable create account button by default
-		disableSignupBtn();
+		// disableSignupBtn();
 
 		// open up login modal
 		$("#signupModal").modal();
@@ -188,10 +188,6 @@ $( document ).ready(function() {
     			$("#signup-password-container").css("height", ($("#signup-password-container").height() - HINT_HEIGHT) + "px");
     		}
 
-		}
-
-		if (!passwordError) {
-			enableSignupBtn();
 		}
 
 	}).focus(function() {
