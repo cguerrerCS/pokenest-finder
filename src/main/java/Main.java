@@ -179,11 +179,37 @@ public class Main {
 		});
 		
 		Spark.post("/login", (request, response) -> {
-//			QueryParamsMap queryMap = request.queryMap();
-//			String username = queryMap.value("username");
-//			String password = queryMap.value("password");
-			Map<String, Object> sessionCookie = ImmutableMap.of("username", "", "token", "", "created", "");
-			Map<String, Object> results = ImmutableMap.of("success", true, "error", "", "sessionCookie", sessionCookie);
+			
+			Map<String, Object> results;
+			QueryParamsMap queryMap = request.queryMap();
+			String username = queryMap.value("username");
+			String password = queryMap.value("password");
+			
+			// TODO: clean up any trailing or leading whitespace
+			username = username.trim();
+			password = password.trim();
+			
+			// TODO: check specified trainer exists
+			if (!pokedex.ContainsUsername(username)) {
+				results = ImmutableMap.of("success", false, "error",
+						String.format(
+								"Provided username '%s' non-existent",
+								username), "sessionCookie", "");
+				return GSON.toJson(results);
+			}
+			
+			// TODO: validate username, password pair
+			if (!pokedex.ValidCredentials(username, password)) {
+				results = ImmutableMap.of("success", false, "error",
+						"Invalid user credentials", "sessionCookie", "");
+				return GSON.toJson(results);
+			}
+			
+			// TODO: update session information
+			
+			// TODO: grab user's session information		
+			Map<String, Object> sessionCookie = pokedex.GetSessionCookie(username);
+			results = ImmutableMap.of("success", true, "error", "", "sessionCookie", sessionCookie);
 			return GSON.toJson(results);
 		});
 		
@@ -230,6 +256,13 @@ public class Main {
 			// TODO: generate a session token for the user
 			String token = SecurityUtil.GenerateRandString();
 			String saltedAndHashedToken = SecurityUtil.StandardSaltAndHashInput(salt, token);
+			
+			// TODO: make user saltedAndHashedToken is unique
+			while ( !pokedex.UniqueSessionToken(saltedAndHashedToken) ) {
+				token = SecurityUtil.GenerateRandString();
+				saltedAndHashedToken = SecurityUtil.StandardSaltAndHashInput(salt, token);
+			}
+			
 			String saltedAndHashedPassword = SecurityUtil.SlowSaltAndHashPassword(salt, password);
 			long created = System.currentTimeMillis() / 1000L;
 			
@@ -273,8 +306,11 @@ public class Main {
 		Spark.get("/db", (req, res) -> {
 			Map<String, Object> attributes = new HashMap<>();
 			attributes.put("title", "Pokenest");
-			System.out.println(pokedex.GetDatabaseRowsAsStrings());
-			attributes.put("results", pokedex.GetDatabaseRowsAsStrings());
+			try {
+				attributes.put("results", pokedex.GetDatabaseRowsAsStrings());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 			return new ModelAndView(attributes, "db.ftl");
 		}, new FreeMarkerEngine());
 	}

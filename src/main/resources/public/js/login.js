@@ -177,6 +177,41 @@ $( document ).ready(function() {
 
 	$('#loginbtn').on('click', function() {
 
+		// get form input information
+		var username = $( '#login-username' ).val();
+		var password = $( '#login-password' ).val();
+
+		// send sign up post request to the server
+		var postParameters = {username: username, password: password};
+		$.post("/login", postParameters, function(responseJSON){
+
+			var responseObject = JSON.parse(responseJSON);
+			var success = responseObject.success;
+			var error = responseObject.error;
+			var sessionCookie = responseObject.sessionCookie;
+			console.log(sessionCookie);
+
+			// add notification for user
+			var options =  {
+    			content: "", 		// text of the snackbar
+    			style: "snackbar",  // add a custom class to your snackbar
+    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+			}
+			if (success) {
+				options['content'] = "Trainer '" + username + "' now logged in";
+			} else {
+				options['content'] = "Error: " + error;
+			}
+			$.snackbar(options);
+
+			// TODO: hide login and sign up buttons, instead show logged in as 'username'
+
+			// hide modal
+			if (success) {
+				$("#loginModal").modal('hide');
+			}
+		});
+
 	});
 
 	$( '#login-username' ).keyup(function() {

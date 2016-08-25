@@ -160,6 +160,22 @@ public class Pokedex {
 		return result;
 	}
 	
+	public boolean ContainsToken(String token) throws SQLException {
+		
+		// Fill in schema to check if username is already taken
+		String schema = "SELECT exists (SELECT 1 from sessions where token = ? LIMIT 1);";			
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, token);
+		ResultSet rs = prep.executeQuery();
+		rs.next();
+		boolean result = rs.getBoolean("exists");
+		
+		// Close the PreparedStatement
+		prep.close();
+		
+		return result;
+	}
+	
 	public void Remove(String nestid) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
@@ -257,42 +273,40 @@ public class Pokedex {
 		return results;
 	}
 	
-	public List<String> GetDatabaseRowsAsStrings() {
+	public List<String> GetDatabaseRowsAsStrings() throws SQLException {
 
 		ArrayList<String> output = new ArrayList<String>();
 
-		try {
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM pokenest;");
-			while (rs.next()) {
-				String id = rs.getString("nestid");
-				String name = rs.getString("pokemon");
-				String lat = rs.getString("lat");
-				String lng = rs.getString("lng");
-				String time = rs.getString("time");
-				String confirmed = rs.getString("confirmed");
-				String upvotes = rs.getString("upvotes");
-				String downvotes = rs.getString("downvotes");
-				StringBuilder sb = new StringBuilder();
-				sb.append(String.format("<p class='db-data'>id: %s</p>", id));
-				sb.append(String.format("<p class='db-data'>pokemon: %s</p>", name));
-				sb.append(String.format("<p class='db-data'>lat: %s</p>", lat));
-				sb.append(String.format("<p class='db-data'>lng: %s</p>", lng));
-				sb.append(String.format("<p class='db-data'>time: %s</p>", time));
-				sb.append(String.format("<p class='db-data'>upvotes: %s</p>", upvotes));
-				sb.append(String.format("<p class='db-data'>downvotes: %s</p>", downvotes));
-				sb.append(String.format("<p class='db-data'>confirmed: %s</p>", confirmed));
-				String data = sb.toString();
-				output.add(data);
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * FROM pokenest;");
+		while (rs.next()) {
+			String id = rs.getString("nestid");
+			String name = rs.getString("pokemon");
+			String lat = rs.getString("lat");
+			String lng = rs.getString("lng");
+			String time = rs.getString("time");
+			String confirmed = rs.getString("confirmed");
+			String upvotes = rs.getString("upvotes");
+			String downvotes = rs.getString("downvotes");
+			StringBuilder sb = new StringBuilder();
+			sb.append(String.format("<p class='db-data'>id: %s</p>", id));
+			sb.append(String.format("<p class='db-data'>pokemon: %s</p>", name));
+			sb.append(String.format("<p class='db-data'>lat: %s</p>", lat));
+			sb.append(String.format("<p class='db-data'>lng: %s</p>", lng));
+			sb.append(String.format("<p class='db-data'>time: %s</p>", time));
+			sb.append(String.format("<p class='db-data'>upvotes: %s</p>",
+					upvotes));
+			sb.append(String.format("<p class='db-data'>downvotes: %s</p>",
+					downvotes));
+			sb.append(String.format("<p class='db-data'>confirmed: %s</p>",
+					confirmed));
+			String data = sb.toString();
+			output.add(data);
 		}
 
 		return output;
 	}
-	
+
 	public boolean validPokemon(String pokename) {
 
 		if (pokenames.contains(pokename)) {
@@ -301,7 +315,7 @@ public class Pokedex {
 			return false;
 		}
 	}
-				
+					
 	public void AddTrainer(String username, String salt, String password, String token, long created) throws SQLException {
 		
 		// Fill in schema to create a table called users
@@ -327,10 +341,65 @@ public class Pokedex {
 		prep.close();
 	}
 	
-	public void addUser(String username, String salt, String saltedAndHashedPassword, String saltedAndHashedToken, int created) {
+	public String GetUserPassword(String username) throws SQLException {
 		
-		/* TODO: insert into 'users' database table */
+		String password = "";
+		String schema = "SELECT password FROM users WHERE username = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, username);
+		ResultSet rs = prep.executeQuery();
+		if (rs.next()) {
+			password = rs.getString("password");
+		}
 		
-		/* TODO: insert into 'sessions' database table */	
+		return password;
+	}
+	
+	public String GetUserSalt(String username) throws SQLException {
+		
+		String salt = "";
+		String schema = "SELECT salt FROM users WHERE username = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, username);
+		ResultSet rs = prep.executeQuery();
+		
+		if (rs.next()) {
+			salt = rs.getString("salt");
+		}
+		
+		return salt;
+	}
+	
+	public Map<String, Object> GetSessionCookie(String username) throws SQLException {
+		
+		String token = "";
+		long created = 0;
+		
+		String schema = "SELECT * FROM sessions WHERE username = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, username);
+		ResultSet rs = prep.executeQuery();
+		
+		if (rs.next()) {
+			token = rs.getString("token");
+			created = rs.getLong("created");
+		}
+			
+		return ImmutableMap.of("username", username, "token", token, "created", created);
+	}
+	
+	public boolean ValidCredentials(String username, String password) throws SQLException {
+		String salt = this.GetUserSalt(username);
+		String saltedAndHashedPassword = SecurityUtil.SlowSaltAndHashPassword(salt, password);
+		String storedPassword = this.GetUserPassword(username);
+		return saltedAndHashedPassword.equals(storedPassword);
+	}
+	
+	public boolean AuthenticateUser(String username, String token) {
+		return false;
+	}
+	
+	public boolean UniqueSessionToken(String token) throws SQLException {
+		return !this.ContainsToken(token);
 	}
 }
