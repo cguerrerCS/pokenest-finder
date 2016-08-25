@@ -19,14 +19,15 @@
 	  			<a id="signup-trigger" class="pokenest-signup" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span> Sign Up</a>
 	  		</li>
 	  		<li>
-	  			<a id="login-trigger" class="pokenest-login"  data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+	  			<a id="login-trigger" class="pokenest-login" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)"><span class="glyphicon glyphicon-log-in"></span> Login</a>
 	  		</li>
 
 	  		<li id="account-dropdown" class="dropdown">
-                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Username
-                  <b class="caret"></b><div class="ripple-container"></div></a>
+                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Username</a>
                 <ul class="dropdown-menu">
-                  <li><a href="javascript:void(0)">Logout</a></li>
+                  <li>
+                  	<a id="logout-trigger" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)">Logout</a>
+                  </li>
                 </ul>
             </li>
 
