@@ -128,10 +128,7 @@ $( document ).ready(function() {
 
 	$( '#inputPasswordRepeat' ).keyup( function(e) {
 
-		/* get user password */
-    	passwordRepeat = $('#inputPasswordRepeat').val();
-    	
-    	if (passwordCurrent != passwordRepeat) {
+    	if ($('#inputPassword').val() != '#inputPasswordRepeat').val()) {
 
 			/* switch to error state */
     		repeatPasswordError = true;
