@@ -53,14 +53,15 @@ $( document ).ready(function() {
 		var repeatedPassword = $('#inputPasswordRepeat').val();
 
 		if (passwordError) {
-
 			$( "#signup-password-container" ).addClass( "has-error" );
+		}
 
-		} else if (repeatPasswordError) {
-
+		if (repeatPasswordError) {
 			$( "#repeat-password-container" ).addClass( "has-error" );
+		}
 
-		} else {
+		// send request if there are no apparent errors
+		if (!passwordError && !repeatPasswordError) {
 
 			// send sign up post request to the server
 			var postParameters = {username: username, password: password};
