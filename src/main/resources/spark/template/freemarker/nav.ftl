@@ -26,12 +26,10 @@
                 <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Username
                   <b class="caret"></b><div class="ripple-container"></div></a>
                 <ul class="dropdown-menu">
-                  <li><a href="javascript:void(0)">Action</a></li>
-                  <li class="divider"></li>
                   <li><a href="javascript:void(0)">Logout</a></li>
                 </ul>
             </li>
-            
+
 		</ul>
     </div>
   </div>
