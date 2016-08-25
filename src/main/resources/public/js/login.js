@@ -26,6 +26,9 @@ $( document ).ready(function() {
 		$('#inputPassword').val("");
 		$('#inputPasswordRepeat').val("");
 
+		// disable or enable btn accordingly
+		updateSignupBtnState();
+
 		// reset state variables
 		passwordError = false;
 		repeatPasswordError = false;
