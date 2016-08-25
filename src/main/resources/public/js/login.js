@@ -147,6 +147,7 @@ $( document ).ready(function() {
     	} else {
 
 			/* remove hint if it exists (if no error) */
+			repeatPasswordError = false;
 			if ( $( '#passhint6' ).length != 0) { 
 				$( '#passhint6' ).remove();
 				$( '#repeat-password-container' ).css("height", ($("#repeat-password-container").height() - HINT_HEIGHT) + "px");
