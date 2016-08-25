@@ -55,6 +55,10 @@ $( document ).ready(function() {
 		var password = $('#inputPassword').val();
 		var repeatedPassword = $('#inputPasswordRepeat').val();
 
+		// perform logical validation for password and repeat
+		validatePasswordLogical();
+
+
 		if (passwordError) {
 			$( "#signup-password-container" ).addClass( "has-error" );
 		}
@@ -106,10 +110,11 @@ $( document ).ready(function() {
 
 	$( '#inputPassword' ).keyup(function() {
 
+		/* update btn state according to form fields */
 		updateSignupBtnState();
 
     	/* check password and add corresponding hints */
-    	validatePassword();
+    	validatePasswordGraphical();
 
 	}).focus(function() {
 	
@@ -121,11 +126,6 @@ $( document ).ready(function() {
 
 	}).blur(function() {
 		
-		// show red to indicate from info is invalid or missing
-		// if (passwordError) {
-		// 	$( "#signup-password-container" ).addClass( "has-error" );
-		// } 
-    	    	
     	/* reset element height to default */
     	$("#signup-password-container").css("height", defaultHeight);
 
@@ -187,11 +187,13 @@ $( document ).ready(function() {
 
 }); 
 
+
+/* disable signup button if any field is empty */
 function updateSignupBtnState() {
 
-	var username  = $('#inputUsername').val();
-	var password1 = $('#inputPassword').val();
-	var password2 = $('#inputPasswordRepeat').val();
+	var username  = $('#inputUsername').val().trim();
+	var password1 = $('#inputPassword').val().trim();
+	var password2 = $('#inputPasswordRepeat').trim();
 
 	/* if any fields are left unfilled disable signup btn */
 	if ((username == "") || (password1 == "") || (password2 == "")) {
@@ -201,8 +203,18 @@ function updateSignupBtnState() {
 	}
 }
 
-/* validate, add hints and has-error class accordingly */
-function validatePassword() {
+/* validate, add hints, no height adjustments */
+function validatePasswordLogical() {
+
+	/* perform regular validation */
+	validatePasswordWithHints();
+
+	/* undo any graphical changes */
+    $("#signup-password-container").css("height", defaultHeight);
+}
+
+/* validate, add hints, height adjusted accordingly (called on keyup) */
+function validatePasswordGraphical() {
 
 	/* get user password */
     var password = $('#inputPassword').val();
