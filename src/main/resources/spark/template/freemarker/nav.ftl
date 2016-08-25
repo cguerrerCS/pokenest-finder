@@ -34,14 +34,11 @@
             </li> -->
 
             <li class="dropdown">		
-                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Dropdown
-                  <b class="caret"></b><div class="ripple-container"></div></a>
+                <a id="account-dropdown" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                	<span class="glyphicon glyphicon-user"></span>Username<b class="caret"></b>
+                </a>
                 <ul class="dropdown-menu">
-                  <li><a href="javascript:void(0)">Action</a></li>
-                  <li><a href="javascript:void(0)">Another action</a></li>
-                  <li><a href="javascript:void(0)">Something else here</a></li>
-                  <li class="divider"></li>
-                  <li><a href="javascript:void(0)">Separated link</a></li>
+                  <li><a href="javascript:void(0)">Logout</a></li>
                 </ul>
             </li>
 
