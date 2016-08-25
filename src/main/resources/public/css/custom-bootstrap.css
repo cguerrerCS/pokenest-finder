@@ -32,9 +32,10 @@
 
 /* form groups for poknest */
 
-.form-group.is-focused label,  .form-group.is-focused label.control-label {
+/*.form-group.is-focused label,  .form-group.is-focused label.control-label {
 	color: #03a9f4;
 }
+*/
 
 .form-group.is-focused.has-error label,  .form-group.is-focused.has-error label.control-label {
 	color: #f44336;
