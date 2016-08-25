@@ -41,9 +41,6 @@ $( document ).ready(function() {
 		// remove existent password hints
 		clearPasswordHints();
 
-		// disable create account button by default
-		// disableSignupBtn();
-
 		// open up login modal
 		$("#signupModal").modal();
 	});
@@ -102,11 +99,18 @@ $( document ).ready(function() {
 			});
 
 		}
-
 	});
 
 	// $('#login-trigger').on('click', function() {
 	// });
+
+	
+	$( '#inputUsername' ).keyup(function() {
+
+		/* update btn state according to form fields */
+		updateSignupBtnState();
+		
+	});
 
 	$( '#inputPassword' ).keyup(function() {
 
@@ -119,7 +123,6 @@ $( document ).ready(function() {
 	}).focus(function() {
 	
 		if (passwordError) {
-
 			/* restore height and add fluff if error persists  */ 
 			$("#signup-password-container").css("height", (defaultHeight + (HINT_HEIGHT * hints)) + "px" );
 		}
@@ -142,20 +145,13 @@ $( document ).ready(function() {
 	}).focus( function() {
 
 		if (repeatPasswordError) {
-
 			/* restore height and add fluff if error persists  */ 
 			$("#repeat-password-container").css("height", (repeatDefaultHeight + HINT_HEIGHT) + "px" );
 		}
 
 	}).blur( function() {
 
-
-		// show red to indicate from info is invalid or missing
-		// if (repeatPasswordError) {
-		// 	$( "#repeat-password-container" ).addClass( "has-error" );
-		// } 
-    	    	
-    	/* reset element height to default */
+		/* reset element height to default */
     	$("#repeat-password-container").css("height", repeatDefaultHeight);
 
 	});
@@ -405,5 +401,4 @@ function clearPasswordHints() {
     }
 
     /* hide repeat password matching hint */
-
 }
