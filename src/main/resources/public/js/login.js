@@ -107,6 +107,10 @@ $( document ).ready(function() {
 		$("#loginModal").modal();
 	});
 
+	$('#loginpbtn').on('click', function() {
+		
+	});
+
 	$( '#inputUsername' ).keyup(function() {
 
 		/* update btn state according to form fields */
