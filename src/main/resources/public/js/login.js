@@ -4,8 +4,11 @@ var defaultHeight = undefined;
 var repeatDefaultHeight = undefined;
 var passwordCurrent = undefined; // current password 
 var passwordRepeat  = undefined; // repeat password
+
+var usernameError = false;
 var passwordError = false;
-var repeatPasswordError = false; 
+var repeatPasswordError = false;
+
 var hints = 0;
 var HINT_HEIGHT = 22; // height + margin
 
@@ -240,7 +243,7 @@ $( document ).ready(function() {
 
 	});
 
-	$( '#inputPasswordRepeat' ).keyup( function() {
+	$( '#inputPasswordRepeat' ).keyup( function(e) {
 
 		/* get user password */
     	passwordRepeat = $('#inputPasswordRepeat').val();
