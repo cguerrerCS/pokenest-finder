@@ -46,7 +46,7 @@ $( document ).ready(function() {
 
 		// open up signup modal
 		$("#signupModal").modal();
-		
+
 	});
 
 	$('#signupbtn').on('click', function() {
@@ -167,6 +167,9 @@ $( document ).ready(function() {
 		$( '#login-username' ).val("");
 		$( '#login-password' ).val("");
 
+		// disable or enable btn accordingly
+		updateLoginBtnState();
+
 		// open up login modal
 		$("#loginModal").modal();
 
@@ -215,7 +218,7 @@ function updateLoginBtnState() {
 	var password = $( '#login-password' ).val().trim();
 
 	/* if any fields are left unfilled disable login btn */
-	if ((username == "") || (password1 == "")) {
+	if ((username == "") || (password == "")) {
 		disableLoginButton();
 	} else {
 		enableLoginButton();
