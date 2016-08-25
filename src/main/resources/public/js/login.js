@@ -28,7 +28,8 @@ $( document ).ready(function() {
 		hints = 0;
 
 		// clean up any leftover error classes
-		$( "#signup-password-container" ).removeClass( "has-error" );
+		$( '#signup-password-container' ).removeClass( "has-error" );
+		$( '#repeat-password-container' ).removeClass( "has-error" );
 
 		// remove existent password hints
 		clearPasswordHints();
