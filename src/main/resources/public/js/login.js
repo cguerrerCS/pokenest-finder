@@ -248,10 +248,10 @@ $( document ).ready(function() {
 /* show logout options, hide sign up and log in options */
 function setLoggedInState() {
 
-	$( '#loggedin-username span' ).html( getCookie("session-username") );
 	$( '#option-signup' ).hide();
 	$( '#option-login' ).hide();
 	$( '#option-account' ).show();
+	$( '#loggedin-username span' ).text( getCookie("session-username") );
 }
 
 /* show login and sign up options, hide logout */
