@@ -14,7 +14,7 @@ var HINT_HEIGHT = 22;
 
 $( document ).ready(function() {
 
-	/* TODO: load session information */
+	/* load session information */
 
 	if (haveSessionCookie()) {
 
@@ -111,6 +111,7 @@ $( document ).ready(function() {
 				// hide modal
 				if (success) {
 					$("#signupModal").modal('hide');
+					setLoggedInState();
 				}
 			});
 
@@ -215,8 +216,6 @@ $( document ).ready(function() {
 			}
 			$.snackbar(options);
 
-			// TODO: hide login and sign up buttons, instead show logged in as 'username'
-
 			// TODO: set session cookie info
 			setSessionCookie(sessionCookie);
 			showSessionCookie();
@@ -224,6 +223,7 @@ $( document ).ready(function() {
 			// hide modal
 			if (success) {
 				$("#loginModal").modal('hide');
+				setLoggedInState();
 			}
 		});
 
@@ -243,11 +243,26 @@ $( document ).ready(function() {
 
 	});
 
+	/* ************************************************************** */
+	/* ** LOG OUT *************************************************** */
+	/* ************************************************************** */
+
+	$( '#logout-btn' ).on( 'click' , function() {
+		logout();
+		
+	});
 });
 
 /* wipe session info and switch to not logged in state */
 function logout() {
 
+	/* remove existing session related cookies */
+	setCookie("session-username", "", 1);
+	setCookie("session-token", "", 1);
+	setCookie("session-created", "", 1);
+
+	/* adjust navbar state */
+	setNotLoggedInState();
 }
 
 /* show logout options, hide sign up and log in options */

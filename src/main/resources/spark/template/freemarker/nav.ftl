@@ -33,7 +33,7 @@
                 </a>
                 <ul class="dropdown-menu account-dropdown-menu">
                   <li>
-                  	<a id="logout-trigger" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)">Logout</a>
+                  	<a id="logout-btn" data-toggle="collapse" data-target=".navbar-warning-collapse.in" href="javascript:void(0)">Logout</a>
                   </li>
                 </ul>
             </li>
