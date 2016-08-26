@@ -547,6 +547,11 @@ function onLocationError(e) {
 	console.log(e.message);
 }
 
+function loadVoteInfo(nestid, upvotes, downvotes) {
+
+	$( '#pokenest-votes' ).upvote({id: nestid, count: (upvotes + downvotes), upvoted: 1});
+}
+
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));

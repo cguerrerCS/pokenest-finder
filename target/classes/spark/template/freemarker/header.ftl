@@ -32,6 +32,9 @@
 <!-- Include CSS add ons required for leaflet pulse icons -->
 <link rel="stylesheet" href="../node_modules/leaflet-pulse-icon/dist/L.Icon.Pulse.css" />
 
+<!-- Include CSS for Jquery voting plugin -->
+<link rel="stylesheet" href="css/jquery.upvote.css">
+
 <!-- Custom Stylesheets for PokeNest -->
 <link rel="stylesheet" href="css/custom-bootstrap.css">
 <link rel="stylesheet" href="css/main.css">
@@ -61,8 +64,8 @@
 <!-- Include Twitter's open source typeahead box -->
 <script src="js/typeahead.js"></script>
 
-<!-- Include Jquery Plugin (Widget to Handle voting) -->
-
+<!-- Include JS for Jquery voting plugin -->
+<script src="js/jquery.upvote.js"></script>
 
 <!-- MathJS for float arithmetic -->
 <script src="js/math.js"></script>
