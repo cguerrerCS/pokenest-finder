@@ -16,7 +16,16 @@ $( document ).ready(function() {
 
 	/* TODO: load session information */
 
+	if (haveSessionCookie()) {
 
+		// user is presumed to have a valid login token
+		setLoggedInState();
+
+	} else {
+
+		// user have not not logged in or signed up, show options
+		setNotLoggedInState();
+	}
 
 	/* ************************************************************** */
 	/* ** SIGN UP *************************************************** */
@@ -236,9 +245,35 @@ $( document ).ready(function() {
 
 });
 
+/* show logout options, hide sign up and log in options */
+function setLoggedInState() {
+
+	$( 'option-signup' ).hide();
+	$( 'option-login' ).hide();
+	$( 'option-account' ).show();
+}
+
+/* show login and sign up options, hide logout */
+function setNotLoggedInState() {
+
+	$( 'option-signup' ).show();
+	$( 'option-login' ).show();
+	$( 'option-account' ).hide();
+}
+
+/* check if user has a preexisting stored session cookie */
+function haveSessionCookie() {
+
+	if ((getCookie("session-username") == "") || (getCookie("session-token") == "") || (getCookie("session-created") == "")) {
+		return false;
+	}
+
+	return true;
+}
+
 /* display saved session infomation to the console */
 function showSessionCookie() {
-	
+
 	console.log(getSessionCookie());
 }
 
