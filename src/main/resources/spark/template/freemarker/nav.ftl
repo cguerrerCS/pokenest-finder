@@ -29,7 +29,7 @@
 	  		<!-- account info dropdown -->
             <li id="option-account" class="dropdown">		
                 <a id="account-dropdown" href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                	<span class="glyphicon glyphicon-user"></span> Username <b class="caret"></b>
+                	<span class="glyphicon glyphicon-user"></span> <span id="loggedin-username">Username</span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu account-dropdown-menu">
                   <li>

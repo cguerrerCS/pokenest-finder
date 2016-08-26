@@ -248,6 +248,7 @@ $( document ).ready(function() {
 /* show logout options, hide sign up and log in options */
 function setLoggedInState() {
 
+	$( '#loggedin-username span' ).html( getCookie("session-username") );
 	$( '#option-signup' ).hide();
 	$( '#option-login' ).hide();
 	$( '#option-account' ).show();
