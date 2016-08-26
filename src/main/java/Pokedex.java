@@ -369,7 +369,7 @@ public class Pokedex {
 		prep.setString(1, username);
 		ResultSet rs = prep.executeQuery();
 		if (rs.next()) {
-			token = rs.getString("password");
+			token = rs.getString("token");
 		}
 		return token;
 	}
