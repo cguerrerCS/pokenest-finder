@@ -238,7 +238,8 @@ $( document ).ready(function() {
 
 /* display saved session infomation to the console */
 function showSessionCookie() {
-	console.log(getSessionCookie);
+	
+	console.log(getSessionCookie());
 }
 
 /* save session cookie info using browser cookies */
