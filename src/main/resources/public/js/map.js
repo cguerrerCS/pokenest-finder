@@ -253,6 +253,9 @@ function loadViewportMarkers() {
 				    			$('#markerdata-id').html("ID  <b>" + MARKERDATA[nestid].nestid + "</b>");
 				    			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
 
+				    			// TODO: setup voting
+				    			$( '#pokenest-votes' ).upvote({id: MARKERDATA[nestid].nestid, count: 5});
+
 				    			// show or hide privileged action buttons
 				    			var privileged = (getCookie("access") == "true");
 				    			if (privileged) {
