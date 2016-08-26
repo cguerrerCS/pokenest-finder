@@ -561,10 +561,10 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 
 	$( '#pokenest-votes' ).html(
 
-		"<div id='" + voteid + "' class='upvote'>
-        	<a class='upvote'></a>
-        	<span class='count'>0</span>
-        	<a class='downvote'></a>  
+		"<div id='" + voteid + "' class='upvote'>\
+        	<a class='upvote'></a>\
+        	<span class='count'>0</span>\
+        	<a class='downvote'></a>\  
         </div>"
 	);
 
