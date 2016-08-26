@@ -550,15 +550,20 @@ function onLocationError(e) {
 function loadVoteInfo(nestid, upvotes, downvotes) {
 
 	// TODO: reset all upvote fields to default, if possible...
-	$( '#pokenest-votes' ).upvote({id: nestid, count: 0, upvoted: 0, downvoted: 0});
+	// $( '#pokenest-votes' ).upvote({id: nestid, count: 0, upvoted: 0, downvoted: 0});
 
 	// TODO: if the user is logged in, get their vote value from the server
 
 	// TODO: get vote value
 	var count = ((-1) * (downvotes)) + downvotes;
 
+	var callback = function(data) {
+	    var data = { id: data.id, up: data.upvoted, down: data.downvoted };
+	    console.log(data);
+	};
+
 	// otherwise, just show the votes submitted by others
-	$( '#pokenest-votes' ).upvote({id: nestid, count: count});
+	$( '#pokenest-votes' ).upvote({id: nestid, count: count, callback: callback});
 }
 
 function setCookie(cname, cvalue, exdays) {
