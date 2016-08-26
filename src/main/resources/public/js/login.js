@@ -245,13 +245,18 @@ $( document ).ready(function() {
 
 });
 
+/* wipe session info and switch to not logged in state */
+function logout() {
+
+}
+
 /* show logout options, hide sign up and log in options */
 function setLoggedInState() {
 
 	$( '#option-signup' ).hide();
 	$( '#option-login' ).hide();
 	$( '#option-account' ).show();
-	$( '#loggedin-username span' ).text( getCookie("session-username") );
+	$( '#loggedin-username' ).text( getCookie("session-username") );
 }
 
 /* show login and sign up options, hide logout */
