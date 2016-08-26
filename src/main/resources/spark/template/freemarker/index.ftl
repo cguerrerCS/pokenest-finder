@@ -59,16 +59,15 @@
 
       <div class="modal-body">
 
-        <div class="container-fluid">
-          <div class="row-fluid">
+        
+        <div class="row-fluid">
             
-            <!-- Modal map used to provide arial zoomed in view of selected nest -->
-            <div id="infomapid" class="span10" style="height:280px; width: 100%;"></div>
+          <!-- Modal map used to provide arial zoomed in view of selected nest -->
+          <div id="infomapid" class="span10" style="height:280px; width: 100%;"></div>
             
-            <!-- Display voting content -->
-            <div id="voting-section" class="span2"></div>
+          <!-- Display voting content -->
+          <div id="markerdata-votes" class="span2"></div>
 
-          </div>
         </div>
 
         <!-- Modal map used to provide arial zoomed in view of selected nest -->
