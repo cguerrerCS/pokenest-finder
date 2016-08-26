@@ -572,12 +572,13 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 		// TODO: define cast vote callbacks
 		var callback = function(data) {
 
-	    	// var data = { nestid: data.id, up: data.upvoted, down: data.downvoted };
-	    	console.log(data);
+			var castVotePostParameters = { username: data.username, sessiontoken: sessionCookie.token, nestid: data.id, up: data.upvoted, down: data.downvoted };
+	    	console.log(castVotePostParameters);
+	    	
 		};
 
 		// render spcified trainer vote info
-		$( ("#" + voteid) ).upvote({nestid: responseObject.nestid, trainer: sessionCookie.username, count: count, upvoted: parseInt(responseObject.up), downvoted: parseInt(responseObject.down), callback: callback});
+		$( ("#" + voteid) ).upvote({id: responseObject.nestid, username: sessionCookie.username, count: count, upvoted: parseInt(responseObject.up), downvoted: parseInt(responseObject.down), callback: callback});
 	});
 }
 
