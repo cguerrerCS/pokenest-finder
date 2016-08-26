@@ -566,19 +566,18 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 
 	$.post("/getvote", postParameters, function(responseJSON) {
 
+		// trainer vote data regarding this nest
 		var responseObject = JSON.parse(responseJSON);
-		console.log("got vote info for nest: " + nestid);
-		console.log(responseObject);
-
+		
 		// TODO: define cast vote callbacks
 		var callback = function(data) {
-	    	// var data = { id: data.id, up: data.upvoted, down: data.downvoted };
-	    	// console.log(data);
+
+	    	// var data = { nestid: data.id, up: data.upvoted, down: data.downvoted };
+	    	console.log(data);
 		};
 
 		// render spcified trainer vote info
-		$( ("#" + voteid) ).upvote({id: responseObject.nestid, count: count, upvoted: parseInt(responseObject.up), downvoted: parseInt(responseObject.down), callback: callback});
-
+		$( ("#" + voteid) ).upvote({nestid: responseObject.nestid, trainer: sessionCookie.username, count: count, upvoted: parseInt(responseObject.up), downvoted: parseInt(responseObject.down), callback: callback});
 	});
 }
 
