@@ -554,8 +554,19 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 
 	// TODO: if the user is logged in, get their vote value from the server
 
+	var voteid = nestid + "-votes";
+
 	// TODO: get vote value
 	var count = ((-1) * (downvotes)) + downvotes;
+
+	$( '#pokenest-votes' ).html(
+
+		"<div id='" + voteid + "' class='upvote'>
+        	<a class='upvote'></a>
+        	<span class='count'>0</span>
+        	<a class='downvote'></a>  
+        </div>"
+	);
 
 	var callback = function(data) {
 	    var data = { id: data.id, up: data.upvoted, down: data.downvoted };
@@ -563,7 +574,7 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 	};
 
 	// otherwise, just show the votes submitted by others
-	$( '#pokenest-votes' ).upvote({id: nestid, count: count, callback: callback});
+	$( ("#" + voteid) ).upvote({id: nestid, count: count, callback: callback});
 }
 
 function setCookie(cname, cvalue, exdays) {
