@@ -220,7 +220,7 @@ public class Main {
 			String nestid = queryMap.value("nestid");
 			String username = queryMap.value("username");
 			
-			results = ImmutableMap.of("id", nestid, "username", username, "up", 1, "down", 0);
+			results = ImmutableMap.of("nestid", nestid, "username", username, "count", 5, "up", 1, "down", 0);
 			return GSON.toJson(results);
 		});
 		

@@ -552,7 +552,12 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 	/* pull users session information */
 	var sessionCookie = getSessionCookie();
 
+	/* get up a platform for voting info to be loaded into */
+	var voteid = nestid + "-votes";
+	var votehtml = "<div id='" + voteid + "' class='upvote'> <a class='upvote'></a> <span class='count'>0</span> <a class='downvote'></a> </div>";
+	$( '#pokenest-votes' ).html( votehtml );
 
+	/* get user's voting info regarding selected nest */
 	var postParameters = {
 		nestid: nestid,
 		username: sessionCookie.username
@@ -563,6 +568,16 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 		var responseObject = JSON.parse(responseJSON);
 		console.log("got vote info for nest: " + nestid);
 		console.log(responseObject);
+
+		// define callbacks for voting
+		var callback = function(data) {
+	    	// var data = { id: data.id, up: data.upvoted, down: data.downvoted };
+	    	// console.log(data);
+		};
+
+		// render vote info
+		$( ("#" + voteid) ).upvote({id: responseObject.nestid, count: parseInt(responseObject.count), upvoted: parseInt(responseObject.up), downvoted: parseInt(responseObject.down), callback: callback});
+
 	});
 
 	// TODO: reset all upvote fields to default, if possible...
@@ -570,22 +585,8 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 
 	// TODO: if the user is logged in, get their vote value from the server
 
-	var voteid = nestid + "-votes";
-	var votehtml = "<div id='" + voteid + "' class='upvote'> <a class='upvote'></a> <span class='count'>0</span> <a class='downvote'></a> </div>";
-
 	// TODO: get vote value
-	var count = ((-1) * (downvotes)) + downvotes;
-
-	$( '#pokenest-votes' ).html( votehtml );
-
-	// define post requests to be sent when user votes
-	var callback = function(data) {
-	    var data = { id: data.id, up: data.upvoted, down: data.downvoted };
-	    // console.log(data);
-	};
-
-	// otherwise, just show the votes submitted by others
-	$( ("#" + voteid) ).upvote({id: nestid, count: count, callback: callback});
+	// var count = ((-1) * (downvotes)) + downvotes;
 }
 
 function setCookie(cname, cvalue, exdays) {
