@@ -549,7 +549,13 @@ function onLocationError(e) {
 
 function loadVoteInfo(nestid, upvotes, downvotes) {
 
-	$( '#pokenest-votes' ).upvote({id: nestid, count: (upvotes + downvotes), upvoted: 1});
+	// TODO: if the user is logged in, get their vote value from the server
+
+	// TODO: get vote value
+	var count = ((-1) * (downvotes)) + downvotes;
+
+	// otherwise, just show the votes submitted by others
+	$( '#pokenest-votes' ).upvote({id: nestid, count: count});
 }
 
 function setCookie(cname, cvalue, exdays) {
