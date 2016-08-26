@@ -574,11 +574,11 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 
 			var castVotePostParameters = { username: data.username, sessiontoken: sessionCookie.token, nestid: data.id, up: data.upvoted, down: data.downvoted };
 	    	console.log(castVotePostParameters);
-	    	
+
 		};
 
 		// render spcified trainer vote info
-		$( ("#" + voteid) ).upvote({id: responseObject.nestid, username: sessionCookie.username, count: count, upvoted: parseInt(responseObject.up), downvoted: parseInt(responseObject.down), callback: callback});
+		$( ("#" + voteid) ).upvote({id: responseObject.nestid, username: sessionCookie.username, count: count, upvoted: (parseInt(responseObject.up) == 1), downvoted: (parseInt(responseObject.down) == -1), callback: callback});
 	});
 }
 
