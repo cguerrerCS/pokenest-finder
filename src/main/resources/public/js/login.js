@@ -238,18 +238,10 @@ $( document ).ready(function() {
 
 /* display saved session infomation to the console */
 function showSessionCookie() {
-
-	var username = getCookie("session-username");
-	var token = getCookie("session-token");
-	var created = getCookie("session-created");
-
-	console.log("session-username: '" + username + "'");
-	console.log("session-token: '" + token + "'");
-	console.log("session-created: '" + created + "'");
-	console.log("session-created: '" + (typeof created) + "'");
+	console.log(getSessionCookie);
 }
 
-
+/* save session cookie info using browser cookies */
 function setSessionCookie(sessionCookie) {
 
 	/* session cookie defined like so, {username, token, created} */
@@ -258,8 +250,14 @@ function setSessionCookie(sessionCookie) {
 	setCookie("session-created", sessionCookie.created, 1);
 }
 
+/* get session cookie info stored in browser cookies */
 function getSessionCookie() {
 
+	var sessionCookie = {username: "", token: "", created: 0};
+	sessionCookie.username = getCookie("session-username");
+	sessionCookie.token = getCookie("session-token");
+	sessionCookie.created = parseInt(getCookie("session-created"));
+	return sessionCookie;
 }
 
 /* disable signup button if any field is empty */
