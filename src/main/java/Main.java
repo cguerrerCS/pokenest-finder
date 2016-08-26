@@ -213,6 +213,17 @@ public class Main {
 			return GSON.toJson(results);
 		});
 		
+		Spark.post("/getvote", (request, response) -> {
+			
+			Map<String, Object> results;
+			QueryParamsMap queryMap = request.queryMap();
+			String nestid = queryMap.value("nestid");
+			String username = queryMap.value("username");
+			
+			results = ImmutableMap.of("id", nestid, "username", username, "up", 1, "down", 0);
+			return GSON.toJson(results);
+		});
+		
 		Spark.post("/signup", (request, response) -> {
 			
 			Map<String, Object> results;

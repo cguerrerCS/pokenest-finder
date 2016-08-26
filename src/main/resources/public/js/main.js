@@ -549,6 +549,22 @@ function onLocationError(e) {
 
 function loadVoteInfo(nestid, upvotes, downvotes) {
 
+	/* pull users session information */
+	var sessionCookie = getSessionCookie();
+
+
+	var postParameters = {
+		nestid: nestid,
+		username: sessionCookie.username
+	};
+
+	$.post("/getvote", postParameters, function(responseJSON) {
+
+		var responseObject = JSON.parse(responseJSON);
+		console.log("got vote info for nest: " + nestid);
+		console.log(responseObject);
+	});
+
 	// TODO: reset all upvote fields to default, if possible...
 	// $( '#pokenest-votes' ).upvote({id: nestid, count: 0, upvoted: 0, downvoted: 0});
 
@@ -562,9 +578,10 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 
 	$( '#pokenest-votes' ).html( votehtml );
 
+	// define post requests to be sent when user votes
 	var callback = function(data) {
 	    var data = { id: data.id, up: data.upvoted, down: data.downvoted };
-	    console.log(data);
+	    // console.log(data);
 	};
 
 	// otherwise, just show the votes submitted by others

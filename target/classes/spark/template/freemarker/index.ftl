@@ -75,10 +75,14 @@
         <h4 id="markerdata-googlemap-directions"> <a id="markerdata-googlemap-directions-link" target="_blank" href="#">Get Directions</a></h4>
 
         <!-- voting info -->
-        <div id="pokenest-votes" class="upvote">
-          <a class="upvote"></a>
-          <span class="count">0</span>
-          <a class="downvote"></a>  
+        <div id="pokenest-votes" >
+
+<!--           <div id="upvote-id" class="upvote">
+            <a class="upvote"></a>
+            <span class="count">0</span>
+            <a class="downvote"></a>  
+          </div>
+ -->
         </div>
 
       </div>
