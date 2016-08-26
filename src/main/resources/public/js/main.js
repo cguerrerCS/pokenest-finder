@@ -556,6 +556,7 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 	var voteid = nestid + "-votes";
 	var votehtml = "<div id='" + voteid + "' class='upvote'> <a class='upvote'></a> <span class='count'>0</span> <a class='downvote'></a> </div>";
 	$( '#pokenest-votes' ).html( votehtml );
+	var count = ((-1) * (downvotes)) + upvotes;
 
 	/* get user's voting info regarding selected nest */
 	var postParameters = {
@@ -569,24 +570,16 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 		console.log("got vote info for nest: " + nestid);
 		console.log(responseObject);
 
-		// define callbacks for voting
+		// TODO: define cast vote callbacks
 		var callback = function(data) {
 	    	// var data = { id: data.id, up: data.upvoted, down: data.downvoted };
 	    	// console.log(data);
 		};
 
-		// render vote info
-		$( ("#" + voteid) ).upvote({id: responseObject.nestid, count: parseInt(responseObject.count), upvoted: parseInt(responseObject.up), downvoted: parseInt(responseObject.down), callback: callback});
+		// render spcified trainer vote info
+		$( ("#" + voteid) ).upvote({id: responseObject.nestid, count: count, upvoted: parseInt(responseObject.up), downvoted: parseInt(responseObject.down), callback: callback});
 
 	});
-
-	// TODO: reset all upvote fields to default, if possible...
-	// $( '#pokenest-votes' ).upvote({id: nestid, count: 0, upvoted: 0, downvoted: 0});
-
-	// TODO: if the user is logged in, get their vote value from the server
-
-	// TODO: get vote value
-	// var count = ((-1) * (downvotes)) + downvotes;
 }
 
 function setCookie(cname, cvalue, exdays) {

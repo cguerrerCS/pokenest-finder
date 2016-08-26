@@ -402,4 +402,24 @@ public class Pokedex {
 	public boolean UniqueSessionToken(String token) throws SQLException {
 		return !this.ContainsToken(token);
 	}
+	
+	public int getTrainerVote(String username, String nestid) throws SQLException {
+		
+		String schema = "SELECT vote FROM votes WHERE username = ? AND nestid = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, username);
+		prep.setString(2, nestid);
+		ResultSet rs = prep.executeQuery();
+		
+		if (rs.next()) {
+			
+			// return cast vote (+1/-1)
+			return rs.getInt("vote");
+			
+		} else {
+			
+			// a vote has not yet been cast by specified user
+			return 0;
+		}
+	}
 }

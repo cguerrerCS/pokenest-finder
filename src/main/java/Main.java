@@ -219,8 +219,21 @@ public class Main {
 			QueryParamsMap queryMap = request.queryMap();
 			String nestid = queryMap.value("nestid");
 			String username = queryMap.value("username");
-			results = ImmutableMap.of("nestid", nestid, "username", username, "count", 5, "up", 1, "down", 0);
-			return GSON.toJson(results);
+			
+			int vote = pokedex.getTrainerVote(username, nestid);
+			
+			if (vote == 1) {
+				results = ImmutableMap.of("nestid", nestid, "username", username, "up", 1, "down", 0);
+				return GSON.toJson(results);
+				
+			} else if (vote == -1) {
+				results = ImmutableMap.of("nestid", nestid, "username", username, "up", 0, "down", 1);
+				return GSON.toJson(results);
+				
+			} else {
+				results = ImmutableMap.of("nestid", nestid, "username", username, "up", 0, "down", 0);
+				return GSON.toJson(results);
+			}
 		});
 		
 		Spark.post("/signup", (request, response) -> {
