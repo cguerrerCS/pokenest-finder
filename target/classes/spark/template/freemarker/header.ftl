@@ -61,6 +61,9 @@
 <!-- Include Twitter's open source typeahead box -->
 <script src="js/typeahead.js"></script>
 
+<!-- Include Jquery Plugin (Widget to Handle voting) -->
+
+
 <!-- MathJS for float arithmetic -->
 <script src="js/math.js"></script>
 

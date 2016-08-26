@@ -58,7 +58,7 @@
       </div>
 
       <div class="modal-body">
-
+    
         <!-- Modal map used to provide arial zoomed in view of selected nest -->
         <div id="infomapid" style="height:280px; width: 100%;"></div>
 
@@ -190,7 +190,7 @@
 
           <!-- Repeat password for usability -->
           <div id="repeat-password-container" class="form-group signup-form-group">
-            <label for="inputPasswordRepeat" class="col-md-2 control-label">Confirm Password</label>
+            <label for="inputPasswordRepeat" class="col-md-2 control-label">Confirm</label>
             <div class="col-md-10">
               <input type="password" class="form-control" id="inputPasswordRepeat" placeholder="Retype Password">
               <div id="repeat-password-hints"></div>
