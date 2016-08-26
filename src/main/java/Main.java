@@ -236,6 +236,44 @@ public class Main {
 			}
 		});
 		
+		Spark.post("/castvote", (request, response) -> {
+			
+			Map<String, Object> results;
+			QueryParamsMap queryMap = request.queryMap();
+			String username = queryMap.value("username");
+			String nestid = queryMap.value("nestid");
+			String sessionToken = queryMap.value("sessiontoken");
+			boolean upvote = queryMap.value("up").equals("true");
+			boolean downvote = queryMap.value("down").equals("true");
+			
+			// TODO authenticate user
+			
+			if ((upvote) && (!downvote)) {
+				
+				// TODO cast up vote
+				results = ImmutableMap.of("success", true, "error", "");
+				return GSON.toJson(results);	
+				
+			} else if ((!upvote) && (downvote)) {
+				
+				// TODO cast down vote
+				results = ImmutableMap.of("success", true, "error", "");
+				return GSON.toJson(results);	
+				
+			} else if ((!upvote) && (!downvote)) {
+				
+				// TODO cast neutral vote
+				results = ImmutableMap.of("success", true, "error", "");
+				return GSON.toJson(results);	
+				
+			} else {
+				
+				// TODO error invalid vote request
+				results = ImmutableMap.of("success", false, "error", "invalid vote request");
+				return GSON.toJson(results);	
+			}
+		});
+		
 		Spark.post("/signup", (request, response) -> {
 			
 			Map<String, Object> results;
