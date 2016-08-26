@@ -555,18 +555,17 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 	// TODO: if the user is logged in, get their vote value from the server
 
 	var voteid = nestid + "-votes";
+	var votehtml = "\
+		<div id='" + voteid + "' class='upvote'>\
+        	<a class='upvote'></a>\
+        	<span class='count'>0</span>\
+        	<a class='downvote'></a>\  
+        </div>";
 
 	// TODO: get vote value
 	var count = ((-1) * (downvotes)) + downvotes;
 
-	$( '#pokenest-votes' ).html(
-
-		"<div id='" + voteid + "' class='upvote'>\
-        	<a class='upvote'></a>\
-        	<span class='count'>0</span>\
-        	<a class='downvote'></a>\  
-        </div>"
-	);
+	$( '#pokenest-votes' ).html( votehtml );
 
 	var callback = function(data) {
 	    var data = { id: data.id, up: data.upvoted, down: data.downvoted };
