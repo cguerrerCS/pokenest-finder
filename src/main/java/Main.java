@@ -247,6 +247,11 @@ public class Main {
 			boolean downvote = queryMap.value("down").equals("true");
 			
 			// TODO authenticate user
+			if (!pokedex.UserAuthenticated(username, sessionToken)) {
+				
+				results = ImmutableMap.of("success", false, "error", "trainers must login before casting votes");
+				return GSON.toJson(results);	
+			}
 			
 			if ((upvote) && (!downvote)) {
 				

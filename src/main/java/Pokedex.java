@@ -355,6 +355,25 @@ public class Pokedex {
 		return password;
 	}
 	
+	/**
+	 * Get user's salted and hashed session token from the database
+	 * @param username
+	 * @return
+	 * @throws SQLException 
+	 */
+	public String GetUserSessionToken(String username) throws SQLException {
+		
+		String token = "";
+		String schema = "SELECT token FROM sessions WHERE username = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, username);
+		ResultSet rs = prep.executeQuery();
+		if (rs.next()) {
+			token = rs.getString("password");
+		}
+		return token;
+	}
+	
 	public String GetUserSalt(String username) throws SQLException {
 		
 		String salt = "";
@@ -395,8 +414,11 @@ public class Pokedex {
 		return saltedAndHashedPassword.equals(storedPassword);
 	}
 	
-	public boolean AuthenticateUser(String username, String token) {
-		return false;
+	public boolean UserAuthenticated(String username, String token) throws SQLException {
+		String salt = this.GetUserSalt(username);
+		String saltedAndHashedSessionToken = SecurityUtil.StandardSaltAndHashInput(salt, token);
+		String storedSessionToken = this.GetUserSessionToken(username);
+		return saltedAndHashedSessionToken.equals(storedSessionToken);
 	}
 	
 	public boolean UniqueSessionToken(String token) throws SQLException {
