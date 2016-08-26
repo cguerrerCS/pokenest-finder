@@ -58,19 +58,9 @@
       </div>
 
       <div class="modal-body">
-
-        <div class="row">
-            
-          <!-- Modal map used to provide arial zoomed in view of selected nest -->
-          <div id="infomapid" style="height:280px; width: 82%;"></div>
-            
-          <!-- Display voting content -->
-          <div id="markerdata-votes" style="height:280px; width: 17%;"></div>
-
-        </div>
-
+    
         <!-- Modal map used to provide arial zoomed in view of selected nest -->
-        <!-- <div id="infomapid" style="height:280px; width: 100%;"></div> -->
+        <div id="infomapid" style="height:280px; width: 100%;"></div>
 
         <!-- ID information regarding selected Pokenest -->
         <h4 id="markerdata-id"></h4>

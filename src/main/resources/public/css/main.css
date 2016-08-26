@@ -83,15 +83,6 @@ button:focus {
   height: 70px;
 }
 
-#infomapid {
-  display: inline-block;
-}
-
-#markerdata-votes {
-  background-color: grey;
-  display: inline-block;
-}
-
 a.pokenest-logo-txt, a.pokenest-logo-txt:hover, a.pokenest-logo-txt:focus {
   color: white;
 }
