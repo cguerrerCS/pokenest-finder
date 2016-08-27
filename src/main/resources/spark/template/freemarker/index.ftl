@@ -72,7 +72,7 @@
 
         <div class="row"> 
 
-          <div class="col-xs-10">
+          <div class="col-xs-10" style="vertical-align:middle;padding-right:0;position: static;color:white;text-align:center;">
 
             <!-- ID information regarding selected Pokenest -->
             <h4 id="markerdata-id"></h4>
@@ -88,7 +88,7 @@
 
           </div>
 
-          <div class="col-xs-2">
+          <div class="col-xs-2" style="padding-left:0px; padding-top: 20px;">
 
             <!-- voting info put here dynamically -->
             <div id="pokenest-votes" ></div>
