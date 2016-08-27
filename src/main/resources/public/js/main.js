@@ -589,10 +589,10 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 				var options =  {
 	    			content: "", 		// text of the snackbar
 	    			style: "snackbar",  // add a custom class to your snackbar
-	    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+	    			timeout: 2000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 				}
 				if (success) {
-					console.log("vote successfully updated.")
+					options['content'] = "vote successfully updated";
 				} else {
 					// only error right now involved trainers not logged in
 					setNotLoggedInState();
