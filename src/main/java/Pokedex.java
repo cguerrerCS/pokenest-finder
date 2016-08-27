@@ -380,7 +380,9 @@ public class Pokedex {
 			// update existing session information 
 			String schema = "UPDATE sessions SET token = ?, created = ? WHERE username = ?;";					
 			PreparedStatement prep = conn.prepareStatement(schema);
-			prep.setString(1, username);
+			prep.setString(1, saltedAndHashedToken);
+			prep.setLong(2, created);
+			prep.setString(3, username);
 			prep.executeUpdate();
 
 			// Close the PreparedStatement
