@@ -248,7 +248,7 @@ public class Main {
 			boolean downvote = queryMap.value("down").equals("true");
 			
 			System.out.println("username: " + username);
-			System.out.println("nestid: " + username);
+			System.out.println("nestid: " + nestid);
 			System.out.println("token: " + sessionToken);
 			
 			// TODO authenticate user
