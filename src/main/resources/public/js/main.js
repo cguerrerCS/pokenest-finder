@@ -592,7 +592,7 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 	    			timeout: 2000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 				}
 				if (success) {
-					options['content'] = "vote successfully updated";
+					// options['content'] = "vote successfully updated";
 				} else {
 					// only error right now involved trainers not logged in
 					setNotLoggedInState();
@@ -605,7 +605,7 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 		};
 
 		// render spcified trainer vote info
-		$( ("#" + voteid) ).upvote({id: responseObject.nestid, username: sessionCookie.username, count: count, upvoted: (parseInt(responseObject.up) == 1), downvoted: (parseInt(responseObject.down) == -1), callback: callback});
+		$( ("#" + voteid) ).upvote({id: responseObject.nestid, username: sessionCookie.username, count: count, upvoted: (parseInt(responseObject.up) == 1), downvoted: (parseInt(responseObject.down) == 1), callback: callback});
 	});
 }
 
