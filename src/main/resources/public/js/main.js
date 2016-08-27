@@ -549,6 +549,9 @@ function onLocationError(e) {
 
 function loadVoteInfo(nestid, upvotes, downvotes) {
 
+	/* outer session cookie reference */
+	var sessionCookie = getSessionCookie();
+
 	/* get up a platform for voting info to be loaded into */
 	var voteid = nestid + "-votes";
 	var votehtml = "<div id='" + voteid + "' class='upvote'> <a class='upvote'></a> <span class='count'>0</span> <a class='downvote'></a> </div>";
@@ -558,7 +561,7 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 	/* get user's voting info regarding selected nest */
 	var postParameters = {
 		nestid: nestid,
-		username: getSessionCookie().username
+		username: sessionCookie.username
 	};
 
 	$.post("/getvote", postParameters, function(responseJSON) {
@@ -566,8 +569,6 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 		// trainer vote data regarding this nest
 		var responseObject = JSON.parse(responseJSON);
 
-
-		
 		// TODO: define cast vote callbacks
 		var callback = function(data) {
 
