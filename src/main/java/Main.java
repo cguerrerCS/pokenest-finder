@@ -240,13 +240,16 @@ public class Main {
 			
 			Map<String, Object> results;
 			QueryParamsMap queryMap = request.queryMap();
-			System.out.println(queryMap.toString());
 			
 			String username = queryMap.value("username");
 			String nestid = queryMap.value("nestid");
 			String sessionToken = queryMap.value("sessiontoken");
 			boolean upvote = queryMap.value("up").equals("true");
 			boolean downvote = queryMap.value("down").equals("true");
+			
+			System.out.println("username: " + username);
+			System.out.println("nestid: " + username);
+			System.out.println("token: " + sessionToken);
 			
 			// TODO authenticate user
 			if (!pokedex.UserAuthenticated(username, sessionToken)) {
