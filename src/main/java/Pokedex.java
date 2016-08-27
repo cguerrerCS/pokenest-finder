@@ -417,11 +417,7 @@ public class Pokedex {
 	public boolean UserAuthenticated(String username, String token) throws SQLException {
 		String salt = this.GetUserSalt(username);
 		String saltedAndHashedSessionToken = SecurityUtil.StandardSaltAndHashInput(salt, token);
-		String storedSessionToken = this.GetUserSessionToken(username);
-		
-		System.out.println("userSessionToken: " + saltedAndHashedSessionToken);
-		System.out.println("storedSessionToken: " + storedSessionToken);
-		
+		String storedSessionToken = this.GetUserSessionToken(username);		
 		return saltedAndHashedSessionToken.equals(storedSessionToken);
 	}
 	

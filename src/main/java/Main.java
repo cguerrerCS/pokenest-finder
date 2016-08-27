@@ -240,6 +240,8 @@ public class Main {
 			
 			Map<String, Object> results;
 			QueryParamsMap queryMap = request.queryMap();
+			System.out.println(queryMap.toString());
+			
 			String username = queryMap.value("username");
 			String nestid = queryMap.value("nestid");
 			String sessionToken = queryMap.value("sessiontoken");
