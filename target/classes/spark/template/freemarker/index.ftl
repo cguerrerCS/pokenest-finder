@@ -58,25 +58,45 @@
       </div>
 
       <div class="modal-body">
+
+        <div class="row">
+
+          <div class="col-sm-12">
+
+            <!-- Modal map used to provide arial zoomed in view of selected nest -->
+            <div id="infomapid" style="height:280px; width: 100%;"></div>
+
+          </div>
+
+        </div>
+
+        <div class="row"> 
+
+          <div class="col-xs-10">
+
+            <!-- ID information regarding selected Pokenest -->
+            <h4 id="markerdata-id"></h4>
+
+            <!-- Confirmation information regarding selected Pokenest -->
+            <h4 id="markerdata-confirmed"></h4>
+
+            <!-- Distance information regarding selected Pokenest -->
+            <h4 id="markerdata-distance"></h4>
+
+            <!-- Link to Google Maps directions -->
+            <h4 id="markerdata-googlemap-directions"> <a id="markerdata-googlemap-directions-link" target="_blank" href="#">Get Directions</a></h4>
+
+          </div>
+
+          <div class="col-xs-2">
+
+            <!-- voting info put here dynamically -->
+            <div id="pokenest-votes" ></div>
+
+          </div>
+
+        </div>
     
-        <!-- Modal map used to provide arial zoomed in view of selected nest -->
-        <div id="infomapid" style="height:280px; width: 100%;"></div>
-
-        <!-- ID information regarding selected Pokenest -->
-        <h4 id="markerdata-id"></h4>
-
-        <!-- Confirmation information regarding selected Pokenest -->
-        <h4 id="markerdata-confirmed"></h4>
-
-        <!-- Distance information regarding selected Pokenest -->
-        <h4 id="markerdata-distance"></h4>
-
-        <!-- Link to Google Maps directions -->
-        <h4 id="markerdata-googlemap-directions"> <a id="markerdata-googlemap-directions-link" target="_blank" href="#">Get Directions</a></h4>
-
-        <!-- voting info put here dynamically -->
-        <div id="pokenest-votes" ></div>
-
       </div>
 
       <div class="modal-footer">

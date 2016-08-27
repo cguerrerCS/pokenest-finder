@@ -182,6 +182,15 @@ public class Pokedex {
 
 		// Close the PreparedStatement
 		prep.close();
+		
+		// Remove all votes related to nest id
+		schema = "DELETE FROM votes WHERE nestid = ?;";					
+		prep = conn.prepareStatement(schema);
+		prep.setString(1, nestid);
+		prep.executeUpdate();
+		
+		// Close the PreparedStatement
+		prep.close();
 	}
 	
 	public void Confirm(String nestid) throws SQLException {
