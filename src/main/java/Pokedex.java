@@ -1,6 +1,3 @@
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,9 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.UUID;
 
-import com.google.common.collect.ImmutableMap;
 import com.heroku.sdk.jdbc.DatabaseUrl;
 
 public class Pokedex {
@@ -374,6 +369,38 @@ public class Pokedex {
 		return token;
 	}
 	
+	public boolean UserSessionExists(String username) throws SQLException {
+		return !GetUserSessionToken(username).equals("");
+	}
+	
+	public void UpdateUserSession(String username, String saltedAndHashedToken, long created) throws SQLException {
+		
+		if (UserSessionExists(username)) {
+			
+			// update existing session information 
+			String schema = "UPDATE sessions SET token = ?, created = ? WHERE username = ?;";					
+			PreparedStatement prep = conn.prepareStatement(schema);
+			prep.setString(1, username);
+			prep.executeUpdate();
+
+			// Close the PreparedStatement
+			prep.close();
+			
+		} else {
+
+			// existing session may have expired, add a new one
+			String schema = "INSERT INTO sessions VALUES(?,?,?);";					
+			PreparedStatement prep = conn.prepareStatement(schema);
+			prep.setString(1, username);
+			prep.setString(2, saltedAndHashedToken);
+			prep.setLong(3, created);
+			prep.executeUpdate();
+			
+			// Close the PreparedStatement
+			prep.close();
+		}	
+	}
+	
 	public String GetUserSalt(String username) throws SQLException {
 		
 		String salt = "";
@@ -388,25 +415,7 @@ public class Pokedex {
 		
 		return salt;
 	}
-	
-	public Map<String, Object> GetSessionCookie(String username) throws SQLException {
 		
-		String token = "";
-		long created = 0;
-		
-		String schema = "SELECT * FROM sessions WHERE username = ?;";					
-		PreparedStatement prep = conn.prepareStatement(schema);
-		prep.setString(1, username);
-		ResultSet rs = prep.executeQuery();
-		
-		if (rs.next()) {
-			token = rs.getString("token");
-			created = rs.getLong("created");
-		}
-			
-		return ImmutableMap.of("username", username, "token", token, "created", created);
-	}
-	
 	public boolean ValidCredentials(String username, String password) throws SQLException {
 		String salt = this.GetUserSalt(username);
 		String saltedAndHashedPassword = SecurityUtil.SlowSaltAndHashPassword(salt, password);
@@ -418,10 +427,6 @@ public class Pokedex {
 		String salt = this.GetUserSalt(username);
 		String saltedAndHashedSessionToken = SecurityUtil.StandardSaltAndHashInput(salt, token);
 		String storedSessionToken = this.GetUserSessionToken(username);
-		
-		System.out.println("saltedAndHashed Token: " + saltedAndHashedSessionToken);
-		System.out.println("stored saltedAndHashedToken: " + storedSessionToken);
-		
 		return saltedAndHashedSessionToken.equals(storedSessionToken);
 	}
 	

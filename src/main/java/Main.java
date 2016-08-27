@@ -205,10 +205,18 @@ public class Main {
 				return GSON.toJson(results);
 			}
 			
-			// TODO: update session information
+			// TODO: generate a session token for the user
+			String salt = pokedex.GetUserSalt(username);
+			String token = SecurityUtil.GenerateRandString();
+			String saltedAndHashedToken = SecurityUtil.StandardSaltAndHashInput(salt, token);
+			long created = System.currentTimeMillis() / 1000L;
 			
-			// TODO: grab user's session information		
-			Map<String, Object> sessionCookie = pokedex.GetSessionCookie(username);
+			// TODO: update session information
+			pokedex.UpdateUserSession(username, saltedAndHashedToken, created);
+			
+			// TODO: grab user's session information	
+			Map<String, Object> sessionCookie = ImmutableMap.of("username", username,
+					"token", token, "created", created);
 			results = ImmutableMap.of("success", true, "error", "", "sessionCookie", sessionCookie);
 			return GSON.toJson(results);
 		});
