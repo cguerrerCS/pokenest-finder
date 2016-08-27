@@ -62,7 +62,7 @@
 
         <div class="row">
 
-          <div class="col-sm-12" style="background-color:lavender;">
+          <div class="col-sm-12">
 
             <!-- Modal map used to provide arial zoomed in view of selected nest -->
             <div id="infomapid" style="height:280px; width: 100%;"></div>
@@ -73,7 +73,7 @@
 
         <div class="row">
 
-          <div class="col-sm-8" style="background-color:lavender;">
+          <div class="col-sm-10">
 
             <!-- ID information regarding selected Pokenest -->
             <h4 id="markerdata-id"></h4>
@@ -89,7 +89,7 @@
 
           </div>
 
-          <div class="col-sm-4" style="background-color:lavenderblush;">
+          <div class="col-sm-2">
 
             <!-- voting info put here dynamically -->
             <div id="pokenest-votes" ></div>
