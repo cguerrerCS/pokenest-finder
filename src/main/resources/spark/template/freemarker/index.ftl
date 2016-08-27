@@ -59,7 +59,6 @@
 
       <div class="modal-body">
 
-
         <div class="row">
 
           <div class="col-sm-12">
@@ -71,9 +70,17 @@
 
         </div>
 
-        <div class="row">
+        <div class="row"> 
 
-          <div class="col-sm-10">
+
+          <div class="col-xs-2">
+
+            <!-- voting info put here dynamically -->
+            <div id="pokenest-votes" ></div>
+
+          </div>
+
+          <div class="col-xs-10">
 
             <!-- ID information regarding selected Pokenest -->
             <h4 id="markerdata-id"></h4>
@@ -86,13 +93,6 @@
 
             <!-- Link to Google Maps directions -->
             <h4 id="markerdata-googlemap-directions"> <a id="markerdata-googlemap-directions-link" target="_blank" href="#">Get Directions</a></h4>
-
-          </div>
-
-          <div class="col-sm-2">
-
-            <!-- voting info put here dynamically -->
-            <div id="pokenest-votes" ></div>
 
           </div>
 
