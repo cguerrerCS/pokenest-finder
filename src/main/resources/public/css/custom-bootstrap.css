@@ -1,8 +1,4 @@
 
-.modal-content .modal-body {
-	padding: 0px;
-}
-
 /* Pokenest Radio buttons ************************************************************* */
 .radio input[type=radio]:checked ~ .circle {
 	border-color: #00e676;
