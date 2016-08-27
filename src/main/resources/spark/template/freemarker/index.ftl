@@ -72,14 +72,6 @@
 
         <div class="row"> 
 
-
-          <div class="col-xs-2">
-
-            <!-- voting info put here dynamically -->
-            <div id="pokenest-votes" ></div>
-
-          </div>
-
           <div class="col-xs-10">
 
             <!-- ID information regarding selected Pokenest -->
@@ -93,6 +85,13 @@
 
             <!-- Link to Google Maps directions -->
             <h4 id="markerdata-googlemap-directions"> <a id="markerdata-googlemap-directions-link" target="_blank" href="#">Get Directions</a></h4>
+
+          </div>
+
+          <div class="col-xs-2">
+
+            <!-- voting info put here dynamically -->
+            <div id="pokenest-votes" ></div>
 
           </div>
 
