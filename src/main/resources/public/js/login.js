@@ -91,8 +91,7 @@ $( document ).ready(function() {
 				var success = responseObject.success;
 				var error = responseObject.error;
 				var sessionCookie = responseObject.sessionCookie;
-				console.log(sessionCookie);
-
+				
 				// add notification for user
 				var options =  {
 	    			content: "", 		// text of the snackbar
@@ -106,11 +105,15 @@ $( document ).ready(function() {
 				}
 				$.snackbar(options);
 
-				// TODO: hide login and sign up buttons, instead show logged in as 'username'
-
 				// hide modal
 				if (success) {
 					$("#signupModal").modal('hide');
+
+					// TODO: set session cookie info
+					setSessionCookie(sessionCookie);
+					showSessionCookie();
+
+					// TODO: hide login and sign up buttons, instead show logged in as 'username'
 					setLoggedInState();
 				}
 			});
