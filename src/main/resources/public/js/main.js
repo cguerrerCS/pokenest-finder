@@ -573,13 +573,15 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 		var callback = function(data) {
 
 			var castVotePostParameters = { username: data.username, sessiontoken: sessionCookie.token, nestid: data.id, up: data.upvoted, down: data.downvoted };
+			console.log(castVotePostParameters);
+
 	    	$.post("/castvote", castVotePostParameters, function(responseJSON) {
 
 	    		var responseObject = JSON.parse(responseJSON);
 	    		console.log(responseObject);
 
 	    	});
-	    	
+
 		};
 
 		// render spcified trainer vote info
