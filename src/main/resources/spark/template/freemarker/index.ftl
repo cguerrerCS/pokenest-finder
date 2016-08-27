@@ -59,12 +59,21 @@
 
       <div class="modal-body">
 
+
         <div class="row">
 
-          <div class="col-sm-8" style="background-color:lavender;">
+          <div class="col-sm-12" style="background-color:lavender;">
 
             <!-- Modal map used to provide arial zoomed in view of selected nest -->
             <div id="infomapid" style="height:280px; width: 100%;"></div>
+
+          </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-sm-8" style="background-color:lavender;">
 
             <!-- ID information regarding selected Pokenest -->
             <h4 id="markerdata-id"></h4>
