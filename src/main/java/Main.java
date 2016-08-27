@@ -269,19 +269,19 @@ public class Main {
 			if ((upvote) && (!downvote)) {
 				
 				// TODO cast up vote
-				results = ImmutableMap.of("success", true, "error", "");
+				results = pokedex.SubmitVote(username, nestid, +1);
 				return GSON.toJson(results);	
 				
 			} else if ((!upvote) && (downvote)) {
 				
 				// TODO cast down vote
-				results = ImmutableMap.of("success", true, "error", "");
+				results = pokedex.SubmitVote(username, nestid, -1);
 				return GSON.toJson(results);	
 				
 			} else if ((!upvote) && (!downvote)) {
 				
 				// TODO cast neutral vote
-				results = ImmutableMap.of("success", true, "error", "");
+				results = pokedex.SubmitVote(username, nestid, 0);
 				return GSON.toJson(results);	
 				
 			} else {

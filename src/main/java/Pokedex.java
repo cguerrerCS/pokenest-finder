@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.common.collect.ImmutableMap;
 import com.heroku.sdk.jdbc.DatabaseUrl;
 
 public class Pokedex {
@@ -455,4 +456,151 @@ public class Pokedex {
 			return 0;
 		}
 	}
+	
+	public Map<String, Object> SubmitVote(String username, String nestid, int vote) throws SQLException {
+		
+		// default return is success
+		Map<String, Object> results = ImmutableMap.of("success", true, "error", "");
+
+		// disallow redundant votes
+		if (getTrainerVote(username, nestid) == vote) {
+			results = ImmutableMap.of("success", false, "error",
+					"redundant votes disallowed");
+			return results;
+		}
+
+		this.ApplyVote(username, nestid, vote); 
+		return results;
+	}	
+	
+	private int GetNestDownvotes(String nestid) throws SQLException {
+		
+		int downvotes = 0;
+		String schema = "SELECT downvotes FROM pokenest WHERE nestid = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, nestid);
+		ResultSet rs = prep.executeQuery();
+		if (rs.next()) {
+			downvotes = rs.getInt("downvotes");
+		}
+		return downvotes;
+	}
+	
+	private void SetNestDownvotes(String nestid, int downvotes) throws SQLException {
+		
+		String schema = "UPDATE pokenest SET downvotes = ? WHERE nestid = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setInt(1, downvotes);
+		prep.setString(2, nestid);
+		prep.executeUpdate();
+
+		// Close the PreparedStatement
+		prep.close();
+	}
+	
+	private int GetNestUpvotes(String nestid) throws SQLException {
+		
+		int upvotes = 0;
+		String schema = "SELECT upvotes FROM pokenest WHERE nestid = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setString(1, nestid);
+		ResultSet rs = prep.executeQuery();
+		if (rs.next()) {
+			upvotes = rs.getInt("upvotes");
+		}
+		return upvotes;
+	}
+	
+	private void SetNestUpvotes(String nestid, int upvotes) throws SQLException {
+		
+		String schema = "UPDATE pokenest SET upvotes = ? WHERE nestid = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setInt(1, upvotes);
+		prep.setString(2, nestid);
+		prep.executeUpdate();
+
+		// Close the PreparedStatement
+		prep.close();
+	}
+
+	private void ApplyVote(String username, String nestid, int vote) throws SQLException {
+		
+		// get trainers last recorded vote for specified nest nest
+		int oldVote = getTrainerVote(username, nestid);
+		
+		// if no trainer vote data exists for nest, create some, otherwise, update existing data
+		if (oldVote == 0) {
+						
+			// if vote does not exist in database add it
+			String schema = "INSERT INTO votes VALUES(?,?,?);";					
+			PreparedStatement prep = conn.prepareStatement(schema);
+			prep.setString(1, nestid);
+			prep.setString(2, username);
+			prep.setInt(3, vote);
+			prep.executeUpdate();
+			
+			// Close the PreparedStatement
+			prep.close();
+			
+			// update pokenest up votes, down votes
+			if ( vote == +1 ) {
+				// increment upvotes for nest
+				SetNestUpvotes(nestid, (GetNestUpvotes(nestid) + 1));
+			}
+			
+			if ( vote == -1 ) {
+				// increment downvotes for nest
+				SetNestDownvotes(nestid, (GetNestDownvotes(nestid) + 1));
+			}
+			
+		} else { 
+			
+			if (vote == 0) {
+				
+				// remove previous vote info, now neutral
+				String schema = "DELETE FROM votes WHERE nestid = ? AND username = ?;";					
+				PreparedStatement prep = conn.prepareStatement(schema);
+				prep.setString(1, nestid);
+				prep.setString(2, username);
+				prep.executeUpdate();
+
+				// Close the PreparedStatement
+				prep.close();
+				
+				// undo previous vote
+				if (oldVote == +1) {
+					SetNestUpvotes(nestid, (GetNestUpvotes(nestid) - 1));
+				}
+				
+				if (oldVote == -1) {
+					SetNestDownvotes(nestid, (GetNestDownvotes(nestid) - 1));
+				}
+				
+			} else {
+				
+				// update existing vote information
+				String schema = "UPDATE votes SET vote = ? WHERE nestid = ? AND username = ?;";					
+				PreparedStatement prep = conn.prepareStatement(schema);
+				prep.setInt(1, vote);
+				prep.setString(2, nestid);
+				prep.setString(3, username);
+				prep.executeUpdate();
+
+				// Close the PreparedStatement
+				prep.close();
+				
+				if (vote == +1) {
+					// old vote must be -1 at this point
+					SetNestUpvotes(nestid, (GetNestUpvotes(nestid) + 1));
+					SetNestDownvotes(nestid, (GetNestDownvotes(nestid) - 1));
+				}
+				
+				if (vote == -1) {
+					// old vote must be +1 at this point
+					SetNestDownvotes(nestid, (GetNestDownvotes(nestid) + 1));
+					SetNestUpvotes(nestid, (GetNestUpvotes(nestid) - 1));
+				}
+			}
+		}
+	} 
 }
