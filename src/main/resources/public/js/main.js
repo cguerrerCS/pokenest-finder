@@ -595,6 +595,7 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 					// options['content'] = "vote successfully updated";
 				} else {
 					// only error right now involved trainers not logged in
+					logout();
 					setNotLoggedInState();
 					options['content'] = "Error: " + error;
 				}
