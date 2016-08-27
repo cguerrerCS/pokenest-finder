@@ -418,6 +418,10 @@ public class Pokedex {
 		String salt = this.GetUserSalt(username);
 		String saltedAndHashedSessionToken = SecurityUtil.StandardSaltAndHashInput(salt, token);
 		String storedSessionToken = this.GetUserSessionToken(username);
+		
+		System.out.println("userSessionToken: " + saltedAndHashedSessionToken);
+		System.out.println("storedSessionToken: " + storedSessionToken);
+		
 		return saltedAndHashedSessionToken.equals(storedSessionToken);
 	}
 	
