@@ -582,7 +582,23 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 	    	$.post("/castvote", castVotePostParameters, function(responseJSON) {
 
 	    		var responseObject = JSON.parse(responseJSON);
-	    		console.log(responseObject);
+	    		var success = responseObject.success;
+				var error = responseObject.error;
+	
+				// add notification for user
+				var options =  {
+	    			content: "", 		// text of the snackbar
+	    			style: "snackbar",  // add a custom class to your snackbar
+	    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+				}
+				if (success) {
+					console.log("vote successfully updated.")
+				} else {
+					// only error right now involved trainers not logged in
+					setNotLoggedInState();
+					options['content'] = "Error: " + error;
+				}
+				$.snackbar(options);
 
 	    	});
 
