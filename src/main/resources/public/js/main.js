@@ -548,6 +548,34 @@ function onLocationError(e) {
 	console.log(e.message);
 }
 
+function refreshVoteInfo(nestid, upvotes, downvotes) {
+
+	/* outer session cookie reference */
+	var sessionCookie = getSessionCookie();
+
+	/* get up a platform for voting info to be loaded into */
+	var voteid = nestid + "-votes";
+	var count = ((-1) * (downvotes)) + upvotes;
+
+	/* get user's voting info regarding selected nest */
+	var postParameters = {
+		nestid: nestid,
+		username: sessionCookie.username
+	};
+
+	$.post("/getvote", postParameters, function(responseJSON) {
+
+		// trainer vote data regarding this nest
+		var responseObject = JSON.parse(responseJSON);
+		console.log(responseObject);
+
+		// 	};
+		// ren
+		// $( ("#" + voteid) ).upvote({id: responseObject.nestid, username: sessionCookie.username, count: count, upvoted: (parseInt(responseObject.up) == 1), downvoted: (parseInt(responseObject.down) == 1), callback: callback});
+	});
+
+}
+
 function loadVoteInfo(nestid, upvotes, downvotes) {
 
 	/* outer session cookie reference */

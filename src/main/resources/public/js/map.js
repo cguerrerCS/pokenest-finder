@@ -357,7 +357,7 @@ function updateSelectedMarkerModalData() {
 			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
 
 			// update votes fields
-			loadVoteInfo(MARKERDATA[nestid].nestid, MARKERDATA[nestid].upvotes, MARKERDATA[nestid].downvotes);
+			refreshVoteInfo(MARKERDATA[nestid].nestid, MARKERDATA[nestid].upvotes, MARKERDATA[nestid].downvotes);
 
 			// show or hide privileged action buttons
 			var privileged = (getCookie("access") == "true");
