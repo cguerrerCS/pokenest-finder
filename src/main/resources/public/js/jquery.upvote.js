@@ -91,13 +91,7 @@
     }
 
     function _click_upvote(jqdom) {
-        
-        // only register clicks for logged in users
-        if ( haveSessionCookie() ) {
-            jqdom.find(dot_upvote_css).click();
-        }
-
-        // jqdom.find(dot_upvote_css).click();
+        jqdom.find(dot_upvote_css).click();
     }
 
     function _click_downvote(jqdom) {

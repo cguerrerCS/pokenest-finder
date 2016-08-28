@@ -625,11 +625,20 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 				if (success) {
 					// options['content'] = "vote successfully updated";
 				} else {
+
 					// only error right now involved trainers not logged in
 					logout();
 					setNotLoggedInState();
 					options['content'] = "Error: " + error;
 					$.snackbar(options);
+
+					// TODO: undo the accidental vote (on the DOM)
+					if (data.upvoted) {
+						$( ("#" + voteid) ).upvote("downvote");
+					} else if (data.downvoted) {
+						$( ("#" + voteid) ).upvote("upvote");
+					}
+
 				}
 			
 	    	});
