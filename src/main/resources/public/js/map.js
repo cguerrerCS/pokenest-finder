@@ -255,6 +255,11 @@ function loadViewportMarkers() {
 
 				    			// load vote information for this marker on click
 				    			loadVoteInfo(MARKERDATA[nestid].nestid, MARKERDATA[nestid].upvotes, MARKERDATA[nestid].downvotes);
+
+				    			// if the user does not have a session cookie (is not logged on), disable clicks to votes
+				    			if (!haveSessionCookie()) {
+				    				$('pokenest-votes').click(false);
+				    			}
 				    			
 				    			// show or hide privileged action buttons
 				    			var privileged = (getCookie("access") == "true");
