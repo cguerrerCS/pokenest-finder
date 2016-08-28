@@ -631,14 +631,6 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 					setNotLoggedInState();
 					options['content'] = "Error: " + error;
 					$.snackbar(options);
-
-					// TODO: undo the accidental vote (on the DOM)
-					if (data.upvoted) {
-						$( ("#" + voteid) ).upvote("downvote");
-					} else if (data.downvoted) {
-						$( ("#" + voteid) ).upvote("upvote");
-					}
-
 				}
 			
 	    	});
