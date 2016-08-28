@@ -207,22 +207,21 @@ $( document ).ready(function() {
 
 
 	/* bind click and hold event to the map */
-	var clickstart;
-	var clickstop;
+	var mapMouseDown;
 	var selectedLocation;
 
 	pokemap.on('mousedown', function(e) {   
 
 		selectedLocation = e.latlng; 
-    	clickstart = e.timeStamp;
+    	mapMouseDown = setTimeout(function() {
+     		console.log(selectedLocation);
+  		}, 2000);
 
 	}).on('mouseup', function(e) {
-
-    	clickstop = e.timeStamp - clickstart;
-    	if (clickstop >= 2000) {
-    	 	console.log(selectedLocation);
-    	}
-    	console.log(selectedLocation);
+		
+    	if (mapMouseDown) {
+    		clearTimeout(mapMouseDown);
+  		}
 	});
 
     // MoveEnd event of map to update marker position (fixes inertia bug)
