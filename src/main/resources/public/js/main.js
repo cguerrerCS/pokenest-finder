@@ -205,18 +205,23 @@ $( document ).ready(function() {
 	pokemap.on('locationfound', onLocationFound);
 	pokemap.on('locationerror', onLocationError);
 
-	// var clickstart;
-	// var clickstop;
-	pokemap.on('mousedown', function(e) {    
-    	// clickstart = e.timeStamp;
-    	console.log(e.latlng);
-    	
+
+	/* bind click and hold event to the map */
+	var clickstart;
+	var clickstop;
+	var selectedLocation;
+
+	pokemap.on('mousedown', function(e) {   
+
+		selectedLocation = e.latlng; 
+    	clickstart = e.timeStamp;
+
 	}).on('mouseup', function(e) {
-    	// clickstop = e.timeStamp- clickstart
-    	// if (clickstop >= 2000) {
-    	// 	console.log()
-    	// } two()
-    	// else one();
+
+    	clickstop = e.timeStamp- clickstart
+    	if (clickstop >= 2000) {
+    	 	console.log(selectedLocation);
+    	}
 	});
 
     // MoveEnd event of map to update marker position (fixes inertia bug)
