@@ -214,11 +214,11 @@ $( document ).ready(function() {
 
 		selectedLocation = e.latlng; 
     	mapMouseDown = setTimeout(function() {
-     		console.log(selectedLocation);
+     		reportPokenestFromSelectedLocation(selectedLocation);
   		}, 2000);
 
 	}).on('mouseup', function(e) {
-		
+
     	if (mapMouseDown) {
     		clearTimeout(mapMouseDown);
   		}
