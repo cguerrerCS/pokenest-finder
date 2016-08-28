@@ -555,6 +555,8 @@ function refreshVoteInfo(nestid, upvotes, downvotes) {
 
 	/* get up a platform for voting info to be loaded into */
 	var voteSelector = "#" + nestid + "-votes";
+
+	/* count is updated vote count */
 	var count = ((-1) * (downvotes)) + upvotes;
 
 	/* get user's voting info regarding selected nest */
@@ -563,18 +565,17 @@ function refreshVoteInfo(nestid, upvotes, downvotes) {
 		username: sessionCookie.username
 	};
 
-	if (count != $(voteSelector).upvote("count") ) {
-		console.log("vote count has changed for nest: " + nestid);
-	}
+	// TODO: figure out refresh logic...
 
+	// if (count != $(voteSelector).upvote("count") ) {
+	// 	console.log("vote count has changed for nest: " + nestid);
+	// }
 	// $.post("/getvote", postParameters, function(responseJSON) {
-
 	// 	// trainer vote data regarding this nest
 	// 	var responseObject = JSON.parse(responseJSON);
 	// 	console.log(responseObject);
 	// 	$( ("#" + voteid) ).upvote({id: responseObject.nestid, username: sessionCookie.username, count: count, upvoted: (parseInt(responseObject.up) == 1), downvoted: (parseInt(responseObject.down) == 1), callback: callback});
 	// });
-
 }
 
 function loadVoteInfo(nestid, upvotes, downvotes) {
