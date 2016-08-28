@@ -350,12 +350,26 @@ function updateSelectedMarkerModalData() {
 		// TODO: check that selected marker has not been removed
 		if (MARKERDATA[selectedInfoMarker.options.nestid] !== undefined) {
 
-			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[selectedInfoMarker.options.nestid].confirmed == 1) + "</b>");
+			// get selected nest id
+			var nestid = selectedInfoMarker.options.nestid;
+
+			// update confirmed field
+			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
+
+			// update votes fields
+			loadVoteInfo(MARKERDATA[nestid].nestid, MARKERDATA[nestid].upvotes, MARKERDATA[nestid].downvotes);
+
 			// show or hide privileged action buttons
 			var privileged = (getCookie("access") == "true");
 			if (privileged) {
+
 				$('#removeEntryBtn').show();
-				$('#confirmEntryBtn').show();
+				if (MARKERDATA[nestid].confirmed == 1) {
+				    $('#confirmEntryBtn').hide();
+				} else {
+				    $('#confirmEntryBtn').show();
+				}
+				
 			} else {
 				$('#removeEntryBtn').hide();
 				$('#confirmEntryBtn').hide();
