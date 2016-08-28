@@ -598,9 +598,9 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 					logout();
 					setNotLoggedInState();
 					options['content'] = "Error: " + error;
+					$.snackbar(options);
 				}
-				$.snackbar(options);
-
+			
 	    	});
 
 		};
