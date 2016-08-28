@@ -50,6 +50,9 @@ $( document ).ready(function() {
 		zoom: 10
 	});
 
+	// plan to use double click for something else 
+	infomap.doubleClickZoom.disable(); 
+
 	// modal map used to select and submit a new nest location
 	sitemap = L.map('sitemapid', {
 		zoomControl: false,
@@ -205,23 +208,8 @@ $( document ).ready(function() {
 	pokemap.on('locationfound', onLocationFound);
 	pokemap.on('locationerror', onLocationError);
 
-
-	/* bind click and hold event to the map */
-	var mapMouseDown;
-	var selectedLocation;
-
-	pokemap.on('mousedown', function(e) {   
-
-		selectedLocation = e.latlng; 
-    	mapMouseDown = setTimeout(function() {
-     		reportPokenestFromSelectedLocation(selectedLocation);
-  		}, 2000);
-
-	}).on('mouseup', function(e) {
-
-    	if (mapMouseDown) {
-    		clearTimeout(mapMouseDown);
-  		}
+	pokemap.on('dblclick', function(e) {   
+     	reportPokenestFromSelectedLocation(e.latlng);
 	});
 
     // MoveEnd event of map to update marker position (fixes inertia bug)
