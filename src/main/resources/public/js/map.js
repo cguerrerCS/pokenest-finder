@@ -255,11 +255,6 @@ function loadViewportMarkers() {
 
 				    			// load vote information for this marker on click
 				    			loadVoteInfo(MARKERDATA[nestid].nestid, MARKERDATA[nestid].upvotes, MARKERDATA[nestid].downvotes);
-
-				    			// if the user does not have a session cookie (is not logged on), disable clicks to votes
-				    			if (!haveSessionCookie()) {
-				    				$('#pokenest-votes').click(false);
-				    			}
 				    			
 				    			// show or hide privileged action buttons
 				    			var privileged = (getCookie("access") == "true");
@@ -268,13 +263,16 @@ function loadViewportMarkers() {
 									$('#removeEntryBtn').show();
 				    				if (MARKERDATA[nestid].confirmed == 1) {
 				    					$('#confirmEntryBtn').hide();
+				    					$('#refuteEntryBtn').show();
 				    				} else {
 				    					$('#confirmEntryBtn').show();
+				    					$('#refuteEntryBtn').hide();
 				    				}
 				    				
 				    			} else {
 				    				$('#removeEntryBtn').hide();
 				    				$('#confirmEntryBtn').hide();
+				    				$('#refuteEntryBtn').hide();
 				    			}
 				    			
 				    			// show marker details modal
@@ -370,14 +368,19 @@ function updateSelectedMarkerModalData() {
 
 				$('#removeEntryBtn').show();
 				if (MARKERDATA[nestid].confirmed == 1) {
-				    $('#confirmEntryBtn').hide();
+
+					$('#confirmEntryBtn').hide();
+					$('#refuteEntryBtn').show();
 				} else {
-				    $('#confirmEntryBtn').show();
+					
+					$('#confirmEntryBtn').show();
+					$('#refuteEntryBtn').hide();
 				}
 				
 			} else {
 				$('#removeEntryBtn').hide();
 				$('#confirmEntryBtn').hide();
+				$('#refuteEntryBtn').hide();
 			}
 		}
 	}

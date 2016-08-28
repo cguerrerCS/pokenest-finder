@@ -336,6 +336,39 @@ $( document ).ready(function() {
 		}		
 	});
 
+	$('#refuteEntryBtn').on('click', function() {
+
+		var privileged = (getCookie("access") == "true");
+		var password = getCookie("passwd");
+
+		if (privileged) {
+
+			var postParameters = {id: selectedInfoMarker.options.nestid, password: password};
+			$.post("/refute", postParameters, function(responseJSON){
+
+				var responseObject = JSON.parse(responseJSON);
+				var success = responseObject.success;
+				var error = responseObject.error;
+	
+				// add notification for user
+				var options =  {
+	    			content: "", 		// text of the snackbar
+	    			style: "snackbar",  // add a custom class to your snackbar
+	    			timeout: 3000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+				}
+				if (success) {
+					options['content'] = "[" + selectedInfoMarker.options.nestid + "] PokéNest location refuted.";
+				} else {
+					options['content'] = "Error: " + error;
+				}
+				$.snackbar(options);
+
+				// hide modal and deselect
+				$('#myMarkerModal').modal('hide');
+			}); 
+		}
+	});
+
 	$('#confirmEntryBtn').on('click', function() {
 
 		var privileged = (getCookie("access") == "true");
