@@ -259,8 +259,14 @@ function loadViewportMarkers() {
 				    			// show or hide privileged action buttons
 				    			var privileged = (getCookie("access") == "true");
 				    			if (privileged) {
-				    				$('#removeEntryBtn').show();
-				    				$('#confirmEntryBtn').show();
+
+									$('#removeEntryBtn').show();
+				    				if (MARKERDATA[nestid].confirmed == 1) {
+				    					$('#confirmEntryBtn').hide();
+				    				} else {
+				    					$('#confirmEntryBtn').show();
+				    				}
+				    				
 				    			} else {
 				    				$('#removeEntryBtn').hide();
 				    				$('#confirmEntryBtn').hide();

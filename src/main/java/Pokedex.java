@@ -206,6 +206,19 @@ public class Pokedex {
 		prep.close();
 	}
 	
+	public void Refute(String nestid) throws SQLException {
+		
+		// Fill in schema to create a table called pokedex
+		String schema = "UPDATE pokenest SET confirmed = ? WHERE nestid = ?;";					
+		PreparedStatement prep = conn.prepareStatement(schema);
+		prep.setInt(1, 0);
+		prep.setString(2, nestid);
+		prep.executeUpdate();
+
+		// Close the PreparedStatement
+		prep.close();
+	}
+	
 	public boolean isConfirmed(String nestid) throws SQLException {
 		
 		// Fill in schema to create a table called pokedex
