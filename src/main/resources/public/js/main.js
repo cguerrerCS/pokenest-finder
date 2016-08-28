@@ -51,7 +51,7 @@ $( document ).ready(function() {
 	});
 
 	// plan to use double click for something else 
-	infomap.doubleClickZoom.disable(); 
+	pokemap.doubleClickZoom.disable(); 
 
 	// modal map used to select and submit a new nest location
 	sitemap = L.map('sitemapid', {
