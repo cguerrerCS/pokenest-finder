@@ -61,7 +61,7 @@ $( document ).ready(function() {
 	});
 
 	// sitemap.touchZoom.disable();
-	// sitemap.doubleClickZoom.disable(); 
+	sitemap.doubleClickZoom.disable(); 
 	// sitemap.scrollWheelZoom.disable();
 
 	// map to display pokemon nest details arial view
