@@ -79,7 +79,8 @@ $( document ).ready(function() {
 		position: 'bottomright', 
 		states:[{
 			onClick: function() {
-				$("#myModal").modal();
+				// $("#myModal").modal();
+				reportPokenestFromCurrentLocation();
 			},
 			icon:'<i class="material-icons">add_location</i>'
 		}]
@@ -371,17 +372,17 @@ $( document ).ready(function() {
 		}		
 	});
 
-	$('#myModal').on('show.bs.modal', function(){
+	// $('#myModal').on('show.bs.modal', function(){
 
-		// clear previous user information information
-		$('#pokemon-modal-input').val("");
+	// 	// clear previous user information information
+	// 	$('#pokemon-modal-input').val("");
 
-		// adjust map sizing for modal
-	    setTimeout(function() { sitemap.invalidateSize(); }, 500);
+	// 	// adjust map sizing for modal
+	//     setTimeout(function() { sitemap.invalidateSize(); }, 500);
 
-	    // adjust view to center on current location
-	    sitemap.setView(currentLocationMarker.getLatLng(), 16);
-	});
+	//     // adjust view to center on current location
+	//     sitemap.setView(currentLocationMarker.getLatLng(), 16);
+	// });
 
 	$('#myMarkerModal').on('show.bs.modal', function(){
 
@@ -506,6 +507,22 @@ $( document ).ready(function() {
 	});
 });
 
+function reportPokenestFromCurrentLocation() {
+
+	// clear previous user information information
+	$('#pokemon-modal-input').val("");
+
+	// adjust map sizing for modal
+    setTimeout(function() { sitemap.invalidateSize(); }, 500);
+
+    // adjust view to center on current location
+    sitemap.setView(currentLocationMarker.getLatLng(), 16);
+
+    // show modal
+    $("#myModal").modal();
+    
+}
+
 function locate() {
 
 	pokemap.locate({setView: true, maxZoom: 16});
@@ -566,16 +583,6 @@ function refreshVoteInfo(nestid, upvotes, downvotes) {
 	};
 
 	// TODO: figure out refresh logic...
-
-	// if (count != $(voteSelector).upvote("count") ) {
-	// 	console.log("vote count has changed for nest: " + nestid);
-	// }
-	// $.post("/getvote", postParameters, function(responseJSON) {
-	// 	// trainer vote data regarding this nest
-	// 	var responseObject = JSON.parse(responseJSON);
-	// 	console.log(responseObject);
-	// 	$( ("#" + voteid) ).upvote({id: responseObject.nestid, username: sessionCookie.username, count: count, upvoted: (parseInt(responseObject.up) == 1), downvoted: (parseInt(responseObject.down) == 1), callback: callback});
-	// });
 }
 
 function loadVoteInfo(nestid, upvotes, downvotes) {
