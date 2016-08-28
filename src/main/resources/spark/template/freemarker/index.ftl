@@ -72,7 +72,7 @@
 
         <div class="row"> 
 
-          <div class="col-xs-10" style="vertical-align:middle;padding-right:0;position: static;color:white;text-align:center;">
+          <div class="col-xs-10">
 
             <!-- ID information regarding selected Pokenest -->
             <h4 id="markerdata-id"></h4>
