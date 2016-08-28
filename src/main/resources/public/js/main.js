@@ -205,6 +205,20 @@ $( document ).ready(function() {
 	pokemap.on('locationfound', onLocationFound);
 	pokemap.on('locationerror', onLocationError);
 
+	// var clickstart;
+	// var clickstop;
+	pokemap.on('mousedown', function(e) {    
+    	// clickstart = e.timeStamp;
+    	console.log(e.latlng);
+    	
+	}).on('mouseup', function(e) {
+    	// clickstop = e.timeStamp- clickstart
+    	// if (clickstop >= 2000) {
+    	// 	console.log()
+    	// } two()
+    	// else one();
+	});
+
     // MoveEnd event of map to update marker position (fixes inertia bug)
     sitemap.on('moveend', function() { 
      	modalLocationMarker.setLatLng(sitemap.getCenter());
@@ -521,6 +535,21 @@ function reportPokenestFromCurrentLocation() {
     // show modal
     $("#myModal").modal();
     
+}
+
+function reportPokenestFromSelectedLocation(latlng) {
+
+	// clear previous user information information
+	$('#pokemon-modal-input').val("");
+
+	// adjust map sizing for modal
+    setTimeout(function() { sitemap.invalidateSize(); }, 500);
+
+    // adjust view to center on current location
+    sitemap.setView(latlng, 16);
+
+    // show modal
+    $("#myModal").modal();
 }
 
 function locate() {
