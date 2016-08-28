@@ -480,7 +480,6 @@ $( document ).ready(function() {
 		'Lickitung',
 		'Koffing', 
 		'Rhyhorn', 
-		'Chansey', 
 		'Tangela', 
 		'Horsea', 
 		'Goldeen', 
@@ -491,7 +490,9 @@ $( document ).ready(function() {
 		'Magmar', 
 		'Pinsir', 
 		'Magikarp', 
-		'Eevee'
+		'Eevee',
+		'Omanyte',
+		'Kabuto'
 	];
 
 	$('#pokemon-typeahead .typeahead').typeahead({

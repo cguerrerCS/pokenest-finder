@@ -88,7 +88,7 @@
 
           </div>
 
-          <div class="col-xs-2">
+          <div class="col-xs-2" style="padding-left:0px; padding-top: 20px;">
 
             <!-- voting info put here dynamically -->
             <div id="pokenest-votes" ></div>

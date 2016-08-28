@@ -67,9 +67,9 @@ public class Pokedex {
 				"Slowpoke", "Magnemite", "Farfetch'd", "Doduo", "Seel",
 				"Grimer", "Shellder", "Gastly", "Onix", "Drowzee", "Krabby",
 				"Voltorb", "Exeggcute", "Cubone", "Lickitung", "Koffing",
-				"Rhyhorn", "Chansey", "Tangela", "Horsea", "Goldeen", "Staryu",
+				"Rhyhorn", "Tangela", "Horsea", "Goldeen", "Staryu",
 				"Scyther", "Jynx", "Electabuzz", "Magmar", "Pinsir",
-				"Magikarp", "Eevee");
+				"Magikarp", "Eevee", "Omanyte", "Kabuto");
 
 		pokenames = new HashSet<String>(pokenamesAsList);
 	}
