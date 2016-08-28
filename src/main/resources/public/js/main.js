@@ -218,10 +218,11 @@ $( document ).ready(function() {
 
 	}).on('mouseup', function(e) {
 
-    	clickstop = e.timeStamp- clickstart
+    	clickstop = e.timeStamp - clickstart;
     	if (clickstop >= 2000) {
     	 	console.log(selectedLocation);
     	}
+    	console.log(selectedLocation);
 	});
 
     // MoveEnd event of map to update marker position (fixes inertia bug)
