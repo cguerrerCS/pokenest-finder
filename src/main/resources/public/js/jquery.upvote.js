@@ -91,7 +91,12 @@
     }
 
     function _click_upvote(jqdom) {
-        jqdom.find(dot_upvote_css).click();
+        
+        if (!haveSessionCookie()) {
+            jqdom.find(dot_upvote_css).click();
+        }
+
+        // jqdom.find(dot_upvote_css).click();
     }
 
     function _click_downvote(jqdom) {
