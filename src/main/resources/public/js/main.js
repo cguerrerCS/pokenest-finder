@@ -684,15 +684,18 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 	    			style: "snackbar",  // add a custom class to your snackbar
 	    			timeout: 2000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 				}
-				if (success) {
-					// options['content'] = "vote successfully updated";
-				} else {
 
-					// only error right now involved trainers not logged in
+				if (!success) {
+
+					// currently, only errors when trainer is not logged in
 					logout();
 					setNotLoggedInState();
 					options['content'] = "Error: " + error;
 					$.snackbar(options);
+
+					// hide modal and deselect
+					$('#myMarkerModal').modal('hide');
+
 				}
 			
 	    	});

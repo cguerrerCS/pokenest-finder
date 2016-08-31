@@ -323,7 +323,7 @@ public class Main {
 			// TODO authenticate user
 			if (!pokedex.UserAuthenticated(username, sessionToken)) {
 				
-				results = ImmutableMap.of("success", false, "error", "trainer not logged in or session expired");
+				results = ImmutableMap.of("success", false, "error", "trainer not logged in or session expired, vote not cast");
 				return GSON.toJson(results);	
 			}
 			
