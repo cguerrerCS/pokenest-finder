@@ -682,7 +682,7 @@ function loadVoteInfo(nestid, upvotes, downvotes) {
 				var options =  {
 	    			content: "", 		// text of the snackbar
 	    			style: "snackbar",  // add a custom class to your snackbar
-	    			timeout: 2000 		// time in milliseconds after the snackbar autohides, 0 is disabled
+	    			timeout: 4000 		// time in milliseconds after the snackbar autohides, 0 is disabled
 				}
 
 				if (!success) {
