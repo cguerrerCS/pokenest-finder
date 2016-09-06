@@ -238,7 +238,8 @@ function loadViewportMarkers() {
 				    			selectedInfoMarker = this;
 
 				    			// Fill in nest data for modal
-				    			$('#markerdata-header').html(MARKERDATA[nestid].pokemon + " Pokenest Details");
+				    			// $('#markerdata-header').html(MARKERDATA[nestid].pokemon + " Pokenest Details");
+				    			$('#markerdata-header').html("Pokenest: " + nestid);
 
 				    			var lat1 = currentLocationMarker.getLatLng().lat;
 				    			var lon1 = currentLocationMarker.getLatLng().lng;
@@ -250,7 +251,7 @@ function loadViewportMarkers() {
 				    			var googleMapsDirectionsURL = "https://www.google.com/maps/dir/" + lat1 + "," + lon1 +"/" + lat2 + "," + lon2;
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
 
-				    			$('#markerdata-id').html("ID  <b>" + MARKERDATA[nestid].nestid + "</b>");
+				    			$('#markerdata-species').html("Species  " + MARKERDATA[nestid].pokemon + "</b>");
 				    			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
 
 				    			// load vote information for this marker on click
@@ -355,6 +356,8 @@ function updateSelectedMarkerModalData() {
 
 			// get selected nest id
 			var nestid = selectedInfoMarker.options.nestid;
+
+			// update species field (when changes implemented)
 
 			// update confirmed field
 			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");

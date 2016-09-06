@@ -75,7 +75,7 @@
           <div class="col-xs-10">
 
             <!-- ID information regarding selected Pokenest -->
-            <h4 id="markerdata-id"></h4>
+            <h4 id="markerdata-species"></h4>
 
             <!-- Confirmation information regarding selected Pokenest -->
             <h4 id="markerdata-confirmed"></h4>
