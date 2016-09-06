@@ -251,8 +251,9 @@ function loadViewportMarkers() {
 				    			var googleMapsDirectionsURL = "https://www.google.com/maps/dir/" + lat1 + "," + lon1 +"/" + lat2 + "," + lon2;
 				    			$('#markerdata-googlemap-directions-link').attr('href', googleMapsDirectionsURL);
 
-				    			$('#markerdata-species').html("Species  " + MARKERDATA[nestid].pokemon + "</b>");
-				    			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
+				    			$('#markerdata-species').html("Suspected Species  " + MARKERDATA[nestid].pokemon + "</b>");
+				    			$('#markerdata-nest-confirmed').html("PokéNest Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
+				    			$('#markerdata-species-confirmed').html("Species Confirmed  <b>" + "???" + "</b>");
 
 				    			// load vote information for this marker on click
 				    			loadVoteInfo(MARKERDATA[nestid].nestid, MARKERDATA[nestid].upvotes, MARKERDATA[nestid].downvotes);
@@ -360,7 +361,7 @@ function updateSelectedMarkerModalData() {
 			// update species field (when changes implemented)
 
 			// update confirmed field
-			$('#markerdata-confirmed').html("Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
+			$('#markerdata-nest-confirmed').html("PokéNest Confirmed  <b>" + (MARKERDATA[nestid].confirmed == 1) + "</b>");
 
 			// update votes fields
 			refreshVoteInfo(MARKERDATA[nestid].nestid, MARKERDATA[nestid].upvotes, MARKERDATA[nestid].downvotes);
