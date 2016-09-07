@@ -66,11 +66,14 @@ $( document ).ready(function() {
 
 	// map to display pokemon nest details arial view
 	infomap = L.map('infomapid', {
-		zoomControl: false,
 		inertia: false, 
 		center: [29.7604, -95.3698],
 		zoom: 10
 	});
+
+	L.control.zoom({
+		position: 'bottomright' 
+	}).addTo(infomap);
 
 	infomap.touchZoom.disable();
 	infomap.doubleClickZoom.disable(); 
