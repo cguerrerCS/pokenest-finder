@@ -1,40 +1,11 @@
-# java-getting-started
+# PokeNest (Beta Version)
 
-A barebones Java app, which can easily be deployed to Heroku.
+A Pokemon Go companion app designed to help trainers locate nearby Pokemon Nests (hotspots where a particular species of Pokemon spawns frequently). Trainers can post their findings to PokeNest by geotagging a discovered hotspot; other trainers can then view the marked locations as well as leave feedback concerning said location. Plans for the future include making the app self sustainable to the point that it can handle nest migrations (species shifts that happen on a monthly basis).
 
-This application supports the [Getting Started with Java on Heroku](https://devcenter.heroku.com/articles/getting-started-with-java) article - check it out.
+Languages:
+  Backend: Written in Java , using a Spark server.
+  Frontend: Written in Javascript, HTML, CSS, JQuery, etc. 
+  Hosting: Web app currently hosted on Heroku
 
-[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
-## Running Locally
-
-Make sure you have Java and Maven installed.  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
-
-```sh
-$ git clone https://github.com/heroku/java-getting-started.git
-$ cd java-getting-started
-$ mvn install
-$ heroku local:start
-```
-
-Your app should now be running on [localhost:5000](http://localhost:5000/).
-
-If you're going to use a database, ensure you have a local `.env` file that reads something like this:
-
-```
-DATABASE_URL=postgres://localhost:5432/java_database_name
-```
-
-## Deploying to Heroku
-
-```sh
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
-
-## Documentation
-
-For more information about using Java on Heroku, see these Dev Center articles:
-
-- [Java on Heroku](https://devcenter.heroku.com/categories/java)
+Creator:
+  Cesar Guerrero
