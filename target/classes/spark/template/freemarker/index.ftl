@@ -75,10 +75,13 @@
           <div class="col-xs-10">
 
             <!-- ID information regarding selected Pokenest -->
-            <h4 id="markerdata-id"></h4>
+            <h4 id="markerdata-species"></h4>
 
-            <!-- Confirmation information regarding selected Pokenest -->
-            <h4 id="markerdata-confirmed"></h4>
+            <!-- Nest confirmation information regarding selected Pokenest -->
+            <h4 id="markerdata-nest-confirmed"></h4>
+
+            <!-- Species confirmation information regarding selected Pokenest -->
+            <h4 id="markerdata-species-confirmed"></h4>
 
             <!-- Distance information regarding selected Pokenest -->
             <h4 id="markerdata-distance"></h4>
